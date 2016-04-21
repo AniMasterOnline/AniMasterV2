@@ -46,14 +46,14 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heelp Me!! <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="http://librosweb.es/libro/bootstrap_3/capitulo_2.html">Manual Bootstrap</a></li>
-                <li><a href="http://getbootstrap.com/getting-started/">Bootstrap Getting Started</a></li>
-                <li><a href="http://getbootstrap.com/css/">Bootstrap Css</a></li>
-                <li><a href="http://getbootstrap.com/components/">Bootstrap Components</a></li>
+                <li><a target="_blank" href="http://librosweb.es/libro/bootstrap_3/capitulo_2.html">Manual Bootstrap</a></li>
+                <li><a target="_blank" href="http://getbootstrap.com/getting-started/">Bootstrap Getting Started</a></li>
+                <li><a target="_blank" href="http://getbootstrap.com/css/">Bootstrap Css</a></li>
+                <li><a target="_blank" href="http://getbootstrap.com/components/">Bootstrap Components</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Otros</li>
-                <li><a href="https://fortawesome.github.io/Font-Awesome/icons/"><i class="fa fa-flag" aria-hidden="true">&nbsp;</i>FontAwesome</a></li>
-                <li><a href="#">#</a></li>
+                <li><a target="_blank" href="https://fortawesome.github.io/Font-Awesome/icons/"><i class="fa fa-flag" aria-hidden="true">&nbsp;</i>FontAwesome</a></li>
+                <li><a target="_blank" href="/phpmyadmin"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>phpmyadmin</a></li>
               </ul>
             </li>
           </ul>

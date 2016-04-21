@@ -55,7 +55,6 @@
                 // Bootstrap Core CSS & Js
                 echo '<link href="Public/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">';
                 echo '<script src="Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
-                echo '<script src="Public/bootstrap-3.3.6/js/bootstrap.min.js"></script>';
                 // Favicon
                 echo '<link rel="shortcut icon" href="favicon.ico">';
             }
