@@ -16,3 +16,14 @@ body {
 .theme-showcase .navbar .container {
   width: auto;
 }
+.text-white{
+    color: whitesmoke;
+}
+.text-title{
+    font-family: 'Rokkitt', serif;
+    text-align: center;
+    text-shadow: 0 1px 1px #FB6e18;
+    margin-bottom: -6px;
+    color: #FB5D18;
+}
+
