@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  //padding-top: 70px;
   padding-bottom: 30px;
 }
 
@@ -25,5 +25,11 @@ body {
     text-shadow: 0 1px 1px #FB6e18;
     margin-bottom: -6px;
     color: #FB5D18;
+}
+.bg-color1{
+    background-color: #FB5D18;
+}
+.bg-color2{
+    background-color: #007fff;
 }
 
