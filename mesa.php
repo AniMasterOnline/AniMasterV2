@@ -3,39 +3,75 @@
 $title='Index';
 $migas='#Index|index.php';
 include "Public/layouts/head.php";?>
+<LINK HREF="Public/css/mesa.css" rel="stylesheet">
 <style>
     .navbar{
         margin-bottom: 0;
     }
-    #sidebar.affix-top {
-    position: static;
-    margin-top:30px;
-    width:228px;
-  }
-
-  #sidebar.affix {
-    position: fixed;
-    top:70px;
-    width:228px;
-  }
 </style>
+<!-- Menu Toggle Script -->
+<script>
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    });
+</script>
+
 <!-- Body content box -->
-<div class="container-fluid theme-showcase" role="main"> <!-- container Start -->
-    <div class="row-fluid">
-        <div class="col-md-9 bg-color1" id="mainCol">
-            aaa
-        </div>
-        <div class="col-md-3 bg-color2" id="leftCol">
-            <ul class="nav nav-stacked" id="sidebar">
-              <li><a href="#sec0">Section 0</a></li>
-              <li><a href="#sec1">Section 1</a></li>
-              <li><a href="#sec2">Section 2</a></li>
-              <li><a href="#sec3">Section 3</a></li>
-              <li><a href="#sec4">Section 4</a></li>
+<div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
             </ul>
-      	</div> 
-    </div> 
-</div><!-- /container -->
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div class="bg-color1" id="page-content-wrapper">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <h1>Simple Sidebar</h1>
+                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
 
 <!-- Footer content box -->
 <?php include "Public/layouts/footer.php";?> 
