@@ -74,21 +74,24 @@
 /* chat Styles */
 @media(min-width:0px) {
     #sidebar-wrapper{
-        padding-bottom: 200px;
+        padding-bottom: 150px;
+        background-image: url("../img/chatbg2.jpg");
+        background-repeat: repeat;
+        border-left: 2px solid #0f0f0f;
     }
     #chat-container{
       padding: 3px;
-      background-color: red;
+      background-color: rgba(0,0,0,0);
       overflow: auto;
       height: 100%;
     }
     #chat-box{
         padding: 3px;
-        background-color: greenyellow;
+        background-color: rgba(33,33,33,0.8);
         position: fixed;
         bottom: 0;
         width: 100%;
-        min-height: 150px;
+        min-height: 100px;
     }    
 }
     
