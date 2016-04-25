@@ -75,8 +75,9 @@
 @media(min-width:0px) {
     #sidebar-wrapper{
         padding-bottom: 150px;
-        background-image: url("../img/chatbg2.jpg");
+        background-image: url("../img/chatbg3.png");
         background-repeat: repeat;
+        background: cover;
         border-left: 2px solid #0f0f0f;
     }
     #chat-container{
