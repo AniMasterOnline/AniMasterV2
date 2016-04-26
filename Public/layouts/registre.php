@@ -114,7 +114,8 @@ function validateForm() {
     }
 }
 </script>
-<form method="POST" name="myForm" action="System/Protocols/Usuari_Signin.php" onsubmit="return validateForm()">
+
+<form method="POST" name="myForm" action="System/Protocols/registre.php" onsubmit="return validateForm()" enctype="multipart/form-data">
     <div class="form-content"> 
         <div class="input-1">
             <input class="input" id="user" placeholder="Usuari *" type="text" name="user" maxlength="32" required>
@@ -137,19 +138,20 @@ function validateForm() {
         <div class="input-1">
             <div id="alertemail"></div>
         </div>
+        <div class="input-2">    
+            <input class="input" id="nom" placeholder="Nom *" value="" type="text" name="nom" maxlength="40" required>
+            <input class="input" id="cognom" placeholder="Cognom *" value="" type="text" name="cognom" maxlength="40" required>
+        </div>
+        <div class="input-2">    
+            <input class="input" id="telefon" placeholder="Telefon (Opcional)" value="" type="text" name="telefon" maxlength="40" required>
+            <input class="input" id="pais" placeholder="Nacionalitat *" value="" type="text" name="pais" maxlength="40" required>
+        </div>
+        <div class="input-3">    
+            <input class="input" id="imatge" value="Upload" type="file" name="image" maxlength="40" required>
+        </div>
         <div class="input-1">
             <input id="logbutton" type="submit" value="Registra't">
         </div>
-        <div class="input-1">
-            <div id="infomsg">
-                <p>
-                La contrasenya i nom de usuari son dos dades que et permeten conectarte a  la nostra página i serveis. Aquestes dades han de ser secretes..<br>
-                Et recomanem que no uses la mateixa contrasenya para la teva compta de Subweb que per al teu correu electronic.<br>
-                Una contrasenya segura no ha de ser facil d'adivinar.<br><br>
-                </p>
-                <strong><i style='color:red;' class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ha de tenir un minim de sis caracters amb almenys un número, una lletra majuscula i una minuscula.</strong>
-            </div>
-        </div><br>
         <div class="input-1">
             <div id="alertmsg">
                 Al registrar-te, acceptes les <a class="link" href="#">Condicions del Servei</a> i la <a class="link" href="#">Política de Privacitat</a>, 
