@@ -9,7 +9,8 @@
                 // Fonts
                 echo '<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">';
                 echo '<link href="https://fonts.googleapis.com/css?family=Rokkitt:700,400" rel="stylesheet" type="text/css">';
-                $self = $_SERVER['PHP_SELF'];
+            
+            $self = $_SERVER['PHP_SELF'];
             if (strpos($self,"admin/")) { // Admin 
                 // Theme Css
                 echo '<link href="../Public/css/theme.css" rel="stylesheet">';

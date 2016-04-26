@@ -1,4 +1,4 @@
-<!-- Header content box -->
+<!-- Home -- Header content box -->
 <?php 
 $title='Index';
 $migas='#Home';
