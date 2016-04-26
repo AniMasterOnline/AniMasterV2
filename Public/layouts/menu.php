@@ -97,5 +97,13 @@
       </div>
     </nav>
     <?php
-	//migasdepan($migas);
+        if (strpos($self,"AniMasterV2/index.php")) {
+            //none
+        }else if (strpos($self,"AniMasterV2/mesa.php")) {
+            //none
+        }else{
+            //imprimim migas de pan
+            migasdepan($migas); 
+        }
+	
     ?>

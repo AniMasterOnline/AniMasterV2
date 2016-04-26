@@ -1,7 +1,6 @@
 <!-- Header content box -->
 <?php 
-$title='Index';
-$migas='#Index|index.php';
+$title='Nom Partida';
 include "Public/layouts/head.php";?>
 <LINK HREF="Public/css/mesa.css" rel="stylesheet">
 <style>

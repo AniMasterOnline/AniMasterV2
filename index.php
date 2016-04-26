@@ -1,7 +1,6 @@
 <!-- Home -- Header content box -->
 <?php 
-$title='Index';
-$migas='#Home';
+$title='Home';
 include "Public/layouts/head.php";?>
 <style>
     body{
