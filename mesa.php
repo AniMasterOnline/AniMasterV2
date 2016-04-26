@@ -37,7 +37,7 @@ include "Public/layouts/head.php";?>
         <div  id="page-content-wrapper">
             <div class="container-fluid ">
                 <div class="row">
-                    <ul class="nav nav-tabs ">
+                    <ul class="nav nav-tabs">
                         <li role="presentation" class="active"><a href="#">Home</a></li>
                         <li role="presentation"><a href="#">Profile</a></li>
                         <li role="presentation"><a href="#">Messages</a></li>
@@ -57,8 +57,9 @@ include "Public/layouts/head.php";?>
                         </li>
                     </ul>
                 </div>
-                <div class="row bg-color2">
-                    <div class="col-md-8 bg-color1">
+                <div class="clearfix visible-xs"></div>
+                <div class="row" >
+                    <div class="col-md-12 col-lg-7 bg-color1" id="mesa-container">
                         <div class="row">
                             <div class="col-md-12">
                                 <h1>User Panel</h1>
@@ -70,13 +71,13 @@ include "Public/layouts/head.php";?>
                         <div class="clearfix visible-xs"></div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h1>Map Panel</h1>
-                                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                                <div id="map">
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 bg-color2">
+                    <div class=" col-md-12 col-lg-5 bg-color2">
                         <h1>Right Panel</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>

@@ -7,26 +7,27 @@
 	function migasdepan($migas){
 		$migasdepan = explode("#",$migas);
 		$contmigas = count($migasdepan);
-		
-		echo '&nbsp; <i class="fa fa-home"></i> <i class="fa fa-angle-right"></i>';
-		for ($i = 0; $i < $contmigas; $i++){
+		echo '<ol class="breadcrumb">';
+		for ($i = 1; $i < $contmigas; $i++){
 			$pan = explode("|", $migasdepan[$i]);
-			if ($i <= 1){
+			if ($i == 1){
 				if(count($pan) == 2){
-					echo '<a href="'.$pan[1].'"> '.$pan[0].'</a> ';
+					echo '<li><a href="'.$pan[1].'"> '.$pan[0].'</a></li>';
 				}else{
-					echo '<a> '.$pan[0].'</a> ';
+					echo '<li class="active">'.$pan[0].'</li> ';
 				}
 			}else{
 				if(count($pan) == 2){
-					echo '<i class="fa fa-angle-right"></i><a href="'.$pan[1].'"> '.$pan[0].'</a> ';
+					echo '<li><a href="'.$pan[1].'"> '.$pan[0].'</a></li>';
 				}else{
-					echo '<i class="fa fa-angle-right"></i><a> '.$pan[0].'</a> ';
+					echo '<li class="active">'.$pan[0].'</li> ';
 				}
 			}
 		}
+                echo '</ol>';
 	}
 ?>
+
 <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -65,5 +66,5 @@
       </div>
     </nav>
     <?php
-		//migasdepan($migas);
-      ?>
+	//migasdepan($migas);
+    ?>

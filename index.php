@@ -1,7 +1,7 @@
 <!-- Header content box -->
 <?php 
 $title='Index';
-$migas='#Index|index.php';
+$migas='#Home';
 include "Public/layouts/head.php";?>
 <style>
     body{
