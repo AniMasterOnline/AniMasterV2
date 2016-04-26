@@ -101,6 +101,10 @@
             //none
         }else if (strpos($self,"AniMasterV2/mesa.php")) {
             //none
+        }else if (strpos($self,"AniMasterV2/login.php")) {
+            //none
+        }else if (strpos($self,"AniMasterV2/signup.php")) {
+            //none
         }else{
             //imprimim migas de pan
             migasdepan($migas); 
