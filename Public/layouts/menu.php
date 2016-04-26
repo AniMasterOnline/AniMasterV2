@@ -4,6 +4,7 @@
 		$value=$_SESSION['user'];
 		var_dump($value);
 	}
+        $self = $_SERVER['PHP_SELF'];
 	function migasdepan($migas){
 		$migasdepan = explode("#",$migas);
 		$contmigas = count($migasdepan);
@@ -25,6 +26,7 @@
 			}
 		}
                 echo '</ol>';
+                
 	}
 ?>
 
@@ -41,9 +43,24 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="mesa.php">Mi Mesa</a></li>
-            <li><a href="theme.php">Theme</a></li>
+            <?php
+                if (strpos($self,"AniMasterV2/index.php")) {
+                    echo '<li class="active"><a href="index.php">Home</a></li>';
+                    echo '<li><a href="mesa.php">Mi Mesa</a></li>';
+                    echo '<li><a href="theme.php">Theme</a></li>';
+                }
+                if (strpos($self,"AniMasterV2/theme.php")) {
+                    echo '<li><a href="index.php">Home</a></li>';
+                    echo '<li><a href="mesa.php">Mi Mesa</a></li>';
+                    echo '<li class="active"><a href="theme.php">Theme</a></li>';
+                }
+                if (strpos($self,"AniMasterV2/mesa.php")) {
+                    echo '<li><a href="index.php">Home</a></li>';
+                    echo '<li class="active"><a href="mesa.php">Mi Mesa</a></li>';
+                    echo '<li><a href="theme.php">Theme</a></li>';
+                }
+            ?>
+              
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heelp Me!! <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -58,9 +75,23 @@
               </ul>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">  
-            <li><a href="#">SigIn</a></li>
-            <li><a href="#">LogIn</a></li>
+          <ul class="nav navbar-nav navbar-right"> 
+            <?php
+            if(isset($_SESSION['user'])){
+                echo '<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hola, Usuari! <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a target="_blank" href="user/">Configuración</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li class="dropdown-header">Otros</li>
+                          <li><a target="_blank" href="logout.php"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Salir</a></li>
+                        </ul>
+                      </li>';
+            }else{
+                echo '<li><a href="#">SigIn</a></li>
+                      <li><a href="#">LogIn</a></li>';
+            }
+            ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
