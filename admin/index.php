@@ -1,9 +1,8 @@
-<!-- User Menu -- Header content box -->
+<!-- Admin Panel -- Header content box -->
 <?php 
 $title='Index';
-$migas='#Home|../index.php#Configuració';
+$migas='#Home|../index.php#Admin Panel';
 include "../Public/layouts/head.php";?>
-
 <!-- Body content box -->
 
 <!-- Footer content box -->
