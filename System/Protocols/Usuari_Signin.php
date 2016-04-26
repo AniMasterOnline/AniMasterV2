@@ -4,25 +4,19 @@
     $newUser = $_POST['user'];
     $newPass = md5($_POST['pass']);
     $newEmail = $_POST['email'];
-    $newNom = $_POST['nom'];
-    $newCognom = $_POST['cognom'];
-    $newTelefon = $_POST['telefon'];
-    $newPais = $_POST['pais'];
-    $newImatge = $_POST['imatge'];
-    
     //Tipus d'usuari >> User = 2<<
     $newId_Tipus = 2;
     
     //Afegir Usuari a la BD.
-    $newUsuari = new Usuari($newUser, $newEmail, $newPass, $newNom, $newCognom, $newTelefon, $newPais, $newId_Tipus, $newImatge);
-    $test = $newUsuari->add();
-    
+    $newUsuari = new Usuari($newUser, $newEmail, $newPass, $newId_Tipus);
+    $db2 = $newUsuari->add();
+    //var_dump($test);
     //Comprobació de si s'ha afegit l'usuari i loggin
-    if($test != false){
+    if($db2 != false){
         $usuari = $newUsuari->verificar_login($newUser,$newPass);
         if( $usuari != null){ 
             session_start();
-            $_SESSION['usuari'] = $usuari;
+            $_SESSION['user'] = $usuari;
             header('Location: ../../user/index.php');
         }
     }else{

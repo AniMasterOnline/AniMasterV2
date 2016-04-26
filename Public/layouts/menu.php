@@ -2,7 +2,7 @@
 	session_start();
 	if(isset($_SESSION['user'])){
 		$value=$_SESSION['user'];
-		var_dump($value);
+		//var_dump($value);
 	}
         $self = $_SERVER['PHP_SELF'];
 	function migasdepan($migas){
@@ -79,17 +79,17 @@
             <?php
             if(isset($_SESSION['user'])){
                 echo '<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hola, Usuari! <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hola, '.ucfirst($value['nickname']).' <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a target="_blank" href="user/">Configuración</a></li>
                           <li role="separator" class="divider"></li>
                           <li class="dropdown-header">Otros</li>
-                          <li><a target="_blank" href="logout.php"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Salir</a></li>
+                          <li><a target="_self" href="logout.php"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Salir</a></li>
                         </ul>
                       </li>';
             }else{
-                echo '<li><a href="#">SigIn</a></li>
-                      <li><a href="#">LogIn</a></li>';
+                echo '<li><a href="signup.php">Sign up</a></li>
+                      <li><a href="login.php">Log in</a></li>';
             }
             ?>
           </ul>
