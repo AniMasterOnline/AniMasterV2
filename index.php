@@ -33,10 +33,10 @@ include "Public/layouts/head.php";?>
 <div class="cover-container text-center">
 
     <div class="inner cover">
-          <h1 class="cover-heading text-title">AniMaster La teva web de Rol Online.</h1>
+          <h1 class="cover-heading text-title">AniMaster tu web de Rol Online.</h1>
           <p class="lead text-white">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
           <p class="lead">
-              <a href="subhasta.php" class="btn btn-primary">Comensa ja ...</a>
+              <a href="subhasta.php" class="btn btn-primary">Empieza ya ...</a>
           </p>
     </div>
 
