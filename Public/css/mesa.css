@@ -1,21 +1,47 @@
 /* General mesa Styles */
+html{
+    background-image: url("../img/ZenBG.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+}
 body{
-    background: #d2ff52; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #d2ff52 0%, #91e842 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #d2ff52 0%,#91e842 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #d2ff52 0%,#91e842 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: rgba(0,0,0,0);
+     /* Old browsers */
+    //background: -webkit-gradient(linear, left top, left bottom, from(#d2ff52), to(#91e842)) fixed;
+    
 }
 #map{
     background-color: #333;
     width: 100%;
     height: 425px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 #mesa-container{
     border-left: 1px solid gainsboro;
     border-right: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+}
+.nav-tabs > li > a {
+    color: white;
+}
+.nav-tabs > li:hover > a {
+    color: #23527c;
+}
+#hp{
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+}
+.progress{
+    margin-bottom: 2px;
+    border-radius: 6px;
 }
 /* Toggle Styles */
 #wrapper {
@@ -91,7 +117,6 @@ body{
 }
 
 /* chat Styles */
-@media(min-width:0px) {
     #sidebar-wrapper{
         padding-bottom: 150px;
         background-image: url("../img/chatbg3.png");
@@ -103,14 +128,31 @@ body{
       background-color: rgba(0,0,0,0);
       overflow: auto;
       height: 100%;
+      width: 250px;
     }
     #chat-box{
         padding: 3px;
         background-color: rgba(33,33,33,0.8);
         position: fixed;
         bottom: 0;
-        width: 100%;
-        min-height: 100px;
+        width: 250px;
+        min-height: 10px;
+    } 
+@media(min-width:753px) {
+    #chat-container{
+      padding: 3px;
+      background-color: rgba(0,0,0,0);
+      overflow: auto;
+      height: 100%;
+      width: 350px;
+    }
+    #chat-box{
+        padding: 3px;
+        background-color: rgba(33,33,33,0.8);
+        position: fixed;
+        bottom: 0;
+        width: 350px;
+        min-height: 10px;
     }    
 }
     
