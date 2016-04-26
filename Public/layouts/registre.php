@@ -115,7 +115,7 @@ function validateForm() {
 }
 </script>
 
-<form method="POST" name="myForm" action="System/Protocols/registre.php" onsubmit="return validateForm()" enctype="multipart/form-data">
+<form method="POST" name="myForm" action="System/Protocols/Usuari_Signin.php" onsubmit="return validateForm()" enctype="multipart/form-data">
     <div class="form-content"> 
         <div class="input-1">
             <input class="input" id="user" placeholder="Usuari *" type="text" name="user" maxlength="32" required>
@@ -147,7 +147,7 @@ function validateForm() {
             <input class="input" id="pais" placeholder="Nacionalitat *" value="" type="text" name="pais" maxlength="40" required>
         </div>
         <div class="input-3">    
-            <input class="input" id="imatge" value="Upload" type="file" name="image" maxlength="40" required>
+            <input class="input" id="imatge" value="Upload" type="file" name="imatge" maxlength="40" required>
         </div>
         <div class="input-1">
             <input id="logbutton" type="submit" value="Registra't">

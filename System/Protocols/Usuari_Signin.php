@@ -1,27 +1,20 @@
 <?php
     require_once('../Classes/Usuari.php');
     //Requiered inputs
-    $newSaldo = 500; //Saldo inicial
     $newUser = $_POST['user'];
     $newPass = md5($_POST['pass']);
     $newEmail = $_POST['email'];
-    
-    //optional inputs
-    $newNom = null;
-    $newCognom = null;
-    $newDni = null;
-    $newPhone = null;
-    $newAdreça = null;
-    $newPais = null;
-    $newPoble = null;
-    $newProvincia = null;
-    $newPostal = null;
+    $newNom = $_POST['nom'];
+    $newCognom = $_POST['cognom'];
+    $newTelefon = $_POST['telefon'];
+    $newPais = $_POST['pais'];
+    $newImatge = $_POST['imatge'];
     
     //Tipus d'usuari >> User = 2<<
     $newId_Tipus = 2;
     
     //Afegir Usuari a la BD.
-    $newUsuari = new Usuari($newSaldo, $newUser, $newEmail, $newPass, $newNom, $newCognom, $newDni, $newPhone, $newAdreça, $newPais, $newPoble, $newProvincia, $newPostal, $newId_Tipus);
+    $newUsuari = new Usuari($newUser, $newEmail, $newPass, $newNom, $newCognom, $newTelefon, $newPais, $newId_Tipus, $newImatge);
     $test = $newUsuari->add();
     
     //Comprobació de si s'ha afegit l'usuari i loggin
