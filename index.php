@@ -4,7 +4,7 @@ $title='Home';
 include "Public/layouts/head.php";?>
 <style>
     body{
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(0,0,0,0.7);
         position: absolute;
         top:0;
         bottom: 0;
@@ -13,13 +13,13 @@ include "Public/layouts/head.php";?>
     }
     html{
         background-color: #31231E;
+        background-position: center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center top;
-        background-attachment: fixed;
+        height: 100%; 
+        overflow: hidden;
         
     }
     #slider{

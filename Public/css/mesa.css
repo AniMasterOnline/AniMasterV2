@@ -1,14 +1,21 @@
 /* General mesa Styles */
 html{
-    background-image: url("../img/ZenBG.png");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-attachment: fixed;
+    background-color: #666;
 }
+@media(max-width:0px) {
+    html{
+        background-image: url("../img/ZenBG.png");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }  
+}
+
 body{
     background: rgba(0,0,0,0);
      /* Old browsers */
@@ -38,6 +45,14 @@ body{
     line-height: 20px;
     color: #fff;
     text-align: center;
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+}
+#mp{
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
 }
 .progress{
     margin-bottom: 2px;
@@ -86,7 +101,7 @@ body{
     margin-right: 0px;
 }
 
-@media(min-width:753px) {
+@media(min-width:893px) {
     #wrapper {
         padding-right: 350px;
     }
@@ -116,6 +131,7 @@ body{
     }
 }
 
+
 /* chat Styles */
     #sidebar-wrapper{
         padding-bottom: 150px;
@@ -138,7 +154,7 @@ body{
         width: 250px;
         min-height: 10px;
     } 
-@media(min-width:753px) {
+@media(min-width:893px) {
     #chat-container{
       padding: 3px;
       background-color: rgba(0,0,0,0);
