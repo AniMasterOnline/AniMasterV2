@@ -101,20 +101,17 @@ CREATE TABLE IF NOT EXISTS `Personaje` (
 CREATE TABLE IF NOT EXISTS `Ventaja` (
   `id_ventaja` int(10) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(15) NOT NULL,
-  `descripcion` varchar(500) NOT NULL,
-  `efectos` varchar(500),
-  `limitacion` varchar(500),
-  `puntos_creacion` varchar(3),
+  `nombre` varchar(500) NOT NULL,
+  `descripcion` varchar(1000) NOT NULL,
+  `efectos` varchar(1000),
+  `limitacion` varchar(1000),
+  `puntos_creacion` varchar(3) NOT NULL,
   PRIMARY KEY (`id_ventaja`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO `Ventaja` (`id_ventaja`,`tipo`,`nombre`,`descripcion`,`efectos`,`limitacion`,`puntos_creacion`) VALUES
+(1,'Ventaja','Repetir una tirada de características','El azar permite a tu personaje modificar una de sus características básicas','Te permite lanzar un dado adicional una vez que has generado las características de tu personaje, y utilizar el resultado obtenido en lugar de uno de los anteriores. La nueva cifra no podrá ser inferior al valor de tu tirada más baja.', 'Esta ventaja no es compatible con el cuarto método de generación de características. Puede adquirirse tantas veces como se desee.','-1');
 -- --------------------------------------------------------
-INSERT INTO `Ventaja` (`id_tipo`,`nombre`) VALUES
-(0, 'Administrador'),
-(1, 'Usuario'),
-(2, 'Master'),
-(3, 'Jugador'),
-(4, 'Expulsado'),
-(5, 'Baneado');
 
 -- Table structure for table `Personaje_Ventaja`
 --
