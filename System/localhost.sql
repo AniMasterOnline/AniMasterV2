@@ -87,17 +87,7 @@ CREATE TABLE IF NOT EXISTS `Personaje` (
   `id_personaje` int(10) NOT NULL AUTO_INCREMENT,
   `id_partida` int(10) NOT NULL,
   `id_usuario` int(10) NOT NULL,
-  `ventaja1` varchar(80),
-  `ventaja2` varchar(80),
-  `ventaja3` varchar(80),
-  `ventaja4` varchar(80),
-  `ventaja5` varchar(80),
-  `ventaja6` varchar(80),
-  `desventaja1` varchar(80),
-  `desventaja2` varchar(80),
-  `desventaja3` varchar(80),
-  `desventaja4` varchar(80),
-  `nephelim` varchar(80),
+  `id_nephilim` int(2),
   `cordura` varchar(80),
   `fama` varchar(80),
   PRIMARY KEY (`id_personaje`),
@@ -106,8 +96,38 @@ CREATE TABLE IF NOT EXISTS `Personaje` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 -- --------------------------------------------------------
 
+-- Table structure for table `Ventajas`
 --
--- Table structure for table `Ficha`
+CREATE TABLE IF NOT EXISTS `Ventaja` (
+  `id_ventaja` int(10) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(15) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `efectos` varchar(500),
+  `limitacion` varchar(500),
+  `puntos_creacion` varchar(3),
+  PRIMARY KEY (`id_ventaja`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+-- --------------------------------------------------------
+INSERT INTO `Ventaja` (`id_tipo`,`nombre`) VALUES
+(0, 'Administrador'),
+(1, 'Usuario'),
+(2, 'Master'),
+(3, 'Jugador'),
+(4, 'Expulsado'),
+(5, 'Baneado');
+
+-- Table structure for table `Personaje_Ventaja`
+--
+CREATE TABLE IF NOT EXISTS `Personaje_Ventaja` (
+  `id_ventaja` int(10) NOT NULL,
+  `id_personaje` int(10) NOT NULL,
+  PRIMARY KEY (`id_ventaja`),
+  KEY `id_personaje` (`id_personaje`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Ficha_Comuna`
 --
 CREATE TABLE IF NOT EXISTS `Ficha_Comuna` (
   `id_ficha` int(10) NOT NULL,
