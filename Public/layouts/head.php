@@ -12,8 +12,7 @@
             
             $self = $_SERVER['PHP_SELF'];
             if (strpos($self,"admin/")) { // Admin 
-                // Theme Css
-                echo '<link href="../Public/css/theme.css" rel="stylesheet">';
+                
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="../Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
                 // Jquery
@@ -24,12 +23,15 @@
                 // Bootstrap Core CSS & Js
                 echo '<link href="../Public/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">';
                 echo '<script src="../Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
+                // Theme Css
+                echo '<link href="../Public/css/theme.css" rel="stylesheet">';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../favicon.ico">';
+                //password-show
+                echo '<script src="../Public/jquery/password.js"></script>';
 				
             }else if (strpos($self,"user/")) { //User
-                // Theme Css
-                echo '<link href="../Public/css/theme.css" rel="stylesheet">';
+                
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="../Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
                 // Jquery
@@ -40,12 +42,16 @@
                 // Bootstrap Core CSS & Js
                 echo '<link href="../Public/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">';
                 echo '<script src="../Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
+                // Theme Css
+                echo '<link href="../Public/css/theme.css" rel="stylesheet">';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../favicon.ico">';
+                //password-show
+                echo '<script src="../Public/jquery/password.js"></script>';
+                
 				
             }else{ // Index
-                // Theme Css
-                echo '<link href="Public/css/theme.css" rel="stylesheet">';
+                
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
                 // Jquery
@@ -56,8 +62,14 @@
                 // Bootstrap Core CSS & Js
                 echo '<link href="Public/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">';
                 echo '<script src="Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
+                // Theme Css
+                echo '<link href="Public/css/theme.css" rel="stylesheet">';
                 // Favicon
                 echo '<link rel="shortcut icon" href="favicon.ico">';
+                //password-show
+                echo '<script src="Public/jquery/password.js"></script>';
+                
+
             }
         ?>	
     </head>

@@ -48,13 +48,11 @@
                     echo '<li class="active"><a href="index.php">Home</a></li>';
                     echo '<li><a href="mesa.php">Mi Mesa</a></li>';
                     echo '<li><a href="theme.php">Theme</a></li>';
-                }
-                if (strpos($self,"AniMasterV2/theme.php")) {
+                }else if (strpos($self,"AniMasterV2/theme.php")) {
                     echo '<li><a href="index.php">Home</a></li>';
                     echo '<li><a href="mesa.php">Mi Mesa</a></li>';
                     echo '<li class="active"><a href="theme.php">Theme</a></li>';
-                }
-                if (strpos($self,"AniMasterV2/mesa.php")) {
+                }else if (strpos($self,"AniMasterV2/mesa.php")) {
                     echo '<li><a href="index.php">Home</a></li>';
                     echo '<li class="active"><a href="mesa.php">Mi Mesa</a></li>';
                     echo '<li><a href="theme.php">Theme</a></li>';
@@ -95,10 +93,12 @@
                 if (strpos($self,"AniMasterV2/signup.php")) {
                     echo '  <li class="active"><a href="signup.php">Sign up</a></li>
                             <li><a href="login.php">Log in</a></li>';
-                }
-                if (strpos($self,"AniMasterV2/login.php")) {
+                }else if (strpos($self,"AniMasterV2/login.php")) {
                     echo '  <li><a href="signup.php">Sign up</a></li>
                             <li class="active"><a href="login.php">Log in</a></li>';
+                }else{
+                    echo '  <li><a href="signup.php">Sign up</a></li>
+                            <li><a href="login.php">Log in</a></li>';
                 }
                 
             }
