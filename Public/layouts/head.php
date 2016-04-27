@@ -27,8 +27,6 @@
                 echo '<link href="../Public/css/theme.css" rel="stylesheet">';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../favicon.ico">';
-                //password-show
-                echo '<script src="../Public/jquery/password.js"></script>';
 				
             }else if (strpos($self,"user/")) { //User
                 
@@ -46,8 +44,6 @@
                 echo '<link href="../Public/css/theme.css" rel="stylesheet">';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../favicon.ico">';
-                //password-show
-                echo '<script src="../Public/jquery/password.js"></script>';
                 
 				
             }else{ // Index
@@ -66,8 +62,6 @@
                 echo '<link href="Public/css/theme.css" rel="stylesheet">';
                 // Favicon
                 echo '<link rel="shortcut icon" href="favicon.ico">';
-                //password-show
-                echo '<script src="Public/jquery/password.js"></script>';
                 
 
             }
