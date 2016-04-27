@@ -1,19 +1,14 @@
 /* General mesa Styles */
-html{
-    background-image: url("../img/ZenBG.png");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-attachment: fixed;
-}
 body{
-    background: rgba(0,0,0,0);
-     /* Old browsers */
-    //background: -webkit-gradient(linear, left top, left bottom, from(#d2ff52), to(#91e842)) fixed;
-    
+    background-color: #333;
+}
+.nav-tabs > li > a {
+    height: 32px;
+    padding: 5px 10px;
+    color: white;
+}
+.nav-tabs > li:hover > a {
+    color: #333;
 }
 #map{
     background-color: #333;
@@ -27,17 +22,19 @@ body{
     border-right: 1px solid gainsboro;
     border-bottom: 1px solid gainsboro;
 }
-.nav-tabs > li > a {
-    color: white;
-}
-.nav-tabs > li:hover > a {
-    color: #23527c;
-}
 #hp{
     font-size: 12px;
     line-height: 20px;
     color: #fff;
     text-align: center;
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+}
+#mp{
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
 }
 .progress{
     margin-bottom: 2px;
@@ -86,7 +83,7 @@ body{
     margin-right: 0px;
 }
 
-@media(min-width:753px) {
+@media(min-width:893px) {
     #wrapper {
         padding-right: 350px;
     }
@@ -116,6 +113,7 @@ body{
     }
 }
 
+
 /* chat Styles */
     #sidebar-wrapper{
         padding-bottom: 150px;
@@ -138,7 +136,7 @@ body{
         width: 250px;
         min-height: 10px;
     } 
-@media(min-width:753px) {
+@media(min-width:893px) {
     #chat-container{
       padding: 3px;
       background-color: rgba(0,0,0,0);

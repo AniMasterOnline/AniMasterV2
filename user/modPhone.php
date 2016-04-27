@@ -7,11 +7,10 @@ include "../Public/layouts/head.php";?>
 
 
 <!-- Content body -->
-<form method="POST" name="myForm" action="../System/Protocols/Usuari_Identity.php" onsubmit="return validateForm()">
+<form method="POST" name="myForm" action="../System/Protocols/Usuari_Phone.php" onsubmit="return validateForm()">
             <div class="user-info">
                 <div class="input-2">
-                    <input class="input" id="nom" placeholder="Nom" type="text" name="nom" maxlength="32">
-                    <input class="input" id="cognom" placeholder="Cognom" type="text" name="cognom" maxlength="32">
+                    <input class="input" id="nom" placeholder="Telefon" type="text" name="phone" maxlength="32">
                 </div>
                 <div class="input-2">
                     <div id="alertnom"></div>

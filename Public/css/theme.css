@@ -1,6 +1,7 @@
 body {
   padding-top: 50px;
   padding-bottom: 30px;
+  background-color: #FAFAFA;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -31,5 +32,8 @@ body {
 }
 .bg-color2{
     background-color: #007fff;
+}
+.cinput{
+    margin-bottom: 6px;
 }
 

@@ -53,7 +53,6 @@ include "Public/layouts/head.php";?>
                                 </ul> 
                             </div> 
                         </div>
-                        
                     </div><!-- /.col-lg-6 -->
                 </div>
             </div>
@@ -63,7 +62,6 @@ include "Public/layouts/head.php";?>
         <!-- Page Content -->
         <div  id="page-content-wrapper">
             <div id="msgalert">
-                
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <strong>Warning!</strong> Better check yourself, you're not looking too good.
@@ -71,7 +69,7 @@ include "Public/layouts/head.php";?>
             </div>
             <div class="container-fluid ">
                 <div class="row">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs nav-justified">
                         <li role="presentation" class="active"><a href="#personaje" aria-controls="personaje" role="tab" data-toggle="tab">Personaje</a></li>
                         <li role="presentation"><a href="#habilidades" aria-controls="habilidades" role="tab" data-toggle="tab">Habilidades</a></li>
                         <li role="presentation"><a href="#combate" aria-controls="combate" role="tab" data-toggle="tab">Combate</a></li>
