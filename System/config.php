@@ -3,9 +3,9 @@
 * Definicio de les constants, que usem per a fer la conexio amb la BD.
 */
     define("HOST","localhost");
-    define("NOMUSUARI","root");
-    define("CONTRASENYA","1");
-    define("NOMBDD","animaster");
+    define("NOMUSUARI","animaster");
+    define("CONTRASENYA","master");
+    define("NOMBDD","Animaster");
 
     class connexio extends mysqli {
         public function __construct() {

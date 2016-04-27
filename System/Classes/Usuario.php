@@ -1,65 +1,65 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Usuari{
+    class Usuario{
         /*Atributs*/
-        private $id_usuari;
+        private $id_usuario;
         private $nickname;
         private $email;
         private $password;
-        private $nom;
-        private $cognom;
-        private $telefon;
-        private $id_tipus;
-        private $imatge;
+        private $nombre;
+        private $apellido;
+        private $telefono;
+        private $id_tipo;
+        private $imagen;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $db2 = $db->query("INSERT INTO Usuari(`nickname`, `email`, `password`, `id_tipus`) "
-                    . "VALUES ('$this->nickname', '$this->email', '$this->password', '$this->id_tipus')");
+            $db2 = $db->query("INSERT INTO Usuario(`nickname`, `email`, `password`, `id_tipo`) "
+                    . "VALUES ('$this->nickname', '$this->email', '$this->password', '$this->id_tipo')");
             $db->close();
             return $db2;
         }
-        public function modIdentity($id, $nickname, $nom, $cognom){
+        public function modIdentity($id, $nickname, $nombre, $apellido){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuari SET  nom='$nom', cognom='$cognom' WHERE id_usuari= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  nombre='$nombre', apellido='$apellido' WHERE id_usuario= '$id' AND nickname= '$nickname'");
             $db->close();
             return $result;
         }
         public function modPass($id, $nickname, $pass){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuari SET  password='$pass' WHERE id_usuari= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  password='$pass' WHERE id_usuario= '$id' AND nickname= '$nickname'");
             $db->close();
             return $result;
         }
-        public function modPhone($id, $nickname, $telefon){
+        public function modPhone($id, $nickname, $telefono){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuari SET  telefon='$telefon' WHERE id_usuari= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  telefono='$telefono' WHERE id_usuario= '$id' AND nickname= '$nickname'");
             $db->close();
             return $result;
         }
-        public function modImage($id, $nickname, $imatge){
+        public function modImage($id, $nickname, $imagen){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuari SET  imatge='$imatge' WHERE id_usuari= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  imagen='$imagen' WHERE id_usuario= '$id' AND nickname= '$nickname'");
             $db->close();
             return $result;
         }
         public function modEmail($id, $nickname, $email){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuari SET  email='$email' WHERE id_usuari= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  email='$email' WHERE id_usuario= '$id' AND nickname= '$nickname'");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Usuari where id_usuari = $var";
+            $result = $sql = "delete from Usuario where id_usuario = $var";
             $db->query($sql);
             return $result;
         }
         
         function verificar_login($nickname,$password){ 
             $db = new connexio();
-            $sql = "SELECT * FROM Usuari WHERE nickname = '$nickname' and password = '$password'";
+            $sql = "SELECT * FROM Usuario WHERE nickname = '$nickname' and password = '$password'";
             $query = $db->query($sql);
             $count = 0;
             $datos = "";
@@ -81,7 +81,7 @@
         
         function return_nickname($id){ 
             $db = new connexio();
-            $sql = "SELECT * FROM Usuari WHERE id_usuari = '$id'";
+            $sql = "SELECT * FROM Usuario WHERE id_usuario = '$id'";
             $query = $db->query($sql);
             $count = 0;
             if ($query->num_rows > 0) {
@@ -101,13 +101,13 @@
         }
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Usuari;";
+            $sql = "SELECT * FROM Usuario;";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Usuari = new Usuari($obj["id_usuari"],$obj["nickname"],$obj["email"],$obj["password"],$obj["nom"],$obj["cognom"],$obj["telefon"],$obj["id_tipus"],$obj["imatge"]);
-                //var_dump($Usuari);
-                array_push($rtn, $Usuari);
+                $Usuario = new Usuario($obj["id_usuario"],$obj["nickname"],$obj["email"],$obj["password"],$obj["nombre"],$obj["apellido"],$obj["telefono"],$obj["id_tipo"],$obj["imagen"]);
+                //var_dump($Usuario);
+                array_push($rtn, $Usuario);
             }
             $db->close();
             return $rtn;
@@ -115,13 +115,13 @@
         
         public function view_comp($id){
             $db = new connexio();
-            $sql = "SELECT * FROM Usuari where id_usuari='$id'";
+            $sql = "SELECT * FROM Usuario where id_usuario='$id'";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Usuari = new Usuari($obj["nickname"],$obj["email"],$obj["password"],$obj["nom"],$obj["cognom"],$obj["telefon"],$obj["id_tipus"],$obj["imatge"]);
-                //var_dump($Usuari);
-                array_push($rtn, $Usuari);
+                $Usuario = new Usuario($obj["nickname"],$obj["email"],$obj["password"],$obj["nombre"],$obj["apellido"],$obj["telefono"],$obj["id_tipo"],$obj["imagen"]);
+                //var_dump($Usuario);
+                array_push($rtn, $Usuario);
             }
             $db->close();
             return $rtn;
@@ -129,7 +129,7 @@
         
          function return_user($id){ 
             $db = new connexio();
-            $sql = "SELECT * FROM Usuari WHERE id_usuari = '$id'";
+            $sql = "SELECT * FROM Usuario WHERE id_usuario = '$id'";
             $query = $db->query($sql);
             $count = 0;
             if ($query->num_rows > 0) {
@@ -159,56 +159,56 @@
             }
         }
         function __construct0(){
-            $this->id_usuari=0;
+            $this->id_usuario=0;
             $this->nickname = "";
             $this->email = "";
             $this->password = "";
-            $this->nom = "";
-            $this->cognom = "";
-            $this->telefon = "";
-            $this->id_tipus = "";
-            $this->imatge = "";
+            $this->nombre = "";
+            $this->apellido = "";
+            $this->telefono = "";
+            $this->id_tipo = "";
+            $this->imagen = "";
         }
         
         function __construct4($a2, $a3, $a4, $a8){
-            $this->id_usuari=0;
+            $this->id_usuario=0;
             $this->nickname = $a2;
             $this->email = $a3;
             $this->password = $a4;
-            $this->nom = "";
-            $this->cognom = "";
-            $this->telefon = "";
-            $this->id_tipus = $a8;
-            $this->imatge = ""; 
+            $this->nombre = "";
+            $this->apellido = "";
+            $this->telefono = "";
+            $this->id_tipo = $a8;
+            $this->imagen = ""; 
         }
         
         function __construct8($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9){
-            $this->id_usuari=0;
+            $this->id_usuario=0;
             $this->nickname = $a2;
             $this->email = $a3;
             $this->password = $a4;
-            $this->nom = $a5;
-            $this->cognom = $a6;
-            $this->telefon = $a7;
-            $this->id_tipus = $a8;
-            $this->imatge = $a9; 
+            $this->nombre = $a5;
+            $this->apellido = $a6;
+            $this->telefono = $a7;
+            $this->id_tipo = $a8;
+            $this->imagen = $a9; 
         }
         
         function __construct9($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9){
-            $this->id_usuari=$a1;
+            $this->id_usuario=$a1;
             $this->nickname = $a2;
             $this->email = $a3;
             $this->password = $a4;
-            $this->nom = $a5;
-            $this->cognom = $a6;
-            $this->telefon = $a7;
-            $this->id_tipus = $a8;
-            $this->imatge = $a9;
+            $this->nombre = $a5;
+            $this->apellido = $a6;
+            $this->telefono = $a7;
+            $this->id_tipo = $a8;
+            $this->imagen = $a9;
         }
            
         //METODES SET
-        public function setId_Usuari($id_usuari) {
-            $this->id_usuari = $id_usuari;
+        public function setId_Usuario($id_usuario) {
+            $this->id_usuario = $id_usuario;
         }
         public function setNickname($nickname) {
             $this->nickname = $nickname;
@@ -219,25 +219,25 @@
         public function setPassword($password) {
             $this->password = $password;
         }
-        public function setNom($nom) {
-            $this->nom = $nom;
+        public function setNombre($nombre) {
+            $this->nombre = $nombre;
         }
-        public function setCognom($cognom) {
-            $this->cognom = $cognom;
+        public function setApellido($apellido) {
+            $this->apellido = $apellido;
         }
-        public function setTelefon($telefon) {
-            $this->telefon = $telefon;
+        public function setTelefon($telefono) {
+            $this->telefono = $telefono;
         }
-        public function setId_Tipus($id_tipus) {
-            $this->id_tipus = $id_tipus;
+        public function setId_Tipo($id_tipo) {
+            $this->id_tipo = $id_tipo;
         }
-        public function setImatge($imatge) {
-            $this->imatge = $imatge;
+        public function setImagen($imagen) {
+            $this->imagen = $imagen;
         }
         
         //METODES GET 
-        public function getId_Usuari($id_usuari) {
-            $this->id_usuari = $id_usuari;
+        public function getId_Usuario($id_usuario) {
+            $this->id_usuario = $id_usuario;
         }
         public function getNickname($nickname) {
             $this->nickname = $nickname;
@@ -248,20 +248,20 @@
         public function getPassword($password) {
             $this->password = $password;
         }
-        public function getNom($nom) {
-            $this->nom = $nom;
+        public function getNom($nombre) {
+            $this->nombre = $nombre;
         }
-        public function getCognom($cognom) {
-            $this->cognom = $cognom;
+        public function getCognombre($apellido) {
+            $this->apellido = $apellido;
         }
-        public function getTelefon($telefon) {
-            $this->telefon = $telefon;
+        public function getTelefon($telefono) {
+            $this->telefono = $telefono;
         }
-        public function getId_Tipus($id_tipus) {
-            $this->id_tipus = $id_tipus;
+        public function getId_Tipus($id_tipo) {
+            $this->id_tipo = $id_tipo;
         }
-        public function getImatge($imatge) {
-            $this->imatge = $imatge;
+        public function getImatge($imagen) {
+            $this->imagen = $imagen;
         }
     }
 ?>

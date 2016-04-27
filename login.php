@@ -26,11 +26,11 @@ ob_start();
       </form>
 </div> <!-- /container -->
 <?php
-    require_once('System/Classes/Usuari.php');
+    require_once('System/Classes/Usuario.php');
     if(isset($_POST['login'])){
     $user = $_POST['user'];
     $pass = md5($_POST['pass']);
-    $usuari = new Usuari();
+    $usuari = new Usuario();
     $usuari = $usuari->verificar_login($user,$pass);
         if( $usuari != null){ 
             $_SESSION['user'] = $usuari;
