@@ -3,7 +3,6 @@
 $title='Actualitzar compte';
 $migas='#Home|../index.php#Configuració';
 include "../Public/layouts/head.php";?>
-<LINK HREF="../Public/css/mesa.css" rel="stylesheet">
 
 
 <!-- Content body -->

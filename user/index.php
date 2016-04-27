@@ -6,7 +6,7 @@ include "../Public/layouts/head.php";?>
 
 <!-- Body content box -->
 
-<a href="delCompte.php">Eliminar</a>
+<a href="delUser.php">Eliminar</a>
 <a href="modIdent.php">Identitat</a>
 <a href="modImatge.php">Image</a>
 <a href="modPhone.php">Telefono</a>
