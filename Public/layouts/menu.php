@@ -39,105 +39,130 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">AniMaster Online v2</a>
+          <a class="navbar-brand" href="#">AniMaster Online v2</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <?php
                 if (strpos($self,"AniMasterV2/index.php")) {
-                    echo '<li class="active"><a href="index.php">Home</a></li>';
-                    echo '<li><a href="mesa.php">Mi Mesa</a></li>';
-                    echo '<li><a href="theme.php">Theme</a></li>';
-                }else if (strpos($self,"AniMasterV2/theme.php")) {
-                    echo '<li><a href="index.php">Home</a></li>';
-                    echo '<li><a href="mesa.php">Mi Mesa</a></li>';
-                    echo '<li class="active"><a href="theme.php">Theme</a></li>';
-                }else if (strpos($self,"AniMasterV2/mesa.php")) {
-                    echo '<li><a href="index.php">Home</a></li>';
-                    echo '<li class="active"><a href="mesa.php">Mi Mesa</a></li>';
-                    echo '<li><a href="theme.php">Theme</a></li>';
+                    echo '<li class="active"><a href="index.php">Inicio</a></li>';
+                    echo '<li><a href="partida.php">Partidas de Rol</a></li>';
+                    echo '<li><a href="user/zone.php">Tus Partidas</a></li>';
                 }else if (strpos($self,"user/")) {
-                    echo '<li><a href="../index.php">Home</a></li>';
-                    echo '<li><a href="../mesa.php">Mi Mesa</a></li>';
-                    echo '<li><a href="../theme.php">Theme</a></li>';
+                    echo '<li><a href="../index.php">Inicio</a></li>';
+                    echo '<li><a href="../partida.php">Partidas de Rol</a></li>';
+                    echo '<li><a href="../user/zone.php">Tus Partidas</a></li>';
                 }else if (strpos($self,"admin/")) {
-                    echo '<li><a href="../index.php">Home</a></li>';
-                    echo '<li><a href="../mesa.php">Mi Mesa</a></li>';
-                    echo '<li><a href="../theme.php">Theme</a></li>';
+                    echo '<li><a href="../index.php">Inicio</a></li>';
+                    echo '<li><a href="../partida.php">Partidas de Rol</a></li>';
+                    echo '<li><a href="../user/zone.php">Tus Partidas</a></li>';
                 }else{
-                    echo '<li><a href="index.php">Home</a></li>';
-                    echo '<li><a href="mesa.php">Mi Mesa</a></li>';
-                    echo '<li><a href="theme.php">Theme</a></li>';
+                    echo '<li><a href="index.php">Inicio</a></li>';
+                    echo '<li><a href="partida.php">Partidas de Rol</a></li>';
+                    echo '<li><a href="user/zone.php">Tus Partidas</a></li>';
                 }
             ?>
-              
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heelp Me!! <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a target="_blank" href="http://librosweb.es/libro/bootstrap_3/capitulo_2.html">Manual Bootstrap</a></li>
-                <li><a target="_blank" href="http://getbootstrap.com/getting-started/">Bootstrap Getting Started</a></li>
-                <li><a target="_blank" href="http://getbootstrap.com/css/">Bootstrap Css</a></li>
-                <li><a target="_blank" href="http://getbootstrap.com/components/">Bootstrap Components</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Otros</li>
-                <li><a target="_blank" href="https://fortawesome.github.io/Font-Awesome/icons/"><i class="fa fa-flag" aria-hidden="true">&nbsp;</i>FontAwesome</a></li>
-                <li><a target="_blank" href="/phpmyadmin"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>phpmyadmin</a></li>
-              </ul>
-            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right"> 
             <?php
             if(isset($_SESSION['user'])){
                 if (strpos($self,"user/")) {
-                    echo '<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hola, '.ucfirst($value['nickname']).'! <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a target="_blank" href="../user/">Configuración</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li class="dropdown-header">Otros</li>
-                          <li><a target="_self" href="../logout.php"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Salir</a></li>
-                        </ul>
-                      </li>';
+                    echo '
+                        <li>
+                            <div class="btn-group navbar-btn">
+                              <a id="menubtndown" href="../user/" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
+                              <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
+                              <ul class="dropdown-menu">
+                                <li><a href="../admin/">AdminPanel</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="../user/mensajes.php">Mensajes</a></li>
+                                <li><a href="../user/zone.php">Partidas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="../ayuda.php">Ayuda</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="active"><a href="../user/"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
+                                <li><a target="_self" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
+                              </ul>
+                            </div>
+                        </li>';
                 }else if (strpos($self,"admin/")) {
-                    echo '<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hola, '.ucfirst($value['nickname']).'! <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a target="_blank" href="../user/">Configuración</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li class="dropdown-header">Otros</li>
-                          <li><a target="_self" href="../logout.php"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Salir</a></li>
-                        </ul>
-                      </li>';
+                    echo '
+                        <li>
+                            <div class="btn-group navbar-btn">
+                              <a id="menubtndown" href="../user/" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
+                              <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
+                              <ul class="dropdown-menu">
+                                <li class="active"><a href="../admin/">AdminPanel</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="../user/mensajes.php">Mensajes</a></li>
+                                <li><a href="../user/zone.php">Partidas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="../ayuda.php">Ayuda</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="../user/"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
+                                <li><a target="_self" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
+                              </ul>
+                            </div>
+                        </li>';
                 }else{
-                    echo '<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hola, '.ucfirst($value['nickname']).'! <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a target="_blank" href="user/">Configuración</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li class="dropdown-header">Otros</li>
-                          <li><a target="_self" href="logout.php"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>Salir</a></li>
-                        </ul>
-                      </li>';
+                    echo '
+                        <li>
+                            <div class="btn-group navbar-btn">
+                              <a id="menubtndown" href="user/" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
+                              <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
+                              <ul class="dropdown-menu">
+                                <li ><a href="admin/">AdminPanel</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="user/mensajes.php">Mensajes</a></li>
+                                <li><a href="user/zone.php">Partidas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="ayuda.php">Ayuda</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="user/"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
+                                <li><a target="_self" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
+                              </ul>
+                            </div>
+                        </li>';
                 }
                 
             }else{
-                if (strpos($self,"AniMasterV2/signup.php")) {
-                    echo '  <li class="active"><a href="signup.php">Sign up</a></li>
-                            <li><a href="login.php">Log in</a></li>';
-                }else if (strpos($self,"AniMasterV2/login.php")) {
-                    echo '  <li><a href="signup.php">Sign up</a></li>
-                            <li class="active"><a href="login.php">Log in</a></li>';
-                }else if (strpos($self,"user/")) {
-                    echo '  <li><a href="../signup.php">Sign up</a></li>
-                            <li><a href="../login.php">Log in</a></li>';
+                if (strpos($self,"user/")) {
+                    echo '  <li>
+                                <div class="btn-group navbar-btn">
+                                    <a class="btn btn-link" role="button" href="../signup.php">Regístrate</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="btn-group navbar-btn">
+                                    <a class="btn btn-default" role="button" href="../login.php">Iniciar Sesión</a>
+                                </div>
+                            </li>
+                            ';
                 }else if (strpos($self,"admin/")) {
-                    echo '  <li><a href="../signup.php">Sign up</a></li>
-                            <li><a href="../login.php">Log in</a></li>';
+                    echo '  <li>
+                                <div class="btn-group navbar-btn">
+                                    <a class="btn btn-link" role="button" href="../signup.php">Regístrate</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="btn-group navbar-btn">
+                                    <a class="btn btn-default" role="button" href="../login.php">Iniciar Sesión</a>
+                                </div>
+                            </li>
+                            ';
                 }else{
-                    echo '  <li><a href="signup.php">Sign up</a></li>
-                            <li><a href="login.php">Log in</a></li>';
-                }
-                
+                    echo '  <li>
+                                <div class="btn-group navbar-btn">
+                                    <a class="btn btn-link" role="button" href="signup.php">Regístrate</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="btn-group navbar-btn">
+                                    <a class="btn btn-default" role="button" href="login.php">Iniciar Sesión</a>
+                                </div>
+                            </li>
+                            ';
+                } 
             }
             ?>
           </ul>
@@ -159,3 +184,26 @@
         }
 	
     ?>
+    <?php
+    //Mostrar o ocultar la ajuda --> Programació, accesos directes, etc...
+    $help = true;
+    if($help){
+    echo '  <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; list-style: none;">
+            <li class="dropdown dropup">
+                <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heelp Me!! <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a target="_blank" href="http://librosweb.es/libro/bootstrap_3/capitulo_2.html">Manual Bootstrap</a></li>
+                    <li><a target="_blank" href="http://getbootstrap.com/getting-started/">Bootstrap Getting Started</a></li>
+                    <li><a target="_blank" href="http://getbootstrap.com/css/">Bootstrap Css</a></li>
+                    <li><a target="_blank" href="http://getbootstrap.com/components/">Bootstrap Components</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Otros</li>
+                    <li><a target="_blank" href="https://fortawesome.github.io/Font-Awesome/icons/"><i class="fa fa-flag" aria-hidden="true">&nbsp;</i>FontAwesome</a></li>
+                    <li><a target="_blank" href="/phpmyadmin"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>phpmyadmin</a></li>
+                    <li><a target="_blank" href="/AniMasterV2/theme.php"><i class="fa fa-file-code-o" aria-hidden="true">&nbsp;</i>Theme</a></li>
+                </ul>
+            </li>
+            </div>';
+    }
+    ?>
+            

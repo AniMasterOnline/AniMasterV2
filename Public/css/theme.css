@@ -1,13 +1,16 @@
 body {
   padding-top: 50px;
   padding-bottom: 30px;
-  background-color: #FAFAFA;
+  background-color: #F5F8FA;
 }
 
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 20px;
+}
+.nav .open > #menubtndown, .nav .open > #menubtndown:hover, .nav .open > #menubtndown:focus {
+    background-color: #337AB7;
 }
 
 .theme-showcase > p > .btn {
@@ -35,5 +38,9 @@ body {
 }
 .cinput{
     margin-bottom: 6px;
+}
+.col-margin {
+    background-clip: padding-box;
+    border: 10px solid transparent;
 }
 
