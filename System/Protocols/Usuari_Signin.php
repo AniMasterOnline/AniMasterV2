@@ -6,7 +6,7 @@
     $newPass = md5($_POST['pass']);
     $newEmail = $_POST['email'];
     //Tipus d'usuari >> User = 2<<
-    $newId_Tipus = 2;
+    $newId_Tipus = 1;
     
     //Afegir Usuari a la BD.
     $newUsuari = new Usuario($newUser, $newEmail, $newPass, $newId_Tipus);

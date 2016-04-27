@@ -47,16 +47,17 @@ include "../Public/layouts/head.php";
                 <div class="input-group">
                     <span class="input-group-btn">
                         <span class="btn btn-primary btn-file">
-                            Browse… <input type="file">
+                            Browse… <input type="file" name="file">
                         </span>
                     </span>
-                    <input class="form-control" readonly="" type="text">
+                    <input id="fileselected" class="form-control" readonly="" type="text">
                 </div>
                 <script>
                     $(document).ready( function() {
                         $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
                             console.log(numFiles);
                             console.log(label);
+                            $('#fileselected').val(label);
                         });
                         $(document).on('change', '.btn-file :file', function() {
                             var input = $(this),
@@ -69,8 +70,8 @@ include "../Public/layouts/head.php";
             </div>
             
             <div class="col-md-6 cinput">
-                <label for="inputAnyo" class="sr-only">Anyo</label>
-                <input type="text"  id="inputAnyo"  class="form-control" name="anyo" placeholder="Anyo *" required>
+                <label for="inputAnyo" class="sr-only">Año</label>
+                <input type="text"  id="inputAnyo"  class="form-control" name="anyo" placeholder="Año *" required>
             </div>
             
             <div class="col-md-6 cinput">
@@ -79,7 +80,7 @@ include "../Public/layouts/head.php";
             </div>
             
             <div class="col-md-12 cinput">
-                <button class="btn btn-lg btn-success btn-block" type="submit">Crear</button>
+                <button class="btn btn-lg btn-success btn-block" type="submit">Crear Partida</button>
             </div>
             
         </div>
