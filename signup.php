@@ -6,11 +6,18 @@ include "Public/layouts/head.php";?>
 
 <script>
     $(function() {
-        $('#methods').click(function() {
+        
+        $('#methods').mousedown(function() {
             $('#inputPass').password('toggle');
         });
-        $('#methods2').click(function() {
-            $('#inputPass2').password('toggle');
+        $('#methods').mouseup(function() {
+            $('#inputPass').password('toggle');
+        });
+        $('#methods2').mousedown(function() {
+            $('#inputPass2').password('show');
+        });
+        $('#methods2').mouseup(function() {
+            $('#inputPass2').password('hide');
         });
     });
 </script>

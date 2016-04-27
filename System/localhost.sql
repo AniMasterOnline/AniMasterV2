@@ -9,10 +9,10 @@
 --
 -- Database: `db_animaster`
 --
-DROP DATABASE IF EXISTS db_animaster;
-CREATE DATABASE IF NOT EXISTS `db_animaster` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-grant all on `db_animaster`.* to 'animaster'@'localhost' identified by 'master';
-USE `db_animaster`;
+DROP DATABASE IF EXISTS Animaster;
+CREATE DATABASE IF NOT EXISTS `Animaster` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+grant all on `Animaster`.* to 'animaster'@'localhost' identified by 'master';
+USE `Animaster`;
 
 -- --------------------------------------------------------
 
