@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `telefono` varchar(16),
   `imagen` varchar(200),
   `id_tipo` int(10) NOT NULL,
-  PRIMARY KEY (`id_usuari`),
+  PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `nickname` (`nickname`),
   KEY `id_tipo` (`id_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
