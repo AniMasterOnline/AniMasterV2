@@ -38,6 +38,12 @@
             $db->close();
             return $result;
         }
+        public function modImage($id, $nickname, $imatge){
+            $db = new connexio();
+            $result = $db->query("UPDATE Usuari SET  imatge='$imatge' WHERE id_usuari= '$id' AND nickname= '$nickname'");
+            $db->close();
+            return $result;
+        }
         public function modEmail($id, $nickname, $email){
             $db = new connexio();
             $result = $db->query("UPDATE Usuari SET  email='$email' WHERE id_usuari= '$id' AND nickname= '$nickname'");
