@@ -1,8 +1,8 @@
 <!-- User Menu -- Header content box -->
 <?php 
 $title='Index';
-$migas='#Home|../index.php#Configuració';
-include "../Public/layouts/head.php";?>
+$migas='#Home|../../index.php#Configuración';
+include "../../Public/layouts/head.php";?>
 
 <!-- Body content box -->
 <div class="container-fluid ">
@@ -12,19 +12,16 @@ include "../Public/layouts/head.php";?>
                 <div class="col-md-12">
                     <div class="thumbnail">
                         <img src="../Public/img/login.png" alt="...">
-                        <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <div class="caption ">
+                            <h3 style="text-align: left;">User <br><small>#Ident</small></h3>
                         </div>
                     </div>
                     <div class="list-group">
-                        <a href="#" class="list-group-item active">Cras justo odio</a>
-                        <a href="delUser.php" class="list-group-item">Eliminar</a>
-                        <a href="modIdent.php" class="list-group-item">Identitat</a>
-                        <a href="modImatge.php" class="list-group-item">Image</a>
-                        <a href="modPhone.php" class="list-group-item">Telefono</a>
-                        <a href="modEmail.php" class="list-group-item">Email</a>
+                        <a href="../../settings/account/" class="list-group-item active">Cuenta</a>
+                        <a href="../../settings/password/" class="list-group-item">Contraseña</a>
+                        <a href="../../settings/notifications/" class="list-group-item">Mensajes</a>
+                        <a href="../../settings/table/" class="list-group-item">Mesa</a>
+                        <a href="../../settings/characters/" class="list-group-item">Personajes</a>
                     </div>
                 </div>
             </div>

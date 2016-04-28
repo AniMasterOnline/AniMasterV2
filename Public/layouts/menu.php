@@ -48,10 +48,10 @@
                     echo '<li class="active"><a href="index.php">Inicio</a></li>';
                     echo '<li><a href="partida.php">Partidas de Rol</a></li>';
                     echo '<li><a href="user/zone.php">Tus Partidas</a></li>';
-                }else if (strpos($self,"user/")) {
-                    echo '<li><a href="../index.php">Inicio</a></li>';
-                    echo '<li><a href="../partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="../user/zone.php">Tus Partidas</a></li>';
+                }else if (strpos($self,"settings/")) {
+                    echo '<li><a href="../../">Inicio</a></li>';
+                    echo '<li><a href="../../partida.php">Partidas de Rol</a></li>';
+                    echo '<li><a href="../../settings/table">Tus Partidas</a></li>';
                 }else if (strpos($self,"admin/")) {
                     echo '<li><a href="../index.php">Inicio</a></li>';
                     echo '<li><a href="../partida.php">Partidas de Rol</a></li>';
@@ -66,22 +66,22 @@
           <ul class="nav navbar-nav navbar-right"> 
             <?php
             if(isset($_SESSION['user'])){
-                if (strpos($self,"user/")) {
+                if (strpos($self,"settings/")) {
                     echo '
                         <li>
                             <div class="btn-group navbar-btn">
-                              <a id="menubtndown" href="../user/" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
+                              <a id="menubtndown" href="../../settings/account" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
                               <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
                               <ul class="dropdown-menu">
-                                <li><a href="../admin/">AdminPanel</a></li>
+                                <li><a href="../../admin/">AdminPanel</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="../user/mensajes.php">Mensajes</a></li>
-                                <li><a href="../user/zone.php">Partidas</a></li>
+                                <li><a href="../../settings/notifications">Mensajes</a></li>
+                                <li><a href="../../settings/table">Mi Mesa</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="../ayuda.php">Ayuda</a></li>
+                                <li><a href="../../help.php">Ayuda</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li class="active"><a href="../user/"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
-                                <li><a target="_self" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
+                                <li ><a href="../../settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
+                                <li><a target="_self" href="../../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
                               </ul>
                             </div>
                         </li>';
@@ -89,17 +89,17 @@
                     echo '
                         <li>
                             <div class="btn-group navbar-btn">
-                              <a id="menubtndown" href="../user/" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
+                              <a id="menubtndown" href="../settings/account" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
                               <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
                               <ul class="dropdown-menu">
-                                <li class="active"><a href="../admin/">AdminPanel</a></li>
+                                <li><a href="../admin/">AdminPanel</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="../user/mensajes.php">Mensajes</a></li>
-                                <li><a href="../user/zone.php">Partidas</a></li>
+                                <li><a href="../settings/notifications">Mensajes</a></li>
+                                <li><a href="../settings/table">Mi Mesa</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="../ayuda.php">Ayuda</a></li>
+                                <li><a href="../help.php">Ayuda</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="../user/"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
+                                <li ><a href="../settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
                                 <li><a target="_self" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
                               </ul>
                             </div>
@@ -108,17 +108,17 @@
                     echo '
                         <li>
                             <div class="btn-group navbar-btn">
-                              <a id="menubtndown" href="user/" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
+                              <a id="menubtndown" href="settings/account" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
                               <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
                               <ul class="dropdown-menu">
-                                <li ><a href="admin/">AdminPanel</a></li>
+                                <li><a href="admin/">AdminPanel</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="user/mensajes.php">Mensajes</a></li>
-                                <li><a href="user/zone.php">Partidas</a></li>
+                                <li><a href="settings/notifications">Mensajes</a></li>
+                                <li><a href="settings/table">Mi Mesa</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="ayuda.php">Ayuda</a></li>
+                                <li><a href="help.php">Ayuda</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="user/"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
+                                <li ><a href="settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
                                 <li><a target="_self" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
                               </ul>
                             </div>
