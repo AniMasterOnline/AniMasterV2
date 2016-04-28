@@ -28,7 +28,7 @@ include "../Public/layouts/head.php";
 
 <!-- Body content box -->
 <div class="container" >
-    <form method="POST" name="myForm" action="System/Protocols/Usuari_Signin.php" enctype="multipart/form-data">
+    <form method="POST" name="myForm" action="../System/Protocols/Partida_Crear.php" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-12 cinput">
                 <h2 class="form-signin-heading">Crear nueva partida</h2>
@@ -47,7 +47,7 @@ include "../Public/layouts/head.php";
                 <div class="input-group">
                     <span class="input-group-btn">
                         <span class="btn btn-primary btn-file">
-                            Browse… <input type="file" name="file">
+                            Browse… <input type="file" name="imagen">
                         </span>
                     </span>
                     <input id="fileselected" class="form-control" readonly="" type="text">
@@ -85,7 +85,46 @@ include "../Public/layouts/head.php";
             
         </div>
     </form>
-</div>
-
+    <hr>
+    <div class="col-md-12 cinput">
+        <h2 class="form-signin-heading">Lista de partida</h2>
+    </div>
+    
+<?php
+include "../System/Classes/Partida.php";
+$partida=new Partida();
+$partida=$partida->view_all();
+foreach ($partida as $row){
+    $id_partida = $row->getId_Partida();
+    $nombre = $row->getNombre();
+    $desc = $row->getDescripcion();
+    $anyo = $row->getAnyo();
+    $imagen= $row->getImagen();
+    $nivel=$row->getNv_Sobrenatural();
+    
+    echo '<tr>'
+    . '<td>'.$id_partida.' </td>'
+    . '<td>'.$nombre.' </td>'
+    . '<td>'.$desc.' </td>'
+    . '<td>'.$anyo.' </td>'
+    . '<td>'.$imagen.' </td>'
+    . '<td>'.$nivel.'</td>'
+    . '<td><form method="POST" action="modPartida.php">'
+            . '<input type="hidden" name="id_partida" value="'.$id_partida.'">'
+            . '<input type="hidden" name="nombre" value="'.$nombre.'">'
+            . '<input type="hidden" name="desc" value="'.$desc.'">'
+            . '<input type="hidden" name="imagen" value="'.$imagen.'">'
+            . '<input type="hidden" name="nivel" value="'.$nivel.'">'
+            . '<input type="hidden" name="anyo" value="'.$anyo.'">'
+            . '<input type="submit" name="modificar" value="Modificar">'
+            . '</form></td>'
+    . '<td><form method="POST" action="../System/Protocols/Partida_Del.php">'
+            . '<input type="hidden" name="id_partida" value="'.$id_partida.'">'
+            . '<input type="submit" name="eliminar" value="Eliminar">'
+            . '</form></td>'
+            . '</tr></table>';
+}
+?>
+    </div>
 <?php include "../Public/layouts/footer.php";?> 
 

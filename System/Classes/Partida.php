@@ -76,7 +76,7 @@
             $this->nv_sobrenatural = "";
         }
         
-        function __construct8($a2, $a3, $a4, $a5, $a6){
+        function __construct5($a2, $a3, $a4, $a5, $a6){
             $this->id_partida=0;
             $this->nombre = $a2;
             $this->descripcion = $a3;
@@ -85,7 +85,7 @@
             $this->nv_sobrenatural = $a6;
         }
         
-        function __construct9($a1, $a2, $a3, $a4, $a5, $a6){
+        function __construct6($a1, $a2, $a3, $a4, $a5, $a6){
             $this->id_partida=$a1;
             $this->nombre = $a2;
             $this->descripcion = $a3;
@@ -115,23 +115,23 @@
         }
         
         //METODES GET 
-        public function getId_Partida($id_partida) {
-            $this->id_partida = $id_partida;
+        public function getId_Partida() {
+            return $this->id_partida;
         }
-        public function getNombre($nombre) {
-            $this->nombre = $nombre;
+        public function getNombre() {
+            return $this->nombre;
         }
-        public function getDescripcion($descripcion) {
-            $this->descripcion = $descripcion;
+        public function getDescripcion() {
+            return $this->descripcion;
         }
-        public function getImagen($imagen) {
-            $this->imagen = $imagen;
+        public function getImagen() {
+            return $this->imagen;
         }
-        public function getAnyo($anyo) {
-            $this->anyo = $anyo;
+        public function getAnyo() {
+            return $this->anyo;
         }
-        public function getNv_Sobrenatural($nv_sobrenatural) {
-            $this->nv_sobrenatural = $nv_sobrenatural;
+        public function getNv_Sobrenatural() {
+            return $this->nv_sobrenatural;
         }
     }
 ?>
