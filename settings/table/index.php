@@ -46,7 +46,7 @@ include "../../Public/layouts/head.php";?>
                                         <div class="separator-2"></div>
                                         <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
                                         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
+                                        <a href="#" class="btn btn-gray-transparent btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
                                 </div>
                         </div>
                 </div>
