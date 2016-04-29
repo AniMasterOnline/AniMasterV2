@@ -13,13 +13,13 @@
 			$pan = explode("|", $migasdepan[$i]);
 			if ($i == 1){
 				if(count($pan) == 2){
-					echo '<li><a href="'.$pan[1].'"> '.$pan[0].'</a></li>';
+					echo '<li><a href="'.$pan[1].'">'.$pan[0].'</a></li>';
 				}else{
 					echo '<li class="active">'.$pan[0].'</li> ';
 				}
 			}else{
 				if(count($pan) == 2){
-					echo '<li><a href="'.$pan[1].'"> '.$pan[0].'</a></li>';
+					echo '<li><a href="'.$pan[1].'">'.$pan[0].'</a></li>';
 				}else{
 					echo '<li class="active">'.$pan[0].'</li> ';
 				}
@@ -188,22 +188,24 @@
     //Mostrar o ocultar la ajuda --> Programació, accesos directes, etc...
     $help = true;
     if($help){
-    echo '  <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; list-style: none;">
-            <li class="dropdown dropup">
-                <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heelp Me!! <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a target="_blank" href="http://librosweb.es/libro/bootstrap_3/capitulo_2.html">Manual Bootstrap</a></li>
-                    <li><a target="_blank" href="http://getbootstrap.com/getting-started/">Bootstrap Getting Started</a></li>
-                    <li><a target="_blank" href="http://getbootstrap.com/css/">Bootstrap Css</a></li>
-                    <li><a target="_blank" href="http://getbootstrap.com/components/">Bootstrap Components</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Otros</li>
-                    <li><a target="_blank" href="https://fortawesome.github.io/Font-Awesome/icons/"><i class="fa fa-flag" aria-hidden="true">&nbsp;</i>FontAwesome</a></li>
-                    <li><a target="_blank" href="/phpmyadmin"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>phpmyadmin</a></li>
-                    <li><a target="_blank" href="/AniMasterV2/theme.php"><i class="fa fa-file-code-o" aria-hidden="true">&nbsp;</i>Theme</a></li>
-                </ul>
-            </li>
-            </div>';
+        //var_dump($value);
+        echo '  <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; list-style: none;">
+                <li class="dropdown dropup">
+                    <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heelp Me!! <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a target="_blank" href="http://librosweb.es/libro/bootstrap_3/capitulo_2.html">Manual Bootstrap</a></li>
+                        <li><a target="_blank" href="http://getbootstrap.com/getting-started/">Bootstrap Getting Started</a></li>
+                        <li><a target="_blank" href="http://getbootstrap.com/css/">Bootstrap Css</a></li>
+                        <li><a target="_blank" href="http://getbootstrap.com/components/">Bootstrap Components</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Otros</li>
+                        <li><a target="_blank" href="https://fortawesome.github.io/Font-Awesome/icons/"><i class="fa fa-flag" aria-hidden="true">&nbsp;</i>FontAwesome</a></li>
+                        <li><a target="_blank" href="/phpmyadmin"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>phpmyadmin</a></li>
+                        <li><a target="_blank" href="/AniMasterV2/theme.php"><i class="fa fa-file-code-o" aria-hidden="true">&nbsp;</i>Theme</a></li>
+                    </ul>
+                </li>
+                </div>';
     }
     ?>
+    
             

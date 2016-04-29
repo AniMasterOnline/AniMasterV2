@@ -1,6 +1,6 @@
 body {
   padding-top: 50px;
-  padding-bottom: 30px;
+  //padding-bottom: 30px;
   background-color: #F5F8FA;
 }
 
@@ -48,3 +48,112 @@ body {
     border-bottom: 1px solid black
 }
 
+
+/* #################################################################################### */
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+.dark-bg {
+    background-color: #373737;
+    color: #cdcdcd;
+   
+}
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.overlay-container {
+    position: relative;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+}
+.overlay-visible:hover > .overlay-link {
+    opacity: 100;
+}
+.overlay-link {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    padding: 15px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(30, 30, 30, 0.5);
+    overflow: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: all ease-in-out 0.25s;
+    -o-transition: all ease-in-out 0.25s;
+    transition: all ease-in-out 0.25s;
+    color: #ffffff;
+}
+.overlay-link i {
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ffffff;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -40px;
+    font-size: 32px;
+    line-height: 80px;
+}
+.btn-gray-transparent > .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+.image-box .body {
+    padding: 15px;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+.separator-2{
+    width: 100%;
+    margin-bottom: 15px;
+    height: 1px;
+    background: #505050;
+    background: -moz-linear-gradient(left, #373737 0%, #505050 35%, #505050 70%, #373737 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #373737), color-stop(35%, #505050), color-stop(70%, #505050), color-stop(100%, #373737));
+    background: -webkit-linear-gradient(left, #373737 0%, #505050 35%, #505050 70%, #373737 100%);
+    background: -o-linear-gradient(left, #373737 0%, #505050 35%, #505050 70%, #373737 100%);
+    background: -ms-linear-gradient(left, #373737 0%, #505050 35%, #505050 70%, #373737 100%);
+    background: linear-gradient(to right, #373737 0%, #505050 35%, #505050 70%, #373737 100%);
+    width: 100%;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+small, .small {
+    font-size: 85%;
+}
+.pl-10 {
+    padding-left: 10px;
+}
+.text-muted {
+    color: #999999;
+}
+.dark-bg .btn-gray-transparent {
+    color: #ffffff;
+}
+.margin-clear {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}

@@ -45,7 +45,7 @@ ob_start();
     $usuari = $usuari->verificar_login($user,$pass);
         if( $usuari != null){ 
             $_SESSION['user'] = $usuari;
-            header('Location: user/');
+            header('Location: settings/');
         }else{
             header('Location: login.php');
         } 
