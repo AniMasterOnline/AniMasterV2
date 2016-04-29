@@ -79,26 +79,6 @@
             }
         }
         
-        function return_nickname($id){ 
-            $db = new connexio();
-            $sql = "SELECT * FROM Usuario WHERE id_usuario = '$id'";
-            $query = $db->query($sql);
-            $count = 0;
-            if ($query->num_rows > 0) {
-                while($row = $query->fetch_assoc()) {
-                    $count++;
-                    $datos = $row;
-                }
-            } else {
-                $count = 0;
-            }
-            $db->close();
-            if($count == 1){
-                return $datos;
-            }else{
-                return "error";
-            }
-        }
         public function view_all(){
             $db = new connexio();
             $sql = "SELECT * FROM Usuario;";

@@ -31,10 +31,31 @@ $(document).ready(function(){
             data: data,
             success: function (response) {
                 if(response === "fail"){
-                    var fail = "Error";
-                    $('#alertfail').empty().append(fail);
+                    $.notify({
+                            // options
+                            message: 'Error al Modificar los cambios.'
+                    },{
+                            // settings
+                            type: 'warning',
+                            delay: 4000,
+                            offset : {
+                                    y: 150,
+                                    x: 20
+                            }
+                    });
                 }else if(response === "succes"){
-                    $('#alertfail').empty();
+                    $.notify({
+                            // options
+                            message: 'Cambios realizados con exito!.'
+                    },{
+                            // settings
+                            type: 'info',
+                            delay: 4000,
+                            offset : {
+                                    y: 150,
+                                    x: 20
+                            }
+                    });
                 }
             }
           });
