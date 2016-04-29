@@ -4,6 +4,44 @@ $title='Cuenta';
 $migas='#Home|../../index.php#Configuración#Cuenta|../../settings/account/';
 include "../../Public/layouts/head.php";?>
 
+<?php
+/* $timeout = 5;//segundos que session no se disconecta
+if(isset($_SESSION['timeout'])) {
+    $duration = time() - (int)$_SESSION['timeout'];
+    if($duration > $timeout) {
+        echo "<script>alert('Session expired!');</script>";
+        echo "<script> window.open('../logout.php','_self');</script>";
+    }
+}
+$_SESSION['timeout'] = time();*/
+?>
+
+<script>
+$(document).ready(function(){
+    console.log('Ready!');
+    $('#mod1').click(function(){
+        
+        var data = {
+            user : $('#inputUser').val(),
+            email : $('#inputEmail').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Usuari_Email.php",
+            data: data,
+            success: function (response) {
+                if(response === "fail"){
+                    var fail = "Error";
+                    $('#alertfail').empty().append(fail);
+                }else if(response === "succes"){
+                    $('#alertfail').empty();
+                }
+            }
+          });
+    });
+});
+
+</script>
 <!-- Body content box -->
 <div class="container-fluid ">
     <div class="row" >
@@ -65,6 +103,7 @@ include "../../Public/layouts/head.php";?>
                             <input type="text" class="form-control" id="inputUser" name="user" placeholder="Usuario" aria-describedby="basic-addon1" value="<?php echo $value['nickname']?>">
                         </div>
                     </div>
+                    
                     <div class="col-md-12 cinput">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2">E-mail&nbsp;&nbsp;</span>
@@ -72,7 +111,7 @@ include "../../Public/layouts/head.php";?>
                         </div>
                     </div>
                     <div class="col-md-12 cinput">
-                        <button type="button" id="mod1" class="btn btn-success btn-xs">Guardar cambios</button>
+                        <button type="button" id="mod1" class="btn btn-success btn-xs" onsubmit="valpass()">Guardar cambios</button>
                     </div>
                 </div>
             </div>

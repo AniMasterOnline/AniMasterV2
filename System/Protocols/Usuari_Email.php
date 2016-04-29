@@ -5,19 +5,19 @@
         $value=$_SESSION['user'];
 
         $id=$value['id_usuario'];
-        $user=$value['nickname'];
 
         $newEmail = $_POST['email'];
-
+        $user=$_POST['user'];
+        
         $usuari = new Usuario();
         $result = $usuari->modEmail($id, $user, $newEmail);
-        if($result){
-            $result = $usuari->return_user($id);
-            if($result != "error"){
-                $_SESSION['usuari'] = $result;
-                header('Location: ../../user/');
-            }
-        }
+        if(!isset($_SESSION['user'])){ 
+        if( $usuari != null){ 
+            echo 'succes';
+        }else{
+            echo 'fail';
+        } 
+    }
     }
 ?>
 

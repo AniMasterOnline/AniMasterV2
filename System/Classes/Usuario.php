@@ -46,7 +46,7 @@
         }
         public function modEmail($id, $nickname, $email){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuario SET  email='$email' WHERE id_usuario= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  email='$email', nickname='$nickname' WHERE id_usuario= '$id'");
             $db->close();
             return $result;
         }
