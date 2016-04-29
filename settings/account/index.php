@@ -29,6 +29,23 @@ include "../../Public/layouts/head.php";?>
                         <a href="../../settings/notifications/" class="list-group-item">Mensajes</a>
                         <a href="../../settings/table/" class="list-group-item">Mesa</a>
                         <a href="../../settings/characters/" class="list-group-item">Personajes</a>
+                        <a href="#" class="list-group-item btn-alert">Click Me</a>
+                    </div>
+                    <div class="col-md-12">
+                        <script>
+                            $.notify({
+                                    // options
+                                    message: 'notification test.'
+                            },{
+                                    // settings
+                                    type: 'info',
+                                    delay: 4000,
+                                    offset : {
+                                            y: 150,
+                                            x: 20
+                                    }
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

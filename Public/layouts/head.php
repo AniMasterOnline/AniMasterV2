@@ -25,6 +25,9 @@
                 echo '<script src="../Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
                 // Theme Css
                 echo '<link href="../Public/css/theme.css" rel="stylesheet">';
+                echo '<script src="../Public/js/template.js"></script>';
+                echo '<script src="../Public/js/modernizr.js"></script>';
+                echo '<script src="../Public/js/bootstrap-notify.js"></script>';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../favicon.ico">';
 				
@@ -42,6 +45,9 @@
                 echo '<script src="../../Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
                 // Theme Css
                 echo '<link href="../../Public/css/theme.css" rel="stylesheet">';
+                echo '<script src="../../Public/js/template.js"></script>';
+                echo '<script src="../../Public/js/modernizr.js"></script>';
+                echo '<script src="../../Public/js/bootstrap-notify.js"></script>';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../../favicon.ico">';
                 
@@ -60,6 +66,10 @@
                 echo '<script src="Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
                 // Theme Css
                 echo '<link href="Public/css/theme.css" rel="stylesheet">';
+                echo '<script src="Public/js/template.js"></script>';
+                echo '<script src="Public/js/modernizr.js"></script>';
+                echo '<script src="Public/js/bootstrap-notify.js"></script>';
+                
                 // Favicon
                 echo '<link rel="shortcut icon" href="favicon.ico">';
                 
