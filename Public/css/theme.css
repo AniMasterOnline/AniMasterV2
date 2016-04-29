@@ -157,3 +157,7 @@ small, .small {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+.fa-mesa:hover{
+    color: #505050;
+    background-color: #fff;
+}

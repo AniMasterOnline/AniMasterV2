@@ -7,15 +7,15 @@ include "../../Public/layouts/head.php";?>
 <!-- Body content box -->
 <div class="container-fluid ">
     <div class="row" >
-        <div class="col-md-3 col-margin">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
             <div class="row">
                 <div class="col-md-12">
                     <div class="thumbnail">
                         <?php
                             if($value['imagen'] == ""){
-                                echo '<img src="../../Public/img/login.png" alt="...">';
+                                echo '<img class="img-rounded" src="../../Public/img/login.png" alt="...">';
                             }else{
-                                echo '<img src="../../Public/img/usuarios/'.$value['imagen'].'" alt="...">';
+                                echo '<img class="img-rounded" src="../../Public/img/usuarios/'.$value['imagen'].'" alt="...">';
                             }
                         ?>
                         
@@ -33,146 +33,137 @@ include "../../Public/layouts/head.php";?>
                 </div>
             </div>
         </div>
-        <div class="col-md-9 col-margin">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
             <div class="row">
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">	
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 1</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 2</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 3</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
                 
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>								
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 4</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">	
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 5</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">	
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 6</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
                 
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">	
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 7</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">	
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 8</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                        <div class="image-box style-2 mb-20 bordered dark-bg">
-                                <div class="overlay-container overlay-visible">
-                                        <img src="portfolio-4.jpg" alt="">
-                                        <a href="portfolio-item.html" class="overlay-link"><i class="fa fa-link"></i></a>										
-                                </div>
-                                <div class="body">
-                                        <h3>Project Title</h3>
-                                        <div class="separator-2"></div>
-                                        <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> Feb, 2015&nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Web Design</p>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque ipsam nihil, adipisci rem minus? Voluptatem distinctio laborum porro aspernatur.</p>
-                                        <a href="#" class="btn btn-gray-transparent btn-animated btn-sm margin-clear">Read More<i class="fa fa-arrow-right pl-10"></i></a>
-                                </div>
+                    <div class="image-box style-2 mb-20 bordered dark-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="portfolio-3.jpg" alt="">	
+                            <a href="#" class="overlay-link"><i class="fa fa-share-alt fa-mesa"></i></a>
                         </div>
+                        <div class="body">
+                            <h3 style="margin-top: 0;">Title</h3>
+                            <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 9</p>
+                            <p class="text-muted"></p>
+                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
         </div>

@@ -85,7 +85,7 @@ $(document).ready(function(){
 <!-- Body content box -->
 <div class="container-fluid ">
     <div class="row" >
-        <div class="col-xs-12 col-sm-3 col-md-4 col-lg-4 ">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
             <div class="row">
                 <div class="col-md-12">
                     <div class="thumbnail">
@@ -112,7 +112,7 @@ $(document).ready(function(){
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-9 col-md-8 col-lg-8 ">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ">
             
             <div class="panel panel-primary">
                 <div class="panel-heading">
