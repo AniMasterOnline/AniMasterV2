@@ -19,54 +19,73 @@ $_SESSION['timeout'] = time();*/
 <script>
 $(document).ready(function(){
     console.log('Ready!');
+    
     $('#mod1').click(function(){
-        
-        var data = {
-            user : $('#inputUser').val(),
+        var user = {
+            user : $('#inputUser').val()
+        };
+        var email = {
             email : $('#inputEmail').val()
         };
         $.ajax({
             type: "POST",
-            url: "../../System/Protocols/Usuari_Email.php",
-            data: data,
+            url: "../../System/Protocols/Usuari_Nickname.php",
+            data: user,
             success: function (response) {
-                if(response === "fail"){
+                if(response == 001){
                     $.notify({
                             // options
-                            message: 'Error al Modificar los cambios.'
+                            message: 'NickName no disponible.'
                     },{
                             // settings
                             type: 'warning',
                             delay: 4000,
                             offset : {
-                                    y: 150,
+                                    y: 100,
                                     x: 20
                             }
                     });
-                }else if(response === "succes"){
-                    $.notify({
-                            // options
-                            message: 'Cambios realizados con exito!.'
-                    },{
-                            // settings
-                            type: 'info',
-                            delay: 4000,
-                            offset : {
-                                    y: 150,
-                                    x: 20
-                            }
-                    });
+                }else if(response == 002){
+                    
+                }else if(response == 003){
+                    location.reload();
                 }
             }
-          });
+        });
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Usuari_Email.php",
+            data: email,
+            success: function (response) {
+                if(response == 001){
+                    $.notify({
+                            // options
+                            message: 'E-mail no disponible.'
+                    },{
+                            // settings
+                            type: 'warning',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 002){
+                    
+                }else if(response == 003){
+                    location.reload();
+                }
+            }
+        });
     });
+    
 });
 
 </script>
 <!-- Body content box -->
 <div class="container-fluid ">
     <div class="row" >
-        <div class="col-md-3 col-margin">
+        <div class="col-xs-12 col-sm-3 col-md-4 col-lg-4 ">
             <div class="row">
                 <div class="col-md-12">
                     <div class="thumbnail">
@@ -90,26 +109,10 @@ $(document).ready(function(){
                         <a href="../../settings/characters/" class="list-group-item">Personajes</a>
                         <a href="#" class="list-group-item btn-alert">Click Me</a>
                     </div>
-                    <div class="col-md-12">
-                        <script>
-                            $.notify({
-                                    // options
-                                    message: 'notification test.'
-                            },{
-                                    // settings
-                                    type: 'info',
-                                    delay: 4000,
-                                    offset : {
-                                            y: 150,
-                                            x: 20
-                                    }
-                            });
-                        </script>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-9 col-margin">
+        <div class="col-xs-12 col-sm-9 col-md-8 col-lg-8 ">
             
             <div class="panel panel-primary">
                 <div class="panel-heading">

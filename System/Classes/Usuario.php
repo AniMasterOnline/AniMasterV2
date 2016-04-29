@@ -20,33 +20,39 @@
             $db->close();
             return $db2;
         }
-        public function modIdentity($id, $nickname, $nombre, $apellido){
+        public function modIdentity($id, $nombre, $apellido){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuario SET  nombre='$nombre', apellido='$apellido' WHERE id_usuario= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  nombre='$nombre', apellido='$apellido' WHERE id_usuario= '$id'");
             $db->close();
             return $result;
         }
-        public function modPass($id, $nickname, $pass){
+        public function modPass($id, $pass){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuario SET  password='$pass' WHERE id_usuario= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  password='$pass' WHERE id_usuario= '$id'");
             $db->close();
             return $result;
         }
-        public function modPhone($id, $nickname, $telefono){
+        public function modPhone($id, $telefono){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuario SET  telefono='$telefono' WHERE id_usuario= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  telefono='$telefono' WHERE id_usuario= '$id'");
             $db->close();
             return $result;
         }
-        public function modImage($id, $nickname, $imagen){
+        public function modImage($id, $imagen){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuario SET  imagen='$imagen' WHERE id_usuario= '$id' AND nickname= '$nickname'");
+            $result = $db->query("UPDATE Usuario SET  imagen='$imagen' WHERE id_usuario= '$id'");
             $db->close();
             return $result;
         }
-        public function modEmail($id, $nickname, $email){
+        public function modEmail($id, $email){
             $db = new connexio();
-            $result = $db->query("UPDATE Usuario SET  email='$email', nickname='$nickname' WHERE id_usuario= '$id'");
+            $result = $db->query("UPDATE Usuario SET  email='$email' WHERE id_usuario= '$id'");
+            $db->close();
+            return $result;
+        }
+        public function modNickname($id, $nickname){
+            $db = new connexio();
+            $result = $db->query("UPDATE Usuario SET  nickname='$nickname' WHERE id_usuario= '$id'");
             $db->close();
             return $result;
         }
@@ -57,7 +63,53 @@
             return $result;
         }
         
-        function verificar_login($nickname,$password){ 
+        public function userflag($id, $nickname){
+            $db = new connexio();
+            $sql = "SELECT * FROM Usuario WHERE nickname = '$nickname' and id_usuario= '$id'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                return 'yes';
+            } else {
+                return 'no';
+            }
+        }
+        public function userexiste($nickname){
+            $db = new connexio();
+            $sql = "SELECT * FROM Usuario WHERE nickname = '$nickname'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                return 'yes';
+            } else {
+                return 'no';
+            }
+        }
+        
+        public function mailflag($id, $email){
+            $db = new connexio();
+            $sql = "SELECT * FROM Usuario WHERE email = '$email' and id_usuario= '$id'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                return 'yes';
+            } else {
+                return 'no';
+            }
+        }
+        public function mailexiste($email){
+            $db = new connexio();
+            $sql = "SELECT * FROM Usuario WHERE email = '$email'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                return 'yes';
+            } else {
+                return 'no';
+            }
+        }
+        
+        public function verificar_login($nickname,$password){ 
             $db = new connexio();
             $sql = "SELECT * FROM Usuario WHERE nickname = '$nickname' and password = '$password'";
             $query = $db->query($sql);
@@ -78,7 +130,6 @@
                 return null;
             }
         }
-        
         public function view_all(){
             $db = new connexio();
             $sql = "SELECT * FROM Usuario;";
@@ -92,7 +143,6 @@
             $db->close();
             return $rtn;
         }
-        
         public function view_comp($id){
             $db = new connexio();
             $sql = "SELECT * FROM Usuario where id_usuario='$id'";
@@ -106,8 +156,7 @@
             $db->close();
             return $rtn;
         }
-        
-         function return_user($id){ 
+        public function return_user($id){ 
             $db = new connexio();
             $sql = "SELECT * FROM Usuario WHERE id_usuario = '$id'";
             $query = $db->query($sql);

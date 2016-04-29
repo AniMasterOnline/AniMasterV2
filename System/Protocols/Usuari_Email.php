@@ -8,45 +8,33 @@
         
         //Datos recibidos "POST"
         $newMail = $_POST['email'];
-        $newUser =$_POST['user'];
+        
+        //Declaramos la clase Usuario();
+        $usuari = new Usuario();
         
         // Comprobar si los datos nuevos son iguales que los que tiene el usuario
-        $usuari = new Usuario();
-        $userflag = $usuari->userflag($id, $newUser);
         $mailflag = $usuari->mailflag($id, $newMail);
-        
         // Comprobar si los datos nuevos ya existen en la BD
-        $userexiste = $usuari->userexiste($newUser);
         $mailexiste = $usuari->mailexiste($newMail);
         
         //Condiciones if else
-        if($userflag == 'no' && $userexiste == 'no'){
-            $usuari->modUser($id,$newUser);
-        }
-        if($mailflag == 'no' && $mailexiste == 'no'){
-            $result = $usuari->modEmail($id,$newMail);
-        }
-        
-        if($userflag == 'no' && $userexiste == 'yes' ||$mailflag == 'no' && $mailexiste == 'yes'){
-            echo '101';
-        }else if($userflag == 'yes' && $userexiste == 'no' ||$mailflag == 'yes' && $mailexiste == 'no'){
-            echo '102';
-        }
-        
-        $usuari = $newUsuari->return_user($id);
-        if( $usuari != null){ 
-            session_start();
-            $_SESSION['user'] = $usuari;
-            echo 'succes';
+        if($mailflag == 'no' && $mailexiste == 'yes'){
+            echo '001';// email no disponible
+            
+        }else if($mailflag == 'yes' && $mailexiste == 'yes'){
+            echo '002';// New email == Old email
+            
+        }else if($mailflag == 'no' && $mailexiste == 'no'){
+            $usuari->modEmail($id,$newMail); //New Email != Old Email && Email Disponible
+            
+            $result = $usuari->return_user($id);
+            if( $result != null){ 
+                $_SESSION['user'] = $result;
+                echo '003';
+            }
         }
         
-        if(!isset($_SESSION['user'])){ 
-            if( $usuari != null){ 
-                
-            }else{
-                echo 'fail';
-            } 
-        }
+        
     }
 ?>
 
