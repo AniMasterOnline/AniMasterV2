@@ -175,6 +175,16 @@ include "../../Public/layouts/head.php";?>
                         </div>
                 </div>
                 <div class="clearfix"></div>
+                <div data-notify="container" class="col-xs-11 col-sm-4 alert alert-info animated fadeInDown fadeOutUp" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out; z-index: 1031; top: 100px; right: 20px;">
+                    <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
+                    <span data-notify="icon"></span> 
+                    <span data-notify="title"></span> 
+                    <span data-notify="message">Great! you have just created this message :-) you can configure this into the template.js file</span>
+                    <div class="progress" data-notify="progressbar">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="125" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                    </div>
+                    <a href="#" target="_blank" data-notify="url"></a>
+                </div>
         </div>
         </div>
     </div>

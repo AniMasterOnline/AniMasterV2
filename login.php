@@ -4,9 +4,6 @@ $title='Login';
 $migas='#Index|index.php';
 include "Public/layouts/head.php";?>
 
-<?php
-ob_start();
-?>
 <!-- Body box -->
 <div class="container" >
     <form class="form-signin" method="POST">
@@ -45,9 +42,9 @@ ob_start();
     $usuari = $usuari->verificar_login($user,$pass);
         if( $usuari != null){ 
             $_SESSION['user'] = $usuari;
-            header('Location: settings/');
+            echo '<META HTTP-EQUIV="Refresh" Content="0; URL=settings/">';
         }else{
-            header('Location: login.php');
+            echo '<META HTTP-EQUIV="Refresh" Content="0; URL=login.php">';
         } 
     }
 ?>
