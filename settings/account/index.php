@@ -18,8 +18,6 @@ $_SESSION['timeout'] = time();*/
 
 <script>
 $(document).ready(function(){
-    console.log('Ready!');
-    
     $('#mod1').click(function(){
         var user = {
             user : $('#inputUser').val()
@@ -83,7 +81,7 @@ $(document).ready(function(){
 
 </script>
 <!-- Body content box -->
-<div class="container-fluid ">
+<div class="container">
     <div class="row" >
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
             <div class="row">
@@ -104,9 +102,9 @@ $(document).ready(function(){
                     <div class="list-group">
                         <a href="../../settings/account/" class="list-group-item active">Cuenta</a>
                         <a href="../../settings/password/" class="list-group-item">Contraseña</a>
-                        <a href="../../settings/notifications/" class="list-group-item">Mensajes</a>
+                        <a href="../../settings/notifications/" class="list-group-item">Mensajes<span class="badge">42</span></a>
                         <a href="../../settings/table/" class="list-group-item">Mesa</a>
-                        <a href="../../settings/characters/" class="list-group-item">Personajes</a>
+                        <a href="../../settings/characters/" class="list-group-item">Personajes <span class="badge">1</span></a>
                         <a href="#" class="list-group-item btn-alert">Click Me</a>
                     </div>
                 </div>

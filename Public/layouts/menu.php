@@ -1,11 +1,5 @@
 
 <?php
-	session_start();
-	if(isset($_SESSION['user'])){
-		$value=$_SESSION['user'];
-		//var_dump($value);
-	}
-        $self = $_SERVER['PHP_SELF'];
 	function migasdepan($migas){
 		$migasdepan = explode("#",$migas);
 		$contmigas = count($migasdepan);
@@ -48,11 +42,11 @@
                 if (strpos($self,"AniMasterV2/index.php")) {
                     echo '<li class="active"><a href="index.php">Inicio</a></li>';
                     echo '<li><a href="partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="user/zone.php">Tus Partidas</a></li>';
+                    echo '<li><a href="zone.php">Tus Partidas</a></li>';
                 }else if (strpos($self,"settings/")) {
                     echo '<li><a href="../../">Inicio</a></li>';
                     echo '<li><a href="../../partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="../../settings/table">Tus Partidas</a></li>';
+                    echo '<li><a href="../../zone.php">Tus Partidas</a></li>';
                 }else if (strpos($self,"admin/")) {
                     echo '<li><a href="../index.php">Inicio</a></li>';
                     echo '<li><a href="../partida.php">Partidas de Rol</a></li>';
@@ -60,7 +54,7 @@
                 }else{
                     echo '<li><a href="index.php">Inicio</a></li>';
                     echo '<li><a href="partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="user/zone.php">Tus Partidas</a></li>';
+                    echo '<li><a href="zone.php">Tus Partidas</a></li>';
                 }
             ?>
           </ul>
@@ -69,60 +63,58 @@
             if(isset($_SESSION['user'])){
                 if (strpos($self,"settings/")) {
                     echo '
-                        <li>
-                            <div class="btn-group navbar-btn">
-                              <a id="menubtndown" href="../../settings/account" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
-                              <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
-                              <ul class="dropdown-menu">
-                                <li><a href="../../admin/">AdminPanel</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="../../settings/notifications">Mensajes</a></li>
-                                <li><a href="../../settings/table">Mi Mesa</a></li>
+                        <li class="dropdown">
+                            <a id="menubtndown" href="#" class="dropdown-toggle" data-toggle="dropdown">Hola, '.ucfirst($value['nickname']).'!<b class="caret"></b></a>
+                            <ul class="dropdown-menu">';
+                    if($value['id_tipo'] == 0 ){
+                        echo ' <li ><a href="../../admin/">AdminPanel</a></li>
+                               <li role="separator" class="divider"></li>';
+                    }  
+                    echo       '<li><a href="../../settings/notifications">Mensajes <span class="badge">42</span> </a></li>
+                                <li><a href="../../settings/table">Mesa</a></li>
+                                <li><a href="../../settings/characters">Personajes</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="../../help.php">Ayuda</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li ><a href="../../settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
                                 <li><a target="_self" href="../../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
-                              </ul>
-                            </div>
+                            </ul>
                         </li>';
                 }else if (strpos($self,"admin/")) {
                     echo '
                         <li>
-                            <div class="btn-group navbar-btn">
-                              <a id="menubtndown" href="../settings/account" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
-                              <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
-                              <ul class="dropdown-menu">
+                            <a id="menubtndown" href="#" class="dropdown-toggle" data-toggle="dropdown">Hola, '.ucfirst($value['nickname']).'!<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
                                 <li><a href="../admin/">AdminPanel</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="../settings/notifications">Mensajes</a></li>
-                                <li><a href="../settings/table">Mi Mesa</a></li>
+                                <li><a href="../settings/notifications">Mensajes <span class="badge">42</span> </a></li>
+                                <li><a href="../settings/table">Mesa</a></li>
+                                <li><a href="../settings/characters">Personajes</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="../help.php">Ayuda</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li ><a href="../settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
                                 <li><a target="_self" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
-                              </ul>
-                            </div>
-                        </li>';
+                            </ul>
+                      </li>';
                 }else{
                     echo '
                         <li>
-                            <div class="btn-group navbar-btn">
-                              <a id="menubtndown" href="settings/account" class="btn btn-primary" role="button">Hola, '.ucfirst($value['nickname']).'!</a>
-                              <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="glyphicon glyphicon-th-large"></span></button>
-                              <ul class="dropdown-menu">
-                                <li><a href="admin/">AdminPanel</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="settings/notifications">Mensajes</a></li>
-                                <li><a href="settings/table">Mi Mesa</a></li>
+                            <a id="menubtndown" href="#"  class="dropdown-toggle" data-toggle="dropdown">Hola, '.ucfirst($value['nickname']).'!<b class="caret"></b></a>
+                            <ul class="dropdown-menu">';
+                    if($value['id_tipo'] == 0 ){
+                        echo ' <li><a href="admin/">AdminPanel</a></li>
+                               <li role="separator" class="divider"></li>';
+                    }  
+                    echo       '<li><a href="settings/notifications">Mensajes <span class="badge">42</span> </a></li>
+                                <li><a href="settings/table">Mesa</a></li>
+                                <li><a href="settings/characters">Personajes</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="help.php">Ayuda</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li ><a href="settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
                                 <li><a target="_self" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
-                              </ul>
-                            </div>
+                            </ul>
                         </li>';
                 }
                 

@@ -5,7 +5,7 @@ $migas='#Home|../../index.php#Configuración#Mensajes|../../settings/notificatio
 include "../../Public/layouts/head.php";?>
 
 <!-- Body content box -->
-<div class="container-fluid ">
+<div class="container">
     <div class="row" >
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
             <div class="row">
