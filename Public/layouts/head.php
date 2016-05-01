@@ -65,7 +65,7 @@ if (strpos($self,"admin/")){
             $subtitle='| Animaster Online v2';
             echo '<title>'.$title.' '.$subtitle.'</title>';
                 echo '<meta charset="UTF-8">';
-                echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+                echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">';
                 // Fonts
                 echo '<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">';
                 echo '<link href="https://fonts.googleapis.com/css?family=Rokkitt:700,400" rel="stylesheet" type="text/css">';
@@ -97,6 +97,8 @@ if (strpos($self,"admin/")){
                 echo '<script src="../Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
                 echo '<script src="../Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
                 echo '<link href="../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
+                echo '<script src="../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
+                echo '<link href="../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
 				
             }else if (strpos($self,"settings/")) { //User
                 
@@ -125,7 +127,9 @@ if (strpos($self,"admin/")){
                 echo '<script src="../../Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
                 echo '<script src="../../Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
                 echo '<link href="../../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
-                
+                echo '<script src="../../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
+                echo '<link href="../../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+		
 				
             }else{ // Index
                 
@@ -155,10 +159,13 @@ if (strpos($self,"admin/")){
                 echo '<script src="Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
                 echo '<script src="Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
                 echo '<link href="Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
+                echo '<script src="Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
+                echo '<link href="Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+		
             }
         ?>	
     </head>
-    <body >
+    <body class="customcontentbody">
         <div class="page-loader bgm-white">
             <div class="preloader pls-blue">
                 <svg class="pl-circular " viewBox="25 25 50 50">

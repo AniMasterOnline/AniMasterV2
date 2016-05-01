@@ -210,7 +210,7 @@
 ?>
 <?php
     //Mostrar o ocultar la ajuda --> Programació, accesos directes, etc...
-    $help = true;
+    $help = false;
     if($help){
         //var_dump($value);
         echo '  <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; list-style: none;">

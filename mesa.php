@@ -25,8 +25,8 @@ include "Public/layouts/head.php";?>
 <div id="wrapper" >
         <!-- Sidebar -->
         <div id="sidebar-wrapper" class="bgm-gray">
-            <div id="chat-container">
-               
+            <div id="chat-container" class="c-overflow">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
             <div id="chat-box" class="bgm-black" >
                 <div class="row">
