@@ -22,21 +22,15 @@ include "Public/layouts/head.php";?>
 </script>
 
 <!-- Body content box -->
-<div id="wrapper">
+<div id="wrapper" >
         <!-- Sidebar -->
-        <div class="bg-color2" id="sidebar-wrapper">
+        <div id="sidebar-wrapper" class="bgm-gray">
             <div id="chat-container">
                
             </div>
-            <div id="chat-box">
+            <div id="chat-box" class="bgm-black" >
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="progress">
-                            <div id="hp" class=" progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width: 4em; width: 100%;" >100% Hp</div>
-                        </div>
-                        <div class="progress">
-                            <div id="mp" class=" progress-bar progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width: 4em; width: 100%;" >100% Mp</div><br>
-                        </div>
                         <div class="input-group input-group-sm dropup">
                             <input type="text" class="form-control" aria-label="Text input with segmented button dropdown"> 
                             <div class="input-group-btn"> 
@@ -61,12 +55,6 @@ include "Public/layouts/head.php";?>
         
         <!-- Page Content -->
         <div  id="page-content-wrapper">
-            <div id="msgalert">
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                </div>
-            </div>
             <div class="container-fluid ">
                 <div class="row">
                     <ul class="nav nav-tabs nav-justified">
@@ -85,14 +73,12 @@ include "Public/layouts/head.php";?>
                                 <li role="separator" class="divider"></li>
                                 <li role="presentation" class="disabled"><a id="magia" href="#">Magia</a></li>
                                 <li role="presentation" class="disabled"><a id="ki" href="#">Ki</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li role="presentation"><a href="#chat" id="menu-toggle">Chat</a></li>
                           </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="row" >
-                    <div class="col-md-12 bg-color1" id="mesa-container">
+                    <div class="col-md-12 bgm-white" id="mesa-container">
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade in active" id="personaje">

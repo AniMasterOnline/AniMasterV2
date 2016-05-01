@@ -1,5 +1,31 @@
 (function($){
     $(document).ready(function(){
+            
+            $('#FullScreen').click(function toggleFullScreen() {
+                if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+                 (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                  if (document.documentElement.requestFullScreen) {  
+                    document.documentElement.requestFullScreen();  
+                  } else if (document.documentElement.mozRequestFullScreen) {  
+                    document.documentElement.mozRequestFullScreen();  
+                  } else if (document.documentElement.webkitRequestFullScreen) {  
+                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+                  }  
+                } else {  
+                  if (document.cancelFullScreen) {  
+                    document.cancelFullScreen();  
+                  } else if (document.mozCancelFullScreen) {  
+                    document.mozCancelFullScreen();  
+                  } else if (document.webkitCancelFullScreen) {  
+                    document.webkitCancelFullScreen();  
+                  }  
+                }
+                BootstrapNotify('FullScreen Toggled!','inverse', 20,'top','left', 1000, false);
+            });
+            $('#ClearLocal').click(function clearlocal(){
+                window.localStorage.clear();
+                BootstrapNotify('Local Storage Cleaned!','inverse', 20,'top','left', 1000, false);
+            });
             //Desktop Notification
             //-----------------------------------------------
             Notification.requestPermission().then(function(result) {
@@ -31,8 +57,8 @@
             
             // Notify Plugin
             //-----------------------------------------------
-                BootstrapNotify('Configure this in template.js','default', 20,'bottom','left', 1000);
-                function BootstrapNotify(inMsg, inType, offset ,pl_from ,pl_align, time_Delay) {
+                BootstrapNotify('Configure this in template.js','default', 20,'bottom','left', 1000, true);
+                function BootstrapNotify(inMsg, inType, offset ,pl_from ,pl_align, time_Delay, allow_Close) {
                     $.notify({
                         // options
                         icon: null,
@@ -45,7 +71,7 @@
                         element: 'body',
                         position: null,
                         type: inType,
-                        allow_dismiss: true,
+                        allow_dismiss: allow_Close,
                         newest_on_top: false,
                         showProgressbar: false,
                         placement: {
@@ -84,6 +110,9 @@
             
             console.log('Ready!');
     }); // End document ready
+    $(window).load(function() {
+        $(".page-loader").fadeOut("slow");
+    });
 })(this.jQuery);
 
 

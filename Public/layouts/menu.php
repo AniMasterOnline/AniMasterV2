@@ -1,9 +1,8 @@
-
 <?php
 	function migasdepan($migas){
 		$migasdepan = explode("#",$migas);
 		$contmigas = count($migasdepan);
-		echo '<ol class="breadcrumb">';
+		echo '<ol class="breadcrumb bgm-white z-depth-1-bottom">';
 		for ($i = 1; $i < $contmigas; $i++){
 			$pan = explode("|", $migasdepan[$i]);
 			if ($i == 1){
@@ -24,160 +23,192 @@
                 
 	}
 ?>
+<script>
+    $( document ).ready(function() {
+        $("#menu-trigger").click(function(e) {
+            e.preventDefault();
+            console.log('here');
+            $(".ha-menu").toggleClass("toggled bgm-brown");
+            $(".idplr").toggleClass("pull-right");
+        });
+    });
+</script>
+<header id="header" class="clearfix bgm-brown" >
+    <ul class="header-inner">
+        <li id="menu-trigger" class="visible-xs">
+            <div class="line-wrap">
+                <div class="line top"></div>
+                <div class="line center"></div>
+                <div class="line bottom"></div>
+            </div>
+        </li>
+        <li class="logo hidden-xs">
+            <a href="../index.php">AniMaster Online v2</a>
+        </li>
+        <li class="pull-right">
+            <ul class="top-menu">
+                <li id="top-search">
+                    <a href="#"><i class="tm-icon zmdi zmdi-search"></i></a>
+                </li>
+                <?php
+                    if(isset($_SESSION['user'])){
+                        echo '<li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <i class="tm-icon zmdi zmdi-email"></i>
+                                <i class="tmn-counts">2</i>
+                            </a>
 
-<nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">AniMaster Online v2</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">AniMaster Online v2</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <?php
-                if (strpos($self,"AniMasterV2/index.php")) {
-                    echo '<li class="active"><a href="index.php">Inicio</a></li>';
-                    echo '<li><a href="partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="zone.php">Tus Partidas</a></li>';
-                }else if (strpos($self,"settings/")) {
-                    echo '<li><a href="../../">Inicio</a></li>';
-                    echo '<li><a href="../../partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="../../zone.php">Tus Partidas</a></li>';
-                }else if (strpos($self,"admin/")) {
-                    echo '<li><a href="../index.php">Inicio</a></li>';
-                    echo '<li><a href="../partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="../user/zone.php">Tus Partidas</a></li>';
-                }else{
-                    echo '<li><a href="index.php">Inicio</a></li>';
-                    echo '<li><a href="partida.php">Partidas de Rol</a></li>';
-                    echo '<li><a href="zone.php">Tus Partidas</a></li>';
-                }
-            ?>
-          </ul>
-          <ul class="nav navbar-nav navbar-right"> 
-            <?php
-            if(isset($_SESSION['user'])){
-                if (strpos($self,"settings/")) {
-                    echo '
-                        <li class="dropdown">
-                            <a id="menubtndown" href="#" class="dropdown-toggle" data-toggle="dropdown">Hola, '.ucfirst($value['nickname']).'!<b class="caret"></b></a>
-                            <ul class="dropdown-menu">';
-                    if($value['id_tipo'] == 0 ){
-                        echo ' <li ><a href="../../admin/">AdminPanel</a></li>
-                               <li role="separator" class="divider"></li>';
-                    }  
-                    echo       '<li><a href="../../settings/notifications">Mensajes <span class="badge">42</span> </a></li>
-                                <li><a href="../../settings/table">Mesa</a></li>
-                                <li><a href="../../settings/characters">Personajes</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="../../help.php">Ayuda</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li ><a href="../../settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
-                                <li><a target="_self" href="../../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
-                            </ul>
+                            <div class="dropdown-menu dropdown-menu-lg pull-right">
+                                <div class="listview">
+                                    <div class="lv-header">
+                                        Messages
+                                    </div>
+                                    <div class="lv-body">
+                                        <a class="lv-item" href="#">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <div class="lv-title">David Belle</div>
+                                                    <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="lv-item" href="#">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <div class="lv-title">Jonathan Morris</div>
+                                                    <small class="lv-small">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <a class="lv-footer" href="#">View All</a>
+                                </div>
+                            </div>
                         </li>';
-                }else if (strpos($self,"admin/")) {
-                    echo '
-                        <li>
-                            <a id="menubtndown" href="#" class="dropdown-toggle" data-toggle="dropdown">Hola, '.ucfirst($value['nickname']).'!<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="../admin/">AdminPanel</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="../settings/notifications">Mensajes <span class="badge">42</span> </a></li>
-                                <li><a href="../settings/table">Mesa</a></li>
-                                <li><a href="../settings/characters">Personajes</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="../help.php">Ayuda</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li ><a href="../settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
-                                <li><a target="_self" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
-                            </ul>
-                      </li>';
-                }else{
-                    echo '
-                        <li>
-                            <a id="menubtndown" href="#"  class="dropdown-toggle" data-toggle="dropdown">Hola, '.ucfirst($value['nickname']).'!<b class="caret"></b></a>
-                            <ul class="dropdown-menu">';
-                    if($value['id_tipo'] == 0 ){
-                        echo ' <li><a href="admin/">AdminPanel</a></li>
-                               <li role="separator" class="divider"></li>';
-                    }  
-                    echo       '<li><a href="settings/notifications">Mensajes <span class="badge">42</span> </a></li>
-                                <li><a href="settings/table">Mesa</a></li>
-                                <li><a href="settings/characters">Personajes</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="help.php">Ayuda</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li ><a href="settings/account"><i class="fa fa-cog" aria-hidden="true">&nbsp;</i>Configuración</a></li>
-                                <li><a target="_self" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar sesión</a></li>
-                            </ul>
-                        </li>';
-                }
-                
+                    }
+                ?>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#"><i class="tm-icon zmdi zmdi-more-vert"></i></a>
+                    <ul class="dropdown-menu dm-icon pull-right">
+                        <?php
+                            if(isset($_SESSION['user'])){
+                                if ($value['id_tipo'] == 0){
+                                    if (strpos($self,"admin/")){
+                                        echo '  <li><a href="../admin/"><i class="zmdi zmdi-lock-open"></i></i> Admin Panel</a></li>
+                                                <li><a href="../settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
+                                                <li><a href="../help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
+                                                <li><a href="../logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li class="dropdown-header">Actions</li>';
+                                    }else if (strpos($self,"settings/")){
+                                        echo '  <li><a href="../../admin/"><i class="zmdi zmdi-lock-open"></i></i> Admin Panel</a></li>
+                                                <li><a href="../../settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
+                                                <li><a href="../../help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
+                                                <li><a href="../../logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li class="dropdown-header">Actions</li>';
+                                    }else{
+                                        echo '  <li><a href="admin/"><i class="zmdi zmdi-lock-open"></i></i> Admin Panel</a></li>
+                                                <li><a href="settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
+                                                <li><a href="help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
+                                                <li><a href="logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li class="dropdown-header">Actions</li>';
+                                    }
+                                }else{
+                                    if (strpos($self,"admin/")){
+                                        echo '  <li><a href="../settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
+                                                <li><a href="../help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
+                                                <li><a href="../logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li class="dropdown-header">Actions</li>';
+                                    }else if (strpos($self,"settings/")){
+                                        echo '  <li><a href="../../settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
+                                                <li><a href="../../help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
+                                                <li><a href="../../logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li class="dropdown-header">Actions</li>';
+                                    }else{
+                                        echo '  <li><a href="settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
+                                                <li><a href="help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
+                                                <li><a href="logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li class="dropdown-header">Actions</li>';
+                                    }
+                                }
+                                if(strpos($self,"mesa.php")){
+                                    echo '<li role="presentation"><a href="#chat" id="menu-toggle"><i class="zmdi zmdi-view-agenda"></i> Toggle Chat</a></li>';
+                                }
+                            }
+                        ?>
+                        <li class="hidden-xs" id="FullScreen"><a data-action="fullscreen" href="#" ><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a></li>
+                        <li id="ClearLocal"><a data-action="clear-localstorage" href="#"><i class="zmdi zmdi-delete"></i> Clear Local Storage</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- Top Search Content -->
+    <div class="clearfix">
+    </div>
+    <!-- Top Menu Content -->
+    <nav class="ha-menu">
+        <ul>
+            <?php
+            if (strpos($self,"admin/")){
+                echo '  <li class="waves-effect active"><a href="../index.php">Inicio</a></li>
+                        <li class="waves-effect"><a href="../partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect"><a href="../zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect"><a href="../settings/table">Mi Mesa</a></li>';
+            }else if (strpos($self,"settings/")){
+                echo '  <li class="waves-effect"><a href="../../index.php">Inicio</a></li>
+                        <li class="waves-effect"><a href="../../partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect"><a href="../../zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect"><a href="../../settings/table">Mi Mesa</a></li>';
             }else{
-                if (strpos($self,"user/")) {
-                    echo '  <li>
-                                <div class="btn-group navbar-btn">
-                                    <a class="btn btn-link" role="button" href="../signup.php">Regístrate</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="btn-group navbar-btn">
-                                    <a class="btn btn-default" role="button" href="../login.php">Iniciar Sesión</a>
-                                </div>
-                            </li>
-                            ';
-                }else if (strpos($self,"admin/")) {
-                    echo '  <li>
-                                <div class="btn-group navbar-btn">
-                                    <a class="btn btn-link" role="button" href="../signup.php">Regístrate</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="btn-group navbar-btn">
-                                    <a class="btn btn-default" role="button" href="../login.php">Iniciar Sesión</a>
-                                </div>
-                            </li>
-                            ';
-                }else{
-                    echo '  <li>
-                                <div class="btn-group navbar-btn">
-                                    <a class="btn btn-link" role="button" href="signup.php">Regístrate</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="btn-group navbar-btn">
-                                    <a class="btn btn-default" role="button" href="login.php">Iniciar Sesión</a>
-                                </div>
-                            </li>
-                            ';
-                } 
+                echo '  <li class="waves-effect"><a href="index.php">Inicio</a></li>
+                        <li class="waves-effect"><a href="partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect"><a href="zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect"><a href="settings/table">Mi Mesa</a></li>';
             }
             ?>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+            
+            <?php
+                if(!isset($_SESSION['user'])){
+                    echo '  <li class="waves-effect pull-right idplr"><a href="login.php">Login</a></li>
+                            <li class="waves-effect pull-right idplr"><a href="signup.php">Registrate </a></li>';
+                }
+                if(isset($_SESSION['user'])){
+                    if (strpos($self,"admin/")){
+                        echo '  <li class="waves-effect pull-right idplr"><a href="../settings/">Hola, '.$value['nickname'].'!</a></li>';
+                    }else if (strpos($self,"settings/")){
+                        echo '  <li class="waves-effect pull-right idplr"><a href="../../settings/">Hola, '.$value['nickname'].'!</a></li>';
+                    }else{
+                        echo '  <li class="waves-effect pull-right idplr"><a href="settings/">Hola, '.$value['nickname'].'!</a></li>';
+                    }
+                    
+                } 
+            ?>
+            
+        </ul>
     </nav>
-    <?php
-        if (strpos($self,"AniMasterV2/index.php")) {
-            //none
-        }else if (strpos($self,"AniMasterV2/mesa.php")) {
-            //none
-        }else if (strpos($self,"AniMasterV2/login.php")) {
-            //none
-        }else if (strpos($self,"AniMasterV2/signup.php")) {
-            //none
-        }else{
-            //imprimim migas de pan
-            migasdepan($migas); 
-        }
-	
-    ?>
-    <?php
+</header>
+<?php
+    if (strpos($self,"AniMasterV2/index.php")) {
+        //none
+    }else if (strpos($self,"AniMasterV2/mesa.php")) {
+        //none
+    }else if (strpos($self,"AniMasterV2/login.php")) {
+        //none
+    }else if (strpos($self,"AniMasterV2/signup.php")) {
+        //none
+    }else{
+        //imprimim migas de pan
+        migasdepan($migas); 
+    }
+
+?>
+<?php
     //Mostrar o ocultar la ajuda --> Programació, accesos directes, etc...
     $help = true;
     if($help){
@@ -193,12 +224,14 @@
                         <li role="separator" class="divider"></li>
                         <li class="dropdown-header">Otros</li>
                         <li><a target="_blank" href="https://fortawesome.github.io/Font-Awesome/icons/"><i class="fa fa-flag" aria-hidden="true">&nbsp;</i>FontAwesome</a></li>
+                        <li><a target="_blank" href="http://zavoloklom.github.io/material-design-iconic-font/icons.html"><i class="zmdi zmdi-menu">&nbsp;</i>Material Design Iconic Font
+</a></li>
                         <li><a target="_blank" href="/phpmyadmin"><i class="fa fa-server" aria-hidden="true">&nbsp;</i>phpmyadmin</a></li>
                         <li><a target="_blank" href="/AniMasterV2/theme.php"><i class="fa fa-file-code-o" aria-hidden="true">&nbsp;</i>Theme</a></li>
                     </ul>
                 </li>
                 </div>';
     }
-    ?>
+?>
     
             

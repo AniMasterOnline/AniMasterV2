@@ -1,11 +1,7 @@
 /* General mesa Styles */
-body{
-    background-color: #333;
-}
 .nav-tabs > li > a {
     height: 32px;
     padding: 5px 10px;
-    color: white;
 }
 .nav-tabs > li:hover > a {
     color: #333;
@@ -55,7 +51,7 @@ body{
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
+    z-index: 100;
     position: fixed;
     right: 250px;
     width: 0;
@@ -116,10 +112,8 @@ body{
 
 /* chat Styles */
     #sidebar-wrapper{
-        padding-bottom: 150px;
-        background-image: url("../img/chatbg3.png");
+        //background-image: url("../img/chatbg3.png");
         background-repeat: repeat;
-        border-left: 2px solid #0f0f0f;
     }
     #chat-container{
       padding: 3px;

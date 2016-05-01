@@ -74,6 +74,10 @@ if (strpos($self,"admin/")){
                 
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="../Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
+                
+                // material Design Iconic Font
+                echo '<LINK REL=StyleSheet HREF="../Public/material-design-iconic-font/css/material-design-iconic-font.css" TYPE="text/css" MEDIA=screen>';
+                
                 // Jquery
                 echo '<script src="../Public/jquery/jquery-1.12.3.min.js"></script>';
                 // Jquery ui CSS & Js
@@ -98,6 +102,10 @@ if (strpos($self,"admin/")){
                 
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="../../Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
+                
+                // material Design Iconic Font
+                echo '<LINK REL=StyleSheet HREF="../../Public/material-design-iconic-font/css/material-design-iconic-font.css" TYPE="text/css" MEDIA=screen>';
+                
                 // Jquery
                 echo '<script src="../../Public/jquery/jquery-1.12.3.min.js"></script>';
                 // Jquery ui CSS & Js
@@ -123,6 +131,10 @@ if (strpos($self,"admin/")){
                 
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
+                
+                // material Design Iconic Font
+                echo '<LINK REL=StyleSheet HREF="Public/material-design-iconic-font/css/material-design-iconic-font.css" TYPE="text/css" MEDIA=screen>';
+                
                 // Jquery
                 echo '<script src="Public/jquery/jquery-1.12.3.min.js"></script>';
                 // Jquery ui CSS & Js
@@ -147,5 +159,14 @@ if (strpos($self,"admin/")){
         ?>	
     </head>
     <body >
-        
-    <?php include "menu.php";?>
+        <div class="page-loader bgm-white">
+            <div class="preloader pls-blue">
+                <svg class="pl-circular " viewBox="25 25 50 50">
+                    <circle class="plc-path" cx="50" cy="50" r="20"></circle>
+                </svg>
+                <p>Please wait...</p>
+            </div>
+        </div>
+    <?php 
+        include "menu.php";
+    ?>

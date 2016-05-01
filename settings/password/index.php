@@ -5,7 +5,7 @@ $migas='#Home|../../index.php#Configuración#Contraseña|../../settings/password
 include "../../Public/layouts/head.php";?>
 
 <!-- Body content box -->
-<div class="container">
+<div class="container-fluid">
     <div class="row" >
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
             <div class="row">

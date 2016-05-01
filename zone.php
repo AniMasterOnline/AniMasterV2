@@ -1,7 +1,7 @@
 <!-- Header content box -->
 <?php 
 $title='Login';
-$migas='#Index|index.php#Tus partidas de rol';
+$migas='#Index|index.php#Zona roleo';
 include "Public/layouts/head.php";?>
 
 <script>
@@ -12,7 +12,7 @@ include "Public/layouts/head.php";?>
 <!-- Body box -->
 <div class="container">
     <div class="page-header" style="margin-top: -15px;">
-        <div class="input-group">
+        <div class="input-group z-depth-1-bottom b-0">
             <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -22,7 +22,7 @@ include "Public/layouts/head.php";?>
     <div class="search-container">
         
     </div>
-    <nav class="navbar navbar-default ">
+    <nav class="navbar navbar-default bgm-brown z-depth-2 b-0">
         <div class="container" style="text-align: center;">
             <ul class="pagination" >
                 <li>
