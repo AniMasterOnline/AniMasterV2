@@ -6,7 +6,7 @@ include "Public/layouts/head.php";?>
 
 <!-- Body box -->
 <div class="container" >
-    <form class="form-signin" method="POST">
+    <form class="form-signin" method="POST" action="login.php">
         <div class="row">
             <div class="col-md-12 cinput">
                 <h2 class="form-signin-heading">Inicia sesión en Animaster Online v2</h2>

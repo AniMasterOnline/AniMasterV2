@@ -7,7 +7,7 @@ include "../../Public/layouts/head.php";?>
 <!-- Body content box -->
 <div class="container">
     <div class="row" >
-        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
             <div class="row">
                 <div class="col-md-12">
                     <div class="thumbnail">
@@ -33,7 +33,7 @@ include "../../Public/layouts/head.php";?>
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
             
             <div class="panel panel-warning">
                 <div class="panel-heading">

@@ -83,7 +83,7 @@ $(document).ready(function(){
 <!-- Body content box -->
 <div class="container">
     <div class="row" >
-        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 ">
             <div class="row">
                 <div class="col-md-12">
                     <div class="thumbnail">
@@ -105,12 +105,11 @@ $(document).ready(function(){
                         <a href="../../settings/notifications/" class="list-group-item">Mensajes<span class="badge">42</span></a>
                         <a href="../../settings/table/" class="list-group-item">Mesa</a>
                         <a href="../../settings/characters/" class="list-group-item">Personajes <span class="badge">1</span></a>
-                        <a href="#" class="list-group-item btn-alert">Click Me</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9 ">
             
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -185,7 +184,7 @@ $(document).ready(function(){
                         </script>
                     </div>
                     <div class="col-md-12 cinput">
-                        <button type="button" id="mod2" class="btn btn-success btn-xs">Guardar cambios</button>
+                        <button type="button" id="mod2" class="btn btn-success btn-xs wbtn">Guardar cambios</button>
                     </div>
                 </div>
             </div>

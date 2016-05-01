@@ -28,7 +28,7 @@ if (strpos($self,"admin/")){
 
 ?>
 <!DOCTYPE html>
-<html lang="es" data-ng-app>
+<html lang="es">
     <head>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
         <script>
@@ -85,11 +85,14 @@ if (strpos($self,"admin/")){
                 // Theme Css
                 echo '<link href="../Public/css/theme.css" rel="stylesheet">';
                 echo '<script src="../Public/js/template.js"></script>';
-                echo '<script src="../Public/js/modernizr.js"></script>';
-                echo '<script src="../Public/js/bootstrap-notify.js"></script>';
-                echo '<script src="../Public/js/desktop-notify.js"></script>';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../favicon.ico">';
+                
+                //Plugins
+                echo '<script src="../Public/plugins/bootstrap-notify-3.1.3/bootstrap-notify.js"></script>'; // Bootstrap-notify
+                echo '<script src="../Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
+                echo '<script src="../Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
+                echo '<link href="../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
 				
             }else if (strpos($self,"settings/")) { //User
                 
@@ -106,11 +109,14 @@ if (strpos($self,"admin/")){
                 // Theme Css
                 echo '<link href="../../Public/css/theme.css" rel="stylesheet">';
                 echo '<script src="../../Public/js/template.js"></script>';
-                echo '<script src="../../Public/js/modernizr.js"></script>';
-                echo '<script src="../../Public/js/bootstrap-notify.js"></script>';
-                echo '<script src="../../Public/js/desktop-notify.js"></script>';
                 // Favicon
                 echo '<link rel="shortcut icon" href="../../favicon.ico">';
+                
+                //Plugins
+                echo '<script src="../../Public/plugins/bootstrap-notify-3.1.3/bootstrap-notify.js"></script>'; // Bootstrap-notify
+                echo '<script src="../../Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
+                echo '<script src="../../Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
+                echo '<link href="../../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
                 
 				
             }else{ // Index
@@ -128,17 +134,18 @@ if (strpos($self,"admin/")){
                 // Theme Css
                 echo '<link href="Public/css/theme.css" rel="stylesheet">';
                 echo '<script src="Public/js/template.js"></script>';
-                echo '<script src="Public/js/modernizr.js"></script>';
-                echo '<script src="Public/js/bootstrap-notify.js"></script>';
-                echo '<script src="Public/js/desktop-notify.js"></script>';
                 
                 // Favicon
                 echo '<link rel="shortcut icon" href="favicon.ico">';
                 
-
+                //Plugins
+                echo '<script src="Public/plugins/bootstrap-notify-3.1.3/bootstrap-notify.js"></script>'; // Bootstrap-notify
+                echo '<script src="Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
+                echo '<script src="Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
+                echo '<link href="Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
             }
         ?>	
     </head>
-    <body data-ng-controller="NotificationCenter">
+    <body >
         
     <?php include "menu.php";?>
