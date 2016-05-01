@@ -133,15 +133,34 @@
                 });
                 return false;
             }
-            
+            /*
+            * Top Search
+            */
+           (function(){
+               $('body').on('click', '#top-search > a', function(e){
+                   e.preventDefault();
+
+                   $('#header').addClass('search-toggled');
+                   $('#top-search-wrap input').focus();
+               });
+
+               $('body').on('click', '#top-search-close', function(e){
+                   e.preventDefault();
+
+                   $('#header').removeClass('search-toggled');
+               });
+           })();
             console.log('Ready!');
     }); // End document ready
+    
+    
     
     //Load Content
     //-----------------------------------------------
     $(window).load(function() {
         $(".page-loader").fadeOut("slow");
     });
+    
 })(this.jQuery);
 
 

@@ -5,11 +5,11 @@ $migas='#Home|../../index.php#Configuración#Personajes|../../settings/character
 include "../../Public/layouts/head.php";?>
 
 <!-- Body content box -->
-<div class="container-fluid">
+<div class="container">
     <div class="row" >
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-6 col-sm-12 col-md-12">
                     <div class="thumbnail">
                         <?php
                             if($value['imagen'] == ""){
@@ -23,6 +23,8 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="text-align: left;"><?php echo $value['nickname'];?><br><small>#<?php if($value['nombre'] == "" ){ echo ' =D'; }else{ echo $value['nombre'].' '.$value['apellido']; }?></small></h3>
                         </div>
                     </div>
+                </div>
+                <div class="col-xs-6 col-sm-12 col-md-12">
                     <div class="list-group">
                         <a href="../../settings/account/" class="list-group-item">Cuenta</a>
                         <a href="../../settings/password/" class="list-group-item">Contraseña</a>
