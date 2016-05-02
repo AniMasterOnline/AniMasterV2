@@ -53,9 +53,9 @@
 #sidebar-wrapper {
     z-index: 100;
     position: fixed;
+    top: 98px;
+    bottom: 0;
     right: 250px;
-    width: 0;
-    height: 100%;
     margin-right: -252px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
@@ -78,7 +78,14 @@
     position: absolute;
     margin-right: 0px;
 }
-
+@media(max-width:893px) {
+    #sidebar-wrapper {
+        display: none;
+    }
+    #menu-toggle{
+        display: none;
+    }
+}
 @media(min-width:893px) {
     #wrapper {
         padding-right: 350px;
@@ -111,14 +118,12 @@
 
 
 /* chat Styles */
-    #sidebar-wrapper{
-        //background-image: url("../img/chatbg3.png");
-        height: 100%;
-    }
     #chat-container{
         overflow: scroll;
-        position: relative;
-        top: 0px;
+        position: fixed;
+        width: 250px;
+        top: 98px;
+        bottom: 35px;
         
     }
     #chat-box{
@@ -127,23 +132,19 @@
         bottom: 0;
         width: 250px;
         min-height: 10px;
-        z-index: 10000;
-    } 
+    }
+    .chatbox{
+        background-color: darkkhaki;
+        margin: 10px;
+        width: 250px;
+        padding: 5px;
+    }
 @media(min-width:893px) {
     #chat-container{
-      padding: 3px;
-      background-color: rgba(0,0,0,0);
-      overflow: auto;
-      height: 100%;
       width: 350px;
     }
     #chat-box{
-        padding: 3px;
-        background-color: rgba(33,33,33,0.8);
-        position: fixed;
-        bottom: 0;
         width: 350px;
-        min-height: 10px;
     }    
 }
     

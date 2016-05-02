@@ -25,8 +25,60 @@ include "Public/layouts/head.php";?>
 <div id="wrapper" >
         <!-- Sidebar -->
         <div id="sidebar-wrapper" class="bgm-gray">
-            <div id="chat-container" class="c-overflow bgm-blue">
-                a<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>a<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>b<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>b
+            <div id="chat-container" class="c-overflow">
+                <div class="chatbox pull-right">
+                    <span>
+                        <h2>nom:</h2>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
+                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
+                        laborum.
+                    </span>
+                </div>
+                <div class="chatbox pull-left me">
+                    <span>
+                        <h2>nom:</h2>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
+                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
+                        laborum.
+                    </span>
+                </div>
+                <div class="chatbox pull-right">
+                    <span>
+                        <h2>nom:</h2>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
+                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
+                        laborum.
+                    </span>
+                </div>
+                <div class="chatbox pull-right">
+                    <span>
+                        <h2>nom:</h2>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
+                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
+                        laborum.
+                    </span>
+                </div>
+                
             </div>
             <div id="chat-box" class="bgm-black" >
                 <div class="row">
