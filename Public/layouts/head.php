@@ -25,6 +25,26 @@ if (strpos($self,"admin/")){
         }
     }
 }
+if (strpos($self,"login.php")){
+    if(isset($_SESSION['user'])){ 
+        header('Location: settings/'); //Redireccion si no estas logeado [admin].
+    }
+}
+if (strpos($self,"signup.php")){
+    if(isset($_SESSION['user'])){ 
+        header('Location: settings/'); //Redireccion si no estas logeado [admin].
+    }
+}
+if (strpos($self,"logout.php")){
+    if(!isset($_SESSION['user'])){ 
+        header('Location: index.php'); //Redireccion si no estas logeado [admin].
+    }
+}
+if (strpos($self,"zone.php")){
+    if(!isset($_SESSION['user'])){ 
+        header('Location: login.php'); //Redireccion si no estas logeado [admin].
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -99,6 +119,8 @@ if (strpos($self,"admin/")){
                 echo '<link href="../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
                 echo '<script src="../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
                 echo '<link href="../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+                echo '<script src="../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.min.js"></script>'; //SweetAlert js
+                echo '<link href="../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
 				
             }else if (strpos($self,"settings/")) { //User
                 
@@ -129,6 +151,8 @@ if (strpos($self,"admin/")){
                 echo '<link href="../../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
                 echo '<script src="../../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
                 echo '<link href="../../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+                echo '<script src="../../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.min.js"></script>'; //SweetAlert js
+                echo '<link href="../../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
 		
 				
             }else{ // Index
@@ -161,6 +185,8 @@ if (strpos($self,"admin/")){
                 echo '<link href="Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
                 echo '<script src="Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
                 echo '<link href="Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+                echo '<script src="Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.min.js"></script>'; //SweetAlert js
+                echo '<link href="Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
 		
             }
         ?>	

@@ -35,7 +35,7 @@ include "Public/layouts/head.php";?>
           <h1 class="cover-heading text-title c-yellow">AniMaster tu web de Rol Online.</h1>
           <p class="lead c-white">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
           <p class="lead">
-              <a href="subhasta.php" class="btn btn-primary b-0 bgm-red">Empieza ya ...</a>
+              <a href="partida.php" class="btn btn-primary b-0 bgm-red">Empieza ya ...</a>
           </p>
     </div>
 

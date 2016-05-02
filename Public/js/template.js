@@ -23,34 +23,64 @@
         }
         //Fullscreen Button
         //-----------------------------------------------
-        $('#FullScreen').click(function toggleFullScreen() {
-            if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
-             (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-              if (document.documentElement.requestFullScreen) {  
-                document.documentElement.requestFullScreen();  
-              } else if (document.documentElement.mozRequestFullScreen) {  
-                document.documentElement.mozRequestFullScreen();  
-              } else if (document.documentElement.webkitRequestFullScreen) {  
-                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-              }  
-            } else {  
-              if (document.cancelFullScreen) {  
-                document.cancelFullScreen();  
-              } else if (document.mozCancelFullScreen) {  
-                document.mozCancelFullScreen();  
-              } else if (document.webkitCancelFullScreen) {  
-                document.webkitCancelFullScreen();  
-              }  
-            }
-            BootstrapNotify('FullScreen Toggled!','inverse', 20,'top','left', 1000, false);
-        });
+        if ($('[data-action="fullscreen"]')[0]) {
+            var fs = $("[data-action='fullscreen']");
+            fs.on('click', function(e) {
+                e.preventDefault();
+
+                //Launch
+                function launchIntoFullscreen(element) {
+
+                    if(element.requestFullscreen) {
+                        element.requestFullscreen();
+                    } else if(element.mozRequestFullScreen) {
+                        element.mozRequestFullScreen();
+                    } else if(element.webkitRequestFullscreen) {
+                        element.webkitRequestFullscreen();
+                    } else if(element.msRequestFullscreen) {
+                        element.msRequestFullscreen();
+                    }
+                }
+
+                //Exit
+                function exitFullscreen() {
+
+                    if(document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if(document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if(document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    }
+                }
+                BootstrapNotify('FullScreen Toggled!','inverse', 20,'top','left', 1000, false);
+                launchIntoFullscreen(document.documentElement);
+                fs.closest('.dropdown').removeClass('open');
+            });
+        }
 
         //Clear Button
         //-----------------------------------------------
-        $('#ClearLocal').click(function clearlocal(){
-            window.localStorage.clear();
-            BootstrapNotify('Local Storage Cleaned!','inverse', 20,'top','left', 1000, false);
-        });
+        if ($('[data-action="clear-localstorage"]')[0]) {
+            var cls = $('[data-action="clear-localstorage"]');
+
+            cls.on('click', function(e) {
+                e.preventDefault();
+
+                swal({
+                    title: "Estás seguro?",
+                    text: "Todos los valores guardados de almacenamiento local serán eliminados",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sí, estoy seguro !",
+                    closeOnConfirm: false
+                }, function(){
+                    window.localStorage.clear();
+                    swal("Hecho!", "Almacenamiento local eliminado!", "success");
+                });
+            });
+        }
 
         //Desktop Notification
         //-----------------------------------------------
@@ -78,8 +108,9 @@
             delay: 200,
             wait: 1000, //ms
         };
+        Waves.attach('.btn:not(.btn-icon):not(.btn-float)');
+        Waves.attach('.btn-icon, .btn-float', ['waves-circle', 'waves-float']);
         Waves.init(config);
-        Waves.attach('.btn');
 
         // Notify Plugin
         //-----------------------------------------------
