@@ -1,52 +1,79 @@
 <?php
 session_start();
+$self = $_SERVER['PHP_SELF']; // $self --> Lugar actual visitado
+
+/*
+ * $value --> Login Session.
+ */
 if(isset($_SESSION['user'])){
         $value=$_SESSION['user'];
         //var_dump($value);
 }
-$self = $_SERVER['PHP_SELF'];
 
+/*
+ * $url --> Login redirect.
+ */
+if (strpos($self,"login.php")){
+    if(isset($_SESSION['url'])){
+        $url = $_SESSION['url']; // Guarda la $url del ultimo sitio visitado
+    }else{
+        $url = "settings/account/"; // Si no hay un sitio visitado redirije a /settings/account/
+    }
+}else if (strpos($self,"AniMasterV2/index.php")){
+    //  --> /no redirect here/ <--
+    if(isset($_SESSION['url'])){
+        unset($_SESSION['url']); // Unset session $url enInicio
+    }
+}else{
+    $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+    if(isset($_SESSION['url'])){
+            $url=$_SESSION['url']; // Recoje el resto de lugares al que redirijir
+    }
+}
 
+/*
+ * Redirecciones
+ */
 if (strpos($self,"settings/")){
     if(!isset($_SESSION['user'])){
-        header('Location: ../../login.php'); //Redireccion si no estas logeado [Settings].
+        header('Location: ../../login.php'); //Redireccion si no estas logeado [Settings]
     }
 }
 if (strpos($self,"admin/")){
     
     if(!isset($_SESSION['user'])){ 
-        header('Location: ../login.php'); //Redireccion si no estas logeado [admin].
+        header('Location: ../login.php'); //Redireccion si no estas logeado [admin]
         
     }else if(isset($_SESSION['user'])){
         if($value['id_tipo'] == 0 ){
             //Welcome Admin!.
         }else{
-            header('Location: ../index.php'); //Redireccion si estas logeado  pero no eres => [admin].
+            header('Location: ../index.php'); //Redireccion si estas logeado  pero no eres => [admin]
         }
     }
 }
 if (strpos($self,"login.php")){
     if(isset($_SESSION['user'])){ 
-        header('Location: settings/'); //Redireccion si no estas logeado [admin].
+        header('Location: settings/'); //Redireccion si estas logeado --> settings
     }
 }
 if (strpos($self,"signup.php")){
     if(isset($_SESSION['user'])){ 
-        header('Location: settings/'); //Redireccion si no estas logeado [admin].
+        header('Location: settings/'); //Redireccion si estas logeado --> settings
     }
 }
 if (strpos($self,"logout.php")){
     if(!isset($_SESSION['user'])){ 
-        header('Location: index.php'); //Redireccion si no estas logeado [admin].
+        header('Location: index.php'); //Redireccion si  no estas logeado --> index
     }
 }
 if (strpos($self,"zone.php")){
     if(!isset($_SESSION['user'])){ 
-        header('Location: login.php'); //Redireccion si no estas logeado [admin].
+        header('Location: login.php'); //Redireccion si no estas logeado --> Login
     }
 }
-
 ?>
+<!-- Inicio de la pagina -->
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -77,8 +104,8 @@ if (strpos($self,"zone.php")){
                     })
                 }
             }
-            function show() {
-                notify.createNotification("AniMaster Online v2", {body:"Test", icon: "favicon.ico"});
+            function DesktopNotifyshow($title, $body, $icon) {
+                notify.createNotification($title, {body:$body, icon: $icon});
             }
         </script>
         <?php

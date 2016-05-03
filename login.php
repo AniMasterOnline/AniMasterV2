@@ -3,6 +3,12 @@
 $title='Login';
 $migas='#Index|index.php';
 include "Public/layouts/head.php";?>
+<script>
+    $title = "test";
+    $body = "test body";
+    $icon = "favicon.ico";
+    //DesktopNotifyshow($title, $body, $icon);
+</script>
 
 <!-- Body box -->
 <div class="container" >
@@ -42,7 +48,7 @@ include "Public/layouts/head.php";?>
     $usuari = $usuari->verificar_login($user,$pass);
         if( $usuari != null){ 
             $_SESSION['user'] = $usuari;
-            echo '<META HTTP-EQUIV="Refresh" Content="0; URL=settings/">';
+            echo '<META HTTP-EQUIV="Refresh" Content="0; URL='.$url.'">';
         }else{
             echo '<META HTTP-EQUIV="Refresh" Content="0; URL=login.php">';
         } 
