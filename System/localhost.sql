@@ -435,7 +435,7 @@ ALTER TABLE Partida_Objeto ADD FOREIGN KEY (id_objeto) REFERENCES Objeto (id_obj
 
 
 ALTER TABLE Personaje_Ventaja ADD FOREIGN KEY (id_personaje) REFERENCES Personaje (id_personaje);
-ALTER TABLE Personaje_Ventaja ADD FOREIGN KEY (id_ventaja) REFERENCES ventaja (id_ventaja);
+ALTER TABLE Personaje_Ventaja ADD FOREIGN KEY (id_ventaja) REFERENCES Ventaja (id_ventaja);
 
 
 ALTER TABLE Personaje_Poderes ADD FOREIGN KEY (id_poder) REFERENCES Poderes_Monstruo (id_poder);
@@ -597,7 +597,7 @@ VALUES
 --
 -- Volcado de datos para la tabla `ventaja`
 --
-INSERT INTO  `Animaster`.`ventaja` (
+INSERT INTO  `Animaster`.`Ventaja` (
 `id_ventaja` ,
 `tipo` ,
 `nombre` ,
@@ -673,7 +673,7 @@ NULL ,  'Novel', 'Los noveles representan el arquetipo de Sin categoría, o lo q
 --
 -- Volcado de datos para la tabla `rama`
 --
-INSERT INTO `rama` (`id_rama`, `nombre`) 
+INSERT INTO `Rama` (`id_rama`, `nombre`) 
 VALUES (
 NULL, 'Atléticas'), (
 NULL, 'Vigor'), (
@@ -687,7 +687,7 @@ NULL, 'Especial');
 --
 -- Volcado de datos para la tabla `nivel`
 --
-INSERT INTO `nivel` (`nivel`, `puntos`, `incr_caracteristica`, `exp_necesaria`, `presencia_base`) 
+INSERT INTO `Nivel` (`nivel`, `puntos`, `incr_caracteristica`, `exp_necesaria`, `presencia_base`) 
 VALUES 
 ('0', '400', '0', '0', '20'),
 ('1', '600', '0', '0', '30'),
@@ -714,7 +714,7 @@ VALUES
 --
 -- Volcado de datos para la tabla `habilidades_primarias`
 --
-INSERT INTO `habilidades_primarias` (`id_HP`, `nombre`, `caracteristica`) 
+INSERT INTO `Habilidades_Primarias` (`id_HP`, `nombre`, `caracteristica`) 
 VALUES 
 (NULL, 'Habilidad Ataque', 'DES'), 
 (NULL, 'Habilidad Parada', 'DES'), 
@@ -725,7 +725,7 @@ VALUES
 --
 -- Volcado de datos para la tabla `habilidades_secundarias`
 --
-INSERT INTO `habilidades_secundarias` (`id_HS`, `nombre`, `id_rama`, `caracteristica`) 
+INSERT INTO `Habilidades_Secundarias` (`id_HS`, `nombre`, `id_rama`, `caracteristica`) 
 VALUES 
 (1, 'Acrobacias', '1', 'AGI'), 
 (2, 'Atletismo', '1', 'AGI'), 
@@ -781,7 +781,7 @@ VALUES
 --
 -- Volcado de datos para la tabla `categoria_hp`
 --
-INSERT INTO `categoria_hp` (`id_HP`, `id_categoria`, `coste`, `incr_nv`) 
+INSERT INTO `Categoria_HP` (`id_HP`, `id_categoria`, `coste`, `incr_nv`) 
 VALUES 
 ('1', '1', '2', '5'),
 ('2', '1', '2', '5'),
@@ -799,7 +799,7 @@ VALUES
 --
 -- Volcado de datos para la tabla `categoria_hs`
 --
-INSERT INTO `categoria_hs` (`id_categoria`, `id_HS`, `coste`, `incr_nv`) 
+INSERT INTO `Categoria_HS` (`id_categoria`, `id_HS`, `coste`, `incr_nv`) 
 VALUES 
 ('1', '1', '2', '0'),
 ('1', '2', '2', '0'),
@@ -1308,7 +1308,7 @@ VALUES
 --
 -- Volcado de datos para la tabla `caracteristica`
 --
-INSERT INTO `caracteristica` (`id_caracteristica`, `nombre`) VALUES
+INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
 (1, 'Daño'),
 (2, 'Turno'),
 (3, 'FUE Req.'),
@@ -1343,7 +1343,7 @@ INSERT INTO `caracteristica` (`id_caracteristica`, `nombre`) VALUES
 --
 -- Volcado de datos para la tabla `objeto`
 --
-INSERT INTO `objeto` (`id_objeto`, `nombre`, `descripcion`, `peso`, `precio`, `public`, `disponibilidad`, `calidad`, `id_tipo`) 
+INSERT INTO `Objeto` (`id_objeto`, `nombre`, `descripcion`, `peso`, `precio`, `public`, `disponibilidad`, `calidad`, `id_tipo`) 
 VALUES
 (1, 'Oro', 'Moneda de oro', 0, 1000, 'true', '0', 0, 6),
 (2, 'Plata', 'Moneda de plata', 0, 10, 'true', '0', 0, 6),
