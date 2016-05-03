@@ -4,18 +4,6 @@ $title='Cuenta';
 $migas='#Home|../../index.php#Configuración#Cuenta|../../settings/account/';
 include "../../Public/layouts/head.php";?>
 
-<?php
-/* $timeout = 5;//segundos que session no se disconecta
-if(isset($_SESSION['timeout'])) {
-    $duration = time() - (int)$_SESSION['timeout'];
-    if($duration > $timeout) {
-        echo "<script>alert('Session expired!');</script>";
-        echo "<script> window.open('../logout.php','_self');</script>";
-    }
-}
-$_SESSION['timeout'] = time();*/
-?>
-
 <script>
 $(document).ready(function(){
     $('#mod1').click(function(){
@@ -229,9 +217,9 @@ $(document).ready(function(){
             }
         });
     });
-    
 });
 </script>
+
 <!-- Body content box -->
 <div class="container">
     <div class="row" >
@@ -323,6 +311,7 @@ $(document).ready(function(){
                         <button type="button" id="mod2" class="btn btn-primary btn-sm wbtn">Guardar cambios</button>
                 </div>
             </div>
+            <form id="form" action="../../System/Protocols/Usuari_Image.php" method="post" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-header bgm-green">
                     <h2>Imagen de cuenta <small class=" f-12">Que tal es tener una nueva cara?</small></h2>
@@ -357,7 +346,8 @@ $(document).ready(function(){
                         </span>
                         <input id="fileselected" class="form-control" readonly="" type="text">
                     </div>
-                    <button type="button" id="mod3" class="btn btn-success btn-sm">Cambiar imagen</button>
+                    <button id="mod3" type="submit" class="btn btn-success btn-sm">Cambiar imagen</button>
+                    
                     <script>
                         $(document).ready( function() {
                             $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
@@ -375,6 +365,7 @@ $(document).ready(function(){
                     </script>
                 </div>
             </div>
+            </form>
             <div class="card">
                 <div class="card-header bgm-red">
                     <h2>Eliminar Cuenta <small class=" f-12">Esto es un adios?</small></h2>

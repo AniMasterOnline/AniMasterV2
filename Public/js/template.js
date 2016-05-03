@@ -176,9 +176,13 @@
                });
 
                $('body').on('click', '#top-search-close', function(e){
-                   e.preventDefault();
-
-                   $('#header').removeClass('search-toggled');
+                    e.preventDefault();
+                    $('#header').removeClass('search-toggled');
+                    var busqueda = $('#top-search-input').val();
+                    console.log(busqueda);
+                    
+                    
+                    
                });
            })();
             console.log('Ready!');

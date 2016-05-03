@@ -231,9 +231,10 @@
     <div id="top-search-wrap">
         <div class="tsw-inner">
             <i id="top-search-close" class="zmdi zmdi-arrow-left"></i>
-            <input type="text">
+            <input type="text" id="top-search-input">
         </div>
     </div>
+    
 </header>
 <?php
     if (strpos($self,"AniMasterV2/index.php")) {

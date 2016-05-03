@@ -2,6 +2,23 @@
 session_start();
 $self = $_SERVER['PHP_SELF']; // $self --> Lugar actual visitado
 
+
+/*
+ Session expired
+ * 
+$timeout = 15;//segundos que session no se disconecta
+if(isset($_SESSION['user'])) {
+if(isset($_SESSION['timeout'])) {
+    $duration = time() - (int)$_SESSION['timeout'];
+    if($duration > $timeout) {
+        echo "<script>alert('Session expired!');</script>";
+        session_destroy();
+        echo "<script> window.open('".$self."','_self');</script>";
+    }
+}
+}
+$_SESSION['timeout'] = time();*/
+
 /*
  * $value --> Login Session.
  */
