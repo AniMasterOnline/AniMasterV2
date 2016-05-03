@@ -77,8 +77,160 @@ $(document).ready(function(){
         });
     });
     
+    $('#mod2').click(function(){
+        var nombre = {
+            nombre : $('#inputNombre').val()
+        };
+        var apellido = {
+            apellido : $('#inputApellido').val()
+        };
+        var telefono = {
+            telefono : $('#inputTelefono').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Usuari_Nombre.php",
+            data: nombre,
+            success: function (response) {
+                if(response == 001){
+                    $.notify({
+                            // options
+                            message: 'Nombre no disponible.'
+                    },{
+                            // settings
+                            type: 'warning',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 002){
+                    
+                }else if(response == 003){
+                    location.reload();
+                    $.notify({
+                            // options
+                            message: 'Nombre modificado'
+                    },{
+                            // settings
+                            type: 'info',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Usuari_Apellido.php",
+            data: apellido,
+            success: function (response) {
+                if(response == 001){
+                    $.notify({
+                            // options
+                            message: 'Apellido error.'
+                    },{
+                            // settings
+                            type: 'warning',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 002){
+                    
+                }else if(response == 003){
+                    location.reload();
+                    $.notify({
+                            // options
+                            message: 'Apellido modificado!'
+                    },{
+                            // settings
+                            type: 'info',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Usuari_Telefono.php",
+            data: telefono,
+            success: function (response) {
+                if(response == 001){
+                    $.notify({
+                            // options
+                            message: 'Telefono error.'
+                    },{
+                            // settings
+                            type: 'warning',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 002){
+                    
+                }else if(response == 003){
+                    location.reload();
+                    $.notify({
+                            // options
+                            message: 'Telefono modificado!'
+                    },{
+                            // settings
+                            type: 'info',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }
+            }
+        });
+    });
+    
+    $('#mod4').click(function(){
+        var pass = {
+            pass : $('#inputPass').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Usuari_Delete.php",
+            data: pass,
+            success: function (response) {
+                console.log(response);
+                if(response == 001){
+                    $.notify({
+                            // options
+                            message: 'No ha podido eliminar la cuenta!'
+                    },{
+                            // settings
+                            type: 'inverse',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 002){
+                    location.href('../../index.php');
+                }
+            }
+        });
+    });
+    
 });
-
 </script>
 <!-- Body content box -->
 <div class="container">
@@ -260,4 +412,3 @@ $(document).ready(function(){
 </div>
 
 <?php include "../../Public/layouts/footer.php";?> 
-
