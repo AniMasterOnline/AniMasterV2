@@ -26,6 +26,7 @@ CREATE TABLE Partida (
       anyo     varchar(8),
       nv_sobrenatural     int,
       limite     int,
+      pos       varchar(100),
       PRIMARY KEY (`id_partida`),
       KEY `id_usuario` (`id_usuario`)
 );
@@ -40,7 +41,7 @@ CREATE TABLE Usuario (
       apellido     varchar(32),
       email     varchar(32),
       telefono     varchar(32),
-      contrasenya     varchar(32),
+      password     varchar(32),
       id_tipo     int,
       PRIMARY KEY (`id_usuario`)
 );
