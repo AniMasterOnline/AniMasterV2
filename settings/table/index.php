@@ -1,41 +1,12 @@
 <!-- User Menu -- Header content box -->
 <?php 
 $title='Mesa';
-$migas='#Home|../../index.php#Configuración#Mesa|../../settings/table/';
+$migas='#Home|../../index.php#Mesa|../../settings/table/';
 include "../../Public/layouts/head.php";?>
 
 <!-- Body content box -->
 <div class="container">
-    <div class="row" >
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-            <div class="row">
-                <div class="col-xs-6 col-sm-12 col-md-12">
-                    <div class="thumbnail">
-                        <?php
-                            if($value['imagen'] == ""){
-                                echo '<img class="img-rounded" src="../../Public/img/login.png" alt="...">';
-                            }else{
-                                echo '<img class="img-rounded" src="../../Public/img/usuarios/'.$value['imagen'].'" alt="...">';
-                            }
-                        ?>
-                        
-                        <div class="caption ">
-                            <h3 style="text-align: left;"><?php echo $value['nickname'];?><br><small>#<?php if($value['nombre'] == "" ){ echo ' =D'; }else{ echo $value['nombre'].' '.$value['apellido']; }?></small></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-12 col-md-12">
-                    <div class="list-group">
-                        <a href="../../settings/account/" class="list-group-item">Cuenta</a>
-                        <a href="../../settings/password/" class="list-group-item">Contraseña</a>
-                        <a href="../../settings/notifications/" class="list-group-item ">Mensajes</a>
-                        <a href="../../settings/table/" class="list-group-item active">Mesa</a>
-                        <a href="../../settings/characters/" class="list-group-item">Personajes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+        <div class="col-md-12 col-lg-12">
             <div class="row">
                 <div class="col-md-4">
                     <div class="image-box style-2 m-b-20 bordered dark-bg">
