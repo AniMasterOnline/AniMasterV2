@@ -8,16 +8,28 @@ include "Public/layouts/head.php";?>
     $(function() {
         
         $('#methods').mousedown(function() {
-            $('#inputPass').password('toggle');
+            var pass = $('#inputPass').clone();
+            $('#inputPass').remove();
+            pass.attr('type','text');
+            pass.insertAfter('#inputPassLabel');
         });
         $('#methods').mouseup(function() {
-            $('#inputPass').password('toggle');
-        });
+            var pass = $('#inputPass').clone();
+            $('#inputPass').remove();
+            pass.attr('type','password');
+            pass.insertAfter('#inputPassLabel');
+         });
         $('#methods2').mousedown(function() {
-            $('#inputPass2').password('show');
+            var pass = $('#inputPass2').clone();
+            $('#inputPass2').remove();
+            pass.attr('type','text');
+            pass.insertAfter('#inputPass2Label');
         });
         $('#methods2').mouseup(function() {
-            $('#inputPass2').password('hide');
+            var pass = $('#inputPass2').clone();
+            $('#inputPass2').remove();
+            pass.attr('type','password');
+            pass.insertAfter('#inputPass2Label');
         });
     });
 </script>
@@ -38,7 +50,7 @@ include "Public/layouts/head.php";?>
             
             <div class="col-md-6 cinput">
                 <div class="input-group">
-                    <label for="inputPass" class="sr-only">Contraseña</label>
+                    <label for="inputPass" id="inputPassLabel"class="sr-only">Contraseña</label>
                     <input type="password"  id="inputPass"  class="form-control" name="pass" placeholder="Contraseña *" required>
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" id="methods"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -47,7 +59,7 @@ include "Public/layouts/head.php";?>
             </div>
             <div class="col-md-6 cinput">
                 <div class="input-group">
-                    <label for="inputPass2" class="sr-only">Repite tu contraseña</label>
+                    <label for="inputPass2" id="inputPass2Label" class="sr-only">Repite tu contraseña</label>
                     <input type="password"  id="inputPass2"  class="form-control" name="pass2" placeholder="Repite tu contraseña *" required>
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" id="methods2"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -70,10 +82,10 @@ include "Public/layouts/head.php";?>
                 
             </div>
             <div class="col-md-12 cinput">
-                <button class="btn btn-lg btn-success btn-block" type="submit">Registra't</button>
+                <button class="btn btn-lg bgm-green c-white btn-block" type="submit">Registra't</button>
             </div>  
             <div class="col-md-12" id="alertmsg">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-default" role="alert">
                     Al registrar-te, acceptes les <a class="link" href="#">Condicions del Servei</a> i la <a class="link" href="#">Política de Privacitat</a>, 
                     incluïnt el <a class="link" href="#">Ús de Cookies</a>.
                 </div>

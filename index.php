@@ -12,7 +12,7 @@ include "Public/layouts/head.php";?>
         right: 0;
     }
     html{
-        background-color: #31231E;
+        background-color: #9E9E9E;
         background-position: center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -25,6 +25,10 @@ include "Public/layouts/head.php";?>
     #slider{
         display:none;
     }
+    .lead{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 </style>
 <div id="slider"></div>
 
@@ -32,17 +36,19 @@ include "Public/layouts/head.php";?>
 <div class="cover-container text-center">
 
     <div class="inner cover">
-          <h1 class="cover-heading text-title">AniMaster tu web de Rol Online.</h1>
-          <p class="lead text-white">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-          <p class="lead">
-              <a href="subhasta.php" class="btn btn-primary">Empieza ya ...</a>
+          <h1 class="cover-heading text-title c-yellow">AniMaster tu web de Rol Online.</h1>
+          <p class="lead c-white">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+            anim id est laborum.
+                
           </p>
-    </div>
-
-    <div class="mastfoot">
-      <div class="inner text-white text-">
-        <p> <a href="#">AniMaster Online</a>, by <a href="#">@Grup2</a>.</p>
-      </div>
+          <p class="lead">
+              <a href="partida.php" class="btn btn-primary b-0 bgm-red">Empieza ya ...</a>
+          </p>
     </div>
 </div>
 <script>

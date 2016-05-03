@@ -1,15 +1,15 @@
 <?php
-    require_once('../Classes/Usuari.php');
+    require_once('../Classes/Usuario.php');
     session_start();
     if(isset($_SESSION['user'])){
         $value=$_SESSION['user'];
-        $id=$value['id_usuari'];
+        $id=$value['id_usuario'];
         $user=$value['nickname'];
 
         $newNom = $_POST['nom'];
         $newCognom = $_POST['cognom'];
 
-        $usuari = new Usuari();
+        $usuari = new Usuario();
         $result = $usuari->modIdentity($id, $user, $newNom, $newCognom);
         if($result){
             $result = $usuari->return_user($id);

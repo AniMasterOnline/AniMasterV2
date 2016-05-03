@@ -1,14 +1,15 @@
 <?php
-    require_once('../Classes/Usuari.php');
+    require_once('../Classes/Usuario.php');
     //Requiered inputs
+    ob_start();
     $newUser = $_POST['user'];
     $newPass = md5($_POST['pass']);
     $newEmail = $_POST['email'];
     //Tipus d'usuari >> User = 2<<
-    $newId_Tipus = 2;
+    $newId_Tipus = 1;
     
     //Afegir Usuari a la BD.
-    $newUsuari = new Usuari($newUser, $newEmail, $newPass, $newId_Tipus);
+    $newUsuari = new Usuario($newUser, $newEmail, $newPass, $newId_Tipus);
     $db2 = $newUsuari->add();
     //var_dump($test);
     //Comprobació de si s'ha afegit l'usuari i loggin
