@@ -477,11 +477,11 @@ INSERT INTO  `Animaster`.`Usuario` (
 `apellido` ,
 `email` ,
 `telefono` ,
-`contrasenya` ,
+`password` ,
 `id_tipo`
 )
 VALUES (
-NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'master',  '1'
+NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '1'
 );
 
 
