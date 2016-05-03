@@ -11,103 +11,158 @@ include "Public/layouts/head.php";?>
 <!-- Menu Toggle Script -->
 <script>
     $( document ).ready(function() {
-        console.log( "ready!" );
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
-        $("#magia").attr("disabled", "disabled");
-        $("#ki").attr("disabled", "disabled");
+        
+        window.setInterval(function() {
+            console.log('2');
+        }, 1000);
+    });
+    $(window).load(function() {
+        //Autoscroll chat to bottom on load
+        var d = $('#chat-container');
+        d.mCustomScrollbar('scrollTo','last');
+        d.mCustomScrollbar('scrollTo','last');
     });
 </script>
+<?php
+    function rcolor(){
+        $color = substr(md5(rand()), 0, 6);
+        return 'style="color: #'.$color.';"';
+    }
+?>
 
 <!-- Body content box -->
 <div id="wrapper" >
         <!-- Sidebar -->
-        <div id="sidebar-wrapper" class="bgm-gray">
+        <div id="sidebar-wrapper" class="z-depth-1">
+            <div class="bgchatimg">&nbsp;</div>
             <div id="chat-container" class="c-overflow">
-                <div class="chatbox pull-right">
+                <div class="chatbox pull-left f-11 text-center system">
                     <span>
-                        <h2>nom:</h2>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna 
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
-                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
-                        laborum.
+                        ¡Inicio de la sesion de roleo!
                     </span>
                 </div>
-                <div class="chatbox pull-left me">
+                <div class="  "></div>
+                <div class="chatbox pull-left">
                     <span>
-                        <h2>nom:</h2>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna 
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
-                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
-                        laborum.
+                        <span class="f-14 f-700">Guardia</span><br>
+                        Eh, eh, ¡cuidado con esa magia!
                     </span>
                 </div>
-                <div class="chatbox pull-right">
+                <div class="chatbox pull-left">
                     <span>
-                        <h2>nom:</h2>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna 
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
-                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
-                        laborum.
+                        Vete a lanzar tus preciosos hechizos a otra parte
                     </span>
                 </div>
-                <div class="chatbox pull-right">
+                <div class="chatbox pull-right me">
                     <span>
-                        <h2>nom:</h2>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna 
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis 
-                        aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est 
-                        laborum.
+                        ¡No  me grites que me pones los pelos de punta!
+                    </span>
+                </div>
+                <div class="chatbox pull-left">
+                    <span>
+                        <span class="f-14 f-700">Jacob</span><br>
+                        Espera, ya a tí te conozco ...... 
+                        No me equivoco, estás en busca y captura. 
+                        Ya es hora que pagues por tus crímenes
+                    </span>
+                </div>
+                <div class="chatbox pull-right me">
+                    <span>
+                        Lo lamento… pero te equivocas, no soy mas que un pobre mago que va por el mundo sin rumbo ...
+                    </span>
+                </div>
+                <div class="chatbox pull-left">
+                    <span>
+                        <span class="f-14 f-700">Master</span><br>
+                        En ese momento, el guardia sin creer el la palabra del joven mago desenfunda su espada y se dispone a apresar al joven.
+                    </span>
+                </div>
+                <div class="chatbox pull-right me">
+                    <span>
+                        Os lo prometo os estais equivocando ... puede que sea mago pero eso no me convierte en un bandido.
+                    </span>
+                </div>
+                <div class="chatbox pull-right me">
+                    <span>
+                        Ademas ese echizo solo fue para iluminar ya que se esta oscureciendo ... D:
+                    </span>
+                </div>
+                <div class="chatbox pull-left">
+                    <span>
+                        <span class="f-14 f-700">Jacob</span><br>
+                        Bueno quizas tengas razon en eso, pero igual el uso de la magia esta prohibido en estas tierras ....
+                    </span>
+                </div>
+                <div class="chatbox pull-left">
+                    <span>
+                        enfin se puede saber hacia donde te dirijes ?
+                    </span>
+                </div>
+                <div class="chatbox pull-right me">
+                    <span>
+                        Solo estoy de paso, aunque voy de camino hacia "Gabriel"
+                    </span>
+                </div>
+                <div class="chatbox pull-right me">
+                    <span>
+                        En unas semanas va a haber un evento por algo nuevo que se ha construido y me gustaria asistir.
+                    </span>
+                </div>
+                <div class="chatbox pull-left">
+                    <span>
+                        <span class="f-14 f-700">Master</span><br>
+                        Al acercarse la noche, de entre los arbustos sale un lobo y os ataca.
+                    </span>
+                </div>
+                <div class="chatbox pull-left f-11 text-center battle">
+                    <span>
+                        ¡Inicio de Batalla!
+                    </span>
+                </div>
+                <div class="chatbox pull-left f-11 battle2">
+                    <span>
+                        <span class="f-12 f-700">Enemy1 > Jacob : </span>
+                        -35Pdv
+                    </span>
+                </div>
+                <div class="chatbox pull-left f-11 battle2">
+                    <span>
+                        <span class="f-12 f-700">Jacob > Enemy1 : </span>
+                        -35Pdv
+                    </span>
+                </div>
+                <div class="chatbox pull-left f-11 battle2 bgm-lightblue">
+                    <span>
+                        <span class="f-12 f-700">Yo > Enemy1 : </span>
+                        -65Pdv
+                    </span>
+                </div>
+                <div class="chatbox pull-left f-11 battlekill">
+                    <span>
+                        <span class="f-12 f-700">Enemy1 is Death</span>
+                    </span>
+                </div>
+                <div class="chatbox pull-left f-11 text-center battle">
+                    <span>
+                        ¡Fin de Batalla!
                     </span>
                 </div>
                 
             </div>
-            <div id="chat-box" class="bgm-black" >
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="input-group input-group-sm dropup">
-                            <input type="text" class="form-control" aria-label="Text input with segmented button dropdown"> 
-                            <div class="input-group-btn"> 
-                                <button type="button" class="btn btn-success">Enviar <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button> 
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                    <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> 
-                                </button> 
-                                <ul class="dropdown-menu dropdown-menu-right"> 
-                                    <li><a href="#">Action</a></li> 
-                                    <li><a href="#">Another action</a></li> 
-                                    <li><a href="#">Something else here</a></li> 
-                                    <li role="separator" class="divider"></li> 
-                                    <li><a href="#">Separated link</a></li> 
-                                </ul> 
-                            </div> 
-                        </div>
-                    </div><!-- /.col-lg-6 -->
-                </div>
+            <div id="chat-box" class="z-depth-1-top bgm-gray lv-footer ms-reply p-0 b-0" >
+                <textarea placeholder="What's on your mind..."></textarea>
+                <button><i class="zmdi zmdi-mail-send"></i></button>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
         
         <!-- Page Content -->
         <div  id="page-content-wrapper">
-            <div class="container-fluid ">
+            <div class="container-fluid">
                 <div class="row">
                     <ul class="nav nav-tabs nav-justified">
                         <li role="presentation" class="active"><a href="#personaje" aria-controls="personaje" role="tab" data-toggle="tab">Personaje</a></li>
@@ -122,17 +177,14 @@ include "Public/layouts/head.php";?>
                                 <li role="presentation"><a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab">Mapa</a></li>
                                 <li role="presentation"><a href="#batalla" aria-controls="batalla" role="tab" data-toggle="tab">Batalla</a></li>
                                 <li role="presentation"><a href="#diario" aria-controls="diario" role="tab" data-toggle="tab">Diario del Jugador</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li role="presentation" class="disabled"><a id="magia" href="#">Magia</a></li>
-                                <li role="presentation" class="disabled"><a id="ki" href="#">Ki</a></li>
                           </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="row" >
-                    <div class="col-md-12 bgm-white" id="mesa-container">
+                    <div class="col-md-12 bgm-white z-depth-1-bottom" id="mesa-container">
                         <!-- Tab panes -->
-                        <div class="tab-content">
+                        <div class="tab-content ">
                             <div role="tabpanel" class="tab-pane fade in active" id="personaje">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -205,7 +257,6 @@ include "Public/layouts/head.php";?>
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
         <!-- /#page-content-wrapper -->

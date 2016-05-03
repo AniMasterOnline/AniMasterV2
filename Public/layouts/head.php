@@ -91,13 +91,10 @@ if (strpos($self,"zone.php")){
                 echo '<link href="https://fonts.googleapis.com/css?family=Rokkitt:700,400" rel="stylesheet" type="text/css">';
             
             if (strpos($self,"admin/")) { // Admin 
-                
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="../Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
-                
                 // material Design Iconic Font
                 echo '<LINK REL=StyleSheet HREF="../Public/material-design-iconic-font/css/material-design-iconic-font.css" TYPE="text/css" MEDIA=screen>';
-                
                 // Jquery
                 echo '<script src="../Public/jquery/jquery-1.12.3.min.js"></script>';
                 // Jquery ui CSS & Js
@@ -106,30 +103,27 @@ if (strpos($self,"zone.php")){
                 // Bootstrap Core CSS & Js
                 echo '<link href="../Public/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">';
                 echo '<script src="../Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
-                // Theme Css
-                echo '<link href="../Public/css/theme.css" rel="stylesheet">';
-                echo '<script src="../Public/js/template.js"></script>';
-                // Favicon
-                echo '<link rel="shortcut icon" href="../favicon.ico">';
-                
                 //Plugins
                 echo '<script src="../Public/plugins/bootstrap-notify-3.1.3/bootstrap-notify.js"></script>'; // Bootstrap-notify
                 echo '<script src="../Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
                 echo '<script src="../Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
                 echo '<link href="../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
                 echo '<script src="../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
-                echo '<link href="../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+                echo '<link href="../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" rel="stylesheet">'; //Waves css
                 echo '<script src="../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.min.js"></script>'; //SweetAlert js
                 echo '<link href="../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
+                
+                // Theme Css --> Important!
+                echo '<link href="../Public/css/theme.css" rel="stylesheet">';
+                echo '<script src="../Public/js/template.js"></script>';
+                // Favicon
+                echo '<link rel="shortcut icon" href="../favicon.ico">';
 				
             }else if (strpos($self,"settings/")) { //User
-                
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="../../Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
-                
                 // material Design Iconic Font
                 echo '<LINK REL=StyleSheet HREF="../../Public/material-design-iconic-font/css/material-design-iconic-font.css" TYPE="text/css" MEDIA=screen>';
-                
                 // Jquery
                 echo '<script src="../../Public/jquery/jquery-1.12.3.min.js"></script>';
                 // Jquery ui CSS & Js
@@ -138,31 +132,29 @@ if (strpos($self,"zone.php")){
                 // Bootstrap Core CSS & Js
                 echo '<link href="../../Public/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">';
                 echo '<script src="../../Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
-                // Theme Css
-                echo '<link href="../../Public/css/theme.css" rel="stylesheet">';
-                echo '<script src="../../Public/js/template.js"></script>';
-                // Favicon
-                echo '<link rel="shortcut icon" href="../../favicon.ico">';
-                
                 //Plugins
                 echo '<script src="../../Public/plugins/bootstrap-notify-3.1.3/bootstrap-notify.js"></script>'; // Bootstrap-notify
                 echo '<script src="../../Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
                 echo '<script src="../../Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
                 echo '<link href="../../Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
                 echo '<script src="../../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
-                echo '<link href="../../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+                echo '<link href="../../Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" rel="stylesheet">'; //Waves css
                 echo '<script src="../../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.min.js"></script>'; //SweetAlert js
                 echo '<link href="../../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
+                
+                // Theme Css --> Important!
+                echo '<link href="../../Public/css/theme.css" rel="stylesheet">';
+                echo '<script src="../../Public/js/template.js"></script>';
+                // Favicon
+                echo '<link rel="shortcut icon" href="../../favicon.ico">';
 		
 				
             }else{ // Index
                 
                 // FontAwesome
                 echo '<LINK REL=StyleSheet HREF="Public/font-awesome-4.6.1/css/font-awesome.min.css" TYPE="text/css" MEDIA=screen>';
-                
                 // material Design Iconic Font
                 echo '<LINK REL=StyleSheet HREF="Public/material-design-iconic-font/css/material-design-iconic-font.css" TYPE="text/css" MEDIA=screen>';
-                
                 // Jquery
                 echo '<script src="Public/jquery/jquery-1.12.3.min.js"></script>';
                 // Jquery ui CSS & Js
@@ -171,23 +163,21 @@ if (strpos($self,"zone.php")){
                 // Bootstrap Core CSS & Js
                 echo '<link href="Public/bootstrap-3.3.6/css/bootstrap.css" rel="stylesheet">';
                 echo '<script src="Public/bootstrap-3.3.6/js/bootstrap.js"></script>';
-                // Theme Css
-                echo '<link href="Public/css/theme.css" rel="stylesheet">';
-                echo '<script src="Public/js/template.js"></script>';
-                
-                // Favicon
-                echo '<link rel="shortcut icon" href="favicon.ico">';
-                
                 //Plugins
                 echo '<script src="Public/plugins/bootstrap-notify-3.1.3/bootstrap-notify.js"></script>'; // Bootstrap-notify
                 echo '<script src="Public/plugins/HTML5-Desktop-Notifications/desktop-notify.js"></script>'; //Desktop notifications
                 echo '<script src="Public/plugins/Waves-0.7.5/waves.js"></script>'; //Waves js
                 echo '<link href="Public/plugins/Waves-0.7.5/waves.css" rel="stylesheet">'; //Waves css
                 echo '<script src="Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>'; //Waves js
-                echo '<link href="Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">'; //Waves css
+                echo '<link href="Public/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" rel="stylesheet">'; //Waves css
                 echo '<script src="Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.min.js"></script>'; //SweetAlert js
                 echo '<link href="Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
-		
+                
+                // Theme Css --> Important!
+                echo '<link href="Public/css/theme.css" rel="stylesheet">';
+                echo '<script src="Public/js/template.js"></script>';
+                // Favicon
+                echo '<link rel="shortcut icon" href="favicon.ico">';
             }
         ?>	
     </head>

@@ -55,10 +55,10 @@
                         echo '<li class="dropdown">
                             <a data-toggle="dropdown" href="#">
                                 <i class="tm-icon zmdi zmdi-email"></i>
-                                <i class="tmn-counts">2</i>
-                            </a>
+                                <i class="tmn-counts">3</i>
+                            </a>';
 
-                            <div class="dropdown-menu dropdown-menu-lg pull-right">
+                        echo '<div class="dropdown-menu dropdown-menu-lg pull-right">
                                 <div class="listview">
                                     <div class="lv-header">
                                         Messages
@@ -80,11 +80,24 @@
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
-                                    <a class="lv-footer" href="#">View All</a>
+                                    </div>';
+                        if (strpos($self,"admin/")){
+                            echo '<a class="lv-footer" href="../settings/notifications">View All</a>
                                 </div>
                             </div>
                         </li>';
+                        }else if (strpos($self,"settings/")){
+                            echo '<a class="lv-footer" href="../../settings/notifications">View All</a>
+                                </div>
+                            </div>
+                        </li>';
+                        }else{
+                            echo '<a class="lv-footer" href="settings/notifications">View All</a>
+                                </div>
+                            </div>
+                        </li>';
+                        }
+                              
                     }
                 ?>
                 <li class="dropdown">
@@ -156,10 +169,30 @@
         <ul>
             <?php
             if (strpos($self,"admin/")){
-                echo '  <li class="waves-effect active"><a href="../index.php">Inicio</a></li>
+                echo '  <li class="waves-effect"><a href="../index.php">Inicio</a></li>
                         <li class="waves-effect"><a href="../partida.php">Partidas de Rol</a></li>
                         <li class="waves-effect"><a href="../zone.php">Zona Roleo</a></li>
                         <li class="waves-effect"><a href="../settings/table">Mi Mesa</a></li>';
+            }else if (strpos($self,"AniMasterV2/index.php")){
+                echo '  <li class="waves-effect active"><a href="index.php">Inicio</a></li>
+                        <li class="waves-effect"><a href="partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect"><a href="zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect"><a href="settings/table">Mi Mesa</a></li>';
+            }else if (strpos($self,"partida.php")){
+                echo '  <li class="waves-effect"><a href="index.php">Inicio</a></li>
+                        <li class="waves-effect active"><a href="partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect"><a href="zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect"><a href="settings/table">Mi Mesa</a></li>';
+            }else if (strpos($self,"zone.php")){
+                echo '  <li class="waves-effect"><a href="index.php">Inicio</a></li>
+                        <li class="waves-effect"><a href="partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect active"><a href="zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect"><a href="settings/table">Mi Mesa</a></li>';
+            }else if (strpos($self,"settings/table/")){
+                echo '  <li class="waves-effect"><a href="../../index.php">Inicio</a></li>
+                        <li class="waves-effect"><a href="../../partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect"><a href="../../zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect active"><a href="../../settings/table">Mi Mesa</a></li>';
             }else if (strpos($self,"settings/")){
                 echo '  <li class="waves-effect"><a href="../../index.php">Inicio</a></li>
                         <li class="waves-effect"><a href="../../partida.php">Partidas de Rol</a></li>
@@ -181,8 +214,10 @@
                 if(isset($_SESSION['user'])){
                     if (strpos($self,"admin/")){
                         echo '  <li class="waves-effect pull-right idplr"><a href="../settings/">Hola, '.$value['nickname'].'!</a></li>';
-                    }else if (strpos($self,"settings/")){
+                    }else if (strpos($self,"settings/table")){
                         echo '  <li class="waves-effect pull-right idplr"><a href="../../settings/">Hola, '.$value['nickname'].'!</a></li>';
+                    }else if (strpos($self,"settings/")){
+                        echo '  <li class="waves-effect pull-right idplr active"><a href="../../settings/">Hola, '.$value['nickname'].'!</a></li>';
                     }else{
                         echo '  <li class="waves-effect pull-right idplr"><a href="settings/">Hola, '.$value['nickname'].'!</a></li>';
                     }

@@ -1,10 +1,18 @@
-/* General mesa Styles */
+/*General mesa Styles*/ 
 .nav-tabs > li > a {
     height: 32px;
     padding: 5px 10px;
 }
 .nav-tabs > li:hover > a {
     color: #333;
+}
+.nav-tabs > li > ul > li.active > a {
+    background-color: #03A9F4;
+    color: #FFFFFF;
+}
+.nav-tabs > li > ul > li:hover.active > a {
+    background-color: #2196F3;
+    color: #FFFFFF;
 }
 #map{
     background-color: #333;
@@ -56,7 +64,7 @@
     top: 98px;
     bottom: 0;
     right: 250px;
-    margin-right: -252px;
+    margin-right: -249px;
     overflow-y: auto;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -65,7 +73,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 400px;
 }
 
 #page-content-wrapper {
@@ -78,7 +86,7 @@
     position: absolute;
     margin-right: 0px;
 }
-@media(max-width:893px) {
+@media(max-width:822px) {
     #sidebar-wrapper {
         display: none;
     }
@@ -86,9 +94,9 @@
         display: none;
     }
 }
-@media(min-width:893px) {
+@media(min-width:822px) {
     #wrapper {
-        padding-right: 350px;
+        padding-right: 400px;
     }
 
     #wrapper.toggled {
@@ -97,7 +105,7 @@
     }
 
     #sidebar-wrapper {
-        width: 350px;
+        width: 400px;
         overflow: auto;
     }
 
@@ -118,33 +126,124 @@
 
 
 /* chat Styles */
+    #sidebar-wrapper {
+        background-color: #EBE7E1;
+        border-left: 1px solid gray;
+    }
+    #sidebar-wrapper > .bgchatimg{
+        background-image: url("../img/chat_bg.png");
+        position: fixed;
+        width: 400px;
+        top: 0px;
+        bottom: 0px;
+        padding-top: 10px;
+        opacity: 0.09;
+    }
     #chat-container{
         overflow: scroll;
         position: fixed;
-        width: 250px;
+        width: 400px;
         top: 98px;
-        bottom: 35px;
+        bottom: 60px;
+        padding-top: 10px;
         
     }
+    .chatbox{
+        background-color: #FFFFFF;
+        border-radius: 3px;
+        margin-top: 2px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        max-width: 350px;
+        min-width: 100px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .me{
+        background-color: #2196F3;
+        color: white;
+        font-weight: 500;
+    }
+    .system{
+        background-color: #FEF4C4;
+        color: #555;
+        max-width: 380px;
+        min-width: 380px;
+    }
+    .battle{
+        background-color: #F44336;
+        color: #FFFFFF;
+        max-width: 380px;
+        min-width: 380px;
+        text-align: center;
+    }
+    .battle2{
+        background-color: #9E9E9E;
+        color: #FFFFFF;
+        margin-left: 40px;
+        margin-right: 40px;
+        max-width: 320px;
+        min-width: 320px;
+        text-align: center;
+    }
+    .battlekill{
+        background-color: #795548;
+        color: #FFFFFF;
+        margin-left: 40px;
+        margin-right: 40px;
+        max-width: 320px;
+        min-width: 320px;
+        text-align: center;
+    }
+    
     #chat-box{
-        padding: 3px;
         position: fixed;
         bottom: 0;
-        width: 250px;
-        min-height: 10px;
+        width: 400px;
     }
-    .chatbox{
-        background-color: darkkhaki;
-        margin: 10px;
-        width: 250px;
-        padding: 5px;
+    
+    .ms-date {
+      display: block;
+      color: #B3B3B3;
+      margin-top: 7px;
     }
-@media(min-width:893px) {
-    #chat-container{
+
+    .ms-date > i {
+      font-size: 14px;
+      vertical-align: bottom;
+      line-height: 100%;
+    }
+
+    .ms-reply {
+      position: relative;
+      margin: 0 !important;
+    }
+
+    .ms-reply textarea {
+      float: left;
       width: 350px;
+      font-size: 13px;
+      border: 0;
+      padding: 10px 8px;
+      resize: none;
+      height: 60px;
     }
-    #chat-box{
-        width: 350px;
-    }    
-}
+
+    .ms-reply button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+      height: 100%;
+      width: 60px;
+      font-size: 25px;
+      background: #2196f3;
+      color: #F5F5F5;
+    }
+
+    .ms-reply button:hover {
+      background: #2196ff;
+    }
     

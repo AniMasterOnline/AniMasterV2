@@ -27,7 +27,7 @@ include "Public/layouts/head.php";?>
                 </div>
             </div>
             <div class="col-md-12 cinput">
-                <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">Login</button>
+                <button class="btn btn-lg bgm-lightblue c-white btn-block" name="login" type="submit">Login</button>
             </div>
             <div class="col-md-12" id="alertmsg"></div>
         </div>

@@ -82,10 +82,10 @@ include "Public/layouts/head.php";?>
                 
             </div>
             <div class="col-md-12 cinput">
-                <button class="btn btn-lg btn-success btn-block" type="submit">Registra't</button>
+                <button class="btn btn-lg bgm-green c-white btn-block" type="submit">Registra't</button>
             </div>  
             <div class="col-md-12" id="alertmsg">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-default" role="alert">
                     Al registrar-te, acceptes les <a class="link" href="#">Condicions del Servei</a> i la <a class="link" href="#">Política de Privacitat</a>, 
                     incluïnt el <a class="link" href="#">Ús de Cookies</a>.
                 </div>

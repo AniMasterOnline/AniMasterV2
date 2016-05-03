@@ -189,7 +189,7 @@
     //Load Content
     //-----------------------------------------------
     $(window).load(function() {
-        $(".page-loader").fadeOut("slow");
+        $(".page-loader").fadeOut(1000);
     });
     
 })(this.jQuery);

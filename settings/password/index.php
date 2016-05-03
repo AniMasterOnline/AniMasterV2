@@ -36,16 +36,13 @@ include "../../Public/layouts/head.php";?>
             </div>
         </div>
         <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-            
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Contraseña<br>
-                        <small>Cambia o recupera tu contraseña actual.</small>
-                    </h3>
+            <div class="card">
+                <div class="card-header bgm-amber">
+                    <h2>Contraseña <small class=" f-12">Cambia o recupera tu contraseña actual.</small></h2>
                 </div>
-                <div class="panel-body">
-                    <div class="col-md-12 cinput">
-                        <div class="input-group">
+
+                <div class="card-body card-padding">
+                        <div class="input-group m-b-10">
                             <label for="inputPass" id="inputPassLabel"class="sr-only">Contraseña</label>
                             <input type="password"  id="inputPassold"  class="form-control" name="passold" placeholder="Contraseña actual" required>
                             <span class="input-group-btn">
@@ -68,10 +65,8 @@ include "../../Public/layouts/head.php";?>
                                  });
                             });
                         </script>
-                    </div>
-                    <div class="col-md-6 cinput">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">Nueva Contraseña</span>
+                        <div class="input-group m-b-10">
+                            <span class="input-group-addon" id="basic-addon1">Nueva Contraseña&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <input type="password" class="form-control" id="inputPass" name="pass" placeholder="" aria-describedby="basic-addon1" >
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" id="methods2"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -93,9 +88,7 @@ include "../../Public/layouts/head.php";?>
                                  });
                             });
                         </script>
-                    </div>
-                    <div class="col-md-6 cinput">
-                        <div class="input-group">
+                        <div class="input-group m-b-10">
                             <span class="input-group-addon" id="basic-addon2">Confirmar contraseña</span>
                             <input type="password" class="form-control" id="inputPass2" name="pass2" placeholder="" aria-describedby="basic-addon2">
                             <span class="input-group-btn">
@@ -118,8 +111,6 @@ include "../../Public/layouts/head.php";?>
                                  });
                             });
                         </script>
-                    </div>
-                    <div class="col-md-12 cinput">
                         <button type="button" id="mod1" class="btn btn-warning btn-xs">Guardar cambios</button>
                     </div>
                 </div>

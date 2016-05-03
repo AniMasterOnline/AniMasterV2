@@ -25,6 +25,10 @@ include "Public/layouts/head.php";?>
     #slider{
         display:none;
     }
+    .lead{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 </style>
 <div id="slider"></div>
 
@@ -33,16 +37,18 @@ include "Public/layouts/head.php";?>
 
     <div class="inner cover">
           <h1 class="cover-heading text-title c-yellow">AniMaster tu web de Rol Online.</h1>
-          <p class="lead c-white">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+          <p class="lead c-white">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+            anim id est laborum.
+                
+          </p>
           <p class="lead">
               <a href="partida.php" class="btn btn-primary b-0 bgm-red">Empieza ya ...</a>
           </p>
-    </div>
-
-    <div class="mastfoot">
-      <div class="inner text-white text-">
-        <p> <a href="#">AniMaster Online</a>, by <a href="#">@Grup2</a>.</p>
-      </div>
     </div>
 </div>
 <script>
