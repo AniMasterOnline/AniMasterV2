@@ -178,7 +178,7 @@
                         <li class="waves-effect"><a href="partida.php">Partidas de Rol</a></li>
                         <li class="waves-effect"><a href="zone.php">Zona Roleo</a></li>
                         <li class="waves-effect"><a href="settings/table">Mi Mesa</a></li>';
-            }else if (strpos($self,"partida.php")){
+            }else if (strpos($self,"AniMasterV2/partida.php")){
                 echo '  <li class="waves-effect"><a href="index.php">Inicio</a></li>
                         <li class="waves-effect active"><a href="partida.php">Partidas de Rol</a></li>
                         <li class="waves-effect"><a href="zone.php">Zona Roleo</a></li>

@@ -26,7 +26,6 @@ CREATE TABLE Partida (
       anyo     varchar(8),
       nv_sobrenatural     int,
       limite     int,
-      pos       varchar(100),
       PRIMARY KEY (`id_partida`),
       KEY `id_usuario` (`id_usuario`)
 );
@@ -246,12 +245,14 @@ CREATE TABLE Caracteristicas (
 
 
 CREATE TABLE Partida_Usuari (
-      id_usuario     int NOT NULL,
-      id_partida     int NOT NULL
+      id_usuario    int NOT NULL,
+      id_partida    int NOT NULL,
+      pos   int NOT NULL
 );
 
 
 ALTER TABLE Partida_Usuari ADD PRIMARY KEY (id_usuario,id_partida);
+ALTER TABLE Partida_Usuari ADD UNIQUE (id_usuario,pos);
 
 
 

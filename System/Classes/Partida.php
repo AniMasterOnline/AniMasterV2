@@ -3,23 +3,25 @@
     class Partida{
         /*Atributs*/
         private $id_partida;
+        private $id_usuario;
         private $nombre;
-        private $descripcion;
         private $imagen;
+        private $descripcion;
         private $anyo;
         private $nv_sobrenatural;
+        private $limite;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $db2 = $db->query("INSERT INTO Partida(`nombre`, `descripcion`, `imagen`, `anyo`, `nv_sobrenatural`) "
-                    . "VALUES ('$this->nombre', '$this->descripcion', '$this->imagen', '$this->anyo', '$this->nv_sobrenatural')");
+            $db->query("INSERT INTO Partida(`id_usuario`, `nombre`, `imagen`, `descripcion`, `anyo`, `nv_sobrenatural`, `limite`) VALUES ('$this->id_usuario', '$this->nombre', '$this->imagen', '$this->descripcion', '$this->anyo', '$this->nv_sobrenatural', '$this->limite')");
+            $id = $db->insert_id; // retorna el id autogenerat de aquest ultim insert.
             $db->close();
-            return $db2;
+            return $id;
         }
-        public function modPartida($id,$nombre,$descripcion,$imagen,$anyo,$nv_sobrenatural){
+        public function modPartida(){
             $db = new connexio();
-            $result = $db->query("UPDATE Partida SET  nombre='$nombre', descripcion='$descripcion', imagen='$imagen', anyo='$anyo', nv_sobrenatural='$nv_sobrenatural' WHERE id_partida= '$id'");
+            $result = $db->query("UPDATE Partida SET nombre='$this->nombre', imagen='$this->imagen', descripcion='$this->descripcion',  anyo='$this->anyo', nv_sobrenatural='$this->nv_sobrenatural', limite='$this->limite' WHERE id_partida= '$this->id_partida'");
             $db->close();
             return $result;
         }
@@ -36,7 +38,7 @@
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Partida = new Partida($obj["id_partida"],$obj["nombre"],$obj["descripcion"],$obj["imagen"],$obj["anyo"],$obj["nv_sobrenatural"]);
+                $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"]);
                 //var_dump($Partida);
                 array_push($rtn, $Partida);
             }
@@ -44,18 +46,25 @@
             return $rtn;
         }
         
-        public function view_par($id){
+        public function viewPartida($id){
             $db = new connexio();
             $sql = "SELECT * FROM Partida where id_partida='$id'";
             $query = $db->query($sql);
-            $rtn = array();
-            while($obj = $query->fetch_assoc()){
-                $Partida = new Partida($obj["nombre"],$obj["descripcion"],$obj["imagen"],$obj["anyo"],$obj["nv_sobrenatural"]);
-                //var_dump($Partida);
-                array_push($rtn, $Partida);
-            }
             $db->close();
-            return $rtn;
+            $count = 0;
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $count++;
+                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"]);
+                }
+                if($count == 1){
+                    return $Partida;
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
         }
 
         //CONSTRUCTORS
@@ -68,44 +77,53 @@
             }
         }
         function __construct0(){
-            $this->id_partida=0;
+            $this->id_partida = 0;
+            $this->id_usuario = 0;
             $this->nombre = "";
-            $this->descripcion = "";
             $this->imagen = "";
+            $this->descripcion = "";
             $this->anyo = "";
-            $this->nv_sobrenatural = "";
+            $this->nv_sobrenatural = 0;
+            $this->limite = 0;
         }
         
-        function __construct5($a2, $a3, $a4, $a5, $a6){
-            $this->id_partida=0;
-            $this->nombre = $a2;
-            $this->descripcion = $a3;
+        function __construct7($a2, $a3, $a4, $a5, $a6, $a7, $a8){
+            $this->id_partida = 0;
+            $this->id_usuario = $a2;
+            $this->nombre = $a3;
             $this->imagen = $a4;
-            $this->anyo = $a5;
-            $this->nv_sobrenatural = $a6;
+            $this->descripcion = $a5;
+            $this->anyo = $a6;
+            $this->nv_sobrenatural = $a7;
+            $this->limite = $a8;
         }
         
-        function __construct6($a1, $a2, $a3, $a4, $a5, $a6){
-            $this->id_partida=$a1;
-            $this->nombre = $a2;
-            $this->descripcion = $a3;
+        function __construct8($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8){
+            $this->id_partida = $a1;
+            $this->id_usuario = $a2;
+            $this->nombre = $a3;
             $this->imagen = $a4;
-            $this->anyo = $a5;
-            $this->nv_sobrenatural = $a6;
+            $this->descripcion = $a5;
+            $this->anyo = $a6;
+            $this->nv_sobrenatural = $a7;
+            $this->limite = $a8;
         }
            
         //METODES SET
         public function setId_Partida($id_partida) {
             $this->id_partida = $id_partida;
         }
+        public function setId_Usuario($id_usuario) {
+            $this->id_usuario = $id_usuario;
+        }
         public function setNombre($nombre) {
             $this->nombre = $nombre;
         }
-        public function setDescripcion($descripcion) {
-            $this->descripcion = $descripcion;
-        }
         public function setImagen($imagen) {
             $this->imagen = $imagen;
+        }
+        public function setDescripcion($descripcion) {
+            $this->descripcion = $descripcion;
         }
         public function setAnyo($anyo) {
             $this->anyo = $anyo;
@@ -113,25 +131,34 @@
         public function setNv_Sobrenatural($nv_sobrenatural) {
             $this->nv_sobrenatural = $nv_sobrenatural;
         }
+        public function setLimite($limite) {
+            $this->limite = $limite;
+        }
         
         //METODES GET 
         public function getId_Partida() {
             return $this->id_partida;
         }
+        public function getId_Usuario() {
+            return $this->id_usuario;
+        }
         public function getNombre() {
             return $this->nombre;
         }
+         public function getImagen() {
+            return $this->imagen;
+        }
         public function getDescripcion() {
             return $this->descripcion;
-        }
-        public function getImagen() {
-            return $this->imagen;
         }
         public function getAnyo() {
             return $this->anyo;
         }
         public function getNv_Sobrenatural() {
             return $this->nv_sobrenatural;
+        }
+        public function getLimite() {
+            return $this->limite;
         }
     }
 ?>

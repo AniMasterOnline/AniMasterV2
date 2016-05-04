@@ -18,7 +18,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 1</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=1" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 2</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=2" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 3</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=3" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 4</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=4" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 5</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=5" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 6</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=6" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 7</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=7" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 8</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=8" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ include "../../Public/layouts/head.php";?>
                             <h3 style="margin-top: 0;">Title</h3>
                             <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; <i class="fa fa-tag" aria-hidden="true"></i> Partida - 9</p>
                             <p class="text-muted"></p>
-                            <a href="#" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
+                            <a href="new_partida.php?pos=9" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Crear partida<i class="fa fa-arrow-right pl-10"></i></a>
                         </div>
                     </div>
                 </div>
