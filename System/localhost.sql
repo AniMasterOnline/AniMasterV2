@@ -482,9 +482,8 @@ INSERT INTO  `Animaster`.`Usuario` (
 `password` ,
 `id_tipo`
 )
-VALUES (
-NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '1'
-);
+VALUES 
+(NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '1');
 
 
 
