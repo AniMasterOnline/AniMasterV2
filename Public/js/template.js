@@ -179,11 +179,19 @@
                     e.preventDefault();
                     $('#header').removeClass('search-toggled');
                     var busqueda = $('#top-search-input').val();
+                    var pos = $('#urlpos').val();
+                    switch (pos) {
+                        case "pos1":
+                            location.href="../../partida.php?busqueda="+busqueda;
+                          break;
+                        case "pos2":
+                            location.href="../partida.php?busqueda="+busqueda;
+                          break;
+                        case "pos3":
+                            location.href="partida.php?busqueda="+busqueda;
+                          break;
+                     }
                     
-                    console.log(busqueda);
-                    var url = $(location).attr('href');
-                    console.log(url);
-                    location.href="/AniMasterV2/partida.php?busqueda="+busqueda;
                });
            })();
             console.log('Ready!');
