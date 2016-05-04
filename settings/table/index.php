@@ -56,7 +56,7 @@ include "../../Public/layouts/head.php";?>
                                                 <h3 style="margin-top: 0;">'.$nombre.'</h3>
                                                 <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true">&nbsp;</i>'.$anyo.'&nbsp;&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true">&nbsp;</i> Partida - '.$pos.'</p>
                                                 <p class="text-muted">'.$descripcion.'</p>
-                                                <a href="mod_Partida.php?id='.$id_partida.'" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Gestionar partida<i class="fa fa-arrow-right pl-10"></i></a>
+                                                <a href="view_partida.php?id='.$id_partida.'" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Gestionar partida<i class="fa fa-arrow-right pl-10"></i></a>
                                             </div>
                                         </div>
                                     </div>';

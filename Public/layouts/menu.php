@@ -230,6 +230,19 @@
     <!-- Top Search Content -->
     <div id="top-search-wrap">
         <div class="tsw-inner">
+            <?php
+                if (strpos($self,"settings/")) {
+                    //pos 1 ../../partida.php
+                    echo '<input id="urlpos" type="hidden" value="pos1">';
+                }else if (strpos($self,"admin/")) {
+                    //pos 2 ../partida.php
+                    echo '<input id="urlpos" type="hidden" value="pos2">';
+                }else{
+                    //pos 3 partida.php
+                    echo '<input id="urlpos" type="hidden" value="pos3">';
+                }
+
+            ?>
             <i id="top-search-close" class="zmdi zmdi-arrow-left"></i>
             <input type="text" id="top-search-input">
         </div>

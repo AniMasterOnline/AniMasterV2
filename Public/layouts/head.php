@@ -105,11 +105,11 @@ if (strpos($self,"zone.php")){
                 $scope.permissionLevel = permissionLevels[notify.permissionLevel()];
                 $scope.getClassName = function() {
                     if ($scope.permissionLevel === 0) {
-                        return "allowed"
+                        return "allowed";
                     } else if ($scope.permissionLevel === 1) {
-                        return "default"
+                        return "default";
                     } else {
-                        return "denied"
+                        return "denied";
                     }
                 }
                 $scope.callback = function() {

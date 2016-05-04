@@ -1,8 +1,16 @@
-<?php
+<!-- User Menu -- Header content box -->
+<?php 
+$title='Mesa';
+$migas='#Home|../../index.php#Mesa|../../settings/table/';
+include "../../Public/layouts/head.php";?>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<!-- Body content box -->
+<div class="container">
+    
+    
+ 
+    
+    
+    
+</div>
+<?php include "../../Public/layouts/footer.php";?> 
