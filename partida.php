@@ -240,3 +240,15 @@ $(document).ready(function(){
 <!-- Footer content box -->
 <?php include "Public/layouts/footer.php";?> 
 
+<?php
+require_once "System/Classes/Partida.php";
+$busqueda=$_GET['busqueda'];
+
+$partida= new Partida();
+$result = $partida->buscPartida($busqueda);
+//var_dump($result);
+foreach($result as $row){
+    $nombre=$row->getNombre();
+    echo $nombre."<br>";
+}
+?>

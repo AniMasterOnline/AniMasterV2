@@ -53,6 +53,20 @@
             return $rtn;
         }
         
+        public function buscPartida($search){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida where nombre  LIKE '%$search%'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
+                //var_dump($Partida);
+                array_push($rtn, $Partida);
+            }
+            $db->close();
+            return $rtn;
+        }
+        
         public function viewPartida($id){
             $db = new connexio();
             $sql = "SELECT * FROM Partida where id_partida='$id'";

@@ -179,10 +179,11 @@
                     e.preventDefault();
                     $('#header').removeClass('search-toggled');
                     var busqueda = $('#top-search-input').val();
+                    
                     console.log(busqueda);
-                    
-                    
-                    
+                    var url = $(location).attr('href');
+                    console.log(url);
+                    location.href="/AniMasterV2/partida.php?busqueda="+busqueda;
                });
            })();
             console.log('Ready!');
