@@ -1364,7 +1364,7 @@ VALUES
 --
 -- Volcado de datos para la tabla `objeto_caracteristica`
 --
-INSERT INTO `objeto_caracteristica` (`id_caracteristica`, `id_objeto`, `valor`) 
+INSERT INTO `Objeto_Caracteristica` (`id_caracteristica`, `id_objeto`, `valor`) 
 VALUES 
 (1, 4, '60'),
 (2, 4, '-15'),
@@ -1715,7 +1715,7 @@ VALUES
 (28, 15, '');
 
 
-INSERT INTO `habilidades_esenciales` (`id_habilidad`, `nombre`, `efecto`, `coste`, `gnosis`, `tipo`) 
+INSERT INTO `Habilidades_Esenciales` (`id_habilidad`, `nombre`, `efecto`, `coste`, `gnosis`, `tipo`) 
 VALUES
 (1, 'Resistencia la cansancio', '+2 Cansancio', 10, 0, 'ventaja');
 
