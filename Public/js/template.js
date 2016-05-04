@@ -1,5 +1,6 @@
 (function($){
     $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
         //Init Custom scroll Bar
         //-----------------------------------------------
         function scrollBar(selector, theme, mousewheelaxis) {

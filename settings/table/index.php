@@ -48,8 +48,8 @@ include "../../Public/layouts/head.php";?>
                             
                             echo '  <div class="col-md-4">
                                         <div class="image-box style-2 m-b-20 bordered dark-bg z-depth-2-bottom">
-                                            <div class="overlay-container overlay-visible output">
-                                                <img class="partidaimg" src="../../Public/img/partida/'.$imagen.'" alt="">
+                                            <div class="overlay-container overlay-visible output" style="background-image: url(../../Public/img/partida/'.$imagen.');">
+                                                <img class="partidaimg" src="" alt="">
                                                 <a href="invite.php?token='.$token.'" class="overlay-link iwave"><i class="fa fa-share-alt fa-mesa"></i></a>
                                             </div>
                                             <div class="body">

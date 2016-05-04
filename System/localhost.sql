@@ -335,8 +335,6 @@ CREATE TABLE Ventaja_Efecto (
       id_efecto     int NOT NULL
 );
 
-ALTER TABLE Categoria_HP ADD PRIMARY KEY (id_categoria,id_HP);
-
 
 CREATE TABLE Personaje_Poderes (
       id_poder     int NOT NULL,
@@ -365,7 +363,6 @@ CREATE TABLE Categoria_HP (
       coste int,
       incr_nv  int
 );
-
 ALTER TABLE Categoria_HP ADD PRIMARY KEY (id_categoria,id_HP);
 
 CREATE TABLE Categoria_HS (
