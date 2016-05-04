@@ -32,12 +32,6 @@
             $db->close();
             return $result;
         }
-        public function returnToken(){
-            $db = new connexio();
-            $result = $db->query("UPDATE Partida SET nombre='$this->nombre', imagen='$this->imagen', descripcion='$this->descripcion',  anyo='$this->anyo', nv_sobrenatural='$this->nv_sobrenatural', limite='$this->limite' WHERE id_partida= '$this->id_partida'");
-            $db->close();
-            return $result;
-        }
         public function delete($var){
             $db = new connexio();
             $result = $sql = "delete from Partida where id_partida = $var";

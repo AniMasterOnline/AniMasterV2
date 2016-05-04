@@ -23,7 +23,7 @@ include "../../Public/layouts/head.php";?>
                         }
                         $result = (100 * $cont)/9;
                         echo '  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                    <div class="progress-bar bgm-brown b-0" role="progressbar" aria-valuenow="70"
                                     aria-valuemin="0" aria-valuemax="100" style="width:'.$result.'%; min-width: 3em;">
                                       '.$cont.' / 9
                                     </div>
@@ -72,7 +72,7 @@ include "../../Public/layouts/head.php";?>
                     }else{
                         echo '  <a href ="new_partida.php" type="button" class="btn btn-primary btn-lg btn-block m-b-5">Nueva Partida</a>';
                         echo '  <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                    <div class="progress-bar bgm-brown b-0" role="progressbar" aria-valuenow="70"
                                     aria-valuemin="0" aria-valuemax="100" style="width:0%; min-width: 3em;">
                                       0 / 9
                                     </div>
