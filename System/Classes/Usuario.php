@@ -11,6 +11,7 @@
         private $telefono;
         private $id_tipo;
         private $imagen;
+        private $num_partidas;
         
         //METODES
         public function add(){
@@ -177,6 +178,26 @@
             }
         }
         
+        public function modNum_Partidas($id, $num_partidas){
+            $db = new connexio();
+            $result = $db->query("UPDATE Usuario SET  num_partidas='$num_partidas' WHERE id_usuario= '$id'");
+            $db->close();
+            return $result;
+        }
+        public function returnNum_Partidas($id_usuario){ 
+            $db = new connexio();
+            $sql = "SELECT num_partidas FROM Usuario WHERE id_usuario='$id_usuario'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $count = $obj["num_partidas"];
+                }
+                return $count;
+            }else{
+                return null;
+            }
+        }
         
         //CONSTRUCTORS
         function __construct(){

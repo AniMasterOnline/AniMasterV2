@@ -27,9 +27,9 @@
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Partida = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
                 //var_dump($Partida);
-                array_push($rtn, $Partida);
+                array_push($rtn, $partida_usuari);
             }
             $db->close();
             return $rtn;
@@ -43,10 +43,10 @@
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $Partida = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
                 }
                 if($count == 1){
-                    return $Partida;
+                    return $partida_usuari;
                 }else{
                     return null;
                 }
@@ -54,19 +54,35 @@
                 return null;
             }
         }
-        public function viewPartida($id){
+        public function viewUsuari($id_usuario){
             $db = new connexio();
-            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id'";
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' ORDER BY pos ASC";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                    array_push($rtn, $partida_usuari);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
+        public function viewPartida($id_partida){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $Partida = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
                 }
                 if($count == 1){
-                    return $Partida;
+                    return $partida_usuari;
                 }else{
                     return null;
                 }

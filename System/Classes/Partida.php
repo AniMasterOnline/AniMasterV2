@@ -10,6 +10,7 @@
         private $anyo;
         private $nv_sobrenatural;
         private $limite;
+        private $token;
         
         //METODES
         public function add(){
@@ -20,6 +21,18 @@
             return $id;
         }
         public function modPartida(){
+            $db = new connexio();
+            $result = $db->query("UPDATE Partida SET nombre='$this->nombre', imagen='$this->imagen', descripcion='$this->descripcion',  anyo='$this->anyo', nv_sobrenatural='$this->nv_sobrenatural', limite='$this->limite' WHERE id_partida= '$this->id_partida'");
+            $db->close();
+            return $result;
+        }
+        public function modToken($id_partida, $token){
+            $db = new connexio();
+            $result = $db->query("UPDATE Partida SET token='$token' WHERE id_partida= '$id_partida'");
+            $db->close();
+            return $result;
+        }
+        public function returnToken(){
             $db = new connexio();
             $result = $db->query("UPDATE Partida SET nombre='$this->nombre', imagen='$this->imagen', descripcion='$this->descripcion',  anyo='$this->anyo', nv_sobrenatural='$this->nv_sobrenatural', limite='$this->limite' WHERE id_partida= '$this->id_partida'");
             $db->close();
@@ -38,7 +51,7 @@
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"]);
+                $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
                 //var_dump($Partida);
                 array_push($rtn, $Partida);
             }
@@ -55,7 +68,7 @@
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"]);
+                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
                 }
                 if($count == 1){
                     return $Partida;
@@ -85,6 +98,7 @@
             $this->anyo = "";
             $this->nv_sobrenatural = 0;
             $this->limite = 0;
+            $this->token = "";
         }
         
         function __construct7($a2, $a3, $a4, $a5, $a6, $a7, $a8){
@@ -96,9 +110,10 @@
             $this->anyo = $a6;
             $this->nv_sobrenatural = $a7;
             $this->limite = $a8;
+            $this->token = "";
         }
         
-        function __construct8($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8){
+        function __construct9($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9){
             $this->id_partida = $a1;
             $this->id_usuario = $a2;
             $this->nombre = $a3;
@@ -107,6 +122,7 @@
             $this->anyo = $a6;
             $this->nv_sobrenatural = $a7;
             $this->limite = $a8;
+            $this->token = $a9;
         }
            
         //METODES SET
@@ -134,6 +150,9 @@
         public function setLimite($limite) {
             $this->limite = $limite;
         }
+        public function setLToken($token) {
+            $this->limite = $token;
+        }
         
         //METODES GET 
         public function getId_Partida() {
@@ -159,6 +178,9 @@
         }
         public function getLimite() {
             return $this->limite;
+        }
+        public function getToken() {
+            return $this->token;
         }
     }
 ?>

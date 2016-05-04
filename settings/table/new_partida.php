@@ -1,63 +1,26 @@
 <!-- User Menu -- Header content box -->
 <?php 
-if(isset($_GET["pos"]) && !empty($_GET["pos"]) && ($_GET["pos"] >= 1 && $_GET["pos"] <= 9)){
+$title='Crear Partida';
+$migas='#Inicio|../../index.php#Mesa|../../settings/table/#Nueva Partida';
+include "../../Public/layouts/head.php";
+
+require_once('../../System/Classes/Usuario.php');
+$usuari = new Usuario();
+$num_partida = $usuari->returnNum_Partidas($value['id_usuario']);
+
+if($num_partida >= 0 && $num_partida < 9){
     
 }else{
     echo '<META http-equiv="refresh" content="0;URL=index.php">';
 }
-
-$title='Index';
-$migas='#Inicio|../../index.php#Mesa|../../settings/table/#NewSlot <i class="fa fa-angle-right" aria-hidden="true"></i> '.$_GET["pos"];
-include "../../Public/layouts/head.php";
-
-
 ?>
-
-<style>
-    .btn-file {
-        position: relative;
-        overflow: hidden;
-    }
-    .btn-file input[type=file] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
-        text-align: right;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        outline: none;
-        background: white;
-        cursor: inherit;
-        display: block;
-    }
-    .output{
-        background-color: whitesmoke;
-        width: 100%;
-        height: 250px;
-    }
-    .output > img{
-        width: 100%;
-        height: 100%;
-    }
-    textarea {
-        resize: none;
-        height: 4em;
-    }
-</style>
-
 <!-- Body content box -->
 <div class="container" >
     <form method="POST" name="myForm" action="../../System/Protocols/Partida_Crear.php" enctype="multipart/form-data">
-        <?php
-            echo '<input type="hidden"  id="inputPos" class="form-control" name="pos" value="'.$_GET["pos"].'" readonly >';
-        ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-12 cinput m-l-15 ">
-                    <h2 class="form-signin-heading">Crear nueva partida <small><?php echo 'Slot-'.$_GET["pos"]; ?></small></h2>
+                    <h2 class="form-signin-heading">Crear nueva partida</h2>
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-12 cinput ">
@@ -121,46 +84,5 @@ include "../../Public/layouts/head.php";
         </div>
     </form>
 </div> 
-    <hr>
-    <div class="col-md-12 cinput">
-        <h2 class="form-signin-heading">Lista de partida</h2>
-    </div>
-    
-<?php
-include "../../System/Classes/Partida.php";
-$partida=new Partida();
-$partida=$partida->view_all();
-foreach ($partida as $row){
-    $id_partida = $row->getId_Partida();
-    $nombre = $row->getNombre();
-    $desc = $row->getDescripcion();
-    $anyo = $row->getAnyo();
-    $imagen= $row->getImagen();
-    $nivel=$row->getNv_Sobrenatural();
-    
-    echo '<tr>'
-    . '<td>'.$id_partida.' </td>'
-    . '<td>'.$nombre.' </td>'
-    . '<td>'.$desc.' </td>'
-    . '<td>'.$anyo.' </td>'
-    . '<td>'.$imagen.' </td>'
-    . '<td>'.$nivel.'</td>'
-    . '<td><form method="POST" action="modPartida.php">'
-            . '<input type="hidden" name="id_partida" value="'.$id_partida.'">'
-            . '<input type="hidden" name="nombre" value="'.$nombre.'">'
-            . '<input type="hidden" name="desc" value="'.$desc.'">'
-            . '<input type="hidden" name="imagen" value="'.$imagen.'">'
-            . '<input type="hidden" name="nivel" value="'.$nivel.'">'
-            . '<input type="hidden" name="anyo" value="'.$anyo.'">'
-            . '<input type="submit" name="modificar" value="Modificar">'
-            . '</form></td>'
-    . '<td><form method="POST" action="../System/Protocols/Partida_Del.php">'
-            . '<input type="hidden" name="id_partida" value="'.$id_partida.'">'
-            . '<input type="submit" name="eliminar" value="Eliminar">'
-            . '</form></td>'
-            . '</tr></table>';
-}
-?>
-    </div>
 <?php include "../../Public/layouts/footer.php";?> 
 

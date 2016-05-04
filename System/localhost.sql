@@ -26,6 +26,7 @@ CREATE TABLE Partida (
       anyo     varchar(8),
       nv_sobrenatural     int,
       limite     int,
+      token char(40),
       PRIMARY KEY (`id_partida`),
       KEY `id_usuario` (`id_usuario`)
 );
@@ -42,6 +43,7 @@ CREATE TABLE Usuario (
       telefono     varchar(32),
       password     varchar(32),
       id_tipo     int,
+      num_partidas int DEFAULT '0', -- < value on guardar el nombre de partides actuals i poder limitaru amb php
       PRIMARY KEY (`id_usuario`)
 );
 
