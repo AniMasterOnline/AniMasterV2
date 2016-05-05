@@ -1,3 +1,7 @@
+<?php 
+$title='Mesa';
+$migas='#Home|../../index.php#Mesa|../../settings/table/';
+include "../../Public/layouts/head.php";?>
 <?php
     if(isset($_GET['id']) && !empty($_GET['id'])){
         $id_partida = $_GET['id'];
@@ -5,7 +9,9 @@
         require_once "../../System/Classes/Partida.php";
         $partida= new Partida();  
         $partida= $partida->viewPartida($id_partida);
-        
+        if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
+            echo '<META http-equiv="refresh" content="0;URL=index.php">';
+        }
         $nombre = $partida->getNombre();
         $imagen = $partida->getImagen();
         $descripcion = $partida->getDescripcion();
@@ -18,10 +24,6 @@
         echo '<META http-equiv="refresh" content="0;URL=index.php">';
     }
 ?>
-<?php 
-$title='Mesa';
-$migas='#Home|../../index.php#Mesa|../../settings/table/';
-include "../../Public/layouts/head.php";?>
 
 
 <!-- Body content box -->
@@ -44,7 +46,7 @@ include "../../Public/layouts/head.php";?>
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="#">Configuraciones</a>
+                                    <a <?php echo 'href="mod_partida.php?id='.$id_partida.'"';?>>Configuraciones</a>
                                 </li>
                             </ul>
                         </li>
