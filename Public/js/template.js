@@ -115,7 +115,7 @@
 
         // Notify Plugin
         //-----------------------------------------------
-            BootstrapNotify('Configure this in template.js','default', 20,'bottom','left', 1000, true);
+            //BootstrapNotify('Configure this in template.js','default', 20,'bottom','left', 1000, true);
             function BootstrapNotify(inMsg, inType, offset ,pl_from ,pl_align, time_Delay, allow_Close) {
                 $.notify({
                     // options

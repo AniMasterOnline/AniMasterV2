@@ -1,15 +1,28 @@
 <?php 
 $title='Modificar partida';
-$migas='#Home|../index.php#Configuració';
-include "../Public/layouts/head.php";?>
-
+$migas='#Home|../../index.php#Mesa|../../settings/table/#Modificar Partida';
+include "../../Public/layouts/head.php";?>
 <?php
-$id_partida=$_POST['id_partida'];
-$nombre=$_POST['nombre'];
-$desc=$_POST['desc'];
-$imagen=$_POST['imagen'];
-$anyo=$_POST['anyo'];
-$nivel=$_POST['nivel'];
+    if(isset($_GET['id']) && !empty($_GET['id'])){
+        $id_partida = $_GET['id'];
+        
+        require_once "../../System/Classes/Partida.php";
+        $partida= new Partida();  
+        $partida= $partida->viewPartida($id_partida);
+        if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
+            echo '<META http-equiv="refresh" content="0;URL=index.php">';
+        }
+        $nombre = $partida->getNombre();
+        $imagen = $partida->getImagen();
+        $descripcion = $partida->getDescripcion();
+        $anyo = $partida->getAnyo();
+        $nv_sobrenatural = $partida->getNv_Sobrenatural();
+        $limite = $partida->getLimite();
+        $token = $partida->getToken();
+        
+    }else{
+        echo '<META http-equiv="refresh" content="0;URL=index.php">';
+    }
 ?>
 <!-- Content body -->
 <style>
@@ -38,64 +51,80 @@ $nivel=$_POST['nivel'];
 <div class="container" >
     <form method="POST" name="myForm" action="../System/Protocols/Partida_Mod.php" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-md-12 cinput">
-                <h2 class="form-signin-heading">Modificar partida</h2>
-            </div>
-            <div class="col-md-12 cinput">
-                <input type="hidden"  id="inputNombre"  class="form-control" name="id_partida" value="<?php echo $id_partida ?>" required autofocus>
-            </div>
-            <div class="col-md-12 cinput">
-                <label for="inputNombre" class="sr-only">Nombre</label>
-                <input type="text"  id="inputNombre"  class="form-control" name="nombre" placeholder="Nombre *" value="<?php echo $nombre ?>" required autofocus>
-            </div>
-            
-            <div class="col-md-6 cinput">
-                <label for="inputDescripcion" class="sr-only">Descripcion</label>
-                <input type="text"  id="inputDescripcion"  class="form-control" name="descripcion" placeholder="Descripcion *" value="<?php echo $desc ?>" required>
-            </div>
- 
-            <div class="col-md-6 cinput">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <span class="btn btn-primary btn-file">
-                            Browse… <input type="file" name="imagen" required>
-                        </span>
-                    </span>
-                    <input id="fileselected" class="form-control" readonly="" type="text" style="width:430px;">
-                    <a href="#myModal" data-toggle="modal"><img src="../Public/img/partida/<?php echo $imagen ?>" style="width:33px; height:33px;"></a>
+            <div class="col-md-12">
+                <div class="col-md-12 cinput m-l-15 ">
+                    <h2 class="form-signin-heading">Modificar partida <small><?php echo $nombre; ?></small></h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-12 cinput ">
+                        <div class="input-group">
+                            <span class="input-group-addon">Jugadores Maximos</span>
+                            <select id="max-players" class="selectpicker form-control" name="max_players" data-live-search="true" title=" Sin incluir al master">
+                                <option>2</option>
+                                <option>3</option>
+                                <option selected="selected" >4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                            </select>
+                        </div>
+                        <input type="hidden"  id="id_partida"  class="form-control" name="id_partida" value="<?php echo $id_partida ?>">
+                    </div>
+                    <div class="col-md-6 cinput">
+                        <label for="inputAnyo" class="sr-only">Año</label>
+                        <input type="text"  id="inputAnyo"  class="form-control" name="anyo" placeholder="Año *" value="<?php echo $anyo ?>" required title="año de la partida">
+                    </div>
+                    <div class="col-md-6 cinput">
+                        <label for="inputNivel" class="sr-only">Nivel</label>
+                        <input type="text"  id="inputNivel"  class="form-control" name="nivel" placeholder="Nivel *" value="<?php echo $nv_sobrenatural ?>" required title="Nivel sobrenatural de la partida">
+                    </div>
+                    <div class="col-md-12 cinput">
+                        <label for="inputDescripcion" class="sr-only">Descripcion</label>
+                        <textarea type="text"  id="inputDescripcion"  class="form-control" name="descripcion" placeholder="Descripcion *" rows="10" required title="descripción de la partida"><?php echo $descripcion ?></textarea>
+                    </div>
                     
                 </div>
-                <script>
-                    $(document).ready( function() {
-                        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-                            console.log(numFiles);
-                            console.log(label);
-                            $('#fileselected').val(label);
-                        });
-                        $(document).on('change', '.btn-file :file', function() {
-                            var input = $(this),
-                                numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-                                input.trigger('fileselect', [numFiles, label]);
-                        });
-                    });
-                </script>
+                <div class="col-md-6">
+                    <div class="output m-b-10">
+                        <img id="output" >
+                    </div>
+                    <div class="col-md-12 cinput">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-primary btn-file">
+                                    Browse… <input type="file" name="imagen" onchange="loadFile(event)">
+                                </span>
+                            </span>
+                            <input id="fileselected" class="form-control " readonly="" type="text" >
+                        </div>
+                        <script>
+                            $(document).ready( function() {
+                                $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+                                    console.log(numFiles);
+                                    console.log(label);
+                                    $('#fileselected').val(label);
+                                });
+                                $(document).on('change', '.btn-file :file', function() {
+                                    var input = $(this),
+                                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                                        input.trigger('fileselect', [numFiles, label]);
+                                });
+                            });
+                            var loadFile = function(event) {
+                                console.log('here');
+                                var output = document.getElementById('output');
+                                output.src = URL.createObjectURL(event.target.files[0]);
+                            };
+                        </script>
+                    </div>
+                </div>
+                <div class="col-md-12 cinput m-l-15">
+                    <button class="btn btn-lg btn-warning btn-block" type="submit">Modificar Partida</button>
+                </div>
             </div>
-            
-            <div class="col-md-6 cinput">
-                <label for="inputAnyo" class="sr-only">Año</label>
-                <input type="text"  id="inputAnyo"  class="form-control" name="anyo" placeholder="Año *" value="<?php echo $anyo ?>" required>
-            </div>
-            
-            <div class="col-md-6 cinput">
-                <label for="inputNivel" class="sr-only">Nivel</label>
-                <input type="text"  id="inputNivel"  class="form-control" name="nivel" placeholder="Nivel *" value="<?php echo $nivel ?>"  required>
-            </div>
-            
-            <div class="col-md-12 cinput">
-                <button class="btn btn-lg btn-success btn-block" type="submit">Modificar Partida</button>
-            </div>
-            
         </div>
     </form>
 </div>
@@ -108,5 +137,5 @@ $nivel=$_POST['nivel'];
   </div>
 </div>
 <!-- Footer content box -->
-<?php include "../Public/layouts/footer.php";?> 
+<?php include "../../Public/layouts/footer.php";?> 
 

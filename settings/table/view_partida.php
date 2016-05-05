@@ -1,6 +1,6 @@
 <?php 
-$title='Mesa';
-$migas='#Home|../../index.php#Mesa|../../settings/table/';
+$title='Panel de la partida';
+$migas='#Home|../../index.php#Mesa|../../settings/table/# Panel de la partida';
 include "../../Public/layouts/head.php";?>
 <?php
     if(isset($_GET['id']) && !empty($_GET['id'])){

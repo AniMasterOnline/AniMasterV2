@@ -76,7 +76,7 @@ if($num_partida >= 0 && $num_partida < 9){
                         </script>
                     </div>
                 </div>
-                <div class="col-md-12 cinput">
+                <div class="col-md-12 cinput m-l-15">
                     <button class="btn btn-lg btn-success btn-block" type="submit">Crear Partida</button>
                 </div>
             </div>
