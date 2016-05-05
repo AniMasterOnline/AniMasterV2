@@ -298,19 +298,19 @@
         public function getPassword($password) {
             $this->password = $password;
         }
-        public function getNom($nombre) {
+        public function getNombre($nombre) {
             $this->nombre = $nombre;
         }
-        public function getCognombre($apellido) {
+        public function getApellido($apellido) {
             $this->apellido = $apellido;
         }
         public function getTelefon($telefono) {
             $this->telefono = $telefono;
         }
-        public function getId_Tipus($id_tipo) {
+        public function getId_Tipo($id_tipo) {
             $this->id_tipo = $id_tipo;
         }
-        public function getImatge($imagen) {
+        public function getImagen($imagen) {
             $this->imagen = $imagen;
         }
     }

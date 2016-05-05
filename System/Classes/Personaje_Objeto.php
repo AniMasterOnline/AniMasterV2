@@ -1,51 +1,51 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Caracteristicas{
+    class Personaje_HS{
         /*Atributs*/
-        private $base;
-        private $bono;
+        private $id_objeto;
+        private $id_personaje;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Caracteristicas(`base`, `bono`) "
-                    . "VALUES ('$this->base', '$this->bono')");
+            $result = $db->query("INSERT INTO Personaje_HS(`id_personaje`, `id_objeto`) "
+                    . "VALUES ('$this->id_personaje', '$this->id_objeto')");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Caracteristicas where base = $var";
+            $result = $sql = "delete from Personaje_HS where id_objeto = $var";
             $db->query($sql);
             return $result;
         }
-        
+    
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristicas";
+            $sql = "SELECT * FROM Personaje_HS";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $caracteristicas = new Caracteristicas($obj["base"],$obj["bono"]);
-                array_push($rtn, $caracteristicas);
+                $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_objeto"]);
+                //var_dump($Partida);
+                array_push($rtn, $partida_objeto);
             }
             $db->close();
             return $rtn;
         }
-        
-        public function viewCar($base){
+        public function viewObj($id_personaje){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristicas where base='$base'";
+            $sql = "SELECT * FROM Personaje_HS where id_personaje='$id_personaje'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $base = new Caracteristicas($obj["base"],$obj["bono"]);
+                    $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_objeto"]);
                 }
                 if($count == 1){
-                    return $base;
+                    return $partida_objeto;
                 }else{
                     return null;
                 }
@@ -65,33 +65,29 @@
             }
         }
         function __construct0(){
-            $this->base = 0;
-            $this->bono = 0;
+            $this->id_personaje = 0;
+            $this->id_objeto = 0;
         }
         
-        function __construct1($a2){
-            $this->base = "";
-            $this->bono = $a2;
-        }
         function __construct2($a1, $a2){
-            $this->base = $a1;
-            $this->bono = $a2;
+            $this->id_personaje = $a1;
+            $this->id_objeto = $a2;
         }
            
         //METODES SET
-        public function setBase($base) {
-            $this->base = $base;
+        public function setId_Personaje($id_personaje) {
+            $this->id_personaje = $id_personaje;
         }
-        public function setBono($bono) {
-            $this->bono = $bono;
+        public function setId_Objeto($id_objeto) {
+            $this->id_objeto = $id_objeto;
         }
         
         //METODES GET 
-        public function getBase() {
-            return $this->base;
+        public function getId_Personaje() {
+            return $this->id_personaje;
         }
-        public function getBono() {
-            return $this->bono;
+        public function getId_Objeto() {
+            return $this->id_objeto;
         }
     }
 ?>
