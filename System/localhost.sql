@@ -65,8 +65,8 @@ CREATE TABLE Personaje (
       ojos     varchar(32),
       altura     varchar(32),
       peso     varchar(32),
-      apariencia     int(2),
-      tamanyo     int(2),
+      apariencia     int,
+      tamanyo     int,
       exp_actual     int,
       c_AGI     int,
       c_CON     int,
@@ -228,11 +228,9 @@ CREATE TABLE Efecto (
 
 CREATE TABLE Habilidades_Esenciales (
       id_habilidad     int NOT NULL AUTO_INCREMENT,
-      nombre     varchar(32),
-      efecto     varchar(32),
+      nombre     varchar(150),
       coste     int,
       gnosis     int,
-      tipo     varchar(16),
       PRIMARY KEY (`id_habilidad`)
 );
 
@@ -335,6 +333,8 @@ CREATE TABLE Ventaja_Efecto (
       id_efecto     int NOT NULL
 );
 
+ALTER TABLE Ventaja_Efecto ADD PRIMARY KEY (id_ventaja,id_efecto);
+
 
 CREATE TABLE Personaje_Poderes (
       id_poder     int NOT NULL,
@@ -363,6 +363,7 @@ CREATE TABLE Categoria_HP (
       coste int,
       incr_nv  int
 );
+
 ALTER TABLE Categoria_HP ADD PRIMARY KEY (id_categoria,id_HP);
 
 CREATE TABLE Categoria_HS (
@@ -1719,9 +1720,51 @@ VALUES
 (28, 15, '');
 
 
-INSERT INTO `Habilidades_Esenciales` (`id_habilidad`, `nombre`, `coste`, `gnosis`, `tipo`) 
+INSERT INTO `Habilidades_Esenciales` (`id_habilidad`, `nombre`, `coste`, `gnosis`) 
 VALUES
-(1, 'Resistencia la cansancio', 10, 0, 'ventaja');
+(1, 'Resistencia al cansancio', -10,0),
+(2, 'Sentido agudizado', -10,0),
+(3, 'Afinidad', -20,5),
+(4, 'Características físicas sobrehumanas', -20,0),
+(5, 'Características anímicas sobrehumanas', -20,5),
+(6, 'Características físicas sobrenaturales', -40,20),
+(7, 'Características anímicas sobrenaturales', -40,20),
+(8, 'Características físicas divinas', -80,30),
+(9, 'Características anímicas divinas', -80,35),
+(10, 'Atributo incrementado +1', -20,0),
+(11, 'Atributo incrementado +2', -40,5),
+(12, 'Atributo incrementado +3', -60,15),
+(13, 'Tamaño innatural', -10,0),
+(14, 'Ambidiestro', -30,0),
+(15, 'Inhumanidad', -10,0),
+(16, 'Zen', -20,25),
+(17, 'Respiración acuática', -10,0),
+(18, 'Sin inconsciencia', -10,5),
+(19, 'Incansable', -20,15),
+(20, 'No respira', -10,15),
+(21, 'No se alimenta', -10,15),
+(22, 'No duerme', -10,15),
+(23, 'Inmune a venenos naturales', -20,20),
+(24, 'Inmune a enfermedades naturales', -10,20),
+(25, 'Inmune a fenómenos climáticos', -10,15),
+(26, 'Exención física', -50,20),
+(27, 'Inmunidad natural a un elemento Mitad de daño', -10,20),
+(28, 'Inmunidad natural a un elemento Inmunidad Completa', -30,25),
+(29, 'Inmunidad Psicológica', -20,10),
+
+(30, 'Vicio racial', 10,0),
+(31, 'Miembros atrofiados', 20,0),
+(32, 'Miedo racial', 10,10),
+(33, 'Terror racial', 20,10),
+(34, 'Carencia de un sentido', 10,0),
+(35, 'Ciego', 20,0),
+(36, 'Necesidad física', 10,0),
+(37, 'Necesidad extrema', 20,10),
+(38, 'Vulnerable a un elemento 50% más de daño', 10,20),
+(39, 'Vulnerable a un elemento doble de daño', 20,20),
+(40, 'Vulnerable a un tipo de daño', 20,10);
+
+
 
 
 

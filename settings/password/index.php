@@ -4,6 +4,56 @@ $title='Contraseña';
 $migas='#Home|../../index.php#Configuración#Contraseña|../../settings/password/';
 include "../../Public/layouts/head.php";?>
 
+<script>
+$(document).ready(function(){
+    $('#mod1').click(function(){
+        var pass = {
+            oldPass : $('#inputPassold').val(),
+            newPass : $('#inputPass').val(),
+            newPassAgain : $('#inputPass2').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Usuari_Pass.php",
+            data: pass,
+            success: function (response) {
+                console.log(response);
+                if(response == 001){
+                    $.notify({
+                            // options
+                            message: 'La contraseña no es correcta!'
+                    },{
+                            // settings
+                            type: 'inverse',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 002){
+                    $.notify({
+                            // options
+                            message: 'Las contraseñas no coinciden!'
+                    },{
+                            // settings
+                            type: 'inverse',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 003){
+                    location.reload();
+                }
+            }
+        });
+    });
+    
+});
+</script>
+
 <!-- Body content box -->
 <div class="container">
     <div class="row" >
