@@ -34,7 +34,7 @@
             $db->close();
             return $rtn;
         }
-        public function viewParUsr($id_usuario, $pos){
+        public function viewPos($id_usuario, $pos){
             $db = new connexio();
             $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' AND pos='$pos'";
             $query = $db->query($sql);
@@ -54,7 +54,42 @@
                 return null;
             }
         }
-
+        public function viewUsuari($id_usuario){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' ORDER BY pos ASC";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                    array_push($rtn, $partida_usuari);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
+        public function viewPartida($id_partida){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida'";
+            $query = $db->query($sql);
+            $db->close();
+            $count = 0;
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $count++;
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                }
+                if($count == 1){
+                    return $partida_usuari;
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+        }
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();
