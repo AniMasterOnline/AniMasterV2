@@ -1,52 +1,51 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Caracteristica{
+    class Puntos_Vida{
         /*Atributs*/
-        private $id_caracteristica;
-        private $nombre;
+        private $id_constitucion;
+        private $cantidad;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Caracteristica(`nombre`) "
-                    . "VALUES ('$this->nombre')");
+            $result = $db->query("INSERT INTO Puntos_Vida(`id_constitucion`, `cantidad`) "
+                    . "VALUES ('$this->id_constitucion', '$this->cantidad')");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Caracteristica where id_caracteristica = $var";
+            $result = $sql = "delete from Puntos_Vida where id_constitucion = $var";
             $db->query($sql);
             return $result;
         }
-        
+    
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristica";
+            $sql = "SELECT * FROM Puntos_Vida";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
+                $partida_objeto = new Puntos_Vida($obj["cantidad"],$obj["id_constitucion"]);
                 //var_dump($Partida);
-                array_push($rtn, $caracteristica);
+                array_push($rtn, $partida_objeto);
             }
             $db->close();
             return $rtn;
         }
-        
-        public function viewCar($id_caracteristica){
+        public function viewVida($id){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristica where id_caracteristica='$id_caracteristica'";
+            $sql = "SELECT * FROM Puntos_Vida where id_constitucion='$id'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $id_caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
+                    $partida_objeto = new Puntos_Vida($obj["cantidad"],$obj["id_constitucion"]);
                 }
                 if($count == 1){
-                    return $id_caracteristica;
+                    return $partida_objeto;
                 }else{
                     return null;
                 }
@@ -66,33 +65,29 @@
             }
         }
         function __construct0(){
-            $this->id_caracteristica = 0;
-            $this->nombre = 0;
+            $this->id_constitucion = 0;
+            $this->cantidad = 0;
         }
         
-        function __construct1($a2){
-            $this->id_caracteristica = "";
-            $this->nombre = $a2;
-        }
         function __construct2($a1, $a2){
-            $this->id_caracteristica = $a1;
-            $this->nombre = $a2;
+            $this->id_constitucion = $a1;
+            $this->cantidad = $a2;
         }
            
         //METODES SET
-        public function setId_Caracteristica($id_caracteristica) {
-            $this->id_caracteristica = $id_caracteristica;
+        public function setId_Constitucion($id_constitucion) {
+            $this->id_constitucion = $id_constitucion;
         }
-        public function setNombre($nombre) {
-            $this->nombre = $nombre;
+        public function setCantidad($cantidad) {
+            $this->cantidad = $cantidad;
         }
         
         //METODES GET 
-        public function getId_Caracteristica() {
-            return $this->id_caracteristica;
+        public function getId_Constitucion() {
+            return $this->id_constitucion;
         }
-        public function getNombre() {
-            return $this->nombre;
+        public function getCantidad() {
+            return $this->cantidad;
         }
     }
 ?>

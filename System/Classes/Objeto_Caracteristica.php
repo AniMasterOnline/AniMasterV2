@@ -1,52 +1,52 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Caracteristica{
+    class Objeto_Caracteristica{
         /*Atributs*/
         private $id_caracteristica;
-        private $nombre;
+        private $id_objeto;
+        private $valor;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Caracteristica(`nombre`) "
-                    . "VALUES ('$this->nombre')");
+            $result = $db->query("INSERT INTO Objeto_Caracteristica(`id_caracteristica`, `id_objeto`, `valor`) "
+                    . "VALUES ('$this->id_caracteristica', '$this->id_objeto', '$this->valor')");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Caracteristica where id_caracteristica = $var";
+            $result = $sql = "delete from Objeto_Caracteristica where id_caracteristica = $var";
             $db->query($sql);
             return $result;
         }
         
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristica";
+            $sql = "SELECT * FROM Objeto_Caracteristica";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
-                //var_dump($Partida);
-                array_push($rtn, $caracteristica);
+                $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
+                array_push($rtn, $objCaracter);
             }
             $db->close();
             return $rtn;
         }
         
-        public function viewCar($id_caracteristica){
+        public function viewObjCar($id_caracteristica){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristica where id_caracteristica='$id_caracteristica'";
+            $sql = "SELECT * FROM Objeto_Caracteristica where id_caracteristica='$id_caracteristica'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $id_caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
+                    $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
                 }
                 if($count == 1){
-                    return $id_caracteristica;
+                    return $objCaracter;
                 }else{
                     return null;
                 }
@@ -67,32 +67,41 @@
         }
         function __construct0(){
             $this->id_caracteristica = 0;
-            $this->nombre = 0;
+            $this->id_objeto = 0;
+            $this->valor = 0;
         }
         
-        function __construct1($a2){
+        function __construct2($a2, $a3){
             $this->id_caracteristica = "";
-            $this->nombre = $a2;
+            $this->id_objeto = $a2;
+            $this->valor = $a3;
         }
-        function __construct2($a1, $a2){
+        function __construct3($a1, $a2, $a3){
             $this->id_caracteristica = $a1;
-            $this->nombre = $a2;
+            $this->id_objeto = $a2;
+            $this->valor = $a3;
         }
            
         //METODES SET
         public function setId_Caracteristica($id_caracteristica) {
             $this->id_caracteristica = $id_caracteristica;
         }
-        public function setNombre($nombre) {
-            $this->nombre = $nombre;
+        public function setId_Objeto($id_objeto) {
+            $this->id_objeto = $id_objeto;
+        }
+        public function setValor($valor) {
+            $this->valor = $valor;
         }
         
         //METODES GET 
         public function getId_Caracteristica() {
             return $this->id_caracteristica;
         }
-        public function getNombre() {
-            return $this->nombre;
+        public function getId_Objeto() {
+            return $this->id_objeto;
+        }
+        public function getValor() {
+            return $this->valor;
         }
     }
 ?>

@@ -1,52 +1,51 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Habilidades_Primarias{
+    class Personaje_HP{
         /*Atributs*/
         private $id_HP;
-        private $nombre;
-        private $caracteristica;
+        private $id_personaje;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Habilidades_Primarias(`nombre`, `caracteristica`) "
-                    . "VALUES ('$this->nombre', '$this->caracteristica')");
+            $result = $db->query("INSERT INTO Personaje_HP(`id_personaje`, `id_HP`) "
+                    . "VALUES ('$this->id_personaje', '$this->id_HP')");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Habilidades_Primarias where id_HP = $var";
+            $result = $sql = "delete from Personaje_HP where id_HP = $var";
             $db->query($sql);
             return $result;
         }
-        
+    
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Habilidades_Primarias";
+            $sql = "SELECT * FROM Personaje_HP";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $habilidad = new Habilidades_Primarias($obj["id_HP"],$obj["nombre"],$obj["caracteristica"]);
-                array_push($rtn, $habilidad);
+                $partida_objeto = new Personaje_HP($obj["id_personaje"],$obj["id_HP"]);
+                //var_dump($Partida);
+                array_push($rtn, $partida_objeto);
             }
             $db->close();
             return $rtn;
         }
-        
-        public function viewHP($id_HP){
+        public function viewObj($id_personaje){
             $db = new connexio();
-            $sql = "SELECT * FROM Habilidades_Primarias where id_HP='$id_HP'";
+            $sql = "SELECT * FROM Personaje_HP where id_personaje='$id_personaje'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $habilidad = new Habilidades_Primarias($obj["id_HP"],$obj["nombre"],$obj["caracteristica"]);
+                    $partida_objeto = new Personaje_HP($obj["id_personaje"],$obj["id_HP"]);
                 }
                 if($count == 1){
-                    return $habilidad;
+                    return $partida_objeto;
                 }else{
                     return null;
                 }
@@ -66,42 +65,29 @@
             }
         }
         function __construct0(){
+            $this->id_personaje = 0;
             $this->id_HP = 0;
-            $this->nombre = 0;
-            $this->caracteristica = 0;
         }
         
-        function __construct2($a2, $a3){
-            $this->id_HP = "";
-            $this->nombre = $a2;
-            $this->caracteristica = $a3;
-        }
-        function __construct3($a1, $a2, $a3){
-            $this->id_HP = $a1;
-            $this->nombre = $a2;
-            $this->caracteristica = $a3;
+        function __construct2($a1, $a2){
+            $this->id_personaje = $a1;
+            $this->id_HP = $a2;
         }
            
         //METODES SET
+        public function setId_Personaje($id_personaje) {
+            $this->id_personaje = $id_personaje;
+        }
         public function setId_HP($id_HP) {
             $this->id_HP = $id_HP;
         }
-        public function setNombre($nombre) {
-            $this->nombre = $nombre;
-        }
-        public function setCaracteristica($caracteristica) {
-            $this->caracteristica = $caracteristica;
-        }
         
         //METODES GET 
+        public function getId_Personaje() {
+            return $this->id_personaje;
+        }
         public function getId_HP() {
             return $this->id_HP;
-        }
-        public function getNombre() {
-            return $this->nombre;
-        }
-        public function getCaracteristica() {
-            return $this->caracteristica;
         }
     }
 ?>

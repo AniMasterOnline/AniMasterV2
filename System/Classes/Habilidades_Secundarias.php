@@ -1,53 +1,53 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Categoria_HS{
+    class Habilidades_Secundarias{
         /*Atributs*/
-        private $id_categoria;
         private $id_HS;
-        private $coste;
-        private $incr_nv;
+        private $nombre;
+        private $id_rama;
+        private $caracteristica;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Categoria_HS(`id_categoria`, `id_HS`, `coste`, `incr_nv`) "
-                    . "VALUES ('$this->id_categoria', '$this->id_HS', '$this->coste', '$this->incr_nv')");
+            $result = $db->query("INSERT INTO Habilidades_Secundarias(`nombre`, `id_rama`, `caracteristica`) "
+                    . "VALUES ('$this->nombre', '$this->id_rama', '$this->caracteristica')");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Categoria_HS where id_categoria = $var";
+            $result = $sql = "delete from Habilidades_Secundarias where id_HS = $var";
             $db->query($sql);
             return $result;
         }
         
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Categoria_HS";
+            $sql = "SELECT * FROM Habilidades_Secundarias";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $categoria = new Categoria_HS($obj["id_categoria"],$obj["id_HS"],$obj["coste"],$obj["incr_nv"]);
-                array_push($rtn, $categoria);
+                $habilidad = new Habilidades_Secundarias($obj["id_HS"],$obj["nombre"],$obj["id_rama"],$obj["caracteristica"]);
+                array_push($rtn, $habilidad);
             }
             $db->close();
             return $rtn;
         }
         
-        public function viewCatHS($id_categoria){
+        public function viewHS($id_HS){
             $db = new connexio();
-            $sql = "SELECT * FROM Categoria_HS where id_categoria='$id_categoria'";
+            $sql = "SELECT * FROM Habilidades_Secundarias where id_HS='$id_HS'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $id_categoria = new Categoria_HS($obj["id_categoria"],$obj["id_HS"],$obj["coste"],$obj["incr_nv"]);
+                    $habilidad = new Habilidades_Secundarias($obj["id_HS"],$obj["nombre"],$obj["id_rama"],$obj["caracteristica"]);
                 }
                 if($count == 1){
-                    return $id_categoria;
+                    return $habilidad;
                 }else{
                     return null;
                 }
@@ -67,51 +67,51 @@
             }
         }
         function __construct0(){
-            $this->id_categoria = 0;
             $this->id_HS = 0;
-            $this->coste = 0;
-            $this->incr_nv = 0;
+            $this->nombre = 0;
+            $this->id_rama = 0;
+            $this->caracteristica = 0;
         }
         
         function __construct3($a2, $a3, $a4){
-            $this->id_categoria = "";
-            $this->id_HS = $a2;
-            $this->coste = $a3;
-            $this->incr_nv = $a4;
+            $this->id_HS = "";
+            $this->nombre = $a2;
+            $this->id_rama = $a3;
+            $this->caracteristica = $a4;
         }
         function __construct4($a1, $a2, $a3, $a4){
-            $this->id_categoria = $a1;
-            $this->id_HS = $a2;
-            $this->coste = $a3;
-            $this->incr_nv = $a4;
+            $this->id_HS = $a1;
+            $this->nombre = $a2;
+            $this->id_rama = $a3;
+            $this->caracteristica = $a4;
         }
            
         //METODES SET
-        public function setId_Categoria($id_categoria) {
-            $this->id_categoria = $id_categoria;
-        }
         public function setId_HS($id_HS) {
             $this->id_HS = $id_HS;
         }
-        public function setCoste($coste) {
-            $this->coste = $coste;
+        public function setNombre($nombre) {
+            $this->nombre = $nombre;
         }
-        public function setIncr_Nv($incr_nv) {
-            $this->incr_nv = $incr_nv;
+        public function setId_Rama($id_rama) {
+            $this->id_rama = $id_rama;
+        }
+        public function setCaracteristica($caracteristica) {
+            $this->caracteristica = $caracteristica;
         }
         
         //METODES GET 
-        public function getId_Categoria() {
-            return $this->id_categoria;
-        }
         public function getId_HS() {
             return $this->id_HS;
         }
-        public function getCoste() {
-            return $this->coste;
+        public function getNombre() {
+            return $this->nombre;
         }
-        public function getIncr_Nv() {
-            return $this->incr_nv;
+        public function getId_Rama() {
+            return $this->id_rama;
+        }
+        public function getCaracteristica() {
+            return $this->caracteristica;
         }
     }
 ?>

@@ -12,8 +12,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Habilidades_Esenciales(`id_habilidad`, `nombre`, `efecto`, `coste`, `gnosis`, `tipo`) "
-                    . "VALUES ('$this->id_habilidad', '$this->nombre', '$this->efecto', '$this->coste', '$this->gnosis', '$this->tipo')");
+            $result = $db->query("INSERT INTO Habilidades_Esenciales(`nombre`, `efecto`, `coste`, `gnosis`, `tipo`) "
+                    . "VALUES ('$this->nombre', '$this->efecto', '$this->coste', '$this->gnosis', '$this->tipo')");
             $db->close();
             return $result;
         }
@@ -37,7 +37,7 @@
             return $rtn;
         }
         
-        public function viewCat($id_habilidad){
+        public function viewHabEs($id_habilidad){
             $db = new connexio();
             $sql = "SELECT * FROM Habilidades_Esenciales where id_habilidad='$id_habilidad'";
             $query = $db->query($sql);

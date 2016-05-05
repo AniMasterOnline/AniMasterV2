@@ -1,52 +1,51 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Caracteristica{
+    class Personaje_HS{
         /*Atributs*/
-        private $id_caracteristica;
-        private $nombre;
+        private $id_ventaja;
+        private $id_personaje;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Caracteristica(`nombre`) "
-                    . "VALUES ('$this->nombre')");
+            $result = $db->query("INSERT INTO Personaje_HS(`id_personaje`, `id_ventaja`) "
+                    . "VALUES ('$this->id_personaje', '$this->id_ventaja')");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Caracteristica where id_caracteristica = $var";
+            $result = $sql = "delete from Personaje_HS where id_ventaja = $var";
             $db->query($sql);
             return $result;
         }
-        
+    
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristica";
+            $sql = "SELECT * FROM Personaje_HS";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
+                $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_ventaja"]);
                 //var_dump($Partida);
-                array_push($rtn, $caracteristica);
+                array_push($rtn, $partida_objeto);
             }
             $db->close();
             return $rtn;
         }
-        
-        public function viewCar($id_caracteristica){
+        public function viewObj($id_personaje){
             $db = new connexio();
-            $sql = "SELECT * FROM Caracteristica where id_caracteristica='$id_caracteristica'";
+            $sql = "SELECT * FROM Personaje_HS where id_personaje='$id_personaje'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $id_caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
+                    $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_ventaja"]);
                 }
                 if($count == 1){
-                    return $id_caracteristica;
+                    return $partida_objeto;
                 }else{
                     return null;
                 }
@@ -66,33 +65,29 @@
             }
         }
         function __construct0(){
-            $this->id_caracteristica = 0;
-            $this->nombre = 0;
+            $this->id_personaje = 0;
+            $this->id_ventaja = 0;
         }
         
-        function __construct1($a2){
-            $this->id_caracteristica = "";
-            $this->nombre = $a2;
-        }
         function __construct2($a1, $a2){
-            $this->id_caracteristica = $a1;
-            $this->nombre = $a2;
+            $this->id_personaje = $a1;
+            $this->id_ventaja = $a2;
         }
            
         //METODES SET
-        public function setId_Caracteristica($id_caracteristica) {
-            $this->id_caracteristica = $id_caracteristica;
+        public function setId_Personaje($id_personaje) {
+            $this->id_personaje = $id_personaje;
         }
-        public function setNombre($nombre) {
-            $this->nombre = $nombre;
+        public function setId_Ventaja($id_ventaja) {
+            $this->id_ventaja = $id_ventaja;
         }
         
         //METODES GET 
-        public function getId_Caracteristica() {
-            return $this->id_caracteristica;
+        public function getId_Personaje() {
+            return $this->id_personaje;
         }
-        public function getNombre() {
-            return $this->nombre;
+        public function getId_Ventaja() {
+            return $this->id_ventaja;
         }
     }
 ?>

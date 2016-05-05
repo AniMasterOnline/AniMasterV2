@@ -12,8 +12,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Efecto(`id_efecto`, `nombre`, `coste`, `gnosis`, `penalizador`, `id_poder`) "
-                    . "VALUES ('$this->id_efecto', '$this->nombre', '$this->coste', '$this->gnosis', '$this->penalizador', '$this->id_poder')");
+            $result = $db->query("INSERT INTO Efecto(`nombre`, `coste`, `gnosis`, `penalizador`, `id_poder`) "
+                    . "VALUES ('$this->nombre', '$this->coste', '$this->gnosis', '$this->penalizador', '$this->id_poder')");
             $db->close();
             return $result;
         }
@@ -37,7 +37,7 @@
             return $rtn;
         }
         
-        public function viewCat($id_efecto){
+        public function viewEfecto($id_efecto){
             $db = new connexio();
             $sql = "SELECT * FROM Efecto where id_efecto='$id_efecto'";
             $query = $db->query($sql);
@@ -108,7 +108,7 @@
             $this->gnosis = $gnosis;
         }
         public function setPenalizador($penalizador) {
-            $this->penalizador = $penalizadorr;
+            $this->penalizador = $penalizador;
         }
         public function setId_Poder($id_poder) {
             $this->id_poder = $id_poder;

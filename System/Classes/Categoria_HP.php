@@ -35,7 +35,7 @@
             return $rtn;
         }
         
-        public function viewCat($id_categoria){
+        public function viewCatHP($id_categoria){
             $db = new connexio();
             $sql = "SELECT * FROM Categoria_HP where id_categoria='$id_categoria'";
             $query = $db->query($sql);

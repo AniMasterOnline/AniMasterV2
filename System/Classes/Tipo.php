@@ -1,25 +1,39 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Rol{
+    class Tipo{
         /*Atributs*/
         private $id_tipo;
         private $nombre;
         
         //METODES
-        
+        public function add(){
+            $db = new connexio();
+            $result = $db->query("INSERT INTO Tipo(`nombre`) "
+                    . "VALUES ('$this->nombre')");
+            $db->close();
+            return $result;
+        }
+        public function delete($var){
+            $db = new connexio();
+            $result = $sql = "delete from Tipo where id_tipo = $var";
+            $db->query($sql);
+            return $result;
+        }
+    
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Rol";
+            $sql = "SELECT * FROM Tipo";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Rol = new Rol($obj["id_tipo"],$obj["nombre"]);
-                //var_dump($Rol);
-                array_push($rtn, $Rol);
+                $partida_objeto = new Tipo($obj["id_tipo"],$obj["nombre"]);
+                //var_dump($Partida);
+                array_push($rtn, $partida_objeto);
             }
             $db->close();
             return $rtn;
         }
+
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();
@@ -30,15 +44,12 @@
             }
         }
         function __construct0(){
-            $this->id_tipo=0;
-            $this->nombre = "";
+            $this->id_tipo = 0;
+            $this->nombre = 0;
         }
-        function __construct1($a2){
-            $this->id_tipo=0;
-            $this->nombre = $a2;
-        }
+        
         function __construct2($a1, $a2){
-            $this->id_tipo=$a1;
+            $this->id_tipo = $a1;
             $this->nombre = $a2;
         }
            
@@ -51,12 +62,11 @@
         }
         
         //METODES GET 
-        public function getId_Tipo(){
+        public function getId_Tipo() {
             return $this->id_tipo;
         }
-        public function getNombre(){
+        public function getNombre() {
             return $this->nombre;
         }
     }
 ?>
-
