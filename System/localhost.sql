@@ -65,8 +65,8 @@ CREATE TABLE Personaje (
       ojos     varchar(32),
       altura     varchar(32),
       peso     varchar(32),
-      apariencia     int,
-      tamanyo     int,
+      apariencia     int(2),
+      tamanyo     int(2),
       exp_actual     int,
       c_AGI     int,
       c_CON     int,
@@ -238,7 +238,7 @@ CREATE TABLE Habilidades_Esenciales (
 
 
 
-CREATE TABLE Caracteristicas (
+CREATE TABLE Caracteristicas_P (
       base     int NOT NULL,
       bono     int,
       PRIMARY KEY (`base`)
@@ -330,6 +330,11 @@ CREATE TABLE Personaje_Ventaja (
 ALTER TABLE Personaje_Ventaja ADD PRIMARY KEY (id_personaje,id_ventaja);
 
 
+CREATE TABLE Ventaja_Efecto (
+      id_ventaja     int NOT NULL,
+      id_efecto     int NOT NULL
+);
+
 
 CREATE TABLE Personaje_Poderes (
       id_poder     int NOT NULL,
@@ -358,7 +363,6 @@ CREATE TABLE Categoria_HP (
       coste int,
       incr_nv  int
 );
-
 ALTER TABLE Categoria_HP ADD PRIMARY KEY (id_categoria,id_HP);
 
 CREATE TABLE Categoria_HS (
@@ -486,10 +490,10 @@ VALUES
 
 
 --
--- Volcado de datos para la tabla `Caracteristicas`
+-- Volcado de datos para la tabla `Caracteristicas_P`
 --
 
-INSERT INTO `Caracteristicas` (`base`, `bono`) VALUES
+INSERT INTO `Caracteristicas_P` (`base`, `bono`) VALUES
 (1, -30),
 (2, -20),
 (3, -10),
@@ -1715,9 +1719,9 @@ VALUES
 (28, 15, '');
 
 
-INSERT INTO `Habilidades_Esenciales` (`id_habilidad`, `nombre`, `efecto`, `coste`, `gnosis`, `tipo`) 
+INSERT INTO `Habilidades_Esenciales` (`id_habilidad`, `nombre`, `coste`, `gnosis`, `tipo`) 
 VALUES
-(1, 'Resistencia la cansancio', '+2 Cansancio', 10, 0, 'ventaja');
+(1, 'Resistencia la cansancio', 10, 0, 'ventaja');
 
 
 
