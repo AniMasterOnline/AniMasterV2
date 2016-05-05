@@ -131,31 +131,31 @@
         
         //METODES GET 
         public function getId_Objeto($id_objeto) {
-            $this->id_objeto = $id_objeto;
+            return $this->id_objeto;
         }
         public function getNombre($nombre) {
-            $this->nombre = $nombre;
+            return $this->nombre;
         }
         public function getDescripcion($descripcion) {
-            $this->descripcion = $descripcion;
+            return $this->descripcion;
         }
         public function getPeso($peso) {
-            $this->peso = $peso;
+            return $this->peso;
         }
         public function getPrecio($precio) {
-            $this->precio = $precio;
+            return $this->precio;
         }
         public function getPublic($public) {
-            $this->public = $public;
+            return $this->public;
         }
         public function getDisponibilidad($disponibilidad) {
-            $this->disponibilidad = $disponibilidad;
+            return $this->disponibilidad;
         }
         public function getCalidad($calidad) {
-            $this->calidad = $calidad;
+            return $this->calidad;
         }
         public function getId_Tipo($id_tipo) {
-            $this->id_tipo = $id_tipo;
+            return $this->id_tipo;
         }
     }
 ?>

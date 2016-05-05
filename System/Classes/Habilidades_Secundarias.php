@@ -10,8 +10,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Habilidades_Secundarias(`id_HS`, `nombre`, `id_rama`, `caracteristica`) "
-                    . "VALUES ('$this->id_HS', '$this->nombre', '$this->id_rama', '$this->caracteristica')");
+            $result = $db->query("INSERT INTO Habilidades_Secundarias(`nombre`, `id_rama`, `caracteristica`) "
+                    . "VALUES ('$this->nombre', '$this->id_rama', '$this->caracteristica')");
             $db->close();
             return $result;
         }
@@ -35,7 +35,7 @@
             return $rtn;
         }
         
-        public function viewCat($id_HS){
+        public function viewHS($id_HS){
             $db = new connexio();
             $sql = "SELECT * FROM Habilidades_Secundarias where id_HS='$id_HS'";
             $query = $db->query($sql);

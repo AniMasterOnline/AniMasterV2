@@ -8,8 +8,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Caracteristica(`id_caracteristica`, `nombre`) "
-                    . "VALUES ('$this->id_caracteristica', '$this->nombre')");
+            $result = $db->query("INSERT INTO Caracteristica(`nombre`) "
+                    . "VALUES ('$this->nombre')");
             $db->close();
             return $result;
         }

@@ -9,8 +9,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Categoria(`id_categoria`, `nombre`, `descripcion`) "
-                    . "VALUES ('$this->id_categoria', '$this->nombre', '$this->descripcion')");
+            $result = $db->query("INSERT INTO Categoria(`nombre`, `descripcion`) "
+                    . "VALUES ('$this->nombre', '$this->descripcion')");
             $db->close();
             return $result;
         }

@@ -8,8 +8,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Rama(`id_rama`, `nombre`) "
-                    . "VALUES ('$this->id_rama', '$this->nombre')");
+            $result = $db->query("INSERT INTO Rama(`nombre`) "
+                    . "VALUES ('$this->nombre')");
             $db->close();
             return $result;
         }
@@ -33,7 +33,7 @@
             $db->close();
             return $rtn;
         }
-        public function viewVida($id){
+        public function viewRama($id){
             $db = new connexio();
             $sql = "SELECT * FROM Rama where id_rama='$id'";
             $query = $db->query($sql);
@@ -69,8 +69,8 @@
             $this->nombre = 0;
         }
         
-        function __construct2($a1, $a2){
-            $this->id_rama = $a1;
+        function __construct1($a2){
+            $this->id_rama = 0;
             $this->nombre = $a2;
         }
            

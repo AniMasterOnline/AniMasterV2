@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Rol{
+    class Roles{
         /*Atributs*/
         private $id_tipo;
         private $nombre;
@@ -9,13 +9,13 @@
         
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Rol";
+            $sql = "SELECT * FROM Roles";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Rol = new Rol($obj["id_tipo"],$obj["nombre"]);
-                //var_dump($Rol);
-                array_push($rtn, $Rol);
+                $Roles = new Roles($obj["id_tipo"],$obj["nombre"]);
+                //var_dump($Roles);
+                array_push($rtn, $Roles);
             }
             $db->close();
             return $rtn;

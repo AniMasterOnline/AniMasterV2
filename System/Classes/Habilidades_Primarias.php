@@ -9,8 +9,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Habilidades_Primarias(`id_HP`, `nombre`, `caracteristica`) "
-                    . "VALUES ('$this->id_HP', '$this->nombre', '$this->caracteristica')");
+            $result = $db->query("INSERT INTO Habilidades_Primarias(`nombre`, `caracteristica`) "
+                    . "VALUES ('$this->nombre', '$this->caracteristica')");
             $db->close();
             return $result;
         }
@@ -34,7 +34,7 @@
             return $rtn;
         }
         
-        public function viewCat($id_HP){
+        public function viewHP($id_HP){
             $db = new connexio();
             $sql = "SELECT * FROM Habilidades_Primarias where id_HP='$id_HP'";
             $query = $db->query($sql);
@@ -69,9 +69,6 @@
             $this->id_HP = 0;
             $this->nombre = 0;
             $this->caracteristica = 0;
-            $this->coste = 0;
-            $this->gnosis = 0;
-            $this->tipo = 0;
         }
         
         function __construct2($a2, $a3){

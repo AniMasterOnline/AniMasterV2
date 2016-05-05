@@ -33,27 +33,6 @@
             return $rtn;
         }
         
-        public function viewCar($base){
-            $db = new connexio();
-            $sql = "SELECT * FROM Caracteristicas_P where base='$base'";
-            $query = $db->query($sql);
-            $db->close();
-            $count = 0;
-            if ($query->num_rows > 0) {
-                while($obj = $query->fetch_assoc()){
-                    $count++;
-                    $base = new Caracteristicas_P($obj["base"],$obj["bono"]);
-                }
-                if($count == 1){
-                    return $base;
-                }else{
-                    return null;
-                }
-            }else{
-                return null;
-            }
-        }
-        
 
         //CONSTRUCTORS
         function __construct(){

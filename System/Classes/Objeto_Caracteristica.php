@@ -34,7 +34,7 @@
             return $rtn;
         }
         
-        public function viewCar($id_caracteristica){
+        public function viewObjCar($id_caracteristica){
             $db = new connexio();
             $sql = "SELECT * FROM Objeto_Caracteristica where id_caracteristica='$id_caracteristica'";
             $query = $db->query($sql);
