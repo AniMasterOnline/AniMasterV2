@@ -25,6 +25,52 @@ include "../../Public/layouts/head.php";?>
     }
 ?>
 
+<input type="hidden" id="inputId" value="<?php echo $id_partida ?>">
+<script>
+    $title = "test";
+    $body = "test body";
+    $icon = "favicon.ico";
+    //DesktopNotifyshow($title, $body, $icon);
+    
+    $(document).ready(function(){
+    $('#eliminar').click(function(){
+        var confirmation = confirm("Estas seguro que quieres eliminar la partida?");
+        
+        if(confirmation){
+            var id = {
+            id : $('#inputId').val()
+        };
+        console.log(id);
+        $.ajax({
+            type: "POST",
+            url: "../../System/Protocols/Partida_Del.php",
+            data: id,
+            success: function (response) {
+                console.log(response);
+                if(response == 'fail'){
+                    $.notify({
+                            // options
+                            message: 'An error ocurred.'
+                    },{
+                            // settings
+                            type: 'default',
+                            delay: 4000,
+                            offset : {
+                                    y: 100,
+                                    x: 20
+                            }
+                    });
+                }else if(response == 'succes'){
+                    location.reload();
+                }
+            }
+        });
+    }
+    });
+    
+});
+</script>
+
 
 <!-- Body content box -->
 <div class="container">
@@ -47,6 +93,9 @@ include "../../Public/layouts/head.php";?>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
                                     <a <?php echo 'href="mod_partida.php?id='.$id_partida.'"';?>>Configuraciones</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="eliminar">Eliminar partida</a>
                                 </li>
                             </ul>
                         </li>

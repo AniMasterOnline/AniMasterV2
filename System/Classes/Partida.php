@@ -20,9 +20,9 @@
             $db->close();
             return $id;
         }
-        public function modPartida(){
+        public function modPartida($id, $imagen, $descripcion, $anyo, $nivel, $limite){
             $db = new connexio();
-            $result = $db->query("UPDATE Partida SET nombre='$this->nombre', imagen='$this->imagen', descripcion='$this->descripcion',  anyo='$this->anyo', nv_sobrenatural='$this->nv_sobrenatural', limite='$this->limite' WHERE id_partida= '$this->id_partida'");
+            $result = $db->query("UPDATE Partida SET imagen='$imagen', descripcion='$descripcion',  anyo='$anyo', nv_sobrenatural='$nivel', limite='$limite' WHERE id_partida= '$id'");
             $db->close();
             return $result;
         }
@@ -34,7 +34,7 @@
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Partida where id_partida = $var";
+            $result = $sql = "DELETE FROM Partida WHERE id_partida=$var";
             $db->query($sql);
             return $result;
         }

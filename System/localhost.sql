@@ -205,8 +205,8 @@ CREATE TABLE Ventaja (
 
 CREATE TABLE Poderes_Monstruo (
       id_poder     int NOT NULL AUTO_INCREMENT,
-      nombre     varchar(32),
-      descripcion     varchar(32),
+      nombre     varchar(150),
+      descripcion     varchar(999),
       explicacion     varchar(32),
       prohibicion     varchar(32),
       PRIMARY KEY (`id_poder`)
@@ -214,16 +214,26 @@ CREATE TABLE Poderes_Monstruo (
 
 
 
-CREATE TABLE Efecto (
-      id_efecto     int NOT NULL AUTO_INCREMENT,
-      nombre     varchar(32),
+CREATE TABLE EfectoPoder (
+      id_efecto_poder     int NOT NULL AUTO_INCREMENT,
+      nombre     varchar(150),
+      coste     int,
+      gnosis     int,
+      penalizador     varchar(32),
+      id_poder     int NOT NULL,
+      PRIMARY KEY (`id_efecto_poder`)
+);
+
+
+CREATE TABLE EfectoEsencial (
+      id_efecto_esencial     int NOT NULL AUTO_INCREMENT,
+      nombre     varchar(150),
       coste     int,
       gnosis     int,
       penalizador     varchar(32),
       id_poder     int NOT NULL,
       PRIMARY KEY (`id_efecto`)
 );
-
 
 
 CREATE TABLE Habilidades_Esenciales (
@@ -241,6 +251,14 @@ CREATE TABLE Caracteristicas_P (
       bono     int,
       PRIMARY KEY (`base`)
 );
+
+
+CREATE TABLE Habilidades_Esenciales_Efecto (
+      id_habilidad     int NOT NULL,
+	  id_efecto_esencial     int NOT NULL
+);
+
+ALTER TABLE Habilidades_Esenciales_Efecto ADD PRIMARY KEY (id_habilidad,id_efecto_esencial);
 
 
 
@@ -460,7 +478,8 @@ ALTER TABLE Categoria_HP ADD FOREIGN KEY (id_HP) REFERENCES Habilidades_Primaria
 ALTER TABLE Categoria_HS ADD FOREIGN KEY (id_categoria) REFERENCES Categoria (id_categoria);
 ALTER TABLE Categoria_HS ADD FOREIGN KEY (id_HS) REFERENCES Habilidades_Secundarias (id_HS);
 
-
+ALTER TABLE Habilidades_Esenciales_Efecto ADD FOREIGN KEY (id_habilidad) REFERENCES Habilidades_Esenciales (id_habilidad);
+ALTER TABLE Habilidades_Esenciales_Efecto ADD FOREIGN KEY (id_efecto_esencial) REFERENCES EfectoEsencial (id_efecto_esencial);
 
 
 --
