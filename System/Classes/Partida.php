@@ -87,6 +87,20 @@
                 return null;
             }
         }
+        public function returnId_Partida($token){ 
+            $db = new connexio();
+            $sql = "SELECT id_partida FROM Partida WHERE token='$token'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $id = $obj["id_partida"];
+                }
+                return $id;
+            }else{
+                return null;
+            }
+        }
 
         //CONSTRUCTORS
         function __construct(){

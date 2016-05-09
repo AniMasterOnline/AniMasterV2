@@ -201,14 +201,11 @@
         
         public function buscUsuario($search){
             $db = new connexio();
-            $sql = "SELECT id_usuario, nickname FROM Usuario where nombre  LIKE '%".$search."%'";
+            $sql = "SELECT id_usuario, nickname FROM Usuario where nickname  LIKE '%".$search."%' LIMIT 5";
             $query = $db->query($sql);
-            var_dump($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $id = $obj['id_usuario'];
-                $nick = $obj['nickname'];
-                array_push($rtn, $id,$nick);
+                array_push($rtn, $obj);
             }
             $db->close();
             return $rtn;

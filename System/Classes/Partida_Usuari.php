@@ -5,12 +5,13 @@
         private $id_usuario;
         private $id_partida;
         private $pos;
+        private $aceptado;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Partida_Usuari(`id_usuario`, `id_partida`, `pos`) "
-                    . "VALUES ('$this->id_usuario', '$this->id_partida', '$this->pos')");
+            $result = $db->query("INSERT INTO Partida_Usuari(`id_usuario`, `id_partida`, `pos`, `aceptado`) "
+                    . "VALUES ('$this->id_usuario', '$this->id_partida', '$this->pos', '$this->aceptado')");
             $db->close();
             return $result;
         }
@@ -54,15 +55,15 @@
                 return null;
             }
         }
-        public function viewUsuari($id_usuario){
+        public function viewMaster($id_usuario){
             $db = new connexio();
-            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' ORDER BY pos ASC";
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='master' ORDER BY pos ASC";
             $query = $db->query($sql);
             $db->close();
             $rtn = array();
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
-                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"],$obj["aceptado"]);
                     array_push($rtn, $partida_usuari);
                 }
                 return $rtn;
@@ -104,11 +105,11 @@
             $this->id_partida = 0;
             $this->pos = 0;
         }
-        
-        function __construct3($a1, $a2, $a3){
+        function __construct4($a1, $a2, $a3, $a4){
             $this->id_usuario = $a1;
             $this->id_partida = $a2;
             $this->pos = $a3;
+            $this->aceptado = $a4;
         }
            
         //METODES SET

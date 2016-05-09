@@ -18,7 +18,7 @@
         if( $usuari != null){ 
             session_start();
             $_SESSION['user'] = $usuari;
-            header('Location: ../../user/index.php');
+            header('Location: ../../settings');
         }
     }else{
         echo '<br><form><input type="button" value="Torna atras" name="Torna atras" onclick="history.back()" /></form>';

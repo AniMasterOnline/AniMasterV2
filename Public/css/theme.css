@@ -89,6 +89,14 @@ html {
     display: none;
     opacity: 0;
 }
+.h-250{
+    height: 150px
+}
+.vcenter{
+    display: flex;
+    align-items: center;     /* Align the flex-items vertically */
+    justify-content: center;
+}
 
 
 /* #################################################################################### */

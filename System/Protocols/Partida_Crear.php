@@ -33,7 +33,7 @@
             $token = sha1(uniqid($string, true));
             $partida->modToken($id_partida, $token);
 
-            $partida_usuari = new Partida_Usuari($id_usuario, $id_partida, $pos); // Objecte Partida_Usuari
+            $partida_usuari = new Partida_Usuari($id_usuario, $id_partida, $pos, 'master'); // Objecte Partida_Usuari
             $partida_usuari->add(); // Segon Insert
             header('Location: ../../settings/table/view_partida.php?id='.$id_partida);
         }else{

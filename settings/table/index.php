@@ -12,7 +12,7 @@ include "../../Public/layouts/head.php";?>
                     include "../../System/Classes/Partida_Usuari.php";
                     include "../../System/Classes/Partida.php";
                     $partida_usuari = new Partida_Usuari();
-                    $partida_usuari = $partida_usuari->viewUsuari($value['id_usuario']);
+                    $partida_usuari = $partida_usuari->viewMaster($value['id_usuario']);
                     $cont = 0;
                     if ($partida_usuari != null){
                         foreach ($partida_usuari as $row){
