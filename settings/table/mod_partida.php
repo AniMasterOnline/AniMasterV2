@@ -49,7 +49,7 @@ include "../../Public/layouts/head.php";?>
 
 <!-- Body content box -->
 <div class="container" >
-    <form method="POST" name="myForm" action="../System/Protocols/Partida_Mod.php" enctype="multipart/form-data">
+    <form method="POST" name="myForm" action="../../System/Protocols/Partida_Mod.php" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-12 cinput m-l-15 ">
