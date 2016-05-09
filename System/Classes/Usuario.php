@@ -199,6 +199,21 @@
             }
         }
         
+        public function buscUsuario($search){
+            $db = new connexio();
+            $sql = "SELECT id_usuario, nickname FROM Usuario where nombre  LIKE '%".$search."%'";
+            $query = $db->query($sql);
+            var_dump($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $id = $obj['id_usuario'];
+                $nick = $obj['nickname'];
+                array_push($rtn, $id,$nick);
+            }
+            $db->close();
+            return $rtn;
+        }
+        
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();

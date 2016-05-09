@@ -22,6 +22,8 @@
                 scrollBar('.c-overflow', 'minimal-dark', 'y');
             }
         }
+        
+        
         //Fullscreen Button
         //-----------------------------------------------
         if ($('[data-action="fullscreen"]')[0]) {

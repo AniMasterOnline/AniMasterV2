@@ -206,6 +206,7 @@ small, .small {
     color: #505050;
     background-color: #fff;
 }
+
 /* ############################################################### */
 /* 
  * z-depth -- Background shadows 
@@ -1454,11 +1455,17 @@ small, .small {
 }
 
 .dropdown-menu:not([class*="bgm-"]) > li > a {
-  color: #4C4C4C;
+  color: #000;
+}
+.dropdown-menu:not([class*="bgm-"]) > .active > a {
+  color: #fff;
 }
 
 .dropdown-menu:not([class*="bgm-"]) > li > a:hover {
   color: #000;
+}
+.dropdown-menu:not([class*="bgm-"]) > .active > a:hover {
+  color: #fff;
 }
 
 .dropdown-menu[class*="bgm-"] > li > a {
@@ -3655,4 +3662,12 @@ body.login-content:before {
 
 .load-more a:hover {
   background-color: #ea1c0d;
+}
+
+.notify{
+    background-color: red;
+}
+
+.btn-group{
+    border-radius: 0;
 }

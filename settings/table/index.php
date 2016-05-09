@@ -50,7 +50,7 @@ include "../../Public/layouts/head.php";?>
                                         <div class="image-box style-2 m-b-20 bordered dark-bg z-depth-2-bottom">
                                             <div class="overlay-container overlay-visible output" style="background-image: url(../../Public/img/partida/'.$imagen.');">
                                                 <img class="partidaimg" src="" alt="">
-                                                <a href="invite.php?token='.$token.'" class="overlay-link iwave"><i class="fa fa-share-alt fa-mesa"></i></a>
+                                                <a href="invite.php?id='.$id_partida.'" class="overlay-link iwave"><i class="fa fa-share-alt fa-mesa"></i></a>
                                             </div>
                                             <div class="body">
                                                 <h3 style="margin-top: 0;">'.$nombre.'</h3>

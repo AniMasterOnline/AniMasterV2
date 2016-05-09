@@ -31,7 +31,7 @@ include "../../Public/layouts/head.php";?>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="lv-header-alt clearfix m-b-0 bgm-brown z-depth-1-bottom">
+                <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
                     <h2 class="lvh-label c-white f-18"><?php echo ''.$nombre; ?></h2>
                     <ul class="lv-actions actions">
                         <li>
@@ -54,7 +54,7 @@ include "../../Public/layouts/head.php";?>
                 </div>
                 <div class="card-body card-padding table-responsive p-0">
                     <table class="table b-0">
-                        <thead class="bgm-gray b-0">
+                        <thead class="bgm-purple b-0 c-white">
                             <tr>
                                 <th>Descripcion</th>
                                 <th>Año</th>
@@ -78,7 +78,7 @@ include "../../Public/layouts/head.php";?>
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="lv-header-alt clearfix m-b-0 bgm-cyan z-depth-1-bottom">
+                <div class="lv-header-alt clearfix m-b-0 bgm-blue z-depth-1-bottom">
                     <h2 class="lvh-label c-white f-18">Npc's</h2>
                     <ul class="lv-actions actions">
                         <li>
@@ -107,7 +107,7 @@ include "../../Public/layouts/head.php";?>
                 </div>
                 <div class="card-body card-padding table-responsive p-0 card-body-partida">
                     <table class="table b-0">
-                        <thead class="bgm-gray b-0">
+                        <thead class="bgm-lightblue b-0 c-white">
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
@@ -174,7 +174,7 @@ include "../../Public/layouts/head.php";?>
                 </div>
                 <div class="card-body card-padding table-responsive p-0 card-body-partida">
                     <table class="table b-0">
-                        <thead class="bgm-gray b-0">
+                        <thead class="bgm-lightgreen b-0 c-white">
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
@@ -214,7 +214,7 @@ include "../../Public/layouts/head.php";?>
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="lv-header-alt clearfix m-b-0 bgm-red z-depth-1-bottom">
+                <div class="lv-header-alt clearfix m-b-0 bgm-pink z-depth-1-bottom">
                     <h2 class="lvh-label  c-white f-18">Enemigos</h2>
                     <ul class="lv-actions actions">
                         <li>
@@ -243,7 +243,7 @@ include "../../Public/layouts/head.php";?>
                 </div>
                 <div class="card-body card-padding table-responsive p-0 card-body-partida">
                     <table class="table b-0">
-                        <thead class="bgm-gray b-0">
+                        <thead class="bgm-red b-0 c-white">
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
@@ -310,7 +310,7 @@ include "../../Public/layouts/head.php";?>
                 </div>
                 <div class="card-body card-padding table-responsive p-0 card-body-partida">
                     <table class="table b-0">
-                        <thead class="bgm-gray b-0">
+                        <thead class="bgm-amber b-0 c-white">
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
