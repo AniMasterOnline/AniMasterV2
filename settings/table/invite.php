@@ -77,10 +77,33 @@ include "../../Public/layouts/head.php";?>
                 <div class="card-body card-padding bgm-lightgreen c-white h-250 vcenter">
                     <div class="w-100 ">
                         <input id="123" type="text" class="form-control m-b-10" placeholder="Username" aria-describedby="basic-addon1" list="usersinvit" onkeyup="return forceLower(this);">
-                        <button class="btn btn-primary waves-effect bgm-lightblue b-0 w-100">Invitar</button>
+                        <button class="btn btn-primary waves-effect bgm-lightblue b-0 w-100" onclick="inviteUser();">Invitar</button>
                         <datalist id="usersinvit" ></datalist>
                     </div>
                     <script>
+                        function inviteUser(){
+                            var make_id = $('#123').val();
+                            if (/^\s+|\s+$/.test(make_id) || make_id.length === 0){
+
+                            }else{
+                                var 
+                                var parametros = {
+                                    "id_partida" : <?php echo $id_partida; ?>,
+                                    "user" : make_id
+                                };
+                                $.ajax({
+                                        data:  parametros,
+                                        url:   '../../System/Protocols/Partida_Invite.php',
+                                        type:  'post',
+                                        beforeSend: function () {
+                                        },
+                                        success:  function (response) {
+                                            console.log(response);
+                                            swal("Good job!", "You clicked the button!", "success");
+                                        }
+                                });
+                            }
+                        }
                         function forceLower(strInput){
                             userslist();
                             strInput.value=strInput.value.toLowerCase();
