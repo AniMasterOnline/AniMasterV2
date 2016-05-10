@@ -332,7 +332,6 @@ CREATE TABLE Partida_Usuari (
 
 
 ALTER TABLE Partida_Usuari ADD PRIMARY KEY (id_usuario,id_partida);
-ALTER TABLE Partida_Usuari ADD UNIQUE (id_usuario);
 
 
 
