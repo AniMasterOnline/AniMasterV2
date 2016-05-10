@@ -1,8 +1,10 @@
-<?php 
-$title='Modificar partida';
-$migas='#Home|../../index.php#Mesa|../../settings/table/#Modificar Partida';
-include "../../Public/layouts/head.php";?>
 <?php
+    session_start();
+    if(isset($_SESSION['user'])){
+        $value=$_SESSION['user'];
+        //var_dump($value);
+    }
+    
     if(isset($_GET['id']) && !empty($_GET['id'])){
         $id_partida = $_GET['id'];
         
@@ -24,6 +26,12 @@ include "../../Public/layouts/head.php";?>
         echo '<META http-equiv="refresh" content="0;URL=index.php">';
     }
 ?>
+
+<?php 
+$title='Modificar partida';
+$migas='#Home|../../index.php#Mesa|../../settings/table/#'.$nombre.'|view_partida.php?id='.$id_partida.'#Modificar Partida';
+include "../../Public/layouts/head.php";?>
+
 <!-- Content body -->
 <style>
     .btn-file {

@@ -101,6 +101,43 @@
                     }
                 ?>
                 <li class="dropdown">
+                    <a data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="tm-icon zmdi zmdi-accounts-add"></i>
+                        <i class="tmn-counts">2</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg pull-right">
+                        <div class="listview" id="notifications">
+                            <div class="lv-header">
+                                Notification
+                            </div>
+                            <div class="lv-body">
+                                <a class="lv-item" href="#">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img class="lv-img-sm" src="Public/img/partida/076.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title">Partida 1</div>
+                                            <small class="lv-small">¡Unete a mi partida!</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="lv-item" href="#">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img class="lv-img-sm" src="Public/img/partida/portfolio-4.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title">Partida 2</div>
+                                            <small class="lv-small">¡Unete ya!</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
                     <a data-toggle="dropdown" href="#"><i class="tm-icon zmdi zmdi-more-vert"></i></a>
                     <ul class="dropdown-menu dm-icon pull-right">
                         <?php

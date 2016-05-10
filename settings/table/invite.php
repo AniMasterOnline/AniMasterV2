@@ -1,43 +1,57 @@
-<?php 
-$title='Panel de la partida';
-$migas='#Home|../../index.php#Mesa|../../settings/table/# Panel de la partida';
-include "../../Public/layouts/head.php";?>
 <?php
-    if(isset($_GET['token']) && !empty($_GET['token'])){
-        require_once('../../System/Classes/Partida.php');
-        require_once('../../System/Classes/Partida_Usuari.php');
-        $token = $_GET['token'];
-        $partida = new Partida();
-        $id_partida = $partida->returnId_Partida($token);
+session_start();
+if(isset($_SESSION['user'])){
+    $value=$_SESSION['user'];
+    //var_dump($value);
+}
+
+if(isset($_GET['token']) && !empty($_GET['token'])){
+    require_once('../../System/Classes/Partida.php');
+    require_once('../../System/Classes/Partida_Usuari.php');
+    $token = $_GET['token'];
+    $partida = new Partida();
+    $id_partida = $partida->returnId_Partida($token);
+    if($id_partida != null){
         $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -1,'true');
         $partida_usuari->add();
         echo '<META http-equiv="refresh" content="0;URL=../../zone.php">';
-        
-        
     }else{
-        if(isset($_GET['id']) && !empty($_GET['id'])){
-            $id_partida = $_GET['id'];
-
-            require_once "../../System/Classes/Partida.php";
-            $partida= new Partida();  
-            $partida= $partida->viewPartida($id_partida);
-            if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
-                echo '<META http-equiv="refresh" content="0;URL=index.php">';
-            }
-            $nombre = $partida->getNombre();
-            $imagen = $partida->getImagen();
-            $descripcion = $partida->getDescripcion();
-            $anyo = $partida->getAnyo();
-            $nv_sobrenatural = $partida->getNv_Sobrenatural();
-            $limite = $partida->getLimite();
-            $token = $partida->getToken();
-
-        }else{
-            echo '<META http-equiv="refresh" content="0;URL=index.php">';
-        } 
+        $title='Invalid Token';
+        $migas='#Home|../../index.php#Mesa|../../settings/table/#Invalid Token';
+        include "../../Public/layouts/head.php";
+        echo '<div class="alert alert-inverse ">
+                <strong>Error!</strong> Invalid Token.
+              </div>';
+        exit;
     }
-    
+}else{
+    if(isset($_GET['id']) && !empty($_GET['id'])){
+        $id_partida = $_GET['id'];
+
+        require_once "../../System/Classes/Partida.php";
+        $partida= new Partida();  
+        $partida= $partida->viewPartida($id_partida);
+        if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
+            echo '<META http-equiv="refresh" content="0;URL=index.php">';
+        }
+        $nombre = $partida->getNombre();
+        $imagen = $partida->getImagen();
+        $descripcion = $partida->getDescripcion();
+        $anyo = $partida->getAnyo();
+        $nv_sobrenatural = $partida->getNv_Sobrenatural();
+        $limite = $partida->getLimite();
+        $token = $partida->getToken();
+
+    }else{
+        echo '<META http-equiv="refresh" content="0;URL=index.php">';
+    } 
+}
+
+$title='Panel de la partida';
+$migas='#Home|../../index.php#Mesa|../../settings/table/#'.$nombre.'|view_partida.php?id='.$id_partida.'#Invitar Jugadores';
+include "../../Public/layouts/head.php";
 ?>
+
 
 
 <!-- Body content box -->
@@ -52,6 +66,17 @@ include "../../Public/layouts/head.php";?>
                             <a data-toggle="tooltip" data-placement="right" title="Comparte sólo con tus amigos tu url de partida">
                                 <i class="zmdi zmdi-info c-white"></i>
                             </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                <i class="zmdi zmdi-more-vert c-white"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a <?php echo 'href="../../System/Protocols/Partida_Token.php?id_partida='.$id_partida.'"';?> >Generar Nueva Token</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -86,7 +111,6 @@ include "../../Public/layouts/head.php";?>
                             if (/^\s+|\s+$/.test(make_id) || make_id.length === 0){
 
                             }else{
-                                var 
                                 var parametros = {
                                     "id_partida" : <?php echo $id_partida; ?>,
                                     "user" : make_id
@@ -104,10 +128,12 @@ include "../../Public/layouts/head.php";?>
                                 });
                             }
                         }
+                        
                         function forceLower(strInput){
                             userslist();
                             strInput.value=strInput.value.toLowerCase();
                         }
+                        
                         function userslist() {
                             var make_id = $('#123').val().toLowerCase();
                             $('#123').val(make_id);

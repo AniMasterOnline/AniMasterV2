@@ -232,7 +232,7 @@ CREATE TABLE EfectoEsencial (
       gnosis     int,
       penalizador     varchar(32),
       id_poder     int NOT NULL,
-      PRIMARY KEY (`id_efecto`)
+      PRIMARY KEY (`id_efecto_esencial`)
 );
 
 
@@ -427,7 +427,7 @@ ALTER TABLE Objeto ADD FOREIGN KEY (id_tipo) REFERENCES Tipo (id_tipo);
 
 
 
-ALTER TABLE Efecto ADD FOREIGN KEY (id_poder) REFERENCES Poderes_Monstruo (id_poder);
+ALTER TABLE EfectoPoder ADD FOREIGN KEY (id_poder) REFERENCES Poderes_Monstruo (id_poder);
 
 
 

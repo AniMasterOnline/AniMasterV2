@@ -1,29 +1,36 @@
-<?php 
-$title='Panel de la partida';
-$migas='#Home|../../index.php#Mesa|../../settings/table/# Panel de la partida';
-include "../../Public/layouts/head.php";?>
 <?php
-    if(isset($_GET['id']) && !empty($_GET['id'])){
-        $id_partida = $_GET['id'];
-        
-        require_once "../../System/Classes/Partida.php";
-        $partida= new Partida();  
-        $partida= $partida->viewPartida($id_partida);
-        if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
-            echo '<META http-equiv="refresh" content="0;URL=index.php">';
-        }
-        $nombre = $partida->getNombre();
-        $imagen = $partida->getImagen();
-        $descripcion = $partida->getDescripcion();
-        $anyo = $partida->getAnyo();
-        $nv_sobrenatural = $partida->getNv_Sobrenatural();
-        $limite = $partida->getLimite();
-        $token = $partida->getToken();
-        
-    }else{
+session_start();
+if(isset($_SESSION['user'])){
+    $value=$_SESSION['user'];
+    //var_dump($value);
+}
+
+if(isset($_GET['id']) && !empty($_GET['id'])){
+    $id_partida = $_GET['id'];
+
+    require_once "../../System/Classes/Partida.php";
+    $partida= new Partida();  
+    $partida= $partida->viewPartida($id_partida);
+    if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
         echo '<META http-equiv="refresh" content="0;URL=index.php">';
     }
+    $nombre = $partida->getNombre();
+    $imagen = $partida->getImagen();
+    $descripcion = $partida->getDescripcion();
+    $anyo = $partida->getAnyo();
+    $nv_sobrenatural = $partida->getNv_Sobrenatural();
+    $limite = $partida->getLimite();
+    $token = $partida->getToken();
+
+}else{
+    echo '<META http-equiv="refresh" content="0;URL=index.php">';
+}
+
+$title='Panel de la partida';
+$migas='#Home|../../index.php#Mesa|../../settings/table/#'.$nombre.'|view_partida.php?id='.$id_partida;
+include "../../Public/layouts/head.php";
 ?>
+
 
 <input type="hidden" id="inputId" value="<?php echo $id_partida ?>">
 <script>
@@ -209,7 +216,7 @@ include "../../Public/layouts/head.php";?>
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="#">Invitar Jugador</a>
+                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Invitar Jugador</a>
                                 </li>
                                 <li>
                                     <a href="#">Modificar Jugador</a>

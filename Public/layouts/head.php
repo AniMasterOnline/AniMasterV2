@@ -1,5 +1,9 @@
 <?php
-session_start();
+$status = session_status();
+if($status == PHP_SESSION_NONE){
+    //There is no active session
+    session_start();
+}
 $self = $_SERVER['PHP_SELF']; // $self --> Lugar actual visitado
 
 
