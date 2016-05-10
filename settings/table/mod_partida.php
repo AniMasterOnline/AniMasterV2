@@ -7,7 +7,7 @@
     
     if(isset($_GET['id']) && !empty($_GET['id'])){
         $id_partida = $_GET['id'];
-        
+         
         require_once "../../System/Classes/Partida.php";
         $partida= new Partida();  
         $partida= $partida->viewPartida($id_partida);
