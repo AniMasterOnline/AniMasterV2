@@ -244,9 +244,7 @@ $(document).ready(function(){
                     <div class="list-group">
                         <a href="../../settings/account/" class="list-group-item active">Cuenta</a>
                         <a href="../../settings/password/" class="list-group-item">Contraseña</a>
-                        <a href="../../settings/notifications/" class="list-group-item">Mensajes<span class="badge">42</span></a>
-                        <a href="../../settings/table/" class="list-group-item">Mesa</a>
-                        <a href="../../settings/characters/" class="list-group-item">Personajes <span class="badge">1</span></a>
+                        <a href="../../settings/notifications/" class="list-group-item">Notificaciones</a>
                     </div>
                 </div>
             </div>

@@ -54,9 +54,10 @@ include "../../Public/layouts/head.php";?>
                                             </div>
                                             <div class="body">
                                                 <h3 style="margin-top: 0;">'.$nombre.'</h3>
-                                                <p class="small mb-10"><i class="fa fa-calendar" aria-hidden="true">&nbsp;</i>'.$anyo.'&nbsp;&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true">&nbsp;</i> Partida - '.$pos.'</p>
+                                                <p class="small mb-10"><i class="fa fa-calendar-o" aria-hidden="true">&nbsp;</i>'.$anyo.'<i class="fa fa-star p-l-10" aria-hidden="true">&nbsp;</i>'.$nv_sobrenatural.'<i class="fa fa-user-plus p-l-10" aria-hidden="true">&nbsp;</i>'.$limite.'<i class="fa fa-tag p-l-10" aria-hidden="true">&nbsp;</i>Partida - '.$pos.'</p>
                                                 <p class="text-muted">'.$descripcion.'</p>
-                                                <a href="view_partida.php?id='.$id_partida.'" class="btn btn-primary btn-gray-transparent btn-sm margin-clear" style="width: 100%;">Gestionar partida<i class="fa fa-arrow-right pl-10"></i></a>
+                                                <a href="view_partida.php?id='.$id_partida.'" class="btn bgm-deeppurple btn-gray-transparent btn-sm margin-clear m-b-5" style="width: 100%;">Gestionar partida<i class="zmdi zmdi-settings pl-10"></i></a>
+                                                <a href="../../mesa.php?id='.$id_partida.'" class="btn bgm-purple btn-gray-transparent btn-sm margin-clear f-700" style="width: 100%;">Jugar<i class="zmdi zmdi-mail-send pl-10"></i></a>
                                             </div>
                                         </div>
                                     </div>';

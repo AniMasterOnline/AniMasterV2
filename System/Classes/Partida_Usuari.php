@@ -71,6 +71,22 @@
                 return null;
             }
         }
+        public function viewUser($id_usuario){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='true'";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"],$obj["aceptado"]);
+                    array_push($rtn, $partida_usuari);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
         public function viewPartida($id_partida){
             $db = new connexio();
             $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida'";

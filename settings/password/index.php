@@ -76,11 +76,9 @@ $(document).ready(function(){
                 </div>
                 <div class="col-xs-6 col-sm-12 col-md-12">
                     <div class="list-group">
-                        <a href="../../settings/account/" class="list-group-item">Cuenta</a>
+                        <a href="../../settings/account/" class="list-group-item ">Cuenta</a>
                         <a href="../../settings/password/" class="list-group-item active">Contraseña</a>
-                        <a href="../../settings/notifications/" class="list-group-item">Mensajes</a>
-                        <a href="../../settings/table/" class="list-group-item">Mesa</a>
-                        <a href="../../settings/characters/" class="list-group-item">Personajes</a>
+                        <a href="../../settings/notifications/" class="list-group-item">Notificaciones</a>
                     </div>
                 </div>
             </div>

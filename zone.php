@@ -11,222 +11,90 @@ include "Public/layouts/head.php";?>
 </script>
 <!-- Body box -->
 <div class="container">
-    <div class="search-container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header bgm-cyan">
-                        <h2>Cyan <small>You can type anything here...</small></h2>
-
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="#">Refresh</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage Widgets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Widgets Settings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body card-padding">
-                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
-                    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bgm-deeppurple">
+                    <h2>Jugador <small>Diviertete interpretando a tu propio personaje</small></h2>
                 </div>
-            </div>
+                <div class="card-body card-padding">
+                    <div class="row">
+                        <?php
+                            include "System/Classes/Partida_Usuari.php";
+                            include "System/Classes/Partida.php";
+                            $partida_usuari = new Partida_Usuari();
+                            $partida_usuari = $partida_usuari->viewUser($value['id_usuario']);
+                            if ($partida_usuari != null){
+                                $i = 0;
+                                foreach ($partida_usuari as $row){
+                                    $id_partida = $row->getId_Partida();
+                                    $id_usuario = $row->getId_Usuario();
+                                    $pos = $row->getPos();
 
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header bgm-red">
-                        <h2>Red <small>You can type anything here...</small></h2>
+                                    $partida= new Partida();
 
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
+                                    $partida= $partida->viewPartida($id_partida);
+                                    $nombre = $partida->getNombre();
+                                    $imagen = $partida->getImagen();
+                                    $descripcion = $partida->getDescripcion();
+                                    $anyo = $partida->getAnyo();
+                                    $nv_sobrenatural = $partida->getNv_Sobrenatural();
+                                    $limite = $partida->getLimite();
+                                    $token = $partida->getToken();
 
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="#">Refresh</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage Widgets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Widgets Settings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                                    echo '  <div class="col-sm-6 col-md-4">
+                                                <div class="image-box style-2 m-b-20 bordered dark-bg z-depth-2-bottom">
+                                                    <div class="overlay-container overlay-visible output" style="background-image: url(Public/img/partida/'.$imagen.');">
+                                                        <img class="partidaimg" src="" alt="">
+                                                        <a href="invite.php?id='.$id_partida.'" class="overlay-link iwave"><i class="fa fa-share-alt fa-mesa"></i></a>
+                                                    </div>
+                                                    <div class="body">
+                                                        <h3 style="margin-top: 0;">'.$nombre.'</h3>
+                                                        <p class="small mb-10"><i class="fa fa-calendar-o" aria-hidden="true">&nbsp;</i>'.$anyo.'<i class="fa fa-star p-l-10" aria-hidden="true">&nbsp;</i>'.$nv_sobrenatural.'<i class="fa fa-user-plus p-l-10" aria-hidden="true">&nbsp;</i>'.$limite.'<i class="fa fa-tag p-l-10" aria-hidden="true">&nbsp;</i>Partida - '.$pos.'</p>
+                                                        <p class="text-muted">'.$descripcion.'</p>
+                                                        <a href="mesa.php?id='.$id_partida.'" class="btn bgm-purple btn-gray-transparent btn-sm margin-clear f-700" style="width: 100%;">Jugar<i class="zmdi zmdi-mail-send pl-10"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>';
 
-                    <div class="card-body card-padding">
-                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
-                    </div>
-                </div>
-            </div>
+                                    if($i < 2 ){
+                                        $i++;
+                                    }else if($i == 2){
+                                        $i = 0;
+                                        echo '<div class="clearfix"></div>';
+                                    }
 
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header bgm-orange">
-                        <h2>Orange <small>You can type anything here...</small></h2>
-
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="#">Refresh</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage Widgets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Widgets Settings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body card-padding">
-                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header bgm-green">
-                        <h2>Green <small>You can type anything here...</small></h2>
-
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="#">Refresh</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage Widgets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Widgets Settings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body card-padding">
-                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header bgm-purple">
-                        <h2>Purple <small>You can type anything here...</small></h2>
-
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="#">Refresh</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage Widgets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Widgets Settings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body card-padding">
-                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header bgm-bluegray">
-                        <h2>Blue Gray <small>You can type anything here...</small></h2>
-
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="#">Refresh</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage Widgets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Widgets Settings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body card-padding">
-                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
+                                }
+                            }else{
+                                echo 'Aun no tienes partidas!';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
+        <nav class=" col-md-12 navbar navbar-default bgm-brown z-depth-2 b-0 hidden">
+            <div class="container" style="text-align: center;">
+                <ul class="pagination" >
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-    <nav class="navbar navbar-default bgm-brown z-depth-2 b-0">
-        <div class="container" style="text-align: center;">
-            <ul class="pagination" >
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 </div>
 <!-- Footer content box -->
 <?php include "Public/layouts/footer.php";?> 
