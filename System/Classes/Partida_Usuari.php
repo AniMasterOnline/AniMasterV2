@@ -120,6 +120,7 @@
             $this->id_usuario = 0;
             $this->id_partida = 0;
             $this->pos = 0;
+            $this->aceptado = '';
         }
         function __construct4($a1, $a2, $a3, $a4){
             $this->id_usuario = $a1;
