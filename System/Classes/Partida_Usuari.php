@@ -15,9 +15,15 @@
             $db->close();
             return $result;
         }
-        public function delete($var){
+        public function mod(){
             $db = new connexio();
-            $result = $sql = "delete from Partida_Usuari where id_partida = $var";
+            $result = $db->query("UPDATE Partida_Usuari SET  aceptado='$this->aceptado' WHERE id_usuario= '$this->id_usuario' and id_partida= '$this->id_partida'");
+            $db->close();
+            return $result;
+        }
+        public function delete($idu){
+            $db = new connexio();
+            $result = $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and aceptado= 'false'";
             $db->query($sql);
             return $result;
         }
@@ -74,6 +80,22 @@
         public function viewUser($id_usuario){
             $db = new connexio();
             $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='true'";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"],$obj["aceptado"]);
+                    array_push($rtn, $partida_usuari);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
+        public function viewInvited($id_usuario){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='false'";
             $query = $db->query($sql);
             $db->close();
             $rtn = array();

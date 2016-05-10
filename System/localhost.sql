@@ -559,7 +559,10 @@ INSERT INTO  `Animaster`.`Usuario` (
 `id_tipo`
 )
 VALUES 
-(NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0');
+(NULL,  'admin', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '0'),
+(NULL,  'admin2', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '0'),
+(NULL,  'test', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '1'),
+(NULL,  'test2', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '1');
 
 
 

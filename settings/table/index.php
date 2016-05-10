@@ -9,8 +9,8 @@ include "../../Public/layouts/head.php";?>
         <div class="col-md-12 col-lg-12">
             <div class="row">
                 <?php
-                    include "../../System/Classes/Partida_Usuari.php";
-                    include "../../System/Classes/Partida.php";
+                    require_once "../../System/Classes/Partida_Usuari.php";
+                    require_once "../../System/Classes/Partida.php";
                     $partida_usuari = new Partida_Usuari();
                     $partida_usuari = $partida_usuari->viewMaster($value['id_usuario']);
                     $cont = 0;

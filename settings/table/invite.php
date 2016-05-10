@@ -16,10 +16,11 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
         
         $partida_usuari->add();
         echo '<META http-equiv="refresh" content="0;URL=../../zone.php">';
+        exit;
     }else{
         $title='Invalid Token';
         $migas='#Home|../../index.php#Mesa|../../settings/table/#Invalid Token';
-        include "../../Public/layouts/head.php";
+        require_once "../../Public/layouts/head.php";
         echo '<div class="alert alert-inverse ">
                 <strong>Error!</strong> Invalid Token.
               </div>';

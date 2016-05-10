@@ -20,8 +20,8 @@ include "Public/layouts/head.php";?>
                 <div class="card-body card-padding">
                     <div class="row">
                         <?php
-                            include "System/Classes/Partida_Usuari.php";
-                            include "System/Classes/Partida.php";
+                            require_once "System/Classes/Partida_Usuari.php";
+                            require_once "System/Classes/Partida.php";
                             $partida_usuari = new Partida_Usuari();
                             $partida_usuari = $partida_usuari->viewUser($value['id_usuario']);
                             if ($partida_usuari != null){
