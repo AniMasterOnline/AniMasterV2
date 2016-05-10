@@ -84,8 +84,61 @@ CREATE TABLE Personaje (
 	  puntos_totales     int,
       PRIMARY KEY (`id_personaje`),
       KEY `id_usuario` (`id_usuario`),
-      KEY `id_categoria` (`id_categoria`)
+      KEY `id_categoria` (`id_categoria`),
+	  KEY `nacionalidad` (`id`)
 );
+
+
+
+CREATE TABLE IF NOT EXISTS `nacionalidad` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=241 ;
+
+--
+-- Dumping data for table `paises`
+--
+
+INSERT INTO `nacionalidad` (`id`, `nombre`) VALUES
+(1, 'Abel'),
+(2, 'Arlan'),
+(3, 'Alberia'),
+(4, 'Galgados'),
+(5, 'Ilmora'),
+(6, 'Helenia'),
+(7, 'Kanon'),
+(8, 'Haufman'),
+(9, 'Goldar'),
+(10, 'Hendell'),
+(11, 'Moth'),
+(12, 'Dwänholf'),
+(13, 'Phaion'),
+(14, 'Gabriel'),
+(15, 'Togarini'),
+(16, 'Remo'),
+(17, 'Bellafonte'),
+(18, 'Lucrecio'),
+(19, 'El Dominio'),
+(20, 'Argos'),
+(21, 'Kushistán'),
+(22, 'Estigia'),
+(23, 'Salazar'),
+(24, 'Nanwe'),
+(25, 'Kashmir'),
+(26, 'Baho'),
+(27, 'Lannet'),
+(28, 'Shivat'),
+(29, 'Bekent'),
+(30, 'Dafne'),
+(31, 'Pristina'),
+(32, 'Espheria'),
+(33, 'Ygdramar'),
+(34, 'Manterra'),
+(35, 'Corinia'),
+(36, 'Arabel'),
+(37, 'Elcia'),
+(38, 'Itzi');
 
 
 
