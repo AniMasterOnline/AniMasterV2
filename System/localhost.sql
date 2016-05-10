@@ -35,7 +35,7 @@ CREATE TABLE Partida (
 
 CREATE TABLE Usuario (
       id_usuario     int NOT NULL AUTO_INCREMENT,
-      nickname     varchar(32),
+      nickname     varchar(32) UNIQUE,
       imagen     varchar(32),
       nombre     varchar(32),
       apellido     varchar(32),
