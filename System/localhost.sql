@@ -190,49 +190,15 @@ CREATE TABLE Tamanyo (
       PRIMARY KEY (`id_tamanyo`)
 );
 
+
 CREATE TABLE Ventaja (
       id_ventaja     int NOT NULL AUTO_INCREMENT,
-      tipo     varchar(16),
       nombre     varchar(150),
       descripcion     varchar(999),
       efectos     varchar(999),
       limitacion     varchar(999),
       puntos_creacion     int,
       PRIMARY KEY (`id_ventaja`)
-);
-
-
-
-CREATE TABLE Poderes_Monstruo (
-      id_poder     int NOT NULL AUTO_INCREMENT,
-      nombre     varchar(150),
-      descripcion     varchar(999),
-      explicacion     varchar(32),
-      prohibicion     varchar(32),
-      PRIMARY KEY (`id_poder`)
-);
-
-
-
-CREATE TABLE EfectoPoder (
-      id_efecto_poder     int NOT NULL AUTO_INCREMENT,
-      nombre     varchar(150),
-      coste     int,
-      gnosis     int,
-      penalizador     varchar(32),
-      id_poder     int NOT NULL,
-      PRIMARY KEY (`id_efecto_poder`)
-);
-
-
-CREATE TABLE EfectoEsencial (
-      id_efecto_esencial     int NOT NULL AUTO_INCREMENT,
-      nombre     varchar(150),
-      coste     int,
-      gnosis     int,
-      penalizador     varchar(32),
-      id_poder     int NOT NULL,
-      PRIMARY KEY (`id_efecto`)
 );
 
 
@@ -245,12 +211,20 @@ CREATE TABLE Habilidades_Esenciales (
 );
 
 
-
-CREATE TABLE Caracteristicas_P (
-      base     int NOT NULL,
-      bono     int,
-      PRIMARY KEY (`base`)
+CREATE TABLE EfectoEsencial (
+      id_efecto_esencial     int NOT NULL AUTO_INCREMENT,
+      nombre     varchar(150),
+	  valor		 int,
+      PRIMARY KEY (`id_efecto_esencial`)
 );
+
+
+CREATE TABLE Ventaja_Efecto (
+      id_ventaja     int NOT NULL,
+      id_efecto     int NOT NULL
+);
+
+ALTER TABLE Ventaja_Efecto ADD PRIMARY KEY (id_ventaja,id_efecto);
 
 
 CREATE TABLE Habilidades_Esenciales_Efecto (
@@ -262,15 +236,46 @@ ALTER TABLE Habilidades_Esenciales_Efecto ADD PRIMARY KEY (id_habilidad,id_efect
 
 
 
+CREATE TABLE Poderes_Monstruo (
+      id_poder     int NOT NULL AUTO_INCREMENT,
+      nombre     varchar(150),
+      descripcion     varchar(999),
+      explicacion     varchar(999),
+      prohibicion     varchar(999),
+      PRIMARY KEY (`id_poder`)
+);
+
+
+CREATE TABLE Efecto_Poder (
+      id_efecto_poder     int NOT NULL AUTO_INCREMENT,
+      nombre     varchar(150),
+      coste     int,
+      gnosis     int,
+      penalizador     varchar(999),
+      id_poder     int NOT NULL,
+      PRIMARY KEY (`id_efecto_poder`)
+);
+
+
+
+CREATE TABLE Caracteristicas_P (
+      base     int NOT NULL,
+      bono     int,
+      PRIMARY KEY (`base`)
+);
+
+
+
 CREATE TABLE Partida_Usuari (
       id_usuario    int NOT NULL,
       id_partida    int NOT NULL,
-      pos   int NOT NULL
+      pos   int DEFAULT NULL,
+	  aceptado varchar(50) DEFAULT 'false'
 );
 
 
 ALTER TABLE Partida_Usuari ADD PRIMARY KEY (id_usuario,id_partida);
-ALTER TABLE Partida_Usuari ADD UNIQUE (id_usuario,pos);
+ALTER TABLE Partida_Usuari ADD UNIQUE (id_usuario);
 
 
 
@@ -346,14 +351,6 @@ CREATE TABLE Personaje_Ventaja (
 ALTER TABLE Personaje_Ventaja ADD PRIMARY KEY (id_personaje,id_ventaja);
 
 
-CREATE TABLE Ventaja_Efecto (
-      id_ventaja     int NOT NULL,
-      id_efecto     int NOT NULL
-);
-
-ALTER TABLE Ventaja_Efecto ADD PRIMARY KEY (id_ventaja,id_efecto);
-
-
 CREATE TABLE Personaje_Poderes (
       id_poder     int NOT NULL,
       id_personaje     int NOT NULL
@@ -427,7 +424,7 @@ ALTER TABLE Objeto ADD FOREIGN KEY (id_tipo) REFERENCES Tipo (id_tipo);
 
 
 
-ALTER TABLE Efecto ADD FOREIGN KEY (id_poder) REFERENCES Poderes_Monstruo (id_poder);
+ALTER TABLE Efecto_Poder ADD FOREIGN KEY (id_poder) REFERENCES Poderes_Monstruo (id_poder);
 
 
 
@@ -622,16 +619,86 @@ VALUES
 --
 INSERT INTO  `Animaster`.`Ventaja` (
 `id_ventaja` ,
-`tipo` ,
 `nombre` ,
 `descripcion` ,
 `efectos` ,
 `limitacion` ,
 `puntos_creacion`
 )
-VALUES (
-NULL ,  'ventaja',  'repetir una tirada de características',  'El azar permite a tu personaje modificar una de sus características básicas.', 'Te permite lanzar un dado adicional una vez que has generado las características de tu personaje, y utilitzar el resultado obtenido en lugar de uno de los anteriores. La nueva cifra no podrá ser inferior al valor de tu tirada más baja.', 'Esta ventaja no es compatible con el cuarto método de generación de características. Puede adquirirse tantas veces como se desee.',  '-1'
-);
+VALUES 
+(1, 'repetir una tirada de características', 'El azar permite a tu personaje modificar una de sus características básicas.', 'Te permite lanzar un dado adicional una vez que has generado las características de tu personaje, y utilitzar el resultado obtenido en lugar de uno de los anteriores. La nueva cifra no podrá ser inferior al valor de tu tirada más baja.', 'Esta ventaja no es compatible con el cuarto método de generación de características. Puede adquirirse tantas veces como se desee.', -1),
+(2, 'sumar un punto a una característica', 'Uno de los atributos del personaje es superior a su valor original', 'Añade un punto al valor de una característica', 'Las características físicas no podrán superar el once usando esta ventaja. Puede adquirirse tantas veces como se desee.', -1),
+(3, 'sustituir una característica por un nueve', 'Sustituye el valor de uno de los atributos del personaje', 'Sustituye una característica por un nueve sin importar cuál fuese su valor original', 'Esta ventaja puede comprarse tantas veces como se desee.', -2),
+(4, 'resistencia física excepcional 1', 'La resistencia física del personaje es muy elevada. Los daños, venenos o enfermedades no tienen tanto efecto en él como podrían tenerlos en otros sujetos normales.', 'RF), Resistencia contra venenos (RV) y Resistencia contra enfermedades (RE). La inversión de un segundo punto de creación aumenta el nivel de las resistencias a +50.', NULL, -1),
+(5, 'resistencia física excepcional 2', 'La resistencia física del personaje es muy elevada. Los daños, venenos o enfermedades no tienen tanto efecto en él como podrían tenerlos en otros sujetos normales.', 'RF), Resistencia contra venenos (RV) y Resistencia contra enfermedades (RE). La inversión de un segundo punto de creación aumenta el nivel de las resistencias a +50.', NULL, -2),
+(6, 'fondos iniciales 1', 'El personaje es un individuo que posee una gran fortuna en material y equipamiento.', 'Esta ventaja proporciona una cantidad de dinero inicial o equipo valorado en 2.000 Escudos de Oro (MO). Los puntos invertidos adicionalmente aumentan esta cantidad a 5.000 y a 10.000 Escudos respectivamente.', NULL, -1),
+(7, 'fondos iniciales 2', 'El personaje es un individuo que posee una gran fortuna en material y equipamiento.', 'Esta ventaja proporciona una cantidad de dinero inicial o equipo valorado en 2.000 Escudos de Oro (MO). Los puntos invertidos adicionalmente aumentan esta cantidad a 5.000 y a 10.000 Escudos respectivamente.', NULL, -2),
+(8, 'fondos iniciales 3', 'El personaje es un individuo que posee una gran fortuna en material y equipamiento.', 'Esta ventaja proporciona una cantidad de dinero inicial o equipo valorado en 2.000 Escudos de Oro (MO). Los puntos invertidos adicionalmente aumentan esta cantidad a 5.000 y a 10.000 Escudos respectivamente.', NULL, -3),
+(9, 'afinidad animal', 'Quien posea esta ventaja tiene un vínculo especial hacia los animales que le permite obtener una reacción positiva por su parte. Incomprensiblemente es incluso capaz de comunicarse de un modo limitado con ellos, entendiendo a rasgos generales cuáles son sus intenciones y viceversa.', 'El alcance de esta ventaja debe de ser interpretada por el Director del Juego. De cualquier modo, hay que explicar que un animal entrenado para atacar acabará haciéndolo a pesar de esta ventaja, pero probablemente lo hará tras una advertencia y dando siempre la oportunidad de escapar al personaje. En caso de que se fuerce un combate contra un animal, el personaje con esta ventaja será siempre la última persona a la que atacará si se encuentra en un grupo.', NULL, -1),
+(10, 'regeneración básica', 'Las heridas sufridas por el personaje sanan con mucha facilidad, ya que su cuerpo posee un factor de curación muy elevado.', 'Aumenta en 2 niveles la Regeneración del personaje. La inversión de puntos adicionales la aumenta en 4 y 6 niveles, respectivamente', NULL, -1),
+(11, 'regeneración avanzada', 'Las heridas sufridas por el personaje sanan con mucha facilidad, ya que su cuerpo posee un factor de curación muy elevado.', 'Aumenta en 2 niveles la Regeneración del personaje. La inversión de puntos adicionales la aumenta en 4 y 6 niveles, respectivamente', NULL, -2),
+(12, 'regeneración mayor', 'Las heridas sufridas por el personaje sanan con mucha facilidad, ya que su cuerpo posee un factor de curación muy elevado.', 'Aumenta en 2 niveles la Regeneración del personaje. La inversión de puntos adicionales la aumenta en 4 y 6 niveles, respectivamente', NULL, -3),
+(13, 'encanto', 'El personaje tiene cierto encanto personal que le vuelve carismático ante los demás. Siempre causa una reacción positiva a la gente que no le conoce, e incluso condiciona parcialmente a algunos individuos a ser ligeramente más permisivos con él.', 'El alcance de esta ventaja debe de ser interpretada por el Director del Juego.', NULL, -1),
+(14, 'ambidestría', 'Una persona que goza de ambidestría tiene un perfecto control sobre ambas manos y puede utilizarlas con la misma habilidad', 'Un personaje ambidiestro podrá efectuar maniobras con cualquier mano con idéntica habilidad. En combate, permite reducir a -10 los ataques efectuados con un arma adicional.', NULL, -1),
+(15, 'visión nocturna', 'Esta ventaja permite al personaje ver en la oscuridad y adaptarse a enorme velocidad a cualquier cambio en la intensidad de la luz.', 'Permite ignorar cualquier penalizador causado por la oscuridad, siempre que no se trate de un lugar con carencia absoluta de luz o algún tipo de oscuridad mágica, en cuyo caso, sólo quedan reducidos a la mitad.', NULL, -1),
+(16, 'buena suerte', 'El personaje tiene mucha suerte a la hora de poner en práctica cualquier cosa que se proponga y resulta muy raro que cometa un grave error.', 'Se reduce un punto la cifra requerida para pifiar. En circunstancias normales el personaje pifiará con un 2. Si alcanza la maestría en una habilidad sólo pifiará con un 1.', NULL, -1),
+(17, 'inquietante', 'El personaje tiene la capacidad de poner nerviosas a las personas siempre que lo desee. Incluso el individuo más pequeño y enclenque puede inquietar a otros si goza de ventaja. De este modo, podrá desanimar muchas ocasiones violentas en su contra o forzar el consentimiento de personas intimidables.', 'El personaje puede resultar inquietante si lo desea. El alcance de esta ventaja debe de ser interpretado por el Director del Juego.', NULL, -1),
+(18, 'apto en un campo', 'El personaje tiene una gran capacidad de aprendizaje en los costes de todo un campo de habilidades secundarias.', 'El coste de desarrollo de un campo de habilidades secundarias se reduce en un punto. Si se da el caso de que la categoria del personaje posee una habilidad secundaria concreta dentro de dicho campo con un coste inferior al del resto de habilidades, este valor también se reducirá.', 'Los costes de desarrollo no pueden reducirse por debajo de 1. Esta ventaja sólo funciona con los costes de las habilidades secundarias.', -2),
+(19, 'apto en una materia 1', 'Representa que el personaje tiene una enorme capacidad de aprendizaje en una habilidad secundaria que le permite desarrollarla con muy poco esfuerzo, por debajo incluso de lo que su categoría indica.', 'Esta ventaja reduce un punto el coste de desarrollo de una habilidad secundaria por cada Punto de Creación que se invierta.', 'Los costes de desarrollo no pueden reducirse por debajo de 1. Esta ventaja sólo funciona con los costes de las habilidades secundarias.', -1),
+(20, 'apto en una materia 2', 'Representa que el personaje tiene una enorme capacidad de aprendizaje en una habilidad secundaria que le permite desarrollarla con muy poco esfuerzo, por debajo incluso de lo que su categoría indica.', 'Esta ventaja reduce un punto el coste de desarrollo de una habilidad secundaria por cada Punto de Creación que se invierta.', 'Los costes de desarrollo no pueden reducirse por debajo de 1. Esta ventaja sólo funciona con los costes de las habilidades secundarias.', -2),
+(21, 'sentidos agudos', 'Los sentidos del personaje están tan desarrollados como los de un animal.', 'Añade un punto a la Percepción del personaje a la hora de realizar controles de características y un bonificador especial de +30 a sus habilidades secundarias de Advertir y Buscar.', NULL, -1),
+(22, 'aprendizaje innato 1', 'El personaje tiene una capacidad innata para mejorar en una habilidad secundaria. Sin esforzarse o practicarla, va perfeccionándola poco a poco.', 'Otorga un bono de categoría de +10 por nivel en una habilidad secundaria. Este bono se suma a cualquier otro bonificador innato que pudiera obtener el personaje gracias a su categoría. La inversión de un punto adicional aumenta el bono a +20.', NULL, -1),
+(23, 'aprendizaje innato 2', 'El personaje tiene una capacidad innata para mejorar en una habilidad secundaria. Sin esforzarse o practicarla, va perfeccionándola poco a poco.', 'Otorga un bono de categoría de +10 por nivel en una habilidad secundaria. Este bono se suma a cualquier otro bonificador innato que pudiera obtener el personaje gracias a su categoría. La inversión de un punto adicional aumenta el bono a +20.', NULL, -2),
+(24, 'aprendizaje innato en un campo 1', 'Igual que en el anterior, salvo que en este caso el personaje mejora en todas las habilidades secundarias que pertenezcan a un campo determinado', 'Otorga un bono de categoría de +5 por nivel a todas las habilidades de un campo. Estos bonificadores se suman a cualquier otro bono innato que pudiera obtener el personaje por su categoría. La inversion de un punto adiconal aumenta el bono a +10.', NULL, -2),
+(25, 'aprendizaje innato en un campo 2', 'Igual que en el anterior, salvo que en este caso el personaje mejora en todas las habilidades secundarias que pertenezcan a un campo determinado', 'Otorga un bono de categoría de +5 por nivel a todas las habilidades de un campo. Estos bonificadores se suman a cualquier otro bono innato que pudiera obtener el personaje por su categoría. La inversion de un punto adiconal aumenta el bono a +10.', NULL, -3),
+(26, 'conocedor de todas las materias', 'El personaje es un individuo que posee la excepcional habilidad de adaptarse a cualquier necesidad que se le presente y desarrolla conocimientos en todos los campos y materias. No importa lo rara o inusual que sea la habilidad secundaria que requiera utilizar, siempre tendrá algún conocimiento o pericia que le será útil en esa situación.', 'El personaje no aplica nunca el penalizacod de -30 por no haber invertido PD en una habilidad secundaria y tiene un bonificador natural de 10 en todas sus habilidades secundarias, que se suma directamente al bono que le otorgue su característica.', NULL, -2),
+(27, 'sueño ligero', 'El personaje permanece parcialmente consciente mientras duerme y es capaz de despertarse al más mínimo ruido o movimiento.', 'El personaje sólo aplica un penalizador de -20 a su habilidad de Advertir mientras duerme.', NULL, -1),
+(28, 'reflejos rápidos 1', 'El personaje posee unos reflejos excepcionales que le permiten responder con enorme velocidad ante cualquier situación', 'Otorga un bonificador especial de +25 al turno. Los Puntos de Creación adicionales aumentarán el bono de +45 y a +60 respectivamente.', NULL, -1),
+(29, 'reflejos rápidos 2', 'El personaje posee unos reflejos excepcionales que le permiten responder con enorme velocidad ante cualquier situación', 'Otorga un bonificador especial de +25 al turno. Los Puntos de Creación adicionales aumentarán el bono de +45 y a +60 respectivamente.', NULL, -2),
+(30, 'reflejos rápidos 3', 'El personaje posee unos reflejos excepcionales que le permiten responder con enorme velocidad ante cualquier situación', 'Otorga un bonificador especial de +25 al turno. Los Puntos de Creación adicionales aumentarán el bono de +45 y a +60 respectivamente.', NULL, -3),
+(31, 'inmunidad al dolor y al cansancio', 'El personaje es especialmente resistente a los efectos del dolor y de la fatiga.', 'Los penalizadores provocados por el dolor y el Cansancio se reducen a la mitad', NULL, -1),
+(32, 'tamaño no natural', 'El personaje tiene un Tamaño inusual para su Fuerza y Constitución, permitiendo que quien debería ser una colosal masa de músculos sea una persona pequeña o viceversa.', 'El personaje puede aumentar o disminuir hasta cinco punto su Tamaño en el momento de su creación', NULL, -1),
+(33, 'afortunado', 'Una persona afortunada es alguien que goza de verdadera suerte. En muchas ocasiones, podrá salir de situaciones difíciles utilizando únicamente su buena estrella.', 'El alcance de esta ventaja debe de ser interpretada por el Director del Juego. En cualquier caso, nunca sufrirá los efectos negativos de una trampa o de un ataque que se determinen mediante el azar.', NULL, -1),
+(34, 'armadura natural', 'El personaje tiene una piel extemadamente resistente y unos músculos muy duros, lo suficiente como para que sea muy dificil traspasarlos.', 'Otorga un Tipo de Armadura natural de 2 contra odas las clases de ataques salvo las de energía. Aunque cuenta como una protección, no se aplican penalizadores al turno por emplear capas de armaduras adicionales.', NULL, -1),
+(35, 'armadura mística', 'El aura del personaje forma una capa de energía mística a su alrededor que le protege contra los ataques sobrenaturales', 'Otorga un Tipo de Armadura natural de 4 contra los ataques basados en Energía. Aunque cuenta como una armadura, no se aplican penalizadores al turno por emplear capas de protección adicionales.', NULL, -1),
+(36, 'Infatigable 1', 'El aguante a la fatiga del personaje es muy superior al que debería permitirle su Constitución', 'Aumenta tres puntos el Cansancio del personaje. Los Puntos de Creación adicionales lo incrementan seis y nueve puntos respectivamente', NULL, -1),
+(37, 'Infatigable 2', 'El aguante a la fatiga del personaje es muy superior al que debería permitirle su Constitución', 'Aumenta tres puntos el Cansancio del personaje. Los Puntos de Creación adicionales lo incrementan seis y nueve puntos respectivamente', NULL, -2),
+(38, 'Infatigable 3', 'El aguante a la fatiga del personaje es muy superior al que debería permitirle su Constitución', 'Aumenta tres puntos el Cansancio del personaje. Los Puntos de Creación adicionales lo incrementan seis y nueve puntos respectivamente', NULL, -3),
+(39, 'ver lo sobrenatural', 'Los ojos del personaje pueden llegar a ver los telares del flujo de las almas y al mismo tiempo percibir la energía de las matrices psíquicas.', 'El personaje ve lo sobrenatural, tanto magia y matrices psíquicas como criaturas espirituales. Por tanto, no aplica el penalizador de cegado en ninguna de dichas situaciones.', NULL, -1),
+(40, 'sentido del peligro', 'Dota de un sexto sentido al personaje, que le permite presentir cuando algo peligroso se acerca o le amenaza. No será capaz de detectar el origen o la naturaleza del peligro hasta que este se cierna sobre él, pero sí de intuir su presencia.', 'El personaje no puede ser cogido por sorpresa, salvo por una diferencia de 150 en turno contra su adversario.', NULL, -2),
+(41, 'curtido 1', 'El personaje ya ha tenido varias experiencias en el mundo real, de las que ha aprendido grandes lecciones', 'El personaje comienza con 50 puntos de experiencia añadidos. Los Puntos de Creación adicionales aumentan los puntos de experiencia iniciales a 100 y 150, respectivamente. Este aumento permite subir de nivel de modo convencional si se alcanzan los puntos de experiencia necesarios.', NULL, -1),
+(42, 'curtido 2', 'El personaje ya ha tenido varias experiencias en el mundo real, de las que ha aprendido grandes lecciones', 'El personaje comienza con 50 puntos de experiencia añadidos. Los Puntos de Creación adicionales aumentan los puntos de experiencia iniciales a 100 y 150, respectivamente. Este aumento permite subir de nivel de modo convencional si se alcanzan los puntos de experiencia necesarios.', NULL, -2),
+(43, 'curtido 3', 'El personaje ya ha tenido varias experiencias en el mundo real, de las que ha aprendido grandes lecciones', 'El personaje comienza con 50 puntos de experiencia añadidos. Los Puntos de Creación adicionales aumentan los puntos de experiencia iniciales a 100 y 150, respectivamente. Este aumento permite subir de nivel de modo convencional si se alcanzan los puntos de experiencia necesarios.', NULL, -3),
+(44, 'aprendizaje 1', 'El personaje tiene una enorme capacidad de aprendizaje para desarrollar su potencial, y saca siempre el máximo provecho a lo que ha visto o hecho.', 'Obtiene un beneficio adiconal de 3 puntos de experiencia a la cantidad que le otorga el Director de Juego al finalizar cada sesión de juego. Los Puntos de Creación adicionales aumentan el beneficio a 6 y 9 puntos respectivamente.', NULL, -1),
+(45, 'aprendizaje 2', 'El personaje tiene una enorme capacidad de aprendizaje para desarrollar su potencial, y saca siempre el máximo provecho a lo que ha visto o hecho.', 'Obtiene un beneficio adiconal de 3 puntos de experiencia a la cantidad que le otorga el Director de Juego al finalizar cada sesión de juego. Los Puntos de Creación adicionales aumentan el beneficio a 6 y 9 puntos respectivamente.', NULL, -2),
+(46, 'aprendizaje 3', 'El personaje tiene una enorme capacidad de aprendizaje para desarrollar su potencial, y saca siempre el máximo provecho a lo que ha visto o hecho.', 'Obtiene un beneficio adiconal de 3 puntos de experiencia a la cantidad que le otorga el Director de Juego al finalizar cada sesión de juego. Los Puntos de Creación adicionales aumentan el beneficio a 6 y 9 puntos respectivamente.', NULL, -3),
+(47, 'Reducir 2 puntos una característica', 'Uno de los atributos del personaje ha sido desarrollado menos de lo que potencialmente debía', 'Reduce en dos puntos una de las características básicas', 'Esta desventaja sólo puede adquirirse en una ocasión. No es posible disminuir una característica por debajo de 3.', 1),
+(48, 'salud enfermiza', 'El personaje tiene una salud terriblemente débil y es propenso a enfermar con facilidad', 'La RE del personaje queda reducida a la mitad.', NULL, 1),
+(49, 'Lenta curación', 'Por alguna causa, la capacidad regenerativa del cuerpo del personaje está terriblemente mermada y este se recupera de las heridas que sufre con gran dificultad, incluso mediante medios sobrenaturales.', 'El personaje recupera sólo la mitad de puntos de vida de cualquier cantidad que debiera recobrar, ya sea mediante regeneración normal o medios místicos.', NULL, 1),
+(50, 'miopía', 'La vista del personaje esta afectada por un problema que no le deja ver bien. Para él, muchas cosas permanecerán borrosas y tendrá dificultades incluso para leer, por lo que necesitará la ayuda de algún instrumento para suplir su carencia.', 'Aplicará un negativo de -50 a cualquier tirada de habilidad de Advertir o Buscar en la que se emplee la vista y un -3 a cualquier control de Percepción que la requiera. Este penalizador también se aplicará a la puntería. Si consigue unas gafas, el negativo penalizador se reduciría como el Director de Juego considere conveniente.', NULL, 1),
+(51, 'vulnerable a los venenos', 'El cuerpo del personaje no es capaz de soportar los venenos, puesto que sus defensas biológicas no están preparadas para combatir ningún tipo de sustancia nociva.', 'La RV del personaje queda reducida a la mitad.', NULL, 1),
+(52, 'fácil posesión', 'Aunque su voluntad sea fuerte, el personaje es muy propenso a ser dominado por cualquier entidad con la capacidad de afectar a su mente o alterar su personalidad.', 'El personaje aplica un negativo de -50 a cualquier RP o RM que realice contra algún tipo de dominio o posesión capaz de modificar su conducta.', NULL, 1),
+(53, 'vulnerable a la magia', 'Esta desventaja representa que el personaje es my propenso a verse afectado por las energías mágicas', 'La RM del personaje queda reducida a la mitad', NULL, 1),
+(54, 'vulnerable al frío o al calor', 'El calor o el frío, a elección del jugador, afectan terriblemente al personaje causándole muchos problemas físicos. Su cuerpo se ve seriamente perjudicado si se pone en contacto con algo muy caliente o frío, al igual que si visita lugares con temperaturas extremas, como volcanes o zonas heladas.', 'El personaje sufre un penalizador de -80 a cualquier Resistencia contra ese elemento y un -30 a toda acción en climas extremos.', NULL, 1),
+(55, 'extremidad atrofiada', 'El personaje tiene un serio problema controlando uno de sus miembros. Esta extremidad le tiembla terriblemente en todo momento o deja de responderle en la situación en la que más lo requiera.', 'El personaje aplica un penalizador de -80 a todas las acciones físicas que requieran el uso del miembro atrofiado.', NULL, 1),
+(56, 'debilidad física', 'El personaje es excepcionalmente débil ante los daños físicos, por lo que cada vez que recibe una herida crítica tiene serias posibilidades de morir o sufrir daños irreversibles.', 'La RF del personaje queda reducida a la mitad', NULL, 1),
+(57, 'aspecto desagradable', 'El personaje tiene terribles deformaciones que vuelven su aspecto muy desagradable a la vista', 'Reduce la apariencia del personaje a 2', 'El personaje tiene que tener como mínimo un 7 en apariencia. Esta característica debe de haber sido generada mediante una tirada, no eligida libremente por el jugador.', 1),
+(58, 'desafortunado', 'La desgracia acompaña al personaje allí donde va. Esté donde esté, siempre le pasarán cosas terribles por mucho que se esfuerce por evitarlo.', 'El Director de Juego deberá interpretar el alcance de esta desventaja. En un grupo, alguien desafortunado será siempre el que caiga en la trampa aleatoria y el primero al que ataquen cuando el azar decida quién recibe el primer impacto.', NULL, 1),
+(59, 'enfermedad grave', 'El personaje sufre algún tipo de enfermedad degenerativa que acabará matándole. Suele quedarle una media de poco más de un año de vida al empezar la partida, pero el periodo de tiempo puede ser menor o mayor si el Director de Juego lo necesita para encajar con los límites temporales de su campaña. Al contrario de lo que pueda parecer, un personaje con esta desventaja no sólo es perfectamente jugable, sino que precisamente puede tener como objetivo adicional algún medio para curarse.', 'El personaje aplicará un penalizador acumulativo de -10 a toda acción por cada mes que transcurra. El Director de Juego determinará una fecha en secreto, llegada la cual morirá.', NULL, 2),
+(60, 'alergia grave', 'El personaje tiene algún tipo de alergia hacia algo, tan grave que, por el mero contacto o inhalación, recibirá una terrible reacción alérgica que perdurará durante horas. Algunos ejemplos de alergias habituales son hacia el metal, al polen, o incluso hacia la luz.', 'Los negativos a toda acción por entrar en contacto con dicha sustancia variarán entre un -40 y -80, dependiendo de la gravedad o del tiempo que se haya permanecido en contacto con dicho elemento.', NULL, 1),
+(61, 'sueño profundo', 'Representa una terrible desventaja para alguien cuya vida suele estar en peligro incluso mientras duerme. El personaje tiene un sueño muy profundo y resulta muy difícil que se despierte. Aguantará sin despertarse incluso con un contacto físico ligero, y cuando finalmente lo haga permanecerá aturdido durante vario minutos.', 'El personaje aplicará un penalizador de -200 a cualquier tirada de percepción mientras duerme. Durante los diez asaltos posteriores a su despertar, aplicará un penalizador de -40 a toda acción.', NULL, 1),
+(62, 'fobia grave', 'El personaje siente un terrible temor hacia algo, que le obliga a comportarse de manera irracional en su presencia. Algunos buenos ejemplos de fobias conocidas serían la hidrogobia, el miedo al agua, la hemofobia, le miedo a la sangre o la claustrofobia, el miedo a los espacios cerrados. Naturalmente, una fobia un elemento demasiado conceto no debería permitirse y quedará a la discrecion del Director de Juego su fijación exacta.', 'El personaje aplicará el estado de miedo siempre que se encuentre con el objeto de su fobia.', NULL, 1),
+(63, 'mala suerte', 'El personaje tiene muy mala suerte a la hora de hacer lo que propone y suele fracasar estrepitosamente mucho más de lo que le gustaría', 'La cigra requerida para pifiar aumenta en dos puntos. En las habilidades normales pifiará con un resultado de 5 y, si es maestro, lo hará con 4.', NULL, 1),
+(64, 'mudo', 'De alguna manera, el personaje está privado de la capacidad física de hablar.', 'El personaje no puede hablar', NULL, 1),
+(65, 'ciego', 'Por alguna razón el personaje está privado del sentido de la vista, o lo que es lo mismo, está copmletamiente ciego.', 'El personaje no podrá usar ninguna habilidad que requiera ver. Aplicará en todo momento el penalizador de cegado.', NULL, 2),
+(66, 'sordo', 'Como su nombre indica, el personaje está completamente sordo, es decir, carece de capacidad auditiva.', 'El personaje no podrá emplear ninguna habilidad que requiera el uso del oído.', NULL, 1),
+(67, 'aprendizaje lento 1', 'La habilidad de prendizaje del personaje es mucho más limitada que la de un individuo normal. No significa que sea menos inteligente que el resto, sino que no aprende tanto de sus errores ni saca realmente todo el provecho que puede de sus éxitos.', 'El personaje tiene un penalizador de 4 puntos de experiencia a los otorgados por el Director de Juego al finalizar la sesión. El punto de desventaja adicional aumenta este penalizador a 8.', NULL, 1),
+(68, 'aprendizaje lento 2', 'La habilidad de prendizaje del personaje es mucho más limitada que la de un individuo normal. No significa que sea menos inteligente que el resto, sino que no aprende tanto de sus errores ni saca realmente todo el provecho que puede de sus éxitos.', 'El personaje tiene un penalizador de 4 puntos de experiencia a los otorgados por el Director de Juego al finalizar la sesión. El punto de desventaja adicional aumenta este penalizador a 8.', NULL, 2),
+(69, 'reacción lenta 1', 'Los reflejos del personaje están poco preparados para responder con velocidad a los acontecimientos', 'El personaje aplicará un penalizador especial de -30 a su turno. El punto de desventaja adicional aumenta este negativo hasta -60.', NULL, 1),
+(70, 'reacción lenta 2', 'Los reflejos del personaje están poco preparados para responder con velocidad a los acontecimientos', 'El personaje aplicará un penalizador especial de -30 a su turno. El punto de desventaja adicional aumenta este negativo hasta -60.', NULL, 2),
+(71, 'adicción o vicio grave', 'Representa que se tiene una necesidad imperiosa de realizar algún tipo de acción conceta o de consumir una sustancia específica a dirario. Un personaje con esta desventaja hará lo que sea necesario para conseguir satisfacer su vicio, puesto qe en caso contrario empezará a sentirse muy nervioso y a entrar en crisis.', 'El personaje aplicará un penalizador acumulativo de -10 por cada día que transcurra sin satisfacer su vicio.', NULL, 1),
+(72, 'vulnerable al dolor', 'El personaje no es capaz de resistir el color físico, que le aterra y perjudica excepcionalmente.', 'Dobla cualquier penalizador causado por el dolor, ya sea producido por críticos o efectos místicos.', NULL, 1),
+(73, 'exhausto', 'Un personaje con esta desventaja es muy vulnerable a los efectos del Cansancio. No solo se cansa con mayor facilidad que los demás, sino que sufre especialmente los efectos de la fatiga.', 'Dobla los penalizadores a la acción provocados por la fatiga y resta un punto de Cansancio base del personaje', NULL, 1);
 
 
 --
