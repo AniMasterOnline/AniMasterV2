@@ -76,7 +76,7 @@ CREATE TABLE Personaje (
       c_PER     int,
       c_POD     int,
       c_VOL     int,
-      nacionalidad     varchar(32),
+      nacionalidad     int(11),
       imagen     varchar(32),
       humano     varchar(8),
 	  puntos_hs     int,
@@ -85,12 +85,12 @@ CREATE TABLE Personaje (
       PRIMARY KEY (`id_personaje`),
       KEY `id_usuario` (`id_usuario`),
       KEY `id_categoria` (`id_categoria`),
-	  KEY `nacionalidad` (`id`)
+	  KEY `nacionalidad` (`nacionalidad`)
 );
 
 
 
-CREATE TABLE IF NOT EXISTS `nacionalidad` (
+CREATE TABLE IF NOT EXISTS `Nacionalidad` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `nacionalidad` (
 -- Dumping data for table `paises`
 --
 
-INSERT INTO `nacionalidad` (`id`, `nombre`) VALUES
+INSERT INTO `Nacionalidad` (`id`, `nombre`) VALUES
 (1, 'Abel'),
 (2, 'Arlan'),
 (3, 'Alberia'),
@@ -138,7 +138,8 @@ INSERT INTO `nacionalidad` (`id`, `nombre`) VALUES
 (35, 'Corinia'),
 (36, 'Arabel'),
 (37, 'Elcia'),
-(38, 'Itzi');
+(38, 'Itzi'),
+(39, 'Dalaborn');
 
 
 
@@ -461,6 +462,7 @@ ALTER TABLE Usuario ADD FOREIGN KEY (id_tipo) REFERENCES Roles (id_tipo);
 
 ALTER TABLE Personaje ADD FOREIGN KEY (id_categoria) REFERENCES Categoria (id_categoria);
 ALTER TABLE Personaje ADD FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario);
+ALTER TABLE Personaje ADD FOREIGN KEY (nacionalidad) REFERENCES Nacionalidad (id);
 
 
 
