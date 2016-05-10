@@ -13,6 +13,7 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
     $id_partida = $partida->returnId_Partida($token);
     if($id_partida != null){
         $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -1,'true');
+        
         $partida_usuari->add();
         echo '<META http-equiv="refresh" content="0;URL=../../zone.php">';
     }else{
