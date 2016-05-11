@@ -50,220 +50,93 @@
                 <li id="top-search">
                     <a href="#"><i class="tm-icon zmdi zmdi-search"></i></a>
                 </li>
-                <?php           
-                    if (strpos($self,"admin/")){
-                        if(isset($_SESSION['user'])){
-                            require_once "../System/Classes/Partida_Usuari.php";
-                            require_once "../System/Classes/Partida.php";
-                            $partida_usuari = new Partida_Usuari();
-                            $partida_usuari = $partida_usuari->viewInvited($value['id_usuario']);
-                            $cont = 0;
-                            if ($partida_usuari != null){
-                                foreach ($partida_usuari as $row){
-                                    $cont++;
-                                }
-                                echo '<li class="dropdown">
-                                        <a data-toggle="dropdown" href="#">
-                                            <i class="tm-icon zmdi zmdi-accounts-add"></i>
-                                            <i class="tmn-counts">'.$cont.'</i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                            <div class="listview">
-                                                <div class="lv-header">
-                                                    Notifications
-                                                    <ul class="actions">
-                                                        <li class="dropdown">
-                                                            <a href="../System/Protocols/Partida_Signout.php?idu='.$value['id_usuario'].'">
-                                                                <i class="zmdi zmdi-close"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="lv-body">';
-                                                foreach ($partida_usuari as $row){
-                                                    $id_partida = $row->getId_Partida();
-                                                        $partida= new Partida();
-                                                        $partida= $partida->viewPartida($id_partida);
-                                                        $nombre = $partida->getNombre();
-                                                        $imagen = $partida->getImagen();
-                                                        $descripcion = $partida->getDescripcion();
-                                                        echo '  
-                                                            <a class="lv-item" href="../System/Protocols/Partida_Signin.php?idp='.$id_partida.'&idu='.$value['id_usuario'].'">
-                                                                <div class="media">
-                                                                    <div class="pull-left">
-                                                                        <img class="lv-img-sm" src="../Public/img/partida/'.$imagen.'" alt="">
-                                                                    </div>
-                                                                    <div class="media-body">
-                                                                        <div class="lv-title">'.$nombre.'</div>
-                                                                        <small class="lv-small">'.$descripcion.'</small>
-                                                                    </div>
-                                                                </div>
-                                                            </a>';
-                                                }
-                                    echo '  </div>
+                <?php
+                    if(isset($_SESSION['user'])){
+                        echo '<li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <i class="tm-icon zmdi zmdi-email"></i>
+                                <i class="tmn-counts">3</i>
+                            </a>';
+
+                        echo '<div class="dropdown-menu dropdown-menu-lg pull-right">
+                                <div class="listview">
+                                    <div class="lv-header">
+                                        Messages
                                     </div>
-                                </div>
-                            </li>';
-                            }else{
-                                echo '  <li class="dropdown">
-                                            <a data-toggle="dropdown" href="#">
-                                                <i class="tm-icon zmdi zmdi-accounts-add"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                                <div class="listview">
-                                                    <div class="lv-header">
-                                                        Notifications
-                                                    </div>
-                                                    <div class="lv-body">
-                                                    </div>
+                                    <div class="lv-body">
+                                        <a class="lv-item" href="#">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <div class="lv-title">David Belle</div>
+                                                    <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
                                                 </div>
                                             </div>
-                                        </li>';
-                            }   
-                        }
-                    }else if (strpos($self,"settings/")){
-                        if(isset($_SESSION['user'])){
-                            require_once "../../System/Classes/Partida_Usuari.php";
-                            require_once "../../System/Classes/Partida.php";
-                            $partida_usuari = new Partida_Usuari();
-                            $partida_usuari = $partida_usuari->viewInvited($value['id_usuario']);
-                            $cont = 0;
-                            if ($partida_usuari != null){
-                                foreach ($partida_usuari as $row){
-                                    $cont++;
-                                }
-                                echo '<li class="dropdown">
-                                        <a data-toggle="dropdown" href="#">
-                                            <i class="tm-icon zmdi zmdi-accounts-add"></i>
-                                            <i class="tmn-counts">'.$cont.'</i>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                            <div class="listview">
-                                                <div class="lv-header">
-                                                    Notifications
-                                                    <ul class="actions">
-                                                        <li class="dropdown">
-                                                            <a href="../../System/Protocols/Partida_Signout.php?idu='.$value['id_usuario'].'">
-                                                                <i class="zmdi zmdi-close"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="lv-body">';
-                                                foreach ($partida_usuari as $row){
-                                                    $id_partida = $row->getId_Partida();
-                                                        $partida= new Partida();
-                                                        $partida= $partida->viewPartida($id_partida);
-                                                        $nombre = $partida->getNombre();
-                                                        $imagen = $partida->getImagen();
-                                                        $descripcion = $partida->getDescripcion();
-                                                        echo '  
-                                                            <a class="lv-item" href="../../System/Protocols/Partida_Signin.php?idp='.$id_partida.'&idu='.$value['id_usuario'].'">
-                                                                <div class="media">
-                                                                    <div class="pull-left">
-                                                                        <img class="lv-img-sm" src="../../Public/img/partida/'.$imagen.'" alt="">
-                                                                    </div>
-                                                                    <div class="media-body">
-                                                                        <div class="lv-title">'.$nombre.'</div>
-                                                                        <small class="lv-small">'.$descripcion.'</small>
-                                                                    </div>
-                                                                </div>
-                                                            </a>';
-                                                }
-                                    echo '  </div>
-                                    </div>
-                                </div>
-                            </li>';
-                            }else{
-                                echo '  <li class="dropdown">
-                                            <a data-toggle="dropdown" href="#">
-                                                <i class="tm-icon zmdi zmdi-accounts-add"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                                <div class="listview">
-                                                    <div class="lv-header">
-                                                        Notifications
-                                                    </div>
-                                                    <div class="lv-body">
-                                                    </div>
+                                        <a class="lv-item" href="#">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <div class="lv-title">Jonathan Morris</div>
+                                                    <small class="lv-small">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
                                                 </div>
                                             </div>
-                                        </li>';
-                            }   
-                        }
-                    }else{
-                        if(isset($_SESSION['user'])){
-                            require_once "System/Classes/Partida_Usuari.php";
-                            require_once "System/Classes/Partida.php";
-                            $partida_usuari = new Partida_Usuari();
-                            $partida_usuari = $partida_usuari->viewInvited($value['id_usuario']);
-                            $cont = 0;
-                            if ($partida_usuari != null){
-                                foreach ($partida_usuari as $row){
-                                    $cont++;
-                                }
-                                echo '<li class="dropdown">
-                                        <a data-toggle="dropdown" href="#">
-                                            <i class="tm-icon zmdi zmdi-accounts-add"></i>
-                                            <i class="tmn-counts">'.$cont.'</i>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                            <div class="listview">
-                                                <div class="lv-header">
-                                                    Notifications
-                                                    <ul class="actions">
-                                                        <li class="dropdown">
-                                                            <a href="System/Protocols/Partida_Signout.php?idu='.$value['id_usuario'].'">
-                                                                <i class="zmdi zmdi-close"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="lv-body">';
-                                                foreach ($partida_usuari as $row){
-                                                    $id_partida = $row->getId_Partida();
-                                                        $partida= new Partida();
-                                                        $partida= $partida->viewPartida($id_partida);
-                                                        $nombre = $partida->getNombre();
-                                                        $imagen = $partida->getImagen();
-                                                        $descripcion = $partida->getDescripcion();
-                                                        echo '  
-                                                            <a class="lv-item" href="System/Protocols/Partida_Signin.php?idp='.$id_partida.'&idu='.$value['id_usuario'].'">
-                                                                <div class="media">
-                                                                    <div class="pull-left">
-                                                                        <img class="lv-img-sm" src="Public/img/partida/'.$imagen.'" alt="">
-                                                                    </div>
-                                                                    <div class="media-body">
-                                                                        <div class="lv-title">'.$nombre.'</div>
-                                                                        <small class="lv-small">'.$descripcion.'</small>
-                                                                    </div>
-                                                                </div>
-                                                            </a>';
-                                                }
-                                    echo '  </div>
-                                    </div>
+                                    </div>';
+                        if (strpos($self,"admin/")){
+                            echo '<a class="lv-footer" href="../settings/notifications">View All</a>
                                 </div>
-                            </li>';
-                            }else{
-                                echo '  <li class="dropdown">
-                                            <a data-toggle="dropdown" href="#">
-                                                <i class="tm-icon zmdi zmdi-accounts-add"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-lg pull-right">
-                                                <div class="listview">
-                                                    <div class="lv-header">
-                                                        Notifications
-                                                    </div>
-                                                    <div class="lv-body">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>';
-                            }    
+                            </div>
+                        </li>';
+                        }else if (strpos($self,"settings/")){
+                            echo '<a class="lv-footer" href="../../settings/notifications">View All</a>
+                                </div>
+                            </div>
+                        </li>';
+                        }else{
+                            echo '<a class="lv-footer" href="settings/notifications">View All</a>
+                                </div>
+                            </div>
+                        </li>';
                         }
+                              
                     }
-                    
                 ?>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="tm-icon zmdi zmdi-accounts-add"></i>
+                        <i class="tmn-counts">2</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg pull-right">
+                        <div class="listview" id="notifications">
+                            <div class="lv-header">
+                                Notification
+                            </div>
+                            <div class="lv-body">
+                                <a class="lv-item" href="#">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img class="lv-img-sm" src="Public/img/partida/076.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title">Partida 1</div>
+                                            <small class="lv-small">¡Unete a mi partida!</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="lv-item" href="#">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            <img class="lv-img-sm" src="Public/img/partida/portfolio-4.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title">Partida 2</div>
+                                            <small class="lv-small">¡Unete ya!</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="#"><i class="tm-icon zmdi zmdi-more-vert"></i></a>
                     <ul class="dropdown-menu dm-icon pull-right">

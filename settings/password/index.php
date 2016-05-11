@@ -78,6 +78,7 @@ $(document).ready(function(){
                     <div class="list-group">
                         <a href="../../settings/account/" class="list-group-item ">Cuenta</a>
                         <a href="../../settings/password/" class="list-group-item active">Contraseña</a>
+                        <a href="../../settings/notifications/" class="list-group-item">Notificaciones</a>
                     </div>
                 </div>
             </div>

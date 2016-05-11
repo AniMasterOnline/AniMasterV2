@@ -16,11 +16,10 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
         
         $partida_usuari->add();
         echo '<META http-equiv="refresh" content="0;URL=../../zone.php">';
-        exit;
     }else{
         $title='Invalid Token';
         $migas='#Home|../../index.php#Mesa|../../settings/table/#Invalid Token';
-        require_once "../../Public/layouts/head.php";
+        include "../../Public/layouts/head.php";
         echo '<div class="alert alert-inverse ">
                 <strong>Error!</strong> Invalid Token.
               </div>';
@@ -110,14 +109,12 @@ include "../../Public/layouts/head.php";
                     <script>
                         function inviteUser(){
                             var make_id = $('#123').val();
-                            var val = $('#usersinvit').find('option[value="'+ make_id +'"]');;
-                            var id = val.attr('id');
                             if (/^\s+|\s+$/.test(make_id) || make_id.length === 0){
 
                             }else{
                                 var parametros = {
                                     "id_partida" : <?php echo $id_partida; ?>,
-                                    "id_usuario" : id
+                                    "user" : make_id
                                 };
                                 $.ajax({
                                         data:  parametros,
@@ -127,7 +124,7 @@ include "../../Public/layouts/head.php";
                                         },
                                         success:  function (response) {
                                             console.log(response);
-                                            swal("Invitación enviada!", "Jugador invitado correctamente!", "success");
+                                            swal("Good job!", "You clicked the button!", "success");
                                         }
                                 });
                             }
@@ -153,7 +150,7 @@ include "../../Public/layouts/head.php";
                                     $("#usersinvit").empty();
                                     for (var i = 0; i < option_list.length; i++) {
                                         $("#usersinvit").append(
-                                            $("<option>").attr("value", option_list[i]['nickname']).attr("id", option_list[i]['id_usuario'])
+                                            $("<option>").attr("value", option_list[i]['nickname']).text(option_list[i]['nickname'])
                                         );
                                     }
                                 });

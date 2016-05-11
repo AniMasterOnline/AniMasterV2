@@ -97,14 +97,6 @@ html {
     align-items: center;     /* Align the flex-items vertically */
     justify-content: center;
 }
-.clear-all{
-    position: relative;
-    right: 10px;
-    top: 10px;
-}
-.b-b-1{
-    border-bottom: 1px solid #333; 
-}
 
 
 /* #################################################################################### */
@@ -1051,8 +1043,7 @@ small, .small {
 }
 
 .top-menu > li .dropdown-menu-lg .lv-body {
-  height: 295px;
-  overflow-y: auto;
+  min-height: 295px;
   overflow-x: hidden;
 }
 
