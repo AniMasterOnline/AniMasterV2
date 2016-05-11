@@ -20,6 +20,13 @@ $(function() {
         $('#sendie').val('');
     });
 });
+$(window).load(function() {
+    chat.loadxat();
+    setInterval(myFunction(), 1000);
+    function myFunction() {
+        setInterval(function(){ chat.update(); }, 1000);
+    }
+});
 </script>
 <!-- Menu Toggle Script -->
 <?php
@@ -35,11 +42,7 @@ $(function() {
         <div id="sidebar-wrapper" class="z-depth-1">
             <div class="bgchatimg">&nbsp;</div>
             <div id="chat-container" class="c-overflow">
-                <div class="hidden">
-                    <span>
-                        &nbsp;
-                    </span>
-                </div>
+                
                 
             </div>
             <div id="chat-box" class="z-depth-1-top bgm-gray lv-footer ms-reply p-0 b-0" >
