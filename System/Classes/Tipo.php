@@ -33,6 +33,26 @@
             $db->close();
             return $rtn;
         }
+        public function view_nombre($id_tipo){
+            $db = new connexio();
+            $sql = "SELECT nombre FROM Tipo where id_tipo = '$id_tipo'";
+            $query = $db->query($sql);
+            $count = 0;
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $count++;
+                    $nombre = new Tipo($obj["nombre"]);
+                }
+                if($count == 1){
+                    return $nombre;
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+            $db->close();
+        }
 
         //CONSTRUCTORS
         function __construct(){
@@ -46,6 +66,11 @@
         function __construct0(){
             $this->id_tipo = 0;
             $this->nombre = 0;
+        }
+        
+        function __construct1($a2){
+            $this->id_tipo = 0;
+            $this->nombre = $a2;
         }
         
         function __construct2($a1, $a2){

@@ -19,7 +19,7 @@
         if (!$('html').hasClass('ismobile')) {
             //On Custom Class
             if ($('.c-overflow')[0]) {
-                //scrollBar('.c-overflow', 'minimal-dark', 'y');
+                scrollBar('.c-overflow', 'minimal-dark', 'y');
             }
         }
         

@@ -140,8 +140,7 @@
         opacity: 0.09;
     }
     #chat-container{
-        overflow-x: hidden;
-        overflow-y: scroll;
+        overflow: scroll;
         position: fixed;
         width: 400px;
         top: 98px;
@@ -150,37 +149,17 @@
         
     }
     .chatbox{
-        word-wrap: break-word;
-        overflow: hidden;
-        background-color: transparent;
+        background-color: #FFFFFF;
+        border-radius: 3px;
         margin-top: 2px;
         margin-bottom: 5px;
         margin-left: 10px;
         margin-right: 10px;
         max-width: 350px;
         min-width: 100px;
-    }
-    .chatmsg{
-        border-radius: 3px;
-        width: 100%;
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
-        background-color: #FFFFFF;
-    }
-    .chatnick{
-        margin: 0;
-        padding: 0;
-    }
-    .nick{
-        margin-right: 5px;
-        font-size: 14px;
-        font-weight: 700;
-    }
-    .time{
-        font-size: 11px;
-        font-weight: 400;
-        color: #555;
     }
     .me{
         background-color: #2196F3;
@@ -266,8 +245,5 @@
 
     .ms-reply button:hover {
       background: #2196ff;
-    }
-    .navbar{
-        margin-bottom: 0;
     }
     
