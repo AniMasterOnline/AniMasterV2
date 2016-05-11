@@ -1,8 +1,38 @@
 <!-- Header content box -->
-<?php 
+<?php
+session_start();
+if(isset($_SESSION['user'])){
+    $value=$_SESSION['user'];
+    //var_dump($value);
+}
+
+if(isset($_GET['id']) && !empty($_GET['id'])){
+    $id_partida = $_GET['id'];
+
+    require_once "../../System/Classes/Partida.php";
+    require_once "../../System/Classes/Partida_Usuari.php";
+    $partida= new Partida();
+    $partida_u= new Partida_Usuari(); 
+    $partida= $partida->viewPartida($id_partida);
+    if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
+        echo '<META http-equiv="refresh" content="0;URL=../../index.php">';
+    }
+    $nombre = $partida->getNombre();
+    $imagen = $partida->getImagen();
+    $descripcion = $partida->getDescripcion();
+    $anyo = $partida->getAnyo();
+    $nv_sobrenatural = $partida->getNv_Sobrenatural();
+    $limite = $partida->getLimite();
+    $token = $partida->getToken();
+
+}else{
+    echo '<META http-equiv="refresh" content="0;URL=index.php">';
+}
 $title='Nom Partida';
 $migas='#Index|index.php#Zona roleo';
 include "../../Public/layouts/head.php";?>
+
+
 <LINK HREF="../../Public/css/mesa.css" rel="stylesheet">
 <script src="../../Public/js/chat.js"></script>
 <script>

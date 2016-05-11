@@ -57,7 +57,7 @@ include "../../Public/layouts/head.php";
                     dataType: "html",
                     success: function (data) {
                         console.log(data);
-                        //$(location).attr('href', 'index.php');
+                        $(location).attr('href', 'index.php');
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         swal("Error deleting!", "Please try again", "error");
