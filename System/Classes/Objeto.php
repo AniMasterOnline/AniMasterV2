@@ -54,6 +54,20 @@
             $db->close();
             return $rtn;
         }
+        public function viewObjetosPublicos(){
+            $db = new connexio();
+            $sql = "SELECT * FROM Objeto where public='true'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $Objeto = new Objeto($obj["nombre"],$obj["descripcion"],$obj["peso"],$obj["precio"],$obj["public"],$obj["disponibilidad"],$obj["calidad"],$obj["id_tipo"]);
+                //var_dump($Objeto);
+                array_push($rtn, $Objeto);
+            }
+            $db->close();
+            return $rtn;
+        }
+        
         
         //CONSTRUCTORS
         function __construct(){
@@ -130,31 +144,31 @@
         }
         
         //METODES GET 
-        public function getId_Objeto($id_objeto) {
+        public function getId_Objeto() {
             return $this->id_objeto;
         }
-        public function getNombre($nombre) {
+        public function getNombre() {
             return $this->nombre;
         }
-        public function getDescripcion($descripcion) {
+        public function getDescripcion() {
             return $this->descripcion;
         }
-        public function getPeso($peso) {
+        public function getPeso() {
             return $this->peso;
         }
-        public function getPrecio($precio) {
+        public function getPrecio() {
             return $this->precio;
         }
-        public function getPublic($public) {
+        public function getPublic() {
             return $this->public;
         }
-        public function getDisponibilidad($disponibilidad) {
+        public function getDisponibilidad() {
             return $this->disponibilidad;
         }
-        public function getCalidad($calidad) {
+        public function getCalidad() {
             return $this->calidad;
         }
-        public function getId_Tipo($id_tipo) {
+        public function getId_Tipo() {
             return $this->id_tipo;
         }
     }
