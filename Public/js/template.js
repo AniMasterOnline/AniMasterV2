@@ -87,9 +87,16 @@
 
         //Desktop Notification
         //-----------------------------------------------
-        Notification.requestPermission().then(function(result) {
-            console.log('Notifications: '+result);
-        });
+        try {
+            Notification.requestPermission().then(function(result) {
+                console.log('Notifications: '+result);
+            });
+        }
+        catch(e) {
+            error = e;
+            console.log(error.message);
+        }
+        
         function spawnNotification(theBody,theIcon,theTitle) {
             var options = {
                 body: theBody,

@@ -29,6 +29,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
               </div>';
         exit;
     }
+    $id_master = $partida->getId_Usuario();
     $nombre = $partida->getNombre();
     $imagen = $partida->getImagen();
     $descripcion = $partida->getDescripcion();
@@ -36,39 +37,55 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $nv_sobrenatural = $partida->getNv_Sobrenatural();
     $limite = $partida->getLimite();
     $token = $partida->getToken();
+    
+    $file = '../../System/Logs/'.$id_partida.'-'.$nombre;
+    if (!file_exists($file)) {
+        fwrite(fopen($file, 'a'), "<div class='chatbox pull-left f-11 text-center system'><span>¡Inicio de la sesion de roleo!</span></div>\n"); 
+    }
 
 }else{
     echo '<META http-equiv="refresh" content="0;URL=index.php">';
 }
 $title='Nom Partida';
-$migas='#Home|../../index.php#Mesa#'.$nombre;
+$migas='#'.$nombre;
 include "../../Public/layouts/head.php";?>
 
 
 <LINK HREF="../../Public/css/mesa.css" rel="stylesheet">
 <script src="../../Public/js/chat.js"></script>
 <script>
-// ask user for name with popup prompt    
-var name = '#<?php echo $value['nickname']; ?>';
-var chat =  new Chat();
-$(function() {
-    instanse = false;
-    file = 'partida-#<?php echo $_GET['id'] ?>';
-    chat.getState(); 
-     
-    $('#sendie-btn').click(function(e) {
-        var text = $('#sendie').val();
-        chat.send(text, name);
-        $('#sendie').val('');
+    // ask user for name with popup prompt    
+    var file = '<?php echo $id_partida.'-'.$nombre ?>';
+    var name = '><?php echo $value['nickname']; ?>';
+    var color = "<?php if($id_master == $value['id_usuario']){ echo 'c-purple'; }else{ echo 'c-black'; } ?>";
+
+    var chat =  new Chat();
+    $(function() {
+        instanse = false;
+        chat.getState(file); 
+
+        $('#sendie-btn').click(function(e) {
+            var text = $('#sendie').val();
+            $('#sendie').val('');
+            chat.send(text, name, color, file);
+        });
+        $('#sendie').keyup(function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) { //Enter keycode
+                var text = $('#sendie').val();
+                $('#sendie').val('');
+                chat.send(text, name, color, file);
+            }
+        });
     });
-});
-$(window).load(function() {
-    chat.loadxat();
-    setInterval(myFunction(), 1000);
-    function myFunction() {
-        setInterval(function(){ chat.update(); }, 1000);
-    }
-});
+    $(window).load(function() {
+        chat.loadxat(file);
+        setInterval(myFunction(), 2000);
+
+        function myFunction() {
+            setInterval(function(){ chat.update(file); }, 1500);
+        }
+    });
 </script>
 <!-- Menu Toggle Script -->
 <?php
