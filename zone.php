@@ -46,13 +46,13 @@ include "Public/layouts/head.php";?>
                                                 <div class="image-box style-2 m-b-20 bordered dark-bg z-depth-2-bottom">
                                                     <div class="overlay-container overlay-visible output" style="background-image: url(Public/img/partida/'.$imagen.');">
                                                         <img class="partidaimg" src="" alt="">
-                                                        <a href="invite.php?id='.$id_partida.'" class="overlay-link iwave"><i class="fa fa-share-alt fa-mesa"></i></a>
+                                                        <a href="#" class="overlay-link iwave"></a>
                                                     </div>
                                                     <div class="body">
                                                         <h3 style="margin-top: 0;">'.$nombre.'</h3>
                                                         <p class="small mb-10"><i class="fa fa-calendar-o" aria-hidden="true">&nbsp;</i>'.$anyo.'<i class="fa fa-star p-l-10" aria-hidden="true">&nbsp;</i>'.$nv_sobrenatural.'<i class="fa fa-user-plus p-l-10" aria-hidden="true">&nbsp;</i>'.$limite.'<i class="fa fa-tag p-l-10" aria-hidden="true">&nbsp;</i>Partida - '.$pos.'</p>
                                                         <p class="text-muted">'.$descripcion.'</p>
-                                                        <a href="mesa.php?id='.$id_partida.'" class="btn bgm-purple btn-gray-transparent btn-sm margin-clear f-700" style="width: 100%;">Jugar<i class="zmdi zmdi-mail-send pl-10"></i></a>
+                                                        <a href="settings/table/mesa.php?id='.$id_partida.'" class="btn bgm-purple btn-gray-transparent btn-sm margin-clear f-700" style="width: 100%;">Jugar<i class="zmdi zmdi-mail-send pl-10"></i></a>
                                                     </div>
                                                 </div>
                                             </div>';

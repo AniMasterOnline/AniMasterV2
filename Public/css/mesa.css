@@ -246,4 +246,7 @@
     .ms-reply button:hover {
       background: #2196ff;
     }
+    .navbar{
+        margin-bottom: 0;
+    }
     

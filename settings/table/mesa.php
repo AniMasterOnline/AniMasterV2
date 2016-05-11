@@ -1,32 +1,27 @@
 <!-- Header content box -->
 <?php 
 $title='Nom Partida';
-include "Public/layouts/head.php";?>
-<LINK HREF="Public/css/mesa.css" rel="stylesheet">
-<style>
-    .navbar{
-        margin-bottom: 0;
-    }
-</style>
-<!-- Menu Toggle Script -->
+$migas='#Index|index.php#Zona roleo';
+include "../../Public/layouts/head.php";?>
+<LINK HREF="../../Public/css/mesa.css" rel="stylesheet">
+<script src="../../Public/js/chat.js"></script>
 <script>
-    $( document ).ready(function() {
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-        
-        window.setInterval(function() {
-            console.log('2');
-        }, 1000);
+// ask user for name with popup prompt    
+var name = '#<?php echo $value['nickname']; ?>';
+var chat =  new Chat();
+$(function() {
+    instanse = false;
+    file = 'partida-#<?php echo $_GET['id'] ?>';
+    chat.getState(); 
+     
+    $('#sendie-btn').click(function(e) {
+        var text = $('#sendie').val();
+        chat.send(text, name);
+        $('#sendie').val('');
     });
-    $(window).load(function() {
-        //Autoscroll chat to bottom on load
-        var d = $('#chat-container');
-        d.mCustomScrollbar('scrollTo','last');
-        d.mCustomScrollbar('scrollTo','last');
-    });
+});
 </script>
+<!-- Menu Toggle Script -->
 <?php
     function rcolor(){
         $color = substr(md5(rand()), 0, 6);
@@ -40,122 +35,16 @@ include "Public/layouts/head.php";?>
         <div id="sidebar-wrapper" class="z-depth-1">
             <div class="bgchatimg">&nbsp;</div>
             <div id="chat-container" class="c-overflow">
-                <div class="chatbox pull-left f-11 text-center system">
+                <div class="hidden">
                     <span>
-                        ¡Inicio de la sesion de roleo!
-                    </span>
-                </div>
-                <div class="  "></div>
-                <div class="chatbox pull-left">
-                    <span>
-                        <span class="f-14 f-700">Guardia</span><br>
-                        Eh, eh, ¡cuidado con esa magia!
-                    </span>
-                </div>
-                <div class="chatbox pull-left">
-                    <span>
-                        Vete a lanzar tus preciosos hechizos a otra parte
-                    </span>
-                </div>
-                <div class="chatbox pull-right me">
-                    <span>
-                        ¡No  me grites que me pones los pelos de punta!
-                    </span>
-                </div>
-                <div class="chatbox pull-left">
-                    <span>
-                        <span class="f-14 f-700">Jacob</span><br>
-                        Espera, ya a tí te conozco ...... 
-                        No me equivoco, estás en busca y captura. 
-                        Ya es hora que pagues por tus crímenes
-                    </span>
-                </div>
-                <div class="chatbox pull-right me">
-                    <span>
-                        Lo lamento… pero te equivocas, no soy mas que un pobre mago que va por el mundo sin rumbo ...
-                    </span>
-                </div>
-                <div class="chatbox pull-left">
-                    <span>
-                        <span class="f-14 f-700">Master</span><br>
-                        En ese momento, el guardia sin creer el la palabra del joven mago desenfunda su espada y se dispone a apresar al joven.
-                    </span>
-                </div>
-                <div class="chatbox pull-right me">
-                    <span>
-                        Os lo prometo os estais equivocando ... puede que sea mago pero eso no me convierte en un bandido.
-                    </span>
-                </div>
-                <div class="chatbox pull-right me">
-                    <span>
-                        Ademas ese echizo solo fue para iluminar ya que se esta oscureciendo ... D:
-                    </span>
-                </div>
-                <div class="chatbox pull-left">
-                    <span>
-                        <span class="f-14 f-700">Jacob</span><br>
-                        Bueno quizas tengas razon en eso, pero igual el uso de la magia esta prohibido en estas tierras ....
-                    </span>
-                </div>
-                <div class="chatbox pull-left">
-                    <span>
-                        enfin se puede saber hacia donde te dirijes ?
-                    </span>
-                </div>
-                <div class="chatbox pull-right me">
-                    <span>
-                        Solo estoy de paso, aunque voy de camino hacia "Gabriel"
-                    </span>
-                </div>
-                <div class="chatbox pull-right me">
-                    <span>
-                        En unas semanas va a haber un evento por algo nuevo que se ha construido y me gustaria asistir.
-                    </span>
-                </div>
-                <div class="chatbox pull-left">
-                    <span>
-                        <span class="f-14 f-700">Master</span><br>
-                        Al acercarse la noche, de entre los arbustos sale un lobo y os ataca.
-                    </span>
-                </div>
-                <div class="chatbox pull-left f-11 text-center battle">
-                    <span>
-                        ¡Inicio de Batalla!
-                    </span>
-                </div>
-                <div class="chatbox pull-left f-11 battle2">
-                    <span>
-                        <span class="f-12 f-700">Enemy1 > Jacob : </span>
-                        -35Pdv
-                    </span>
-                </div>
-                <div class="chatbox pull-left f-11 battle2">
-                    <span>
-                        <span class="f-12 f-700">Jacob > Enemy1 : </span>
-                        -35Pdv
-                    </span>
-                </div>
-                <div class="chatbox pull-left f-11 battle2 bgm-lightblue">
-                    <span>
-                        <span class="f-12 f-700">Yo > Enemy1 : </span>
-                        -65Pdv
-                    </span>
-                </div>
-                <div class="chatbox pull-left f-11 battlekill">
-                    <span>
-                        <span class="f-12 f-700">Enemy1 is Death</span>
-                    </span>
-                </div>
-                <div class="chatbox pull-left f-11 text-center battle">
-                    <span>
-                        ¡Fin de Batalla!
+                        &nbsp;
                     </span>
                 </div>
                 
             </div>
             <div id="chat-box" class="z-depth-1-top bgm-gray lv-footer ms-reply p-0 b-0" >
-                <textarea placeholder="What's on your mind..."></textarea>
-                <button><i class="zmdi zmdi-mail-send"></i></button>
+                <textarea id="sendie" placeholder="What's on your mind..."></textarea>
+                <button id="sendie-btn" ><i class="zmdi zmdi-mail-send"></i></button>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -266,5 +155,5 @@ include "Public/layouts/head.php";?>
     <!-- /#wrapper -->
 
 <!-- Footer content box -->
-<?php include "Public/layouts/footer.php";?> 
+<?php include "../../Public/layouts/footer.php";?> 
 
