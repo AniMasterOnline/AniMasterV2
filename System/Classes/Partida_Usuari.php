@@ -21,6 +21,12 @@
             $db->close();
             return $result;
         }
+        public function deletepart($idu){
+            $db = new connexio();
+            $result = $sql = "delete from Partida_Usuari WHERE id_partida= '$idu'";
+            $db->query($sql);
+            return $result;
+        }
         public function delete($idu){
             $db = new connexio();
             $result = $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and aceptado= 'false'";

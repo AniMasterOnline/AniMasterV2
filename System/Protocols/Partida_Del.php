@@ -5,13 +5,12 @@
     
     session_start();
     if(isset($_SESSION['user'])){
-        
-        
         $id=$_POST['id'];
+        $partida_u = new Partida_Usuari();
+        $partida_u->deletepart($id);
+        
         $partida = new Partida();
-        $partida2 = new Partida_Usuari();
-        $result2 = $partida2->delete($id);
-        $result=$partida->delete($id);
+        $partida->delete($id);
         
         $value=$_SESSION['user'];
         $id_usuario = $value['id_usuario'];

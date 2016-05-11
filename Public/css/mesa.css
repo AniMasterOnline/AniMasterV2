@@ -150,37 +150,34 @@
         
     }
     .chatbox{
-        word-wrap: break-word;
-        overflow: hidden;
         background-color: transparent;
+        border-radius: 3px;
         margin-top: 2px;
         margin-bottom: 5px;
         margin-left: 10px;
         margin-right: 10px;
-        max-width: 350px;
-        min-width: 100px;
+        
+    }
+    .chatnick{
+        
     }
     .chatmsg{
-        border-radius: 3px;
-        width: 100%;
+        background-color: #FFFFFF;
+        max-width: 350px;
+        min-width: 100px;
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
-        background-color: #FFFFFF;
-    }
-    .chatnick{
-        margin: 0;
-        padding: 0;
     }
     .nick{
-        margin-right: 5px;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 700;
+        margin-right: 5px;
     }
     .time{
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 400;
-        color: #555;
+        color: #333;
     }
     .me{
         background-color: #2196F3;
@@ -244,7 +241,7 @@
 
     .ms-reply textarea {
       float: left;
-      width: 350px;
+      width: 340px;
       font-size: 13px;
       border: 0;
       padding: 10px 8px;
@@ -266,8 +263,5 @@
 
     .ms-reply button:hover {
       background: #2196ff;
-    }
-    .navbar{
-        margin-bottom: 0;
     }
     
