@@ -126,6 +126,8 @@ CREATE TABLE Personaje (
 	  forja int,
 	  trucos_manos int,
 	  canto int,
+	  especial1 int,
+	  especial2 int,
       PRIMARY KEY (`id_personaje`),
       KEY `id_usuario` (`id_usuario`),
       KEY `id_categoria` (`id_categoria`),
@@ -603,17 +605,15 @@ INSERT INTO  `Animaster`.`Usuario` (
 `id_tipo`
 )
 VALUES 
-<<<<<<< HEAD
+
 (NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
 (NULL ,  'david', NULL ,  'david', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
 (NULL ,  'marc', NULL ,  'marc', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL ,  'gurwinder', NULL ,  'gurwinder', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0');
-=======
-(NULL,  'admin', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL,  'admin2', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL,  'test', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '1'),
-(NULL,  'test2', NULL, NULL, NULL, NULL, NULL,  'eb0a191797624dd3a48fa681d3061212',  '1');
->>>>>>> origin/master
+(NULL ,  'gurwinder', NULL ,  'gurwinder', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
+(NULL ,  'admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
+(NULL ,  'admin2', NULL ,  'admin2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
+(NULL ,  'test', NULL ,  'test', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
+(NULL ,  'test2', NULL ,  'test2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0');
 
 
 
