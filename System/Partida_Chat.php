@@ -40,7 +40,7 @@
 	       if (preg_match($reg_exUrl, $message, $url)) {
 	          $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
 	       } 
-                fwrite(fopen('chat.txt', 'a'), "<div class='chatbox pull-left'> <span> <span class='f-14 f-700'>". $nickname . "</span><br>" . $message = str_replace("\n", " ", $message). "</span></div> \n"); 
+                fwrite(fopen('chat.txt', 'a'), "<div class='chatbox pull-left'> <div class='chatnick'><span class='nick'>". $nickname . "</span><span class='time' >".date('h:i:s')."</span></div><div class='chatmsg'>" . $message = str_replace("\n", " ", $message). "</div></div><div class='clearfix'></div> \n"); 
 	        
                   
 	     }

@@ -41,14 +41,16 @@ function updateChat() {
             data: {'function': 'update','state': state,'file': file},
             dataType: "json",
             success: function(data) {
+                console.log(data);
                 if(data.text){
                     for (var i = 0; i < data.text.length; i++) {
-                        $('#chat-container').append($(''+ data.text[i] +''));
+                        var content = $('#chat-container').html();
+                        $('#chat-container').empty();
+                        $('#chat-container').html(content +' '+data.text[i]);
                     }	
                 }
-                $(".c-overflow").mCustomScrollbar("update");
-                $(".c-overflow").mCustomScrollbar("scrollTo", "bottom");
-                instanse = false;
+                document.getElementById('#chat-container').scrollTop = document.getElementById('#chat-container').scrollHeight;
+		instanse = false;
                 state = data.state;
             }
         });
