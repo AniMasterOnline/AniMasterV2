@@ -244,7 +244,6 @@ $(document).ready(function(){
                     <div class="list-group">
                         <a href="../../settings/account/" class="list-group-item active">Cuenta</a>
                         <a href="../../settings/password/" class="list-group-item">Contraseña</a>
-                        <a href="../../settings/notifications/" class="list-group-item">Notificaciones</a>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $id_partida = $_GET['id'];
 
     require_once "../../System/Classes/Partida.php";
-    $partida= new Partida();
+    $partida= new Partida();  
     $partida= $partida->viewPartida($id_partida);
     if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
         echo '<META http-equiv="refresh" content="0;URL=index.php">';
@@ -31,51 +31,41 @@ $migas='#Home|../../index.php#Mesa|../../settings/table/#'.$nombre.'|view_partid
 include "../../Public/layouts/head.php";
 ?>
 
-
-<input type="hidden" id="inputId" value="<?php echo $id_partida ?>">
 <script>
     $title = "test";
     $body = "test body";
     $icon = "favicon.ico";
     //DesktopNotifyshow($title, $body, $icon);
-    
     $(document).ready(function(){
-    $('#eliminar').click(function(){
-        var confirmation = confirm("Estas seguro que quieres eliminar la partida?");
-        
-        if(confirmation){
-            var id = {
-            id : $('#inputId').val()
-        };
-        console.log(id);
-        $.ajax({
-            type: "POST",
-            url: "../../System/Protocols/Partida_Del.php",
-            data: id,
-            success: function (response) {
-                console.log(response);
-                if(response == 'fail'){
-                    $.notify({
-                            // options
-                            message: 'An error ocurred.'
-                    },{
-                            // settings
-                            type: 'default',
-                            delay: 4000,
-                            offset : {
-                                    y: 100,
-                                    x: 20
-                            }
-                    });
-                }else if(response == 'succes'){
-                    location.reload();
-                }
-            }
+        $('#eliminar').click(function(){
+            swal({
+                title: "Estas seguro?",
+                text: "No podras recuperar esta partida!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Eliminar!",
+                closeOnConfirm: false
+            }, function (isConfirm) {
+                if (!isConfirm) return;
+                $.ajax({
+                    url: "../../System/Protocols/Partida_Del.php",
+                    type: "POST",
+                    data: {
+                        id: <?php echo $id_partida ?>
+                    },
+                    dataType: "html",
+                    success: function () {
+                        $(location).attr('href', 'index.php')
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        swal("Error deleting!", "Please try again", "error");
+                    }
+                });
+            });
         });
-    }
     });
     
-});
 </script>
 
 
@@ -368,62 +358,35 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-amber b-0 c-white">
                             <tr>
+                                <th>#</th>
                                 <th>Nombre</th>
-                                <th>Categoría</th>
-                                <th>Valor (MC)</th>
-                                <th>Peso (Kg)</th>
+                                <th>Nivel</th>
+                                <th>Categoria</th>
+                                <th>exp_actual</th>
                             </tr>
                         </thead>
                         <tbody >
-                            <?php
-                            require_once "../../System/Classes/Partida_Objeto.php";
-                            require_once "../../System/Classes/Objeto.php";
-                            require_once "../../System/Classes/Tipo.php";
-                            
-                            $partida_objeto = new Partida_Objeto();
-                            $id_objeto = $partida_objeto->view_Objetos_Partida($id_partida);
-                            
-                            $tipo = new Tipo();
-                            /*Seleccionem la id de partida i busquem els seus objectes propis de partida*/
-                            foreach ($id_objeto as $row) {
-                                $objeto1 = new Objeto(); 
-                                $objeto1 = $objeto1->viewObj($row->getId_Objeto());
-                                
-                                /*Per a cada objecte mostrem el contingut que volem*/
-                                foreach ($objeto1 as $row2) {
-                                    echo "<tr >
-                                        <td>".strval($row2->getNombre())."</td>";
-                                    
-                                    /*Per saber el nom del id_tipo hem de fer una select*/
-                                    $tipoNombre = $tipo->view_nombre($row2->getId_Tipo());
-                                    echo "
-                                        <td>".strval($tipoNombre->getNombre())."</td>
-                                        <td>".strval($row2->getPrecio())."</td>
-                                        <td>".strval($row2->getPeso())."</td>
-                                        </tr>";
-                                }
-                            }
-                            
-                            
-                            $objeto = new Objeto(); 
-                            $objeto = $objeto->viewObjetosPublicos();
-                            
-                            /*Mostrem tots els objectes que siguin public*/
-                            foreach ($objeto as $row) {
-                                echo "<tr >
-                                    <td>".strval($row->getNombre())."</td>";
-                                
-                                /*Per saber el nom del id_tipo hem de fer una select*/
-                                $tipoNombre = $tipo->view_nombre($row->getId_Tipo());
-                                echo "
-                                    <td>".strval($tipoNombre->getNombre())."</td>
-                                    <td>".strval($row->getPrecio())."</td>
-                                    <td>".strval($row->getPeso())."</td>
-                                    </tr>";
-                            }
-                            
-                            ?>
-                            
+                            <tr >
+                                <td>1</td>
+                                <td>Jacob</td>
+                                <td>3</td>
+                                <td>Mago</td>
+                                <td>350</td>
+                            </tr>
+                            <tr >
+                                <td>2</td>
+                                <td>Pau</td>
+                                <td>2</td>
+                                <td>Ladron</td>
+                                <td>280</td>
+                            </tr>
+                            <tr >
+                                <td>3</td>
+                                <td>Marc</td>
+                                <td>4</td>
+                                <td>Guerrero</td>
+                                <td>480</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

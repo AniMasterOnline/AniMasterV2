@@ -53,19 +53,7 @@
                 return null;
             }
         }
-        public function view_Objetos_Partida($id_partida){
-            $db = new connexio();
-            $sql = "SELECT id_objeto FROM Partida_Objeto where id_partida='$id_partida'";
-            $query = $db->query($sql);
-            $rtn = array();
-            while($obj = $query->fetch_assoc()){
-                $objeto_partida = new Partida_Objeto($obj["id_objeto"]);
-                //var_dump($Partida);
-                array_push($rtn, $objeto_partida);
-            }
-            $db->close();
-            return $rtn;
-        }
+        
 
         //CONSTRUCTORS
         function __construct(){
@@ -78,11 +66,6 @@
         }
         function __construct0(){
             $this->id_objeto = 0;
-            $this->id_partida = 0;
-        }
-        
-        function __construct1($a1){
-            $this->id_objeto = $a1;
             $this->id_partida = 0;
         }
         
