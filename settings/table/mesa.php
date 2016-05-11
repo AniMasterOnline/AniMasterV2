@@ -7,15 +7,27 @@ if(isset($_SESSION['user'])){
 }
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
-    $id_partida = $_GET['id'];
-
     require_once "../../System/Classes/Partida.php";
     require_once "../../System/Classes/Partida_Usuari.php";
+    
+    $id_partida = $_GET['id'];
+    $id_usuario = $value['id_usuario'];
+    
     $partida= new Partida();
-    $partida_u= new Partida_Usuari(); 
     $partida= $partida->viewPartida($id_partida);
-    if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
-        echo '<META http-equiv="refresh" content="0;URL=../../index.php">';
+    
+    $partida_usuari= new Partida_Usuari();
+    $you_can_not_pass = $partida_usuari->testInvited($id_usuario, $id_partida);
+    
+    if(empty($partida) || $you_can_not_pass!== true ){
+        $title='Error 404';
+        $migas='#Home|../../index.php#Mesa|../../settings/table/#Error';
+        require_once "../../Public/layouts/head.php";
+        echo '<div class="alert alert-inverse ">
+                <img src="../../Public/img/404.png" height="62" width="62">
+                <strong>404!</strong> you can not pass.
+              </div>';
+        exit;
     }
     $nombre = $partida->getNombre();
     $imagen = $partida->getImagen();
@@ -29,7 +41,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     echo '<META http-equiv="refresh" content="0;URL=index.php">';
 }
 $title='Nom Partida';
-$migas='#Index|index.php#Zona roleo';
+$migas='#Home|../../index.php#Mesa#'.$nombre;
 include "../../Public/layouts/head.php";?>
 
 
