@@ -215,6 +215,9 @@ include "../../Public/layouts/head.php";
                                 <li>
                                     <a href="#">Eliminar Jugador</a>
                                 </li>
+                                <li>
+                                    <a <?php echo 'href="gestionar_experiencia.php?id='.$id_partida.'"';?>>Gestionar Experiencias</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
