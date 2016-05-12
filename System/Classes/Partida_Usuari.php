@@ -135,6 +135,17 @@
                 return null;
             }
         }
+        public function testInvited($id_usuario, $id_partida){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and id_partida='$id_partida'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();

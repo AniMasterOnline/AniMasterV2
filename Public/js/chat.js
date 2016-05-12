@@ -14,7 +14,7 @@ function Chat () {
 }
 
 //gets the state of the chat
-function getStateOfChat() {
+function getStateOfChat(file) {
     if(!instanse){
         instanse = true;
         $.ajax({
@@ -28,7 +28,7 @@ function getStateOfChat() {
 }
 
 //Updates the chat
-function updateChat() {
+function updateChat(file) {
     if(!instanse){
         instanse = true;
         $.ajax({
@@ -51,13 +51,12 @@ function updateChat() {
                 state = data.state;
             }
         });
-    }
-    else {
-        setTimeout(updateChat, 1500);
+    }else {
+        //setTimeout(updateChat(file), 1500);
     }
 }
 //Updates the chat
-function loadChat() {
+function loadChat(file) {
     $.ajax({
         type: "POST",
         url: "../../System/Partida_Chat.php",
@@ -79,15 +78,15 @@ function loadChat() {
 }
 
 //send the message
-function sendChat(message, nickname) { 
-    updateChat();
+function sendChat(message, nickname, color, file) { 
+    updateChat(file);
     $.ajax({
         type: "POST",
         url: "../../System/Partida_Chat.php",
-        data: {'function': 'send','message': message,'nickname': nickname,'file': file},
+        data: {'function': 'send','message': message,'nickname': nickname,'file': file, 'color': color},
         dataType: "json",
         success: function(data){
-            updateChat();
+            updateChat(file);
         }
     });
 }

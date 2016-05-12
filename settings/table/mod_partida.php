@@ -12,7 +12,7 @@
         $partida= new Partida();  
         $partida= $partida->viewPartida($id_partida);
         if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
-            echo '<META http-equiv="refresh" content="0;URL=index.php">';
+            include '../404/404.php';
         }
         $nombre = $partida->getNombre();
         $imagen = $partida->getImagen();
@@ -23,7 +23,7 @@
         $token = $partida->getToken();
         
     }else{
-        echo '<META http-equiv="refresh" content="0;URL=index.php">';
+        include '../404/404.php';    
     }
 ?>
 
