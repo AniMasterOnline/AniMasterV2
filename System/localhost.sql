@@ -91,6 +91,8 @@ CREATE TABLE Personaje (
 	  atletismo int,
 	  montar int,
 	  nadar int,
+	  trepar int,
+	  saltar int,
 	  frialdad int,
 	  proezas_fuerza int,
 	  resistir_dolor int,
@@ -2046,10 +2048,9 @@ VALUES
 --
 -- Volcado de datos para la tabla `Personaje`
 --
-INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `acrobacias`, `atletismo`, `montar`, `nadar`, `frialdad`, `proezas_fuerza`, `resistir_dolor`, `advertir`, `buscar`, `rastrear`, `animales`, `ciencia`, `herbolaria`, `historia`, `medicina`, `memorizar`, `navegacion`, `ocultismo`, `tasacion`, `ley`, `tactica`, `estilo`, `intimidar`, `liderazgo`, `persuasion`, `comerciar`, `callejeo`, `etiqueta`, `cerrajeria`, `disfraz`, `ocultarse`, `robo`, `sigilo`, `tramperia`, `venenos`, `arte`, `baile`, `forja`, `trucos_manos`, `canto`) 
+INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `acrobacias`, `atletismo`, `montar`, `nadar`, `trepar`, `saltar`, `frialdad`, `proezas_fuerza`, `resistir_dolor`, `advertir`, `buscar`, `rastrear`, `animales`, `ciencia`, `herbolaria`, `historia`, `medicina`, `memorizar`, `navegacion`, `ocultismo`, `tasacion`, `ley`, `tactica`, `estilo`, `intimidar`, `liderazgo`, `persuasion`, `comerciar`, `callejeo`, `etiqueta`, `cerrajeria`, `disfraz`, `ocultarse`, `robo`, `sigilo`, `tramperia`, `venenos`, `arte`, `baile`, `forja`, `trucos_manos`, `canto`) 
 VALUES 
-('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', '0', '35', '10', NULL, NULL, NULL, '130', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
+('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', '0', '35', '10', NULL, NULL, NULL, NULL, NULL, '130', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 

@@ -4,6 +4,7 @@
         /*Atributs*/
         private $id_personaje;
         private $id_usuario;
+        private $id_partida;
         private $id_categoria;
         private $nombre;
         private $apellido;
@@ -217,6 +218,29 @@
                 return null;
             }
         }
+        public function viewPersonajesPartida($id){ 
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje WHERE id_partida = '$id'";
+            $query = $db->query($sql);
+            $count = 0;
+            $datos = array();
+            if ($query->num_rows > 0) {
+                while($row = $query->fetch_assoc()) {
+                    $count++;
+                    array_push($datos, $row);
+                }
+            } else {
+                $count = 0;
+            }
+            $db->close();
+            if($count >= 1){
+                //var_dump($datos);
+                return $datos;
+            }else{
+                return "error";
+            }
+        }
+        
         
         //CONSTRUCTORS
         function __construct(){
@@ -231,6 +255,7 @@
         function __construct0(){
             $this->id_personaje=0;
             $this->id_usuario = 0;
+            $this->id_partida = 0;
             $this->id_categoria = 0;
             $this->nombre = 0;
             $this->apellido = 0;
@@ -414,92 +439,264 @@
         }
         
         //METODES GET 
-        public function getId_Personaje($id_personaje) {
+        public function getId_Personaje() {
             return $this->id_personaje;
         }
-        public function getId_Usuario($id_usuario) {
+        public function getId_Usuario() {
             return $this->id_usuario;
         }
-        public function getId_Categoria($id_categoria) {
+        public function getId_Partida() {
+            return $this->id_partida;
+        }
+        public function getId_Categoria() {
             return $this->id_categoria;
         }
-        public function getNombre($nombre) {
+        public function getNombre() {
             return $this->nombre;
         }
-        public function getApellido($apellido) {
+        public function getApellido() {
             return $this->apellido;
         }
-        public function getEdad($edad) {
+        public function getEdad() {
             return $this->edad;
         }
-        public function getNivel($nivel) {
+        public function getNivel() {
             return $this->nivel;
         }
-        public function getTurno($turno) {
+        public function getTurno() {
             return $this->turno;
         }
-        public function getPuntos_Vida($puntos_vida) {
+        public function getPuntos_Vida() {
             return $this->puntos_vida;
         }
-        public function getSexo($sexo) {
+        public function getSexo() {
             return $this->sexo;
         }
-        public function getRaza($raza) {
+        public function getRaza() {
             return $this->raza;
         }
-        public function getPelo($pelo) {
+        public function getPelo() {
             return $this->pelo;
         }
-        public function getOjos($ojos) {
+        public function getOjos() {
             return $this->ojos;
         }
-        public function getAltura($altura) {
+        public function getAltura() {
             return $this->altura;
         }
-        public function getPeso($peso) {
+        public function getPeso() {
             return $this->peso;
         }
-        public function getApariencia($apariencia) {
+        public function getApariencia() {
             return $this->apariencia;
         }
-        public function getTamanyo($tamanyo) {
+        public function getTamanyo() {
             return $this->tamanyo;
         }
-        public function getExp_Actual($exp_actual) {
+        public function getExp_Actual() {
             return $this->exp_actual;
         }
-        public function getC_AGI($c_AGI) {
+        public function getC_AGI() {
             return $this->c_AGI;
         }
-        public function getC_CON($c_CON) {
+        public function getC_CON() {
             return $this->c_CON;
         }
-        public function getC_DES($c_DES) {
+        public function getC_DES() {
             return $this->c_DES;
         }
-        public function getC_FUE($c_FUE) {
+        public function getC_FUE() {
             return $this->c_FUE;
         }
-        public function getC_INT($c_INT) {
+        public function getC_INT() {
             return $this->c_INT;
         }
-        public function getC_PER($c_PER) {
+        public function getC_PER() {
             return $this->c_PER;
         }
-        public function getC_POD($c_POD) {
+        public function getC_POD() {
             return $this->c_POD;
         }
-        public function getC_VOL($c_VOL) {
+        public function getC_VOL() {
             return $this->c_VOL;
         }
-        public function getNacionalidad($nacionalidad) {
+        public function getNacionalidad() {
             return $this->nacionalidad;
         }
-        public function getImagen($imagem) {
+        public function getImagen() {
             return $this->imagen;
         }
-        public function getTurno($humano) {
+        public function getHumano() {
             return $this->humano;
         }
+        public function getPuntos_Hs() {
+            return $this->puntos_hs;
+        }
+        public function getPuntos_Hp() {
+            return $this->puntos_hp;
+        }
+        public function getPuntos_Totales() {
+            return $this->puntos_totales;
+        }
+        public function getHa() {
+            return $this->ha;
+        }
+        public function getHp() {
+            return $this->hp;
+        }
+        public function getHe() {
+            return $this->he;
+        }
+        public function getLa() {
+            return $this->la;
+        }
+        public function getAcrobacias() {
+            return $this->acrobacias;
+        }
+        public function getAtletismo() {
+            return $this->atletismo;
+        }
+        public function getMontar() {
+            return $this->montar;
+        }
+        public function getNadar() {
+            return $this->nadar;
+        }
+        public function getTrepar() {
+            return $this->trepar;
+        }
+        public function getSaltar() {
+            return $this->saltar;
+        }
+        public function getFrialdad() {
+            return $this->frialdad;
+        }
+        public function getProezas_fuerza() {
+            return $this->proezas_fuerza;
+        }
+        public function getResistir_dolor() {
+            return $this->resistir_dolor;
+        }
+        public function getAdvertir() {
+            return $this->advertir;
+        }
+        public function getBuscar() {
+            return $this->buscar;
+        }
+        public function getRastrear() {
+            return $this->rastrear;
+        }
+        public function getAnimales() {
+            return $this->animales;
+        }
+        public function getCiencia() {
+            return $this->ciencia;
+        }
+        public function getHerbolaria() {
+            return $this->herbolaria;
+        }
+        public function getHistoria() {
+            return $this->historia;
+        }
+        public function getMedicina() {
+            return $this->medicina;
+        }
+        public function getMemorizar() {
+            return $this->memorizar;
+        }
+        public function getNavegacion() {
+            return $this->navegacion;
+        }
+        public function getOcultismo() {
+            return $this->ocultismo;
+        }
+        public function getTasacion() {
+            return $this->tasacion;
+        }
+        public function getLey() {
+            return $this->ley;
+        }
+        public function getTactica() {
+            return $this->tactica;
+        }
+        public function getEstilo() {
+            return $this->estilo;
+        }
+        public function getIntimidar() {
+            return $this->intimidar;
+        }
+        public function getLiderazgo() {
+            return $this->liderazgo;
+        }
+        public function getPersuasion() {
+            return $this->persuasion;
+        }
+        public function getComerciar() {
+            return $this->comerciar;
+        }
+        public function getCallejeo() {
+            return $this->callejeo;
+        }
+        public function getEtiqueta() {
+            return $this->etiqueta;
+        }
+        public function getCerrajeria() {
+            return $this->cerrajeria;
+        }
+        public function getDisfraz() {
+            return $this->disfraz;
+        }
+        public function getOcultarse() {
+            return $this->ocultarse;
+        }
+        public function getRobo() {
+            return $this->robo;
+        }
+        public function getSigilo() {
+            return $this->sigilo;
+        }
+        public function getTramperia() {
+            return $this->tramperia;
+        }
+        public function getVenenos() {
+            return $this->venenos;
+        }
+        public function getArte() {
+            return $this->arte;
+        }
+        public function getBaile() {
+            return $this->baile;
+        }
+        public function getForja() {
+            return $this->forja;
+        }
+        public function getTrucos_manos() {
+            return $this->trucos_manos;
+        }
+        public function getCanto() {
+            return $this->canto;
+        }
+        public function getRunas() {
+            return $this->runas;
+        }
+        public function getAnimismo() {
+            return $this->animismo;
+        }
+        public function getAlquimia() {
+            return $this->alquimia;
+        }
+        public function getEspecial1() {
+            return $this->especial1;
+        }
+        public function getEspecial2() {
+            return $this->especial2;
+        }
+        public function getEspecial3() {
+            return $this->especial3;
+        }
+        public function getEspecial4() {
+            return $this->especial4;
+        }
+        
     }
 ?>

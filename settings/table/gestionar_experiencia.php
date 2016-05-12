@@ -109,10 +109,8 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-lightgreen b-0 c-white">
                             <tr>
-                                <th>Nombre</th>
                                 <th>Personaje</th>
                                 <th>Nivel</th>
-                                <th>Categoria</th>
                                 <th>Exp Actual</th>
                                 <th>Sig Nivel</th>
                                 <th>Añadir Experiencia</th>
@@ -120,57 +118,38 @@ include "../../Public/layouts/head.php";
                         </thead>
                         <tbody >
                             <?php
-                            require_once "../../System/Classes/Partida_Objeto.php";
-                            require_once "../../System/Classes/Objeto.php";
-                            require_once "../../System/Classes/Tipo.php";
+                            require_once "../../System/Classes/Personaje.php";
+                            require_once "../../System/Classes/Usuario.php";
+                            require_once "../../System/Classes/Nivel.php";
                             
-                            $partida_objeto = new Partida_Objeto();
-                            $id_objeto = $partida_objeto->view_Objetos_Partida($id_partida);
+                            $Personaje = new Personaje(); 
+                            $array = $Personaje->viewPersonajesPartida($id_partida);
                             
-                            $tipo = new Tipo();
-                            /*Seleccionem la id de partida i busquem els seus objectes propis de partida*/
-                            foreach ($id_objeto as $row) {
-                                $objeto1 = new Objeto(); 
-                                $objeto1 = $objeto1->viewObj($row->getId_Objeto());
-                                
-                                /*Per a cada objecte mostrem el contingut que volem*/
-                                foreach ($objeto1 as $row2) {
-                                    echo "<tr >
-                                        <td>".strval($row2->getNombre())."</td>";
-                                    
-                                    /*Per saber el nom del id_tipo hem de fer una select*/
-                                    $tipoNombre = $tipo->view_nombre($row2->getId_Tipo());
-                                    echo "
-                                        <td>".strval($tipoNombre->getNombre())."</td>
-                                        <td>".strval($row2->getPrecio())."</td>
-                                        <td>".strval($row2->getPeso())."</td>
-                                        </tr>";
-                                }
-                            }
+                            $nivel = new Nivel();
                             
                             
-                            $objeto = new Objeto(); 
-                            $objeto = $objeto->viewObjetosPublicos();
-                            
-                            /*Mostrem tots els objectes que siguin public*/
-                            foreach ($objeto as $row) {
+                            /*Mostrem tots els personatges que siguin d'aquesta partida*/
+                            foreach ($array as $row) {
                                 echo "<tr >
-                                    <td>".strval($row->getNombre())."</td>";
+                                    <td>".$row['nombre']."</td>
+                                    <td>".$row['nivel']."</td>
+                                    <td>".$row['exp_actual']."</td>";
                                 
-                                /*Per saber el nom del id_tipo hem de fer una select*/
-                                $tipoNombre = $tipo->view_nombre($row->getId_Tipo());
-                                echo "
-                                    <td>".strval($tipoNombre->getNombre())."</td>
-                                    <td>".strval($row->getPrecio())."</td>
-                                    <td>".strval($row->getPeso())."</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    </tr>";
+                                    $exp_nec = $nivel->viewNivel($row['nivel']+1);
+                                    echo "
+                                        <td>".$exp_nec->getExp_Necesaria()."</td>
+                                        <td>
+                                              <div class='input-group' style='width:200px'>
+                                                <input type='text' id='' class='form-control' placeholder='0'>
+                                                <span class='input-group-btn'>
+                                                    <button class='btn btn-default bgm-purple c-white' type='button' value='' onclick='addexpe(this)'><i class='zmdi zmdi-plus'></i></button>
+                                                </span>
+                                            </div>                           
+                                        </td>
+
+                                        </tr>";
                             }
-                            
                             ?>
-                            
                         </tbody>
                     </table>
                 </div>
@@ -178,7 +157,14 @@ include "../../Public/layouts/head.php";
         </div>
     </div>
     
- 
+    <script>
+        function addexpe(entrada){
+            var $string = entrada.val();
+            
+            
+        }
+    
+    </script>
     
     
     
