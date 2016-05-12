@@ -20,14 +20,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $you_can_not_pass = $partida_usuari->testInvited($id_usuario, $id_partida);
     
     if(empty($partida) || $you_can_not_pass!== true ){
-        $title='Error 404';
-        $migas='#Home|../../index.php#Mesa|../../settings/table/#Error';
-        require_once "../../Public/layouts/head.php";
-        echo '<div class="alert alert-inverse ">
-                <img src="../../Public/img/404.png" height="62" width="62">
-                <strong>404!</strong> you can not pass.
-              </div>';
-        exit;
+        include '../404/404.php';
     }
     $id_master = $partida->getId_Usuario();
     $nombre = $partida->getNombre();
@@ -44,7 +37,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     }
 
 }else{
-    echo '<META http-equiv="refresh" content="0;URL=index.php">';
+    include '../404/404.php';
 }
 $title='Nom Partida';
 $migas='#'.$nombre;

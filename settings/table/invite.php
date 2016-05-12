@@ -13,18 +13,11 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
     $id_partida = $partida->returnId_Partida($token);
     if($id_partida != null){
         $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -1,'true');
-        
         $partida_usuari->add();
         echo '<META http-equiv="refresh" content="0;URL=../../zone.php">';
         exit;
     }else{
-        $title='Invalid Token';
-        $migas='#Home|../../index.php#Mesa|../../settings/table/#Invalid Token';
-        require_once "../../Public/layouts/head.php";
-        echo '<div class="alert alert-inverse ">
-                <strong>Error!</strong> Invalid Token.
-              </div>';
-        exit;
+        include '../404/404.php';
     }
 }else{
     if(isset($_GET['id']) && !empty($_GET['id'])){
@@ -34,7 +27,7 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
         $partida= new Partida();  
         $partida= $partida->viewPartida($id_partida);
         if(empty($partida) || $partida->getId_Usuario()!== $value['id_usuario'] ){
-            echo '<META http-equiv="refresh" content="0;URL=index.php">';
+            include '../404/404.php';
         }
         $nombre = $partida->getNombre();
         $imagen = $partida->getImagen();
@@ -43,9 +36,8 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
         $nv_sobrenatural = $partida->getNv_Sobrenatural();
         $limite = $partida->getLimite();
         $token = $partida->getToken();
-
     }else{
-        echo '<META http-equiv="refresh" content="0;URL=index.php">';
+        include '../404/404.php';
     } 
 }
 
