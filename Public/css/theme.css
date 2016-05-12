@@ -105,6 +105,11 @@ html {
 .b-b-1{
     border-bottom: 1px solid #333; 
 }
+.breadcrumb{
+    height: 39px;
+    font-size: 14px;
+    border-radius: 0px;
+}
 
 
 /* #################################################################################### */

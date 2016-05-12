@@ -62,6 +62,26 @@ include "../../Public/layouts/head.php";?>
             $('#sendie').val('');
             chat.send(text, name, color, file);
         });
+        $('#sendie-btnimg').click(function(e) {
+            console.log('send Image');
+            swal({
+                title: "Enviar Imagen!",
+                text: "url de la imagen:",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                inputPlaceholder: "url"
+              }, function (inputValue) {
+                if (inputValue === false) return false;
+                if (inputValue === "") {
+                  swal.showInputError("Tienes que pegar aqui una url valida!");
+                  return false
+                }
+                chat.sendimg(inputValue, name, color, file);
+                swal("Imagen enviada!", "url: " + inputValue, "success");
+              });
+            
+        });
         $('#sendie').keyup(function(e) {
             var code = (e.keyCode ? e.keyCode : e.which);
             if(code == 13) { //Enter keycode
@@ -93,8 +113,20 @@ include "../../Public/layouts/head.php";?>
         <!-- Sidebar -->
         <div id="sidebar-wrapper" class="z-depth-1">
             <div class="bgchatimg">&nbsp;</div>
+            <div id="chat-top" class="z-depth-1 bgm-white ">
+                <ul class="top-menu" id="top-menu-chat">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#"><i class="tm-icon zmdi zmdi-more-vert c-black"></i></a>
+                        <ul class="dropdown-menu dm-icon pull-right" id="menu-chat-ul">
+                            <li id="sendie-btnimg"><a><i class="zmdi zmdi-image-o"></i>Enviar Imagen</a></li>
+                            <!-- <li id="sendie-btnvid"><a><i class="zmdi zmdi-slideshow"></i> Enviar Video</a></li> -->
+                            <!-- <li role="separator" class="divider"></li> -->
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             <div id="chat-container" class="c-overflow">
-                
                 
             </div>
             <div id="chat-box" class="z-depth-1-top bgm-gray lv-footer ms-reply p-0 b-0" >

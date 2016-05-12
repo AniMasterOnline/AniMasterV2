@@ -139,12 +139,23 @@
         padding-top: 10px;
         opacity: 0.09;
     }
+    #chat-top{
+        height: 36px;
+        position: fixed;
+        width: 400px;
+        top: 98px;
+        z-index: 1 !important;
+    }
+    #top-menu-chat{
+        float: right;
+        display: inline-block;
+    }
     #chat-container{
         overflow-x: hidden;
         overflow-y: scroll;
         position: fixed;
         width: 400px;
-        top: 98px;
+        top: 134px;
         bottom: 60px;
         padding-top: 10px;
         
@@ -272,5 +283,24 @@
     }
     .c-black{
         color: #333 !important;
+    }
+    #sendie-btnimg > a{
+        cursor: pointer;
+    }
+    #sendie-btnvid > a{
+        cursor: pointer;
+    }
+    .imgchat{
+        max-width: 350px;
+        min-width: 150px;
+        width: auto;
+        height: auto;
+    }
+    .chatmsgimg{
+        background-color: #FFFFFF;
+        max-width: 360px;
+        min-width: 150px;
+        padding: 5px;
+        border-radius: 3px;
     }
     

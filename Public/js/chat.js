@@ -9,6 +9,7 @@ $(document).ready(function() {
 function Chat () {
     this.update = updateChat;
     this.send = sendChat;
+    this.sendimg = sendChatImg;
     this.getState = getStateOfChat;
     this.loadxat = loadChat;
 }
@@ -84,6 +85,20 @@ function sendChat(message, nickname, color, file) {
         type: "POST",
         url: "../../System/Partida_Chat.php",
         data: {'function': 'send','message': message,'nickname': nickname,'file': file, 'color': color},
+        dataType: "json",
+        success: function(data){
+            updateChat(file);
+        }
+    });
+}
+
+//send the image message
+function sendChatImg(imagen, nickname, color, file) { 
+    updateChat(file);
+    $.ajax({
+        type: "POST",
+        url: "../../System/Partida_Chat.php",
+        data: {'function': 'sendimg','message': imagen,'nickname': nickname,'file': file, 'color': color},
         dataType: "json",
         success: function(data){
             updateChat(file);

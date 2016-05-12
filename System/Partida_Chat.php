@@ -60,6 +60,18 @@
                         "</div></div><div class='clearfix'></div> \n"); 
             }
             break;
+        
+        case('sendimg'):
+            $nickname = htmlentities(strip_tags($_POST['nickname']));
+            $imgurl = htmlentities(strip_tags($_POST['message']));
+            $imgurl = str_replace("\n", " ", $imgurl);
+            if (($message) != "\n") {
+                $color = $_POST['color'];
+                fwrite(fopen($file, 'a'), "<div class='chatbox pull-left'> <div class='chatnick'><code class='".$color."'><span class='nick'>". $nickname . 
+                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsgimg'> <a href='" .$imgurl."' target='_blank' ><img class='imgchat' src='" .$imgurl. 
+                        "'></div></div><div class='clearfix'></div> \n"); 
+            }
+            break;
     }
     echo json_encode($log);
 ?>
