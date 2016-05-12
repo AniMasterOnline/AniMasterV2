@@ -34,28 +34,18 @@
             $db->close();
             return $rtn;
         }
-        
-        public function viewHS($id_HS){
+        public function view_HS($id_HS){
             $db = new connexio();
             $sql = "SELECT * FROM Habilidades_Secundarias where id_HS='$id_HS'";
             $query = $db->query($sql);
-            $db->close();
-            $count = 0;
-            if ($query->num_rows > 0) {
-                while($obj = $query->fetch_assoc()){
-                    $count++;
-                    $habilidad = new Habilidades_Secundarias($obj["id_HS"],$obj["nombre"],$obj["id_rama"],$obj["caracteristica"]);
-                }
-                if($count == 1){
-                    return $habilidad;
-                }else{
-                    return null;
-                }
-            }else{
-                return null;
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $habilidad = new Habilidades_Secundarias($obj["id_HS"],$obj["nombre"],$obj["id_rama"],$obj["caracteristica"]);
+                array_push($rtn, $habilidad);
             }
+            $db->close();
+            return $rtn;
         }
-        
 
         //CONSTRUCTORS
         function __construct(){

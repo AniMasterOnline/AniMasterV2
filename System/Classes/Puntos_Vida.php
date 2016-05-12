@@ -37,24 +37,16 @@
             $db = new connexio();
             $sql = "SELECT * FROM Puntos_Vida where id_constitucion='$id'";
             $query = $db->query($sql);
-            $db->close();
-            $count = 0;
-            if ($query->num_rows > 0) {
-                while($obj = $query->fetch_assoc()){
-                    $count++;
-                    $partida_objeto = new Puntos_Vida($obj["cantidad"],$obj["id_constitucion"]);
-                }
-                if($count == 1){
-                    return $partida_objeto;
-                }else{
-                    return null;
-                }
-            }else{
-                return null;
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $partida_objeto = new Puntos_Vida($obj["id_constitucion"],$obj["cantidad"]);
+                //var_dump($Partida);
+                array_push($rtn, $partida_objeto);
             }
+            $db->close();
+            return $rtn;
         }
         
-
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();

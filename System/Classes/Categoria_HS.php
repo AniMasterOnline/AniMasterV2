@@ -34,29 +34,19 @@
             $db->close();
             return $rtn;
         }
-        
-        public function viewCatHS($id_categoria){
+        public function viewHS($id_categoria){
             $db = new connexio();
             $sql = "SELECT * FROM Categoria_HS where id_categoria='$id_categoria'";
             $query = $db->query($sql);
-            $db->close();
-            $count = 0;
-            if ($query->num_rows > 0) {
-                while($obj = $query->fetch_assoc()){
-                    $count++;
-                    $id_categoria = new Categoria_HS($obj["id_categoria"],$obj["id_HS"],$obj["coste"],$obj["incr_nv"]);
-                }
-                if($count == 1){
-                    return $id_categoria;
-                }else{
-                    return null;
-                }
-            }else{
-                return null;
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $categoria = new Categoria_HS($obj["id_categoria"],$obj["id_HS"],$obj["coste"],$obj["incr_nv"]);
+                array_push($rtn, $categoria);
             }
+            $db->close();
+            return $rtn;
         }
         
-
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();

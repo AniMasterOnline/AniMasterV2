@@ -34,29 +34,55 @@
             $db->close();
             return $rtn;
         }
-        
-        public function viewCatHP($id_categoria){
+        public function viewHP1($id,$id_HP){
             $db = new connexio();
-            $sql = "SELECT * FROM Categoria_HP where id_categoria='$id_categoria'";
+            $sql = "SELECT * FROM Categoria_HP where id_categoria='$id' and id_HP='$id_HP'";
             $query = $db->query($sql);
-            $db->close();
-            $count = 0;
-            if ($query->num_rows > 0) {
-                while($obj = $query->fetch_assoc()){
-                    $count++;
-                    $id_categoria = new Categoria_HP($obj["id_categoria"],$obj["id_HP"],$obj["coste"],$obj["incr_nv"]);
-                }
-                if($count == 1){
-                    return $id_categoria;
-                }else{
-                    return null;
-                }
-            }else{
-                return null;
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $categoria = new Categoria_HP($obj["id_categoria"],$obj["id_HP"],$obj["coste"],$obj["incr_nv"]);
+                array_push($rtn, $categoria);
             }
+            $db->close();
+            return $rtn;
+        }
+        public function viewHP2($id,$id_HP){
+            $db = new connexio();
+            $sql = "SELECT * FROM Categoria_HP where id_categoria='$id' and id_HP='$id_HP'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $categoria = new Categoria_HP($obj["id_categoria"],$obj["id_HP"],$obj["coste"],$obj["incr_nv"]);
+                array_push($rtn, $categoria);
+            }
+            $db->close();
+            return $rtn;
+        }
+        public function viewHP3($id,$id_HP){
+            $db = new connexio();
+            $sql = "SELECT * FROM Categoria_HP where id_categoria='$id' and id_HP='$id_HP'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $categoria = new Categoria_HP($obj["id_categoria"],$obj["id_HP"],$obj["coste"],$obj["incr_nv"]);
+                array_push($rtn, $categoria);
+            }
+            $db->close();
+            return $rtn;
+        }
+        public function viewHP4($id,$id_HP){
+            $db = new connexio();
+            $sql = "SELECT * FROM Categoria_HP where id_categoria='$id' and id_HP='$id_HP'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $categoria = new Categoria_HP($obj["id_categoria"],$obj["id_HP"],$obj["coste"],$obj["incr_nv"]);
+                array_push($rtn, $categoria);
+            }
+            $db->close();
+            return $rtn;
         }
         
-
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();
