@@ -12,17 +12,24 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
     $partida = new Partida();
     $id_partida = $partida->returnId_Partida($token);
     if($id_partida != null){
-        $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -1,'true');
-        $partida_usuari->add();
-        echo '<META http-equiv="refresh" content="0;URL=../../zone.php">';
-        exit;
+        $partida= $partida->viewPartida($id_partida);
+        $limite = $partida->getLimite();
+        $users = $partida_usuari->countUsers($id_partida);
+        if ($users < $limite){
+            $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -1,'true');
+            $partida_usuari->add();
+            echo '<META http-equiv="refresh" content="0;URL=../../zone.php">'; 
+            exit;
+        }else{
+            include '../404/404.php';
+        }
     }else{
         include '../404/404.php';
     }
 }else{
     if(isset($_GET['id']) && !empty($_GET['id'])){
         $id_partida = $_GET['id'];
-
+        
         require_once "../../System/Classes/Partida.php";
         $partida= new Partida();  
         $partida= $partida->viewPartida($id_partida);
@@ -45,9 +52,6 @@ $title='Panel de la partida';
 $migas='#Home|../../index.php#Mesa|../../settings/table/#'.$nombre.'|view_partida.php?id='.$id_partida.'#Invitar Jugadores';
 include "../../Public/layouts/head.php";
 ?>
-
-
-
 <!-- Body content box -->
 <div class="container">
     <div class="row">
@@ -112,15 +116,19 @@ include "../../Public/layouts/head.php";
                                     "id_usuario" : id
                                 };
                                 $.ajax({
-                                        data:  parametros,
-                                        url:   '../../System/Protocols/Partida_Invite.php',
-                                        type:  'post',
-                                        beforeSend: function () {
-                                        },
-                                        success:  function (response) {
-                                            console.log(response);
+                                    data:  parametros,
+                                    url:   '../../System/Protocols/Partida_Invite.php',
+                                    type:  'post',
+                                    beforeSend: function () {
+                                    },
+                                    success:  function (response) {
+                                        console.log(response);
+                                        if(response === 'success'){
                                             swal("Invitación enviada!", "Jugador invitado correctamente!", "success");
+                                        }else{
+                                            swal("Error!", "Lo sentimos ya no puedes enviar mas invitaciónes!", "warning");
                                         }
+                                    }
                                 });
                             }
                         }

@@ -54,7 +54,7 @@ include "Public/layouts/head.php";?>
 <script>
 $(document).ready(function(){
     var i = 0;
-    var url = "https://api.flickr.com/services/feeds/photos_public.gne?id=90380536@N06&format=json&per_page=10&jsoncallback=?";
+    var url = "https://api.flickr.com/services/feeds/photos_public.gne?id=90380536@N06&format=json&per_page=5&jsoncallback=?";
     $.getJSON(url, function(data){
         var html = "";
         $.each(data.items, function(i, item){

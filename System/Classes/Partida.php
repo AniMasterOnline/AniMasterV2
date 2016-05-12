@@ -43,14 +43,18 @@
             $db = new connexio();
             $sql = "SELECT * FROM Partida";
             $query = $db->query($sql);
-            $rtn = array();
-            while($obj = $query->fetch_assoc()){
-                $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
-                //var_dump($Partida);
-                array_push($rtn, $Partida);
-            }
             $db->close();
-            return $rtn;
+            if ($query->num_rows > 0) {
+                $rtn = array();
+                while($obj = $query->fetch_assoc()){
+                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
+                    //var_dump($Partida);
+                    array_push($rtn, $Partida);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
         }
         
         public function buscPartida($search){

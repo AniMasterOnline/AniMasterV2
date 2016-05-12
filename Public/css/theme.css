@@ -110,6 +110,32 @@ html {
     font-size: 14px;
     border-radius: 0px;
 }
+.card-header{
+    background-color: #4C4C4C;
+    color: white;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% auto;
+}
+.opacity{
+    background-color: rgba(255,255,255,0.5);
+    max-width: 150px;
+    width: 150px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+.custom-card{
+    height: 120px;
+}
+.custom-card-body{
+    height: 150px;
+    overflow: hidden
+}
+.bgm-dark{
+    background-color: #373737;
+    color: #999999;
+}
+
 
 
 /* #################################################################################### */
@@ -3693,3 +3719,5 @@ body.login-content:before {
 .btn-group{
     border-radius: 0;
 }
+
+
