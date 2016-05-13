@@ -203,6 +203,10 @@ include "../../Public/layouts/head.php";?>
                             </div>
                             <div role="tabpanel" class="tab-pane fade p-0" id="mapa">
                                 <div id='map'></div>
+								<div class="alert bgm-dark m-t-0 m-b-0" id="latlong" style="border-radius: 0px;">
+									<p>Latitude: <input class="form-control disabled" type="text" id="latbox" name="lat" value="0"></p>
+									<p>Longitude: <input class="form-control disabled" type="text" id="lngbox" name="lng" value="0"></p>
+								</div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade p-l-15 p-r-15" id="batalla">
                                  <div class="row">
@@ -247,13 +251,15 @@ include "../../Public/layouts/head.php";?>
                     });
                     var moonMapType = new google.maps.ImageMapType({
                       getTileUrl: function(coord, zoom) {
-                              var normalizedCoord = getNormalizedCoord(coord, zoom);
-                              if (!normalizedCoord) {
-                                    return null;
-                              }
-                              var bound = Math.pow(2, zoom);
-                              return '../../Public/img/output' +
-                                      '/tile_' + zoom + '_' + normalizedCoord.x + '-' +(normalizedCoord.y) + '.png';
+						// Don't load tiles for repeated maps
+						var tileRange = 1 << zoom;
+						if ( coord.y < 0 || coord.y >= tileRange || coord.x < 0 || coord.x >= tileRange )
+							return null;
+
+						// Load the tile for the requested coordinate
+						var file = '../../Public/img/output' + '/tile_' + zoom + '_' + coord.x + '-' +coord.y + '.png';
+
+						return file;
                       },
                       tileSize: new google.maps.Size(256, 256),
                       maxZoom: 5,
@@ -265,6 +271,19 @@ include "../../Public/layouts/head.php";?>
 
                     map.mapTypes.set('anima', moonMapType);
                     map.setMapTypeId('anima');
+					// Marcador
+					var marker = new google.maps.Marker({
+						position: {lat: 0, lng: 0},
+						draggable: true,
+						map: 'anima',
+						title: "Your location",
+						optimized: false
+					});
+					marker.setMap(map);
+					google.maps.event.addListener(marker, 'dragend', function (event) {
+						document.getElementById("latbox").value = this.getPosition().lat();
+						document.getElementById("lngbox").value = this.getPosition().lng();
+					});
                 }
                 // Normalizes the coords that tiles repeat across the x axis (horizontally)
                 // like the standard Google map tiles.
