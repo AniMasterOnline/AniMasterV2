@@ -171,11 +171,21 @@
                 return "error";
             }
         }
-        public function updateExp_Actual($var,$expNueva, $expVieja){
+        public function updateExpe($experiencia_Nova,$id_personaje){
             $db = new connexio();
-            $result = $sql = "update exp_actual from Personaje SET exp_actual='$expNueva+$expVieja' where id_personaje = '$var'";
-            var_dump($result);
-            $db->query($sql);
+            
+            $sqlget = "SELECT exp_actual FROM Personaje WHERE id_personaje = '$id_personaje'";
+            $query = $db->query($sqlget);
+            $experiencia_Actual = $query->fetch_assoc();
+            
+            $experiencia_Final = 0;
+            $experiencia_Final = $experiencia_Actual['exp_actual'] + (int)$experiencia_Nova;
+            
+            $sqlmod = "UPDATE Personaje SET exp_actual='$experiencia_Final' WHERE id_personaje = '$id_personaje'";
+            
+            $result = $db->query($sqlmod);
+            
+            $db->close();
             return $result;
         }
         

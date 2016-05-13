@@ -142,9 +142,9 @@ include "../../Public/layouts/head.php";
                                     <td>".$exp_nec->getExp_Necesaria()."</td>
                                     <td>
                                         <div class='input-group' style='width:200px'>
-                                            <input type='number' id=".$row['id_personaje']." class='form-control' placeholder='0'>
+                                            <input type='number' id='".$row['id_personaje']."_".$row['nombre']."' class='form-control' placeholder='0'>
                                             <span class='input-group-btn'>
-                                                <button class='btn btn-default bgm-purple c-white' type='button' value=".$row['id_personaje']."_".$row['nombre']."_".$row['exp_actual']." onclick='addexpe(this)'><i class='zmdi zmdi-plus'></i></button>
+                                                <button class='btn btn-default bgm-purple c-white addexpe' type='button' value='".$row['id_personaje']."_".$row['nombre']."'><i class='zmdi zmdi-plus'></i></button>
                                             </span>
                                         </div>                           
                                     </td>
@@ -160,21 +160,32 @@ include "../../Public/layouts/head.php";
     </div>
     
     <script>
-        function addexpe(entrada){
-            var $string = entrada.val();
-            var res = $string.split("_");
-            var id = res.slice(0, 1);
-            var nombre = res.slice(1, 2);
-            var expVieja = res.slice(2, 3);
-            var input = document.getElementById(id).value;
-            document.getElementById("demo").innerHTML = input;
-            if (input > 0) {
-                <?php
-                    $usuario = new Usuario;
-                    $usuario->updateExp_Actual(id, input, expVieja);
-                ?>
-            }
-        }
+        $( document ).ready(function() {
+            $('button.addexpe').click(function(){
+                string = $(this).val();
+                expe = $('#'+string).val();
+                expe = parseInt(expe);
+                var parametros = {
+                    "id_partida" : <?php echo $id_partida; ?>,
+                    "personaje" : string,
+                    "expe" : expe
+                };
+                $.ajax({
+                    data:  parametros,
+                    url:   '../../System/Protocols/Partida_Experiencia.php',
+                    type:  'post',
+                    beforeSend: function () {
+                    },
+                    success:  function (response) {
+                        
+                        //console.log(response);
+                        location.reload();
+                    }
+                });
+            });
+            
+            
+        });
     
     </script>
     
