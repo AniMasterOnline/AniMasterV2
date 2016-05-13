@@ -28,23 +28,26 @@
     
     $personaje2 = new Personaje();
     $newPersonaje = $personaje2->viewPersonaje($id_personaje);
-    (int)$nivelPersonaje = $newPersonaje->getNivel();
-    (int)$experienciaActual = $newPersonaje->getExp_Actual();
+    
+    $nivelPersonaje = $newPersonaje->getNivel();
+    var_dump($nivelPersonaje);
+    
+    $experienciaActual = $newPersonaje->getExp_Actual();
     
     $expNecesaria = new Nivel();
-    $expNecesaria2 = $expNecesaria->viewNivel($nivelPersonaje+1);
-    (int)$expSiguienteNivel = $expNecesaria2->getExp_Necesaria();
+    $expNecesaria2 = $expNecesaria->viewNivel($nivelPersonaje['nivel']+1);
+    $expSiguienteNivel = $expNecesaria2->getExp_Necesaria();
     
     /*Subir level*/
-    if($experienciaActual >= $expSiguienteNivel) {
+    if($experienciaActual['exp_actual'] >= $expSiguienteNivel['exp_necesaria']) {
         //Restar la experiencia para subir el nivel
-        $experienciaRestante = $experienciaActual - $expSiguienteNivel;
+        $experienciaRestante = $experienciaActual['exp_actual'] - $expSiguienteNivel['exp_necesaria'];
         
         //Subir el nivel en +1
-        $nivelPersonaje = $nivelPersonaje+1;
+        $nivelPersonaje['nivel'] = $nivelPersonaje['nivel']+1;
         
         //Efectuar el update
-        $result2 = $personaje->updatePersonaje($nivelPersonaje, $experienciaRestante, $id_personaje);
+        $result2 = $personaje->updatePersonaje($nivelPersonaje['nivel'], $experienciaRestante, $id_personaje);
     }
     
     

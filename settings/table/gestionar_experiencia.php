@@ -153,7 +153,6 @@ include "../../Public/layouts/head.php";
                             ?>
                         </tbody>
                     </table>
-                    <div id="demo">hello</div>
                 </div>
             </div>
         </div>
@@ -177,9 +176,8 @@ include "../../Public/layouts/head.php";
                     beforeSend: function () {
                     },
                     success:  function (response) {
-                        
-                        //console.log(response);
-                        location.reload();
+                        console.log(response);
+                        //location.reload();
                     }
                 });
             });
