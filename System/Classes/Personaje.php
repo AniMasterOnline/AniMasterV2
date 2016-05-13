@@ -188,6 +188,16 @@
             $db->close();
             return $result;
         }
+        public function updatePersonaje($level_Nou, $experiencia_Nova,$id_personaje){
+            $db = new connexio();
+            
+            $sqlmod = "UPDATE Personaje SET nivel='$level_Nou', exp_actual='$experiencia_Nova' WHERE id_personaje = '$id_personaje'";
+            
+            $result = $db->query($sqlmod);
+            
+            $db->close();
+            return $result;
+        }
         
         //CONSTRUCTORS
         function __construct(){

@@ -22,12 +22,51 @@
     $personaje = new Personaje();
     $result = $personaje->updateExpe($experiencia_Nova,$id_personaje);
     
+    
+    /*Comprovar si tiene más experiencia actual que la experiencia necesaria para subir de level*/
+    //Select de personaje exp actual y select de exp necesaria de nivel+1
+    
+    $personaje2 = new Personaje();
+    $newPersonaje = $personaje2->viewPersonaje($id_personaje);
+    (int)$nivelPersonaje = $newPersonaje->getNivel();
+    (int)$experienciaActual = $newPersonaje->getExp_Actual();
+    
+    $expNecesaria = new Nivel();
+    $expNecesaria2 = $expNecesaria->viewNivel($nivelPersonaje+1);
+    (int)$expSiguienteNivel = $expNecesaria2->getExp_Necesaria();
+    
+    /*Subir level*/
+    if($experienciaActual >= $expSiguienteNivel) {
+        //Restar la experiencia para subir el nivel
+        $experienciaRestante = $experienciaActual - $expSiguienteNivel;
+        
+        //Subir el nivel en +1
+        $nivelPersonaje = $nivelPersonaje+1;
+        
+        //Efectuar el update
+        $result2 = $personaje->updatePersonaje($nivelPersonaje, $experienciaRestante, $id_personaje);
+    }
+    
+    
+    
+    
+    
+    
+    
+    //Reducir la experiencia actual del personaje de la experiencia requerida del nivel actual
+    
+    
     if ($result){
         echo 'success'; 
     }else{
         echo 'fail';
     }
     
+    if ($result2){
+        echo 'success2'; 
+    }else{
+        echo 'fail2';
+    }
     
 ?>
 
