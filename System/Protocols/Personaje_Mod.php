@@ -1,38 +1,21 @@
-<?php 
-$title='PNJ';
-$migas='#Index|index.php#Partidas de rol';
-include "Public/layouts/head.php";
-?>
-
 <?php
-$arr=$_SESSION['array'];
-//var_dump($arr);
+session_start();
+    if(isset($_SESSION['user'])){
+        $value=$_SESSION['user'];
 
-$id_usuario=$value['id_usuario'];
+$arr=$_SESSION['arrayMod'];
+var_dump($arr);
 $id_categoria=$arr[0];
-$nombre=$arr[1];
-$apellido=$arr[2];
-$edad=$arr[3];
-$nivel=$arr[4];
-$sexo=$arr[5];
-$pelo=$arr[6];
-$ojos=$arr[7];
-$altura=$arr[8];
-$peso=$arr[9];
-$apariencia=$arr[10];
-$agi=$arr[11];
-$con=$arr[12];
-$des=$arr[13];
-$fue=$arr[14];
-$int=$arr[15];
-$per=$arr[16];
-$pod=$arr[17];
-$vol=$arr[18];
-$nacionalidad=$arr[19];
-$ha=$arr[20];
-$hp=$arr[21];
-$he=$arr[22];
-$le=$arr[23];
+$ha2=$arr[1];
+$hp2=$arr[2];
+$he2=$arr[3];
+$le2=$arr[4];
+$id_personaje=$arr[5];
+
+$ha=$_POST['FIha'];
+$hp=$_POST['FIhp'];
+$he=$_POST['FIhe'];
+$le=$_POST['FIla'];
 ///////////
 $acrobacias=$_POST['hs1'];
 $atletismo=$_POST['hs2'];
@@ -194,7 +177,7 @@ $puntos_queden=$puntos_totals-($puntos_hp+$puntos_hs);
  
 echo $puntos_totals."<br>".$puntos_hp."<br>".$puntos_hs."<br>".$puntos_queden;
 $turno=20;
-require_once "System/Classes/Puntos_Vida.php";
+require_once "../Classes/Puntos_Vida.php";
 $cantidad = new Puntos_Vida();
 $cantidad=$cantidad->viewVida($con);
 
@@ -209,9 +192,10 @@ foreach ($cantidad as $cantidad){
     $humano="humano";
     $id_partida=2;
     //$id_partida=$_POST['id'];
-    require_once "System/Classes/Personaje.php";
-    $personaje = new Personaje($id_usuario,$id_partida,$id_categoria,$nombre,$apellido,$edad,$nivel,$turno,$puntos_vida,$sexo,$raza,$pelo,$ojos,$altura,$peso,$apariencia,$tamanyo,$exp_actual,$agi,$con,$des,$fue,$int,$per,$pod,$vol,$nacionalidad,$imagen,$humano,$puntos_hs,$puntos_hp,$puntos_queden,$ha,$hp,$he,$le,$FIacrobacias,$FIatletismo,$FImontar,$FInadar,$FItrepar,$FIsaltar,$FIfrialdad,$FIp_fuerza,$FIres_dolor,$FIadvertir,$FIbuscar,$FIrastrear,$FIanimales,$FIciencia,$FIherbolaria,$FIhistoria,$FImedicina,$FImemorizar,$FInavegacion,$FIocultismo,$FItasacion,$FIley,$FItactica,$FIestilo,$FIintimidar,$FIliderazgo,$FIpersuacion,$FIcomerciar,$FIcallejeo,$FIetiqueta,$FIcerrajeria,$FIdisfraz,$FIocultarse,$FIrobo,$FIsigilo,$FItramperia,$FIvenenos,$FIarte,$FIbaile,$FIforja,$FItrucos_manos,$FIcanto,$FIrunas,$FIanimismo,$FIalquimia,$FIespecial1,$FIespecial2,$FIespecial3,$FIespecial4);
-    $personaje->add();
+    require_once "../Classes/Personaje.php";
+    //$personaje = new Personaje($id_usuario,$id_partida,$id_categoria,$nombre,$apellido,$edad,$nivel,$turno,$puntos_vida,$sexo,$raza,$pelo,$ojos,$altura,$peso,$apariencia,$tamanyo,$exp_actual,$agi,$con,$des,$fue,$int,$per,$pod,$vol,$nacionalidad,$imagen,$humano,$puntos_hs,$puntos_hp,$puntos_queden,$ha,$hp,$he,$le,$FIacrobacias,$FIatletismo,$FImontar,$FInadar,$FItrepar,$FIsaltar,$FIfrialdad,$FIp_fuerza,$FIres_dolor,$FIadvertir,$FIbuscar,$FIrastrear,$FIanimales,$FIciencia,$FIherbolaria,$FIhistoria,$FImedicina,$FImemorizar,$FInavegacion,$FIocultismo,$FItasacion,$FIley,$FItactica,$FIestilo,$FIintimidar,$FIliderazgo,$FIpersuacion,$FIcomerciar,$FIcallejeo,$FIetiqueta,$FIcerrajeria,$FIdisfraz,$FIocultarse,$FIrobo,$FIsigilo,$FItramperia,$FIvenenos,$FIarte,$FIbaile,$FIforja,$FItrucos_manos,$FIcanto,$FIrunas,$FIanimismo,$FIalquimia,$FIespecial1,$FIespecial2,$FIespecial3,$FIespecial4);
+    //$personaje->add();
     //var_dump($personaje);
+}
 }
 ?>

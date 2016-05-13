@@ -1,18 +1,18 @@
 <?php 
 $title='PNJ';
 $migas='#Index|index.php#Partidas de rol';
-include "Public/layouts/head.php";
+include "../../Public/layouts/head.php";
 ?>
 
 <?php
-$arr=$_SESSION['array'];
-var_dump($arr);
+$arr=$_SESSION['arrayMod'];
+//var_dump($arr);
 $id_categoria=$arr[0];
-$ha2=$arr[20];
-$hp2=$arr[21];
-$he2=$arr[22];
-$le2=$arr[23];
-//$ha=2;
+$ha2=$arr[1];
+$hp2=$arr[2];
+$he2=$arr[3];
+$le2=$arr[4];
+$id_personaje=$arr[5];
 $ha=$_POST['ha'];
 $hp=$_POST['hp'];
 //$hp=2;
@@ -22,7 +22,10 @@ $le=$_POST['la'];
 //$le=2;
 $puntosF=$_POST['puntosT'];
 //$puntosF=200;
-
+$FIha=$ha*$ha2;
+$FIhp=$he*$he2;
+$FIhe=$hp*$hp2;
+$FIla=$le*$le2;
 $suma = $ha*$ha2+$he*$he2+$hp*$hp2;
 $suma2 = $le*$le2;
 $suma3= $suma+$suma2;
@@ -32,27 +35,30 @@ echo "<br>Te queden ".$limite_hp." puntos<br>";
 
 Habilidad secundaria<br>
 <?php
-    require_once "System/Classes/Categoria_HS.php";
+    require_once "../../System/Classes/Categoria_HS.php";
     $categoria=new Categoria_HS();
     $categoria=$categoria->viewHS($id_categoria);
     //var_dump($categoria);
     $i=0;
     ?>
-<form onchange="myFunction(this.value)" action="provesGurwinder4.php" method="POST">
+<form onchange="myFunction(this.value)" action="../../System/Protocols/Personaje_Mod.php" method="POST" accept-charset="utf-8">
         <?php
     foreach ($categoria as $categoria){
         $id_HS = $categoria->getId_HS();
         $coste = $categoria->getCoste();
-        require_once "System/Classes/Habilidades_Secundarias.php";
+        require_once "../../System/Classes/Habilidades_Secundarias.php";
         $hs=new Habilidades_Secundarias();
         $hs=$hs->view_HS($id_HS);
         foreach ($hs as $has){
             $name = $has->getNombre();
+            require_once "../../System/Classes/Personaje.php";
+            $personaje=new Personaje();
+            $personaje=$personaje->viewPersonajeValor($id_personaje);
         echo '<input type="hidden" name="coste'.$id_HS.'" id="coste'.$id_HS.'" value="'.$coste.'">';
         echo '<div class="input-group">
       <span class="input-group-addon" id="basic-addon1">'.$coste.'</span>
       <span class="input-group-addon" id="basic-addon1">'.$name.'</span>';
-        echo '<input type="text" name="hs'.$id_HS.'" id="hs'.$id_HS.'" class="form-control" aria-describedby="basic-addon1"></div>';
+        echo '<input type="text" name="hs'.$id_HS.'" id="hs'.$id_HS.'" value="'.$personaje[strtolower($name)]/$coste.'" class="form-control" aria-describedby="basic-addon1"></div>';
     }
 }
 ?>
@@ -60,7 +66,11 @@ Habilidad secundaria<br>
     <input type="hidden" name="puntosF" id="puntosF" value="<?php echo $limite_hp; ?>">
     <input type="hidden" name="suma3" id="suma3" value="<?php echo $suma3; ?>">
     <input type="hidden" name="puntos_totals" id="puntos_totals" value="<?php echo $puntosF; ?>">
-    <input type="submit" name="submit" id="submit" value="Crear">
+    <input type="hidden" name="FIha" id="FIha" value="<?php echo $FIha; ?>">
+    <input type="hidden" name="FIhp" id="FIhp" value="<?php echo $FIhp; ?>">
+    <input type="hidden" name="FIhe" id="FIhe" value="<?php echo $FIhe; ?>">
+    <input type="hidden" name="FIla" id="FIla" value="<?php echo $FIla; ?>">
+    <input type="submit" name="submit" id="submit" value="Modificar">
 </form>
 <script>
 function myFunction(val) {

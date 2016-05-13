@@ -24,6 +24,7 @@
         
         public function view_all(){
             $db = new connexio();
+            $db->query("SET NAMES 'utf8'");
             $sql = "SELECT * FROM Habilidades_Secundarias";
             $query = $db->query($sql);
             $rtn = array();

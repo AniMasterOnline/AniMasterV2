@@ -2,7 +2,7 @@
 <?php 
 $title='PNJ';
 $migas='#Index|index.php#Partidas de rol';
-include "Public/layouts/head.php";
+include "../../Public/layouts/head.php";
 ?>
 
 Crear personaje<br>
@@ -31,9 +31,9 @@ $vol=$_POST['VOL'];
 $nacionalidad=$_POST['nacionalidad'];
 ?>
 HP<br>
-<?php
 
-require_once "System/Classes/Nivel.php";
+<?php
+require_once "../../System/Classes/Nivel.php";
 $nivel=new Nivel();
 $nivel=$nivel->viewNivel($nivel2);
 $puntos = $nivel->getPuntos();
@@ -54,7 +54,7 @@ $limite_hp = $puntos*0.5;
 ?>
 <br>Los costes son:<br>
 <?php
-require_once "System/Classes/Categoria_HP.php";
+require_once "../../System/Classes/Categoria_HP.php";
 $cat_hp = new Categoria_HP();
 $cat_hp=$cat_hp->viewHP1($id_categoria,1);
 foreach($cat_hp as $cat_h){
@@ -83,7 +83,7 @@ $array = array($id_categoria,$nombre,$apellido,$edad,$nivel2,$sexo,$pelo,$ojos,$
 $_SESSION['array']=$array;
 ?>
 
-<form onchange="myFunction(this.value)" action="provesGurwinder3.php" method="POST">
+<form onchange="myFunction(this.value)" action="new_personaje3.php" method="POST">
     <input type="text" id="ha" name="ha" placeholder="Habilidad ataque">
     <input type="hidden" id="limite_hp" value="<?php echo $limite_hp ?>">
     <input type="hidden" id="ha2" value="<?php echo $ha ?>">
