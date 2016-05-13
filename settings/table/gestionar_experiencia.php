@@ -153,6 +153,7 @@ include "../../Public/layouts/head.php";
                             ?>
                         </tbody>
                     </table>
+                    <div id="demo">hello</div>
                 </div>
             </div>
         </div>
@@ -166,6 +167,7 @@ include "../../Public/layouts/head.php";
             var nombre = res.slice(1, 2);
             var expVieja = res.slice(2, 3);
             var input = document.getElementById(id).value;
+            document.getElementById("demo").innerHTML = input;
             if (input > 0) {
                 <?php
                     $usuario = new Usuario;
