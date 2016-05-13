@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -69,31 +71,56 @@ public class MainFinestra extends JFrame implements  ActionListener{
             System.out.println("Error 2");
         }
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String action = e.getActionCommand();
+        if (action.equals("crear")) {
+            try {
+                String user = usuario.getText();
+                String pass = contrasenya.getText();
+                if(user != null && !user.isEmpty() && pass != null && !pass.isEmpty()){
+                    AniMasterBD animasterbd = new AniMasterBD();
+                    Usuario usuari = new Usuario(user, pass);
+                    animasterbd.afegirAdmin(usuari);
+                    animasterbd.tancar();
+                }else{
+                    System.out.println("No Data!");
+                }
+                
+                
+            } catch (Exception ex) {
+                Logger.getLogger(MainFinestra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
     public void carregarDades() throws Exception{
         AniMasterBD animasterbd = new AniMasterBD();
         ArrayList returnAdmins = AniMasterBD.getAdmins();
         int max = returnAdmins.size();
-        String res = "| ID | Nickname \n#####################################\n";
+        String res = "| ID | Nickname \n#########################################################################################################################################################################################\n";
         for (int i = 0; i < max; i++){
             res = res + returnAdmins.get(i).toString()+ "\n";
         }
         animasterbd.tancar();
         lista.setText(res);
-        
     }
+    
     public static void main(String[] args) {
         try{
             MainFinestra e = new MainFinestra();
             e.crearAdmin();
             e.showAdmin();
-            e.carregarDades();
+            int i = 0;
+            while(true) {
+                i++;
+                System.out.println(i);
+                e.carregarDades();
+                Thread.sleep(10000);
+            }
+            
         }catch(Exception e){
             System.out.println(e);
         } 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

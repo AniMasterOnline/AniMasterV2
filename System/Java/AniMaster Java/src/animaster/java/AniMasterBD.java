@@ -4,6 +4,7 @@
  * @author Daark
  */
 package animaster.java;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class AniMasterBD {
         
     }
     public static ArrayList getAdmins() throws SQLException{
-      String query = "SELECT id_usuario, nickname FROM Usuario";
+      String query = "SELECT id_usuario, nickname FROM Usuario WHERE id_tipo = 0 ORDER by id_usuario";
       // create the java statement
       Statement st = conn.createStatement();
        
@@ -56,6 +57,20 @@ public class AniMasterBD {
         returnAdmins.add(usuario);
       }
       return returnAdmins;
+    }
+    void afegirAdmin(Usuario usuari) throws SQLException, NoSuchAlgorithmException {
+        // El Insert mysql
+        String query = " insert into Usuario (nickname, password, id_tipo)"
+          + " values (?, ?, ?)";
+
+        //Crea la Sequencia mysql
+        PreparedStatement preparedStmt = conn.prepareStatement(query);
+        preparedStmt.setString (1, usuari.getNick());
+        preparedStmt.setString (2, usuari.getPass());
+        preparedStmt.setString (3, "0");
+        
+        // executa el Insert
+        preparedStmt.execute();
     }
     
     public static void main(String[] args) throws SQLException {
