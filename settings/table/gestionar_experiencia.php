@@ -109,6 +109,7 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-lightgreen b-0 c-white">
                             <tr>
+                                <th>Usuario</th>
                                 <th>Personaje</th>
                                 <th>Nivel</th>
                                 <th>Exp Actual</th>
@@ -126,28 +127,28 @@ include "../../Public/layouts/head.php";
                             $array = $Personaje->viewPersonajesPartida($id_partida);
                             
                             $nivel = new Nivel();
+                            $usuario = new Usuario();
                             
                             
                             /*Mostrem tots els personatges que siguin d'aquesta partida*/
                             foreach ($array as $row) {
+                                $nombreUsuario = $usuario->return_user($row['id_usuario']);
+                                $exp_nec = $nivel->viewNivel($row['nivel']+1);
                                 echo "<tr >
+                                    <td>".$nombreUsuario['nickname']."</td>                                    
                                     <td>".$row['nombre']."</td>
                                     <td>".$row['nivel']."</td>
-                                    <td>".$row['exp_actual']."</td>";
-                                
-                                    $exp_nec = $nivel->viewNivel($row['nivel']+1);
-                                    echo "
-                                        <td>".$exp_nec->getExp_Necesaria()."</td>
-                                        <td>
-                                              <div class='input-group' style='width:200px'>
-                                                <input type='text' id='' class='form-control' placeholder='0'>
-                                                <span class='input-group-btn'>
-                                                    <button class='btn btn-default bgm-purple c-white' type='button' value='' onclick='addexpe(this)'><i class='zmdi zmdi-plus'></i></button>
-                                                </span>
-                                            </div>                           
-                                        </td>
-
-                                        </tr>";
+                                    <td>".$row['exp_actual']."</td>
+                                    <td>".$exp_nec->getExp_Necesaria()."</td>
+                                    <td>
+                                        <div class='input-group' style='width:200px'>
+                                            <input type='number' id=".$row['id_personaje']." class='form-control' placeholder='0'>
+                                            <span class='input-group-btn'>
+                                                <button class='btn btn-default bgm-purple c-white' type='button' value=".$row['id_personaje']."_".$row['nombre']."_".$row['exp_actual']." onclick='addexpe(this)'><i class='zmdi zmdi-plus'></i></button>
+                                            </span>
+                                        </div>                           
+                                    </td>
+                                    </tr>";
                             }
                             ?>
                         </tbody>
@@ -160,8 +161,17 @@ include "../../Public/layouts/head.php";
     <script>
         function addexpe(entrada){
             var $string = entrada.val();
-            
-            
+            var res = $string.split("_");
+            var id = res.slice(0, 1);
+            var nombre = res.slice(1, 2);
+            var expVieja = res.slice(2, 3);
+            var input = document.getElementById(id).value;
+            if (input > 0) {
+                <?php
+                    $usuario = new Usuario;
+                    $usuario->updateExp_Actual(id, input, expVieja);
+                ?>
+            }
         }
     
     </script>

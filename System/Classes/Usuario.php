@@ -298,31 +298,31 @@
         }
         
         //METODES GET 
-        public function getId_Usuario($id_usuario) {
+        public function getId_Usuario() {
             return $this->id_usuario;
         }
-        public function getNickname($nickname) {
+        public function getNickname() {
             return $this->nickname;
         }
-        public function getEmail($email) {
+        public function getEmail() {
             return $this->email;
         }
-        public function getPassword($password) {
+        public function getPassword() {
             return $this->password;
         }
-        public function getNombre($nombre) {
+        public function getNombre() {
             return $this->nombre;
         }
-        public function getApellido($apellido) {
+        public function getApellido() {
             return $this->apellido;
         }
-        public function getTelefon($telefono) {
+        public function getTelefon() {
             return $this->telefono;
         }
-        public function getId_Tipo($id_tipo) {
+        public function getId_Tipo() {
             return $this->id_tipo;
         }
-        public function getImagen($imagen) {
+        public function getImagen() {
             return $this->imagen;
         }
     }

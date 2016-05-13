@@ -151,6 +151,13 @@
                 return "error";
             }
         }
+        public function updateExp_Actual($var,$expNueva, $expVieja){
+            $db = new connexio();
+            $result = $sql = "update exp_actual from Personaje SET exp_actual='$expNueva+$expVieja' where id_personaje = '$var'";
+            var_dump($result);
+            $db->query($sql);
+            return $result;
+        }
         
         //CONSTRUCTORS
         function __construct(){
