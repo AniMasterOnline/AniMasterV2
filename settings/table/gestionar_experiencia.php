@@ -79,42 +79,22 @@ include "../../Public/layouts/head.php";
                     <h2 class="lvh-label  c-white f-18">Jugadores </h2>
                     <ul class="lv-actions actions">
                         <li>
-                            <a data-toggle="tooltip" data-placement="right" title="Invita y gestiona a tus Jugadores">
+                            <a data-toggle="tooltip" data-placement="right" title="Gestiona la experiencia de tus jugadores, cuidado no se puede bajar el nivel!">
                                 <i class="zmdi zmdi-info c-white"></i>
                             </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                                <i class="zmdi zmdi-more-vert c-white"></i>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Invitar Jugador</a>
-                                </li>
-                                <li>
-                                    <a href="#">Modificar Jugador</a>
-                                </li>
-                                <li>
-                                    <a href="#">Eliminar Jugador</a>
-                                </li>
-                                <li>
-                                    <a href="#">Gestionar Experiencias</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body card-padding table-responsive p-0">
-                    <table class="table b-0">
-                        <thead class="bgm-lightgreen b-0 c-white">
+                    <table class="table b-0 table-striped table-hover ">
+                        <thead class="bgm-lightgreen b-0 c-white text-left">
                             <tr>
                                 <th>Usuario</th>
                                 <th>Personaje</th>
-                                <th>Nivel</th>
-                                <th>Exp Actual</th>
-                                <th>Sig Nivel</th>
-                                <th>Añadir Experiencia</th>
+                                <th class='text-center'>Nivel</th>
+                                <th class='text-right'>Exp_Actual</th>
+                                <th class='text-left'>Sig_Nivel</th>
+                                <th class='text-left'>Añadir Experiencia</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -134,14 +114,14 @@ include "../../Public/layouts/head.php";
                             foreach ($array as $row) {
                                 $nombreUsuario = $usuario->return_user($row['id_usuario']);
                                 $exp_nec = $nivel->viewNivel($row['nivel']+1);
-                                echo "<tr >
-                                    <td>".$nombreUsuario['nickname']."</td>                                    
-                                    <td>".$row['nombre']."</td>
-                                    <td>".$row['nivel']."</td>
-                                    <td>".$row['exp_actual']."</td>
-                                    <td>".$exp_nec->getExp_Necesaria()."</td>
-                                    <td>
-                                        <div class='input-group' style='width:200px'>
+                                echo "<tr>
+                                    <td class='text-capitalize text-success'>".$nombreUsuario['nickname']."</td>                                    
+                                    <td class='text-capitalize text-info'>".$row['nombre']."</td>
+                                    <td class='text-danger text-center'>".$row['nivel']."</td>
+                                    <td class='text-right'>".$row['exp_actual']."</td>
+                                    <td class='text-left'>".$exp_nec->getExp_Necesaria()."</td>
+                                    <td class='p-0 p-l-5'>
+                                        <div class='input-group' style='min-width: 25%; max-width:90%; width:auto;'>
                                             <input type='number' id='".$row['id_personaje']."_".$row['nombre']."' class='form-control' placeholder='0'>
                                             <span class='input-group-btn'>
                                                 <button class='btn btn-default bgm-purple c-white addexpe' type='button' value='".$row['id_personaje']."_".$row['nombre']."'><i class='zmdi zmdi-plus'></i></button>

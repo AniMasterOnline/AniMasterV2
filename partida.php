@@ -39,7 +39,7 @@ $(document).ready(function(){
                     $nv_sobrenatural = $row->getNv_Sobrenatural();
                     $limite = $row->getLimite();
                     $token = $row->getToken();
-                    echo '  <div class="col-sm-4 ">
+                    echo '  <div class="col-xs-8 col-sm-6 col-md-4">
                                 <div class="card">
                                     <div class="card-header custom-card" style="background-image: url(\'Public/img/partida/'.$imagen.'\');">
                                         <h2 class="c-black f-500 f-18 text-capitalize opacity p-l-10 p-5 z-depth-1">'.$nombre.'<small class="c-black f-400 f-14"><i class="zmdi zmdi-calendar-note p-r-5"></i>'.$anyo.'<i class="zmdi zmdi-ticket-star p-l-10 p-r-5"></i>'.$nv_sobrenatural.'<i class="zmdi zmdi-account-circle p-l-10 p-r-5"></i>'.$users.' / '.$limite.'</small></h2>
@@ -87,7 +87,7 @@ $(document).ready(function(){
                         $nv_sobrenatural = $row->getNv_Sobrenatural();
                         $limite = $row->getLimite();
                         $token = $row->getToken();
-                        echo '  <div class="col-sm-4 ">
+                        echo '  <div class="col-xs-8 col-sm-6 col-md-4">
                                     <div class="card">
                                         <div class="card-header custom-card" style="background-image: url(\'Public/img/partida/'.$imagen.'\');">
                                             <h2 class="c-black f-500 f-18 text-capitalize opacity p-l-10 p-5 z-depth-1">'.$nombre.'<small class="c-black f-400 f-14"><i class="zmdi zmdi-calendar-note p-r-5"></i>'.$anyo.'<i class="zmdi zmdi-ticket-star p-l-10 p-r-5"></i>'.$nv_sobrenatural.'<i class="zmdi zmdi-account-circle p-l-10 p-r-5"></i>'.$users.' / '.$limite.'</small></h2>
