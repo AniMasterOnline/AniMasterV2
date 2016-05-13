@@ -102,13 +102,7 @@
             $db->close();
             return $db2;
         }
-        public function add9(){
-            $db = new connexio();
-            $db2 = $db->query("INSERT INTO Personaje(`id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`) "
-                    . "VALUES ('$this->id_usuario', '$this->id_partida', '$this->id_categoria', '$this->nombre', '$this->apellido', '$this->edad', '$this->nivel', '$this->turno', '$this->puntos_vida')");
-            $db->close();
-            return $db2;
-        }
+        
         public function delete($var){
             $db = new connexio();
             $result = $sql = "delete from Personaje where id_personaje = $var";
@@ -127,6 +121,32 @@
             }
             $db->close();
             return $rtn;
+        }
+        
+        public function viewPersonaje($id_personaje){ 
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje WHERE id_personaje = '$id_personaje'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                $row = $query->fetch_assoc();
+                return $row;
+            }else{
+                return null;
+            }
+        }
+        
+        public function viewPersonajeValor($id_personaje){ 
+            $db = new connexio();
+            $sql = "SELECT `acrobacias`, `atletismo`, `montar`, `nadar`, `trepar`, `saltar`, `frialdad`, `proezas_fuerza` as `p. fuerza`, `resistir_dolor` as 'res. dolor', `advertir`, `buscar`, `rastrear`, `animales`, `ciencia`, `herbolaria`, `historia`, `medicina`, `memorizar`, `navegacion`, `ocultismo`, `tasacion`, `ley`, `tactica`, `estilo`, `intimidar`, `liderazgo`, `persuasion`, `comerciar`, `callejeo`, `etiqueta`, `cerrajeria`, `disfraz`, `ocultarse`, `robo`, `sigilo`, `tramperia`, `venenos`, `arte`, `baile`, `forja`, `trucos_manos` as 't. manos', `canto`, `runas`, `animismo`, `alquimia`, `especial1`, `especial2`, `especial3`, `especial4` FROM `personaje` WHERE `id_personaje`='$id_personaje'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                $row = $query->fetch_assoc();
+                return $row;
+            }else{
+                return null;
+            }
         }
         
         public function viewPersonajesPartida($id){ 
@@ -359,9 +379,9 @@
             $this->especial4 = $a86; 
         }
         
-        function __construct1($a2){
+        function __construct1($a5){
             $this->id_personaje=0;
-            $this->id_usuario = $a2;
+            $this->nombre = $a5;
         }
         
         function __construct86($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37, $a38, $a39, $a40, $a41, $a42, $a43, $a44, $a45, $a46, $a47, $a48, $a49, $a50, $a51, $a52, $a53, $a54, $a55, $a56, $a57, $a58, $a59, $a60, $a61, $a62, $a63, $a64, $a65, $a66, $a67, $a68, $a69, $a70, $a71, $a72, $a73, $a74, $a75, $a76, $a77, $a78, $a79, $a80, $a81, $a82, $a83, $a84, $a85, $a86){

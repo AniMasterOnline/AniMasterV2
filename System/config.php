@@ -21,7 +21,8 @@
         public function __construct() {
         parent::__construct(HOST,NOMUSUARI,CONTRASENYA,NOMBDD);
         if (mysqli_connect_error()) {
-            die('Connect Error (' . mysqli_connect_errno() . ') '. mysqli_connect_error());        }
+            die('Connect Error (' . mysqli_connect_errno() . ') '. mysqli_connect_error());
+        }
     }
 }
 ?>
