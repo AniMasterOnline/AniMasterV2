@@ -234,7 +234,7 @@ include "../../Public/layouts/head.php";?>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyBkkbD7741_-gMF83eHjO5tgzW5kvx8fj8" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkkbD7741_-gMF83eHjO5tgzW5kvx8fj8" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
                 initMap();
@@ -243,7 +243,7 @@ include "../../Public/layouts/head.php";?>
                       center: {lat: 0, lng: 0},
                       zoom: 2,
                       streetViewControl: false,
-                      mapTypeControl: true,
+                      mapTypeControl: false,
                       mapTypeControlOptions: {
                             mapTypeIds: ['anima']
                             //mapTypeIds: ['anima']
@@ -262,13 +262,11 @@ include "../../Public/layouts/head.php";?>
 						return file;
                       },
                       tileSize: new google.maps.Size(256, 256),
-                      maxZoom: 5,
+                      maxZoom: 4,
                       minZoom: 1,
                       radius: 1738000,
                       name: 'anima'
                     });
-                    
-
                     map.mapTypes.set('anima', moonMapType);
                     map.setMapTypeId('anima');
 					// Marcador
@@ -276,14 +274,19 @@ include "../../Public/layouts/head.php";?>
 						position: {lat: 0, lng: 0},
 						draggable: true,
 						map: 'anima',
-						title: "Your location",
-						optimized: false
+						title: "Your location"
 					});
 					marker.setMap(map);
 					google.maps.event.addListener(marker, 'dragend', function (event) {
 						document.getElementById("latbox").value = this.getPosition().lat();
 						document.getElementById("lngbox").value = this.getPosition().lng();
 					});
+					
+					
+					
+					
+					
+					
                 }
                 // Normalizes the coords that tiles repeat across the x axis (horizontally)
                 // like the standard Google map tiles.
