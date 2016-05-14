@@ -53,7 +53,7 @@ include "Public/layouts/head.php";?>
 
                                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                                     <li>
-                                                                        <a href="#">Gestionar Personaje</a>
+                                                                        <a href="settings/character/index.php?id_partida='.$id_partida.'">Gestionar Personaje</a>
                                                                     </li>
                                                                     <li role="separator" class="divider"></li>
                                                                     <li>

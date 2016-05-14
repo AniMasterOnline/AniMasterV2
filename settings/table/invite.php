@@ -14,9 +14,10 @@ if(isset($_GET['token']) && !empty($_GET['token'])){
     if($id_partida != null){
         $partida= $partida->viewPartida($id_partida);
         $limite = $partida->getLimite();
+        
+        $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -1,'true');
         $users = $partida_usuari->countUsers($id_partida);
         if ($users < $limite){
-            $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -1,'true');
             $partida_usuari->add();
             echo '<META http-equiv="refresh" content="0;URL=../../zone.php">'; 
             exit;
