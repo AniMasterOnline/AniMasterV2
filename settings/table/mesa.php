@@ -7,21 +7,30 @@ if(isset($_SESSION['user'])){
 }
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
+    /* Requiere_once i gets */
     require_once "../../System/Classes/Partida.php";
     require_once "../../System/Classes/Partida_Usuari.php";
-    
     $id_partida = $_GET['id'];
     $id_usuario = $value['id_usuario'];
     
+    /* Comprobacion de si el jugador tiene personaje */
+    require_once "../../System/Classes/Personaje.php";
+    $personaje = new Personaje();
+    $return=$personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
+    if($return === null){
+       header('location: ../character/new_personaje1.php?id_partida='.$id_partida); //redireccion a crear Personaje
+       exit();
+    }
+    /* Comprobacion de si el usuario tiene acceso a la partida o si existe*/
     $partida= new Partida();
     $partida= $partida->viewPartida($id_partida);
-    
     $partida_usuari= new Partida_Usuari();
     $you_can_not_pass = $partida_usuari->testInvited($id_usuario, $id_partida);
-    
     if(empty($partida) || $you_can_not_pass!== true ){
         include '../404/404.php';
     }
+    
+    /* Variables de la partida */
     $id_master = $partida->getId_Usuario();
     $nombre = $partida->getNombre();
     $imagen = $partida->getImagen();
@@ -31,6 +40,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $limite = $partida->getLimite();
     $token = $partida->getToken();
     
+    /* Archivo del xat !important */
     $file = '../../System/Logs/'.$id_partida.'-'.$nombre;
     if (!file_exists($file)) {
         fwrite(fopen($file, 'a'), "<div class='chatbox pull-left f-11 text-center system'><span>¡Inicio de la sesion de roleo!</span></div>\n"); 

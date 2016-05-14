@@ -1,12 +1,65 @@
-<?php 
-$title='PNJ';
-$migas='#Index|index.php#Partidas de rol';
+<?php
+session_start();
+if(isset($_SESSION['user'])){
+    $value=$_SESSION['user'];
+    //var_dump($value);
+}
+
+if(isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
+    /* Requiere_once i gets */
+    require_once "../../System/Classes/Partida.php";
+    require_once "../../System/Classes/Partida_Usuari.php";
+    $id_partida = $_GET['id_partida'];
+    $id_usuario = $value['id_usuario'];
+    
+    /* Comprobacion de si el jugador tiene personaje */
+    require_once "../../System/Classes/Personaje.php";
+    $personaje = new Personaje();
+    $return=$personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
+    if($return !== null){
+       header('location: ../../zone.php'); //redireccion a zona de partidas
+       exit();
+    }
+    /* Comprobacion de si el usuario tiene acceso a la partida o si existe*/
+    $partida= new Partida();
+    $partida= $partida->viewPartida($id_partida);
+    $partida_usuari= new Partida_Usuari();
+    $you_can_not_pass = $partida_usuari->testInvited($id_usuario, $id_partida);
+    if(empty($partida) || $you_can_not_pass!== true ){
+        include '../404/404.php';
+    }
+    
+    /* Variables de la partida */
+    $nombre = $partida->getNombre();
+    $imagen = $partida->getImagen();
+}else{
+    include '../404/404.php';
+}
+$title='Crear Personaje';
+$migas='#Index|../../index.php#Zona roleo|../../zone.php#'.$nombre.'# Crear Personaje 3 / 3';
 include "../../Public/layouts/head.php";
 ?>
+<div class="content">
+    <div class="col-md-12">
+        <div class="col-xs-12">
+            <div class="card m-b-5">
+                <div class="card-header">
+                    <h2><?php echo $nombre; ?><small class="c-white f-400 f-14">Crear personaje 3 / 3</small></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="progress m-b-5" style="border-radius: 0px;">
+                <div class="progress-bar bgm-brown" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%; border-radius: 0px;">
+                  3 / 3
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
 
 <?php
 $arr=$_SESSION['array'];
-var_dump($arr);
+//var_dump($arr);
 $id_categoria=$arr[0];
 $ha2=$arr[20];
 $hp2=$arr[21];
@@ -30,10 +83,10 @@ $suma = $ha*$ha2+$he*$he2+$hp*$hp2;
 $suma2 = $le*$le2;
 $suma3= $suma+$suma2;
 $limite_hp = $puntosF-($suma3);
-echo "<br>Te queden ".$limite_hp." puntos<br>";
+echo "<div class='alert alert-info m-b-5' role='alert'><strong>Habilidades secundarias</strong><br> Te quedan ".$limite_hp." puntos</div>";
 ?>
 
-Habilidad secundaria<br>
+
 <?php
     require_once "../../System/Classes/Categoria_HS.php";
     $categoria=new Categoria_HS();
@@ -41,7 +94,7 @@ Habilidad secundaria<br>
     //var_dump($categoria);
     $i=0;
     ?>
-<form onchange="myFunction(this.value)" action="../../System/Protocols/Personaje_Add.php" method="POST">
+<form onchange="myFunction(this.value)" action="<?php echo '../../System/Protocols/Personaje_Add.php?id_partida='.$id_partida; ?>" method="POST">
         <?php
     foreach ($categoria as $categoria){
         $id_HS = $categoria->getId_HS();
@@ -67,7 +120,7 @@ Habilidad secundaria<br>
     <input type="hidden" name="FIhp" id="FIhp" value="<?php echo $FIhp; ?>">
     <input type="hidden" name="FIhe" id="FIhe" value="<?php echo $FIhe; ?>">
     <input type="hidden" name="FIla" id="FIla" value="<?php echo $FIla; ?>">
-    <input type="submit" name="submit" id="submit" value="Crear">
+    <input class="btn btn-default bgm-indigo c-white p-0 m-t-5" type="submit" name="submit" id="submit" value="Crear">
 </form>
 <script>
 function myFunction(val) {
@@ -182,3 +235,7 @@ function myFunction(val) {
     }
 }
 </script>
+
+        </div>
+    </div>
+</div>

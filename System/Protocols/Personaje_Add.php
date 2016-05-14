@@ -205,7 +205,7 @@ foreach ($cantidad as $cantidad){
     $exp_actual=0;
     $imagen="image";
     $humano="humano";
-    $id_partida=2;
+    $id_partida=$_GET['id_partida'];
     //$id_partida=$_POST['id'];
     require_once "../Classes/Personaje.php";
     $personaje = new Personaje($id_usuario,$id_partida,$id_categoria,$nombre,$apellido,$edad,$nivel,$turno,$puntos_vida,$sexo,$raza,$pelo,$ojos,$altura,$peso,$apariencia,$tamanyo,$exp_actual,$agi,$con,$des,$fue,$int,$per,$pod,$vol,$nacionalidad,$imagen,$humano,$puntos_hs,$puntos_hp,$puntos_queden,$ha,$hp,$he,$le,$FIacrobacias,$FIatletismo,$FImontar,$FInadar,$FItrepar,$FIsaltar,$FIfrialdad,$FIp_fuerza,$FIres_dolor,$FIadvertir,$FIbuscar,$FIrastrear,$FIanimales,$FIciencia,$FIherbolaria,$FIhistoria,$FImedicina,$FImemorizar,$FInavegacion,$FIocultismo,$FItasacion,$FIley,$FItactica,$FIestilo,$FIintimidar,$FIliderazgo,$FIpersuacion,$FIcomerciar,$FIcallejeo,$FIetiqueta,$FIcerrajeria,$FIdisfraz,$FIocultarse,$FIrobo,$FIsigilo,$FItramperia,$FIvenenos,$FIarte,$FIbaile,$FIforja,$FItrucos_manos,$FIcanto,$FIrunas,$FIanimismo,$FIalquimia,$FIespecial1,$FIespecial2,$FIespecial3,$FIespecial4);

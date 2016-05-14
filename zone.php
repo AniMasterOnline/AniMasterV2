@@ -51,15 +51,24 @@ include "Public/layouts/head.php";?>
                                                                     <i class="zmdi zmdi-more-vert"></i>
                                                                 </a>
 
-                                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                                    <li>
-                                                                        <a href="settings/character/index.php?id_partida='.$id_partida.'">Gestionar Personaje</a>
-                                                                    </li>
-                                                                    <li role="separator" class="divider"></li>
-                                                                    <li>
-                                                                        <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
-                                                                    </li>
-                                                                </ul>
+                                                                <ul class="dropdown-menu dropdown-menu-right">';
+                                                                    require_once "System/Classes/Personaje.php";
+                                                                    $personaje = new Personaje();
+                                                                    $return=$personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
+                                                                    if($return !== null){
+                                                                        echo '  <li>
+                                                                                    <a href="settings/character/index.php?id_partida='.$id_partida.'">Gestionar Personaje</a>
+                                                                                </li>
+                                                                                <li role="separator" class="divider"></li>
+                                                                                <li>
+                                                                                    <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
+                                                                                </li>';
+                                                                    }else{
+                                                                        echo '  <li>
+                                                                                    <a href="settings/character/new_personaje1.php?id_partida='.$id_partida.'">Crear Personaje</a>
+                                                                                </li>';
+                                                                    }         
+                                                            echo '</ul>
                                                             </li>
                                                         </ul>
                                                     </div>

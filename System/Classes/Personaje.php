@@ -148,6 +148,18 @@
                 return null;
             }
         }
+        public function viewPersonajeUsuario($id_usuario, $id_partida){ 
+            $db = new connexio();
+            $sql = "SELECT * FROM personaje WHERE id_usuario='$id_usuario' and id_partida='$id_partida'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                $row = $query->fetch_assoc();
+                return $row;
+            }else{
+                return null;
+            }
+        }
         
         public function viewPersonajesPartida($id){ 
             $db = new connexio();
