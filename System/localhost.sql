@@ -610,17 +610,18 @@ INSERT INTO  `Animaster`.`Usuario` (
 `email` ,
 `telefono` ,
 `password` ,
-`id_tipo`
+`id_tipo` ,
+`num_partidas`
 )
 VALUES 
 
-(NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL ,  'david', NULL ,  'david', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL ,  'marc', NULL ,  'marc', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL ,  'gurwinder', NULL ,  'gurwinder', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL ,  'admin2', NULL ,  'admin2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL ,  'test', NULL ,  'test', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0'),
-(NULL ,  'test2', NULL ,  'test2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0');
+(NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0',  '0'),
+(NULL ,  'david', NULL ,  'david', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0',  '0'),
+(NULL ,  'marc', NULL ,  'marc', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0',  '1'),
+(NULL ,  'gurwinder', NULL ,  'gurwinder', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0',  '0'),
+(NULL ,  'admin2', NULL ,  'admin2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0',  '0'),
+(NULL ,  'test', NULL ,  'test', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0',  '0'),
+(NULL ,  'test2', NULL ,  'test2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  '0',  '0');
 
 
 
@@ -1517,11 +1518,11 @@ VALUES
 -- Volcado de datos para la tabla `caracteristica`
 --
 INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
-(1, 'Daño'),
+(1, 'Danyo'),
 (2, 'Turno'),
 (3, 'FUE Req.'),
-(4, 'Crítico 1'),
-(5, 'Crítico 2'),
+(4, 'Critico 1'),
+(5, 'Critico 2'),
 (6, 'Tipo de arma'),
 (7, 'Especial'),
 (8, 'Enterza'),
@@ -1533,8 +1534,8 @@ INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
 (14, 'Alcance'),
 (15, 'Requerimiento de Armadura'),
 (16, 'Penalizador natural'),
-(17, 'Restricción al movimiento'),
-(18, 'Localización'),
+(17, 'Restriccion al movimiento'),
+(18, 'Localizacion'),
 (19, 'Classe'),
 (20, 'TA_FIL'),
 (21, 'TA_CON'),
@@ -1543,7 +1544,7 @@ INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
 (24, 'TA_ELE'),
 (25, 'TA_FRI'),
 (26, 'TA_ENE'),
-(27, 'Penalización a la percepción'),
+(27, 'Penalizacion a la percepcion'),
 (28, 'Dureza');
 
 
@@ -2042,8 +2043,8 @@ VALUES
 --
 INSERT INTO `Partida_Usuari` (`id_usuario`, `id_partida`, `pos`, `aceptado`) 
 VALUES 
-('3', '1', '-1', 'master'),
-('2', '1', '1', 'true');
+('3', '1', '1', 'master'),
+('2', '1', '-1', 'true');
 
 --
 -- Volcado de datos para la tabla `Personaje`
