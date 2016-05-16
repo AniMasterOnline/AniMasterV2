@@ -77,7 +77,13 @@
                             </span>
                         </h1>
                         <div class="html-editor-click m-b-10" style="display: block;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula erat sit amet aliquam vehicula. Aliquam aliquet et risus et consequat. Quisque ultrices nulla eu magna vulputate, quis varius massa tempor. Suspendisse sed condimentum purus, eget consequat dolor. Fusce aliquet ultricies porta. Nunc semper commodo leo at maximus. Duis maximus maximus leo, id lobortis nisi aliquam sit amet. Nullam vel ex id augue scelerisque congue sit amet eget urna.
+                            <?php
+                                if($diario != null){
+                                    echo $diario;
+                                }else{
+                                    echo '<br>';
+                                } 
+                            ?>
                         </div>
                         <div class="m-b-10">
                             
@@ -87,6 +93,9 @@
                                 //Edit
                                 $('body').on('click', '.hec-button', function(){
                                     $('.html-editor-click').summernote({
+                                        height: 300,
+                                        minHeight: null,             // set minimum height of editor
+                                        maxHeight: null,
                                         focus: true,
                                         toolbar: [
                                             // [groupName, [list of button]]
@@ -106,6 +115,19 @@
                                     $('.html-editor-click').code();
                                     $('.html-editor-click').destroy();
                                     $('.hec-save').hide();
+                                    var diario = $('.html-editor-click').html();
+                                    $.ajax({
+                                        url: "../../System/Protocols/Partida_Diario.php",
+                                        type: "POST",
+                                        data: {
+                                            id: <?php echo $id_partida ?>,
+                                            datos: diario
+                                        },
+                                        dataType: "html",
+                                        success: function (data) {
+                                            console.log(data);
+                                        }
+                                    });
                                     $.notify({
                                             // options
                                             message: 'Content Saved Successfully!'

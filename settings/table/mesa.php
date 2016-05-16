@@ -16,13 +16,18 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     /* Comprobacion de si el usuario tiene acceso a la partida o si existe*/
     $partida= new Partida();
     $partida= $partida->viewPartida($id_partida);
-    $partida_usuari= new Partida_Usuari();
-    $you_can_not_pass = $partida_usuari->testInvited($id_usuario, $id_partida);
-    if(empty($partida) || $you_can_not_pass!== true){
-        if($id_usuario != $partida->getId_Usuario()){
-            include '../404/404.php';
+    if($partida !== null){
+        $partida_usuari= new Partida_Usuari();
+        $you_can_not_pass = $partida_usuari->testInvited($id_usuario, $id_partida);
+        if(empty($partida) || $you_can_not_pass!== true){
+            if($id_usuario != $partida->getId_Usuario()){
+                include '../404/404.php';
+            }
         }
+    }else{
+        include '../404/404.php';
     }
+    
     
     /* Variables de la partida */
     $id_master = $partida->getId_Usuario();
@@ -33,6 +38,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $nv_sobrenatural = $partida->getNv_Sobrenatural();
     $limite = $partida->getLimite();
     $token = $partida->getToken();
+    $diario = $partida->getDiario();
     
     /* Comprobacion de si el jugador tiene personaje */
     require_once "../../System/Classes/Personaje.php";
