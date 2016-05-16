@@ -162,6 +162,8 @@ if (strpos($self,"zone.php")){
                 echo '<link href="../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
                 echo '<script src="../Public/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.js"></script>'; //bootstrap-select js
                 echo '<link href="../Public/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.css" rel="stylesheet">'; //bootstrap-select css
+                echo '<script src="../Public/plugins/summernote/dist/summernote-updated.min.js"></script>'; //Summernote js
+                echo '<link href="../Public/plugins/summernote/dist/summernote.css" rel="stylesheet">'; //Summernote css
                 
                 // Theme Css --> Important!
                 echo '<link href="../Public/css/theme.css" rel="stylesheet">';
@@ -193,6 +195,8 @@ if (strpos($self,"zone.php")){
                 echo '<link href="../../Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
                 echo '<script src="../../Public/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.js"></script>'; //bootstrap-select js
                 echo '<link href="../../Public/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.css" rel="stylesheet">'; //bootstrap-select css
+                echo '<script src="../../Public/plugins/summernote/dist/summernote-updated.min.js"></script>'; //Summernote js
+                echo '<link href="../../Public/plugins/summernote/dist/summernote.css" rel="stylesheet">'; //Summernote css
                 
                 // Theme Css --> Important!
                 echo '<link href="../../Public/css/theme.css" rel="stylesheet">';
@@ -226,6 +230,8 @@ if (strpos($self,"zone.php")){
                 echo '<link href="Public/plugins/bootstrap-sweetalert-master/dist/sweetalert.css" rel="stylesheet">'; //SweetAlert css
                 echo '<script src="Public/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.js"></script>'; //bootstrap-select js
                 echo '<link href="Public/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.css" rel="stylesheet">'; //bootstrap-select css
+                echo '<script src="Public/plugins/summernote/dist/summernote-updated.min.js"></script>'; //Summernote js
+                echo '<link href="Public/plugins/summernote/dist/summernote.css" rel="stylesheet">'; //Summernote css
                 
                 // Theme Css --> Important!
                 echo '<link href="Public/css/theme.css" rel="stylesheet">';
