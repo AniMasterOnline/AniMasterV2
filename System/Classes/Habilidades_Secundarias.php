@@ -39,13 +39,14 @@
             $db = new connexio();
             $sql = "SELECT * FROM Habilidades_Secundarias where id_HS='$id_HS'";
             $query = $db->query($sql);
-            $rtn = array();
-            while($obj = $query->fetch_assoc()){
-                $habilidad = new Habilidades_Secundarias($obj["id_HS"],$obj["nombre"],$obj["id_rama"],$obj["caracteristica"]);
-                array_push($rtn, $habilidad);
-            }
             $db->close();
-            return $rtn;
+            if ($query->num_rows > 0) {
+                $obj = $query->fetch_assoc();
+                $habilidad = new Habilidades_Secundarias($obj["id_HS"],$obj["nombre"],$obj["id_rama"],$obj["caracteristica"]);
+                return $habilidad;
+            }else{
+                return null;
+            }
         }
 
         //CONSTRUCTORS

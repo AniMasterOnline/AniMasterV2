@@ -231,6 +231,20 @@ include "../../Public/layouts/head.php";
                                     while ($contador < 4){
                                         $contador++;
                                         $arrayHP = $HP->viewHP($contador);
+                                        switch ($contador) {
+                                            case 1:
+                                                $hp = $array['ha'];
+                                                break;
+                                            case 2:
+                                                $hp = $array['hp'];
+                                                break;
+                                            case 3:
+                                                $hp = $array['he'];
+                                                break;
+                                            case 4:
+                                                $hp = $array['la'];
+                                                break;
+                                        }
                                         if( $contador < 3) {
                                             $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
                                         }elseif ($contador == 3) {
@@ -240,10 +254,10 @@ include "../../Public/layouts/head.php";
                                         }
                                         $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
                                         $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
-                                        $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                        $HAfinal = (int)$hp + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
                                         echo "<tr>
                                             <th class=''>".$arrayHP->getNombre()."</th>
-                                            <th class=''>".$array['ha']."</th>
+                                            <th class=''>".$hp."</th>
                                             <th class=''>".$arrayHP->getCaracteristica()."</th>
                                             <th class=''>".$arrayCaract_p['bono']."</th>
                                             <th class=''>0</th>
