@@ -227,21 +227,27 @@ include "../../Public/layouts/head.php";
                             
                             /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
                             if (!empty($array)) {
-                                $arrayHP = $HP->viewHP(1);
-                                $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
-                                $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], 1);
-                                $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
-                                $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
-                                echo "<tr>
-                                    <th class=''>".$arrayHP->getNombre()."</th>
-                                    <th class=''>".$array['ha']."</th>
-                                    <th class=''>".$arrayHP->getCaracteristica()."</th>
-                                    <th class=''>".$arrayCaract_p['bono']."</th>
-                                    <th class=''>0</th>
-                                    <th class=''>".$bonoCategoria."</th>
-                                    <th class=''>".$HAfinal."</th>";
+                                for ($contador = 0; $contador <5; $contador++) {
+                                    $arrayHP = $HP->viewHP($contador);
+                                    if( $contador < 3) {
+                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
+                                    }else {
+                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                    }
+                                    
+                                    $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
+                                    $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
+                                    $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                    echo "<tr>
+                                        <th class=''>".$arrayHP->getNombre()."</th>
+                                        <th class=''>".$array['ha']."</th>
+                                        <th class=''>".$arrayHP->getCaracteristica()."</th>
+                                        <th class=''>".$arrayCaract_p['bono']."</th>
+                                        <th class=''>0</th>
+                                        <th class=''>".$bonoCategoria."</th>
+                                        <th class=''>".$HAfinal."</th>";
+                                }
                             }
-                            
                             ?>
                         </tbody>
                     </table>
