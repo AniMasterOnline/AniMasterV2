@@ -140,7 +140,10 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Invitar Jugador</a>
+                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Gestionar Invitaciónes</a>
+                                </li>
+                                <li>
+                                    <a <?php echo 'href="gestionar_experiencia.php?id='.$id_partida.'"';?>>Gestionar Experiencia</a>
                                 </li>
                                 <li>
                                     <a href="#">Modificar Jugador</a>
@@ -148,9 +151,7 @@ include "../../Public/layouts/head.php";
                                 <li>
                                     <a href="#">Eliminar Jugador</a>
                                 </li>
-                                <li>
-                                    <a <?php echo 'href="gestionar_experiencia.php?id='.$id_partida.'"';?>>Gestionar Experiencia</a>
-                                </li>
+                                
                             </ul>
                         </li>
                     </ul>
