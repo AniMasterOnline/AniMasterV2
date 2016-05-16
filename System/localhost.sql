@@ -27,7 +27,7 @@ CREATE TABLE Partida (
       nv_sobrenatural     int,
       limite     int,
       token char(40),
-	  diario varchar(60000);
+	  diario varchar(60000),
       PRIMARY KEY (`id_partida`),
       KEY `id_usuario` (`id_usuario`)
 );

@@ -231,10 +231,11 @@ include "../../Public/layouts/head.php";
                                     $arrayHP = $HP->viewHP($contador);
                                     if( $contador < 3) {
                                         $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
-                                    }else {
+                                    }elseif ($contador = 3) {
                                         $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                    }else ($contador = 4) {
+                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
                                     }
-                                    
                                     $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
                                     $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
                                     $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
