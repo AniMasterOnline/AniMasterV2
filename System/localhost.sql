@@ -27,6 +27,7 @@ CREATE TABLE Partida (
       nv_sobrenatural     int,
       limite     int,
       token char(40),
+	  diario varchar(60000);
       PRIMARY KEY (`id_partida`),
       KEY `id_usuario` (`id_usuario`)
 );
@@ -52,7 +53,7 @@ CREATE TABLE Usuario (
 CREATE TABLE Personaje (
       id_personaje     int NOT NULL AUTO_INCREMENT,
       id_usuario     int NOT NULL,
-  id_partida     int,
+	  id_partida     int,
       id_categoria     int NOT NULL,
       nombre     varchar(32),
       apellido     varchar(32),
@@ -2025,9 +2026,9 @@ VALUES
 --
 -- Volcado de datos para la tabla `Partida`
 --
-INSERT INTO `Partida` (`id_partida`, `id_usuario`, `nombre`, `imagen`, `descripcion`, `anyo`, `nv_sobrenatural`, `limite`, `token`) 
+INSERT INTO `Partida` (`id_partida`, `id_usuario`, `nombre`, `imagen`, `descripcion`, `anyo`, `nv_sobrenatural`, `limite`, `token`, `diario`) 
 VALUES 
-('1', '3', 'asgard', NULL, 'reyes', '983', '2', '4', NULL);
+('1', '3', 'asgard', NULL, 'reyes', '983', '2', '4', NULL, NULL);
 
 --
 -- Volcado de datos para la tabla `Partida_Usuari`
