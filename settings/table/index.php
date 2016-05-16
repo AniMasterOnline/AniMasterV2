@@ -64,15 +64,12 @@ include "../../Public/layouts/head.php";?>
 
                                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                                     <li>
+                                                                        <a href="invite.php?id='.$id_partida.'">Gestionar Jugadores</a>
+                                                                    </li>
+                                                                    <li>
                                                                         <a href="view_partida.php?id='.$id_partida.'">Gestionar Partida</a>
                                                                     </li>
-                                                                    <li role="separator" class="divider"></li>
-                                                                    <li>
-                                                                        <a href="invite.php?id='.$id_partida.'">Aceptar Jugadores</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="invite.php?id='.$id_partida.'">Invitar Jugadores</a>
-                                                                    </li>
+                                                                    
                                                                     <li role="separator" class="divider"></li>
                                                                     <li>
                                                                         <a href="mesa.php?id='.$id_partida.'">Jugar</a>

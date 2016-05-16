@@ -5,7 +5,29 @@ if(isset($_SESSION['user'])){
     //var_dump($value);
 }
 
-if(isset($_GET['token']) && !empty($_GET['token'])){
+if(isset($_GET['solid']) && !empty($_GET['solid'])){
+    require_once('../../System/Classes/Partida.php');
+    require_once('../../System/Classes/Partida_Usuari.php');
+    $id_partida = $_GET['solid'];
+    if($id_partida != null){
+        $partida = new Partida();
+        $partida= $partida->viewPartida($id_partida);
+        $limite = $partida->getLimite();
+        
+        $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -2,'false');
+        $users = $partida_usuari->countUsers($id_partida);
+        if ($users < $limite){
+            $partida_usuari->add();
+            echo '<META http-equiv="refresh" content="0;URL=../../partida.php">'; 
+            exit;
+        }else{
+            include '../404/404.php';
+        }
+    }else{
+        include '../404/404.php';
+    }
+    exit();
+}else if(isset($_GET['token']) && !empty($_GET['token'])){
     require_once('../../System/Classes/Partida.php');
     require_once('../../System/Classes/Partida_Usuari.php');
     $token = $_GET['token'];

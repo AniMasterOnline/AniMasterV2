@@ -59,7 +59,7 @@ include "../../Public/layouts/head.php";
         <div class="col-md-12">
             <div class="card">
                 <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
-                    <h2 class="lvh-label c-white f-18">Nombre</h2>
+                    <h2 class="lvh-label c-white f-18">Nombre Partida<small class="c-white p-l-5">Nombre personaje</small></h2>
                     <ul class="lv-actions actions">
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
