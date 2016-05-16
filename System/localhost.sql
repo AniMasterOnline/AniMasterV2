@@ -856,27 +856,18 @@ INSERT INTO  `Animaster`.`Categoria` (
 `nombre` ,
 `descripcion`
 )
-VALUES (
-NULL ,  'Guerrero', 'El guerrero es el luchador arquetípico por excelencia. Esta categoría engloba a aquellas personas que han dedicado por completo su vida al combate y son capaces de explotar al máximo su habilidad bélica. Esto les lleva no sólo a dominar el manejo de las armas, sino a, llegado el momento, emplear su energía anímica en la lucha. También tienen facilidad para desarrollar un gran conocimiento en el campo de las tácticas militares y convertirse en cabecillas de ejércitos. Tradicionalmente, los guerreros pueden llegar a trabajar casi de cualquier cosa, desde meros mercenarios a caballeros.'
-),(
-NULL ,  'Guerrero Acrobata', 'Los guerreros acróbatas son luchadores que se han especializado en sacar el máximo provecho a su agilidad y rapidez. Su principal ventaja consiste en aticiparse a los movimientos de sus adversarios y tratar de acabar con ellos antes de que reaccionen. También prefieren esquivar los ataques y estar tan lejos como puedan del lugar donde se da el gople. Se benefician de una gran movilidad, siendo capaces de saltar, caer o correr con una destreza que muy pocos logran igualar. Pueden adoptar cualquier tipo de papel en la sociedad, pero generalmente asumirán profesiones ligadas al combate, como duelista o espadachines.'
-), (
-NULL ,  'Paladin', 'Los paladines son luchadores muy defensivos que combaten apoyándose en ciertas capacidads místicas. Una de sus especialidades consiste en expulsar a los seres sobrenaturales usando sus poderes naturales. Normalmente, muchos se rigen por códigos de conducta basados en normas religiosas o en el honor, aunque no están obligados a ello. Son líderes naturales, capaces de utilizar su carisma y dotes para movilizar a su favor a enormes cantidades de personas, que incluso darán sus vidas por ellos.'
-), (
-NULL ,  'Paladin Oscuro', 'En cierto modo, esta categoría es la opuesta directa al paladín. Es un luchador especializado en el ataque que se apoya en unas limitadas habilidades místicas. Sus principales poderes se basan en el dominio y el control de los seres sobrenaturales, quienes, una vez sometidos a su voluntad, son utilitzados en su beneficio. Tienen grandes capacidades de mando, pero emplean la intimidación y el miedo para subyugar a los demás a sus deseos. Si esto no funciona, persuaden a las personas tratando de conseguir salirse con lo que pretende.'
-), (
-NULL ,  'Maestro en Armas', 'Son luchadores que se han dediado a perfeccionar sus habilidades marciales con todo tipo de armas. Se trata de guerreros natos, los cuales han llevado hasta el límite su capacidad combativa por encima de cualquier otra categoría. Opuestamente a los guerreros convencionales, no emplean ninguna otra habilidad en la lucha más que su maestría en el uso de las armas. En una contienda, ingoran el uso de su energía física y de todo aquello que no sea su propia habilidad marical, pero no por ello dejan de ser los combatientes más hábiles y los más centrados en las verdaderas habilidades marciales. La gran mayoría de caballeros y mercenarios tienen esta categoría.'
-), (
-NULL ,  'Explorador', 'Un explorador es el prototipo tradicional de aventurero. Normalmente, se trata de personas que han sacado el máximo provecho a su capacidad de percibir lo que les rodea y adentrasre donde nadie más sería capaz. Un explorador suele tener siempre sus sentidos pendientes de lo que hay a su alrededor, por lo que es muy complicado cogerle por sorpresa. Es también un rastreador y un superviviente nato, razón por la que tiene grandes conocimientos sobre zonas boscosas o regiones inhóspitas. En la sociedad suele trabajar como cazadores, batidoes o incluso arqueólogos, pero lo más normal es que simplemente se trate de habitantes de territorios apartados donde sus habilidades son necesarias para sobrevivir.'
-), (
-NULL ,  'Sombra', 'Las sombras son luchadores que se mueven en la oscuridad y aprovechan a su favor el entorno. Aunque sus habilidades de combate son excelentes, prefieren acabar con sus enemigos sin darles la oportunidad de responder a su ataques. Para ello, emplean el subterfugio para sorprenderles, o usan otras tácticas más complejas. Incluso si es descubierta, una sombra es capaz de seguir luchando con sus enemigos en igualdad de oportunidades, aunque su resistencia tiende a ser menor que la de otros luchadores. Generalmente ágiles y veloces, prefieren esquivar los ataques en lugar de afrontarlos.'
-), (
-NULL ,  'Ladron', 'Como sugiere su nombre, un ladrón es un personaje especializado en los campos del sigilo, el robo y la ocultación. Son personas que huyen de los enfrentamientos directos y prefieren confiar en sus habilidades de subterfugio para conseguir lo que desean. Dado que su resistencia física no suele ser demasiado elevada, son muy hábiles huyendo y esquivando golpes cuando son descubiertos. Pueden representar diversos papeles en la sociedad, aunque habitualmente se dedican a la profesión que da nombre a la categoría.'
-), (
-NULL ,  'Asesino', 'Son individuos que se especializan en los campos del subterfugio y la intriga. Se mueven en el anonimato y tratan de que sus víctimas no sean ni siquiera conscientes de qué les ha matado. Emplean técnicas muy refinadas, prefiriendo evitar en todo momento llegar al combate donde son muy vulnerables. Por ello, tras hacer su trabajo, desaparecen de nuevo entre las sombras de las que surgieron. De todas formas, personajes con esta categoria no están necesariamente obligados a representar únicamente el papel de ejecutores dentro de la sociedad, ya que existen muchos otros ámbitos en los que pueden poner en práctica sus excelentes habilidades, como por ejemplo el espionaje.'
-), (
-NULL ,  'Novel', 'Los noveles representan el arquetipo de Sin categoría, o lo que es lo mismo, alguien que no se encuentra dentro de ninguno de los arquetipos que se han explicado hasta el momento. Puede ser cualquier tipo de persona que no tenga una verdadera especialización. Desde campesinos a barcos, pasando por nobles y bufones, el novel es la categoría estándar de Ánima, a la que podrá acceder cualquiera. El novel tiene buenas habilidades en todos los campos, desde la magia al combate, aunque no se especializa en ninguno. Además le resulta excepcionalmente fácil cambiar posteriormente de categoría a la de cualquier otro arquetipo. En muchas ocasiones, cuando un jugador no tenga realmente decidido qué hacer con su personaje, puede empezar como novel y realizar después un cambio de categoría, cuando finalmente encuentre la apropiada.'
-);
+VALUES 
+(1, 'Guerrero', 'El guerrero es el luchador arquetípico por excelencia. Esta categoría engloba a aquellas personas que han dedicado por completo su vida al combate y son capaces de explotar al máximo su habilidad bélica. Esto les lleva no sólo a dominar el manejo de las armas, sino a, llegado el momento, emplear su energía anímica en la lucha. También tienen facilidad para desarrollar un gran conocimiento en el campo de las tácticas militares y convertirse en cabecillas de ejércitos. Tradicionalmente, los guerreros pueden llegar a trabajar casi de cualquier cosa, desde meros mercenarios a caballeros.'),
+(2, 'Guerrero Acróbata', 'Los guerreros acróbatas son luchadores que se han especializado en sacar el máximo provecho a su agilidad y rapidez. Su principal ventaja consiste en aticiparse a los movimientos de sus adversarios y tratar de acabar con ellos antes de que reaccionen. También prefieren esquivar los ataques y estar tan lejos como puedan del lugar donde se da el gople. Se benefician de una gran movilidad, siendo capaces de saltar, caer o correr con una destreza que muy pocos logran igualar. Pueden adoptar cualquier tipo de papel en la sociedad, pero generalmente asumirán profesiones ligadas al combate, como duelista o espadachines.'),
+(3, 'Paladín', 'Los paladines son luchadores muy defensivos que combaten apoyándose en ciertas capacidads místicas. Una de sus especialidades consiste en expulsar a los seres sobrenaturales usando sus poderes naturales. Normalmente, muchos se rigen por códigos de conducta basados en normas religiosas o en el honor, aunque no están obligados a ello. Son líderes naturales, capaces de utilizar su carisma y dotes para movilizar a su favor a enormes cantidades de personas, que incluso darán sus vidas por ellos.'),
+(4, 'Paladín Oscuro', 'En cierto modo, esta categoría es la opuesta directa al paladín. Es un luchador especializado en el ataque que se apoya en unas limitadas habilidades místicas. Sus principales poderes se basan en el dominio y el control de los seres sobrenaturales, quienes, una vez sometidos a su voluntad, son utilitzados en su beneficio. Tienen grandes capacidades de mando, pero emplean la intimidación y el miedo para subyugar a los demás a sus deseos. Si esto no funciona, persuaden a las personas tratando de conseguir salirse con lo que pretende.'),
+(5, 'Maestro en Armas', 'Son luchadores que se han dediado a perfeccionar sus habilidades marciales con todo tipo de armas. Se trata de guerreros natos, los cuales han llevado hasta el límite su capacidad combativa por encima de cualquier otra categoría. Opuestamente a los guerreros convencionales, no emplean ninguna otra habilidad en la lucha más que su maestría en el uso de las armas. En una contienda, ingoran el uso de su energía física y de todo aquello que no sea su propia habilidad marical, pero no por ello dejan de ser los combatientes más hábiles y los más centrados en las verdaderas habilidades marciales. La gran mayoría de caballeros y mercenarios tienen esta categoría.'),
+(6, 'Explorador', 'Un explorador es el prototipo tradicional de aventurero. Normalmente, se trata de personas que han sacado el máximo provecho a su capacidad de percibir lo que les rodea y adentrasre donde nadie más sería capaz. Un explorador suele tener siempre sus sentidos pendientes de lo que hay a su alrededor, por lo que es muy complicado cogerle por sorpresa. Es también un rastreador y un superviviente nato, razón por la que tiene grandes conocimientos sobre zonas boscosas o regiones inhóspitas. En la sociedad suele trabajar como cazadores, batidoes o incluso arqueólogos, pero lo más normal es que simplemente se trate de habitantes de territorios apartados donde sus habilidades son necesarias para sobrevivir.'),
+(7, 'Sombra', 'Las sombras son luchadores que se mueven en la oscuridad y aprovechan a su favor el entorno. Aunque sus habilidades de combate son excelentes, prefieren acabar con sus enemigos sin darles la oportunidad de responder a su ataques. Para ello, emplean el subterfugio para sorprenderles, o usan otras tácticas más complejas. Incluso si es descubierta, una sombra es capaz de seguir luchando con sus enemigos en igualdad de oportunidades, aunque su resistencia tiende a ser menor que la de otros luchadores. Generalmente ágiles y veloces, prefieren esquivar los ataques en lugar de afrontarlos.'),
+(8, 'Ladrón', 'Como sugiere su nombre, un ladrón es un personaje especializado en los campos del sigilo, el robo y la ocultación. Son personas que huyen de los enfrentamientos directos y prefieren confiar en sus habilidades de subterfugio para conseguir lo que desean. Dado que su resistencia física no suele ser demasiado elevada, son muy hábiles huyendo y esquivando golpes cuando son descubiertos. Pueden representar diversos papeles en la sociedad, aunque habitualmente se dedican a la profesión que da nombre a la categoría.'),
+(9, 'Asesino', 'Son individuos que se especializan en los campos del subterfugio y la intriga. Se mueven en el anonimato y tratan de que sus víctimas no sean ni siquiera conscientes de qué les ha matado. Emplean técnicas muy refinadas, prefiriendo evitar en todo momento llegar al combate donde son muy vulnerables. Por ello, tras hacer su trabajo, desaparecen de nuevo entre las sombras de las que surgieron. De todas formas, personajes con esta categoria no están necesariamente obligados a representar únicamente el papel de ejecutores dentro de la sociedad, ya que existen muchos otros ámbitos en los que pueden poner en práctica sus excelentes habilidades, como por ejemplo el espionaje.'),
+(10, 'Novel', 'Los noveles representan el arquetipo de Sin categoría, o lo que es lo mismo, alguien que no se encuentra dentro de ninguno de los arquetipos que se han explicado hasta el momento. Puede ser cualquier tipo de persona que no tenga una verdadera especialización. Desde campesinos a barcos, pasando por nobles y bufones, el novel es la categoría estándar de Ánima, a la que podrá acceder cualquiera. El novel tiene buenas habilidades en todos los campos, desde la magia al combate, aunque no se especializa en ninguno. Además le resulta excepcionalmente fácil cambiar posteriormente de categoría a la de cualquier otro arquetipo. En muchas ocasiones, cuando un jugador no tenga realmente decidido qué hacer con su personaje, puede empezar como novel y realizar después un cambio de categoría, cuando finalmente encuentre la apropiada.');
+
 
 
 --
@@ -1518,11 +1509,11 @@ VALUES
 -- Volcado de datos para la tabla `caracteristica`
 --
 INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
-(1, 'Danyo'),
+(1, 'Daño'),
 (2, 'Turno'),
 (3, 'FUE Req.'),
-(4, 'Critico 1'),
-(5, 'Critico 2'),
+(4, 'Crítico 1'),
+(5, 'Crítico 2'),
 (6, 'Tipo de arma'),
 (7, 'Especial'),
 (8, 'Enterza'),
@@ -1534,8 +1525,8 @@ INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
 (14, 'Alcance'),
 (15, 'Requerimiento de Armadura'),
 (16, 'Penalizador natural'),
-(17, 'Restriccion al movimiento'),
-(18, 'Localizacion'),
+(17, 'Restricción al movimiento'),
+(18, 'Localización'),
 (19, 'Classe'),
 (20, 'TA_FIL'),
 (21, 'TA_CON'),
@@ -1544,7 +1535,7 @@ INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
 (24, 'TA_ELE'),
 (25, 'TA_FRI'),
 (26, 'TA_ENE'),
-(27, 'Penalizacion a la percepcion'),
+(27, 'Penalización a la percepción'),
 (28, 'Dureza');
 
 
