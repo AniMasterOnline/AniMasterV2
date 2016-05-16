@@ -123,7 +123,7 @@
                         }
                     }else if (strpos($self,"settings/")){
                         if(isset($_SESSION['user'])){
-                            require_once "../../System/Classes/Partida_Usuari.php";
+                            require_once "../../System/Classes/Partida_Usuari.php"; 
                             require_once "../../System/Classes/Partida.php";
                             $partida_usuari = new Partida_Usuari();
                             $partida_usuari = $partida_usuari->viewInvited($value['id_usuario']);

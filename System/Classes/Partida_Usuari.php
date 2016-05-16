@@ -101,7 +101,7 @@
         }
         public function viewInvited($id_usuario){
             $db = new connexio();
-            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='false'";
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='false' and pos = '-1'";
             $query = $db->query($sql);
             $db->close();
             $rtn = array();
@@ -115,22 +115,18 @@
                 return null;
             }
         }
-        public function viewPartida($id_partida){
+        public function viewSolid($id_partida){
             $db = new connexio();
-            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida'";
+            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida' and aceptado='false' and pos = '-2'";
             $query = $db->query($sql);
             $db->close();
-            $count = 0;
+            $rtn = array();
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
-                    $count++;
-                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"],$obj["aceptado"]);
+                    array_push($rtn, $partida_usuari);
                 }
-                if($count == 1){
-                    return $partida_usuari;
-                }else{
-                    return null;
-                }
+                return $rtn;
             }else{
                 return null;
             }
