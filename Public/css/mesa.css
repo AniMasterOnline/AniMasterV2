@@ -1,3 +1,13 @@
+body{
+    background-image: url('../img/dungeon-bg.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+html,body{
+    background-color: rgba(0,0,0,0);
+}
 /*General mesa Styles*/ 
 .nav-tabs > li > a {
     height: 32px;

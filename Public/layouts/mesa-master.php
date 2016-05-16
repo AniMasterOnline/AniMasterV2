@@ -96,16 +96,8 @@
                                         height: 300,
                                         minHeight: null,             // set minimum height of editor
                                         maxHeight: null,
-                                        focus: true,
-                                        toolbar: [
-                                            // [groupName, [list of button]]
-                                            ['style', ['bold', 'italic', 'underline', 'clear']],
-                                            ['font', ['strikethrough', 'superscript', 'subscript']],
-                                            ['fontsize', ['fontsize']],
-                                            ['color', ['color']],
-                                            ['para', ['ul', 'ol', 'paragraph']],
-                                            ['height', ['height']]
-                                          ]
+                                        focus: true
+                                        
                                     });
                                     $('.hec-save').show();
                                 })
