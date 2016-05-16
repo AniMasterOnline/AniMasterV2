@@ -38,13 +38,13 @@
             $db = new connexio();
             $sql = "SELECT * FROM Categoria_HP where id_categoria='$id' and id_HP='$id_HP'";
             $query = $db->query($sql);
-            $rtn = array();
-            while($obj = $query->fetch_assoc()){
-                $categoria = new Categoria_HP($obj["id_categoria"],$obj["id_HP"],$obj["coste"],$obj["incr_nv"]);
-                array_push($rtn, $categoria);
-            }
             $db->close();
-            return $rtn;
+            if ($query->num_rows > 0) {
+                $row = $query->fetch_assoc();
+                return $row;
+            }else{
+                return null;
+            }
         }
         public function viewHP2($id,$id_HP){
             $db = new connexio();
