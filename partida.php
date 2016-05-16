@@ -50,11 +50,15 @@ $(document).ready(function(){
                                                     <i class="zmdi zmdi-more-vert"></i>
                                                 </a>
 
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li>
-                                                        <a href="#">Solicitar Partida</a>
-                                                    </li>
-                                                </ul>
+                                                <ul class="dropdown-menu dropdown-menu-right">';
+                                                    if($master == $value['id_usuario']){
+                                                        echo '';
+                                                    }else{
+                                                        echo '  <li>
+                                                                    <a href="settings/table/invite.php?solid='.$id_partida.'">Solicitar Partida</a>
+                                                                </li>';
+                                                    }
+                                            echo '</ul>
                                             </li>
                                         </ul>
                                     </div>
@@ -98,11 +102,24 @@ $(document).ready(function(){
                                                         <i class="zmdi zmdi-more-vert"></i>
                                                     </a>
 
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li>
-                                                            <a href="#">Solicitar Partida</a>
-                                                        </li>
-                                                    </ul>
+                                                    <ul class="dropdown-menu dropdown-menu-right">';
+                                                    if($master == $value['id_usuario']){
+                                                        echo '  <li>
+                                                                    <a href="settings/table/invite.php?id='.$id_partida.'">Gestionar Jugadores</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="settings/table/view_partida.php?id='.$id_partida.'">Gestionar Partida</a>
+                                                                </li>
+                                                                <li role="separator" class="divider"></li>
+                                                                <li>
+                                                                    <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
+                                                                </li>';
+                                                    }else{
+                                                        echo '  <li>
+                                                                    <a href="settings/table/invite.php?solid='.$id_partida.'">Solicitar Partida</a>
+                                                                </li>';
+                                                    }
+                                            echo '</ul>
                                                 </li>
                                             </ul>
                                         </div>
