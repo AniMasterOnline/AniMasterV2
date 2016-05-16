@@ -172,7 +172,7 @@ include "../../Public/layouts/head.php";
                                     },
                                     success:  function (response) {
                                         console.log(response);
-                                        if(response === 'success'){
+                                        if(response == 001){
                                             swal("Invitación enviada!", "Jugador invitado correctamente!", "success");
                                         }else{
                                             swal("Error!", "Lo sentimos ya no puedes enviar mas invitaciónes!", "warning");

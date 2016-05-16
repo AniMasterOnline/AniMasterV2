@@ -15,9 +15,9 @@
     $users = $partida_usuari->countUsers($id_partida);
     if ($users < $limite){
         $partida_usuari->add();
-        echo 'success'; 
+        echo '001'; 
     }else{
-        echo 'fail';
+        echo '002';
     }
     
     
