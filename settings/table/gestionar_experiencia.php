@@ -111,7 +111,8 @@ include "../../Public/layouts/head.php";
                             
                             
                             /*Mostrem tots els personatges que siguin d'aquesta partida*/
-                            foreach ($array as $row) {
+                            if (!empty($array['error'])) {
+                                foreach ($array as $row) {
                                 $nombreUsuario = $usuario->return_user($row['id_usuario']);
                                 $exp_nec = $nivel->viewNivel($row['nivel']+1);
                                 echo "<tr>
@@ -129,7 +130,9 @@ include "../../Public/layouts/head.php";
                                         </div>                           
                                     </td>
                                     </tr>";
+                                }
                             }
+                            
                             ?>
                         </tbody>
                     </table>
