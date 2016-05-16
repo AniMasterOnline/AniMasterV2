@@ -167,27 +167,32 @@ include "../../Public/layouts/head.php";
                             </tr>
                         </thead>
                         <tbody >
-                            <tr >
-                                <td>1</td>
-                                <td>Jacob</td>
-                                <td>3</td>
-                                <td>Mago</td>
-                                <td>350</td>
-                            </tr>
-                            <tr >
-                                <td>2</td>
-                                <td>Pau</td>
-                                <td>2</td>
-                                <td>Ladron</td>
-                                <td>280</td>
-                            </tr>
-                            <tr >
-                                <td>3</td>
-                                <td>Marc</td>
-                                <td>4</td>
-                                <td>Guerrero</td>
-                                <td>480</td>
-                            </tr>
+                            <?php
+                            require_once "../../System/Classes/Personaje.php";
+                            require_once "../../System/Classes/Usuario.php";
+                            require_once "../../System/Classes/Nivel.php";
+                            
+                            $Personaje = new Personaje(); 
+                            $array = $Personaje->viewPersonajesPartida($id_partida);
+                            
+                            $usuario = new Usuario();
+                            
+                            
+                            /*Mostrem tots els personatges que siguin d'aquesta partida*/
+                            if (!empty($array['error'])) {
+                                foreach ($array as $row) {
+                                $nombreUsuario = $usuario->return_user($row['id_usuario']);
+                                
+                                echo "<tr>
+                                    <td class='text-capitalize text-success'>".$nombreUsuario['nickname']."</td>                                    
+                                    <td class='text-capitalize text-info'>".$row['nombre']."</td>
+                                    <td class='text-danger text-center'>".$row['categoria']."</td>
+                                    <td class='text-danger text-center'>".$row['nivel']."</td>
+                                    </tr>";
+                                }
+                            }
+                            
+                            ?>
                         </tbody>
                     </table>
                 </div>
