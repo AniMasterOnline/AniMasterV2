@@ -33,6 +33,12 @@
             $db->query($sql);
             return $result;
         }
+        public function signout($idu, $idp){
+            $db = new connexio();
+            $result = $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and id_partida= '$idp'";
+            $db->query($sql);
+            return $result;
+        }
         
         public function view_all(){
             $db = new connexio();

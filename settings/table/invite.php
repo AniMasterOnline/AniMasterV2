@@ -91,10 +91,7 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a <?php echo 'href="mod_partida.php?id='.$id_partida.'"';?>>Configuraciones</a>
-                                </li>
-                                <li>
-                                    <a href="#" id="eliminar">Eliminar partida</a>
+                                    <a href="view_partida.php?id=<?php echo $id_partida; ?>">Gestionar Partida</a>
                                 </li>
                             </ul>
                         </li>
@@ -238,24 +235,38 @@ include "../../Public/layouts/head.php";
         <div class="card-body card-padding bgm-white c-white card-body-partida p-0">
             <div class="listview lv-bordered lv-lg">
                 <div class="lv-body">
+                    <?php 
+                        require_once('../../System/Classes/Usuario.php');
+                        $partida_usuari = new Partida_Usuari();
+                        $partida_usuari = $partida_usuari->viewSolid($id_partida);
+                        $cont = 0;
+                        if ($partida_usuari != null){
+                            foreach ($partida_usuari as $row){
+                                $id_usuario = $row->getId_Usuario();
+                                $usuario = new Usuario();
+                                $datos = $usuario->return_user($id_usuario);
+                                
+                                echo '<div class="lv-item media">
+                                        <div class="checkbox pull-left">
+                                            <label class="m-r-10 p-0" >
+                                                <a href="../../System/Protocols/Partida_Signin.php?idp='.$id_partida.'&idu='.$id_usuario.'">
+                                                    <i class="zmdi zmdi-check c-black  f-16 c-green"></i>
+                                                </a>
+                                            </label>
+                                            <label class="m-r-10 p-0">
+                                                <a href="../../System/Protocols/Partida_SignoutMaster.php?idp='.$id_partida.'&idu='.$id_usuario.'">
+                                                    <i class="zmdi zmdi-delete c-black f-16 c-red"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title f-14">'.$datos['nickname'].'</div>
+                                        </div>
+                                    </div>';
+                            }
+                        }
+                    ?>
                     
-                    <div class="lv-item media">
-                        <div class="checkbox pull-left">
-                            <label class="m-r-10 p-0" >
-                                <a href="#">
-                                    <i class="zmdi zmdi-check c-black  f-16 c-green"></i>
-                                </a>
-                            </label>
-                            <label class="m-r-10 p-0">
-                                <a href="#">
-                                    <i class="zmdi zmdi-delete c-black f-16 c-red"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="media-body">
-                            <div class="lv-title f-14">Name</div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
