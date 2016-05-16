@@ -227,27 +227,30 @@ include "../../Public/layouts/head.php";
                             
                             /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
                             if (!empty($array)) {
-                                for ($contador = 0; $contador <5; $contador++) {
-                                    $arrayHP = $HP->viewHP($contador);
-                                    if( $contador < 3) {
-                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
-                                    }elseif ($contador = 3) {
-                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
-                                    }else ($contador = 4) {
-                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                    $contador = 0;
+                                    while ($contador < 4){
+                                        $contador++;
+                                        $arrayHP = $HP->viewHP($contador);
+                                        if( $contador < 3) {
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
+                                        }elseif ($contador == 3) {
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                        }elseif ($contador == 4) {
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                        }
+                                        $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
+                                        $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
+                                        $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                        echo "<tr>
+                                            <th class=''>".$arrayHP->getNombre()."</th>
+                                            <th class=''>".$array['ha']."</th>
+                                            <th class=''>".$arrayHP->getCaracteristica()."</th>
+                                            <th class=''>".$arrayCaract_p['bono']."</th>
+                                            <th class=''>0</th>
+                                            <th class=''>".$bonoCategoria."</th>
+                                            <th class=''>".$HAfinal."</th></tr>";
                                     }
-                                    $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
-                                    $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
-                                    $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
-                                    echo "<tr>
-                                        <th class=''>".$arrayHP->getNombre()."</th>
-                                        <th class=''>".$array['ha']."</th>
-                                        <th class=''>".$arrayHP->getCaracteristica()."</th>
-                                        <th class=''>".$arrayCaract_p['bono']."</th>
-                                        <th class=''>0</th>
-                                        <th class=''>".$bonoCategoria."</th>
-                                        <th class=''>".$HAfinal."</th>";
-                                }
+                                    
                             }
                             ?>
                         </tbody>
@@ -273,14 +276,46 @@ include "../../Public/layouts/head.php";
                             </tr>
                         </thead>
                         <tbody >
-                            <tr >
-                                <td class="text-capitalize">Acrobacias</td>
-                                <td>40</td>
-                                <td>20</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>70</td>
-                            </tr>
+                            <?php
+                            require_once "../../System/Classes/Personaje.php";
+                            require_once "../../System/Classes/Habilidades_Secundarias.php";
+                            require_once "../../System/Classes/Caracteristicas_p.php";
+                            require_once "../../System/Classes/Categoria_HS.php";
+                            
+                            $Personaje = new Personaje(); 
+                            $array = $Personaje->viewPersonaje($id_personaje);
+                            $HP = new Habilidades_Secundarias(); 
+                            $Caract_p = new Caracteristicas_p(); 
+                            $Categoria_HP = new Categoria_HS(); 
+                            
+                            /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+                            if (!empty($array)) {
+                                    $contador = 0;
+                                    while ($contador < 49){
+                                        $contador++;
+                                        $arrayHP = $HP->view_HS($contador);
+                                        if( $contador < 3) {
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
+                                        }elseif ($contador == 3) {
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                        }elseif ($contador == 4) {
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                        }
+                                        $arrayCategoria_HP = $Categoria_HP->viewHS($array['id_categoria'], $contador);
+                                        $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
+                                        $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                        echo "<tr>
+                                            <th class=''>".$arrayHP->getNombre()."</th>
+                                            <th class=''>".$array['ha']."</th>
+                                            <th class=''>".$arrayHP->getCaracteristica()."</th>
+                                            <th class=''>".$arrayCaract_p['bono']."</th>
+                                            <th class=''>0</th>
+                                            <th class=''>".$bonoCategoria."</th>
+                                            <th class=''>".$HAfinal."</th></tr>";
+                                    }
+                                    
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
