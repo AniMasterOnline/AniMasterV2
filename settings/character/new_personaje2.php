@@ -57,8 +57,7 @@ include "../../Public/layouts/head.php";
         </div>
         <div class="col-md-12">
 <?php
-//$id_categoria=$_POST['categoria'];
-$id_categoria=1;
+$id_categoria=$_POST['categoria'];
 $nombre=$_POST['nombre'];
 $apellido=$_POST['apellido'];
 $edad=$_POST['edad'];

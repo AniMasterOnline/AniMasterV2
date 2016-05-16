@@ -33,6 +33,32 @@
             $db->close();
             return $rtn;
         }
+        public function viewArma(){
+            $db = new connexio();
+            $sql = "SELECT * FROM Caracteristica where id_caracteristica between 1 and 14";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
+                //var_dump($Partida);
+                array_push($rtn, $caracteristica);
+            }
+            $db->close();
+            return $rtn;
+        }
+        public function viewArmaduras(){
+            $db = new connexio();
+            $sql = "SELECT * FROM Caracteristica where id_caracteristica between 15 and 26";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $caracteristica = new Caracteristica($obj["id_caracteristica"],$obj["nombre"]);
+                //var_dump($Partida);
+                array_push($rtn, $caracteristica);
+            }
+            $db->close();
+            return $rtn;
+        }
         
         public function viewCar($id_caracteristica){
             $db = new connexio();

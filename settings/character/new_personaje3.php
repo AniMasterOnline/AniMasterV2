@@ -44,7 +44,7 @@ include "../../Public/layouts/head.php";
         <div class="col-xs-12">
             <div class="card m-b-5">
                 <div class="card-header">
-                    <h2><?php echo $nombre; ?><small class="c-white f-400 f-14">Crear personaje 3 / 3</small></h2>
+                    <h2><?php echo $nombre; ?><small class="c-white f-400 f-14">Crear personaje 3 / 4</small></h2>
                 </div>
             </div>
         </div>

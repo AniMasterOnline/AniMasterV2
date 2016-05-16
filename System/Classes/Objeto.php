@@ -54,6 +54,21 @@
             $db->close();
             return $rtn;
         }
+        
+        public function viewLast(){
+            $db = new connexio();
+            $sql = "SELECT * FROM `objeto` order by id_objeto desc limit 1";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $Objeto = new Objeto($obj["id_objeto"],$obj["nombre"],$obj["descripcion"],$obj["peso"],$obj["precio"],$obj["public"],$obj["disponibilidad"],$obj["calidad"],$obj["id_tipo"]);
+                //var_dump($Objeto);
+                array_push($rtn, $Objeto);
+            }
+            $db->close();
+            return $rtn;
+        }
+        
         public function viewObjetosPublicos(){
             $db = new connexio();
             $sql = "SELECT * FROM Objeto where public='true'";
