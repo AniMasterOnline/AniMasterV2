@@ -125,73 +125,6 @@ include "../../Public/layouts/head.php";
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="lv-header-alt clearfix m-b-0 bgm-blue z-depth-1-bottom">
-                    <h2 class="lvh-label c-white f-18">Npc's</h2>
-                    <ul class="lv-actions actions">
-                        <li>
-                            <a data-toggle="tooltip" data-placement="right" title="Crea y gestiona tus propios NPC's">
-                                <i class="zmdi zmdi-info c-white"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                                <i class="zmdi zmdi-more-vert c-white"></i>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <a href="#">Nuevo</a>
-                                </li>
-                                <li>
-                                    <a href="#">Modificar</a>
-                                </li>
-                                <li>
-                                    <a href="#">Eliminar</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body card-padding table-responsive p-0 card-body-partida">
-                    <table class="table b-0">
-                        <thead class="bgm-lightblue b-0 c-white">
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Nivel</th>
-                                <th>Categoria</th>
-                                <th>exp_actual</th>
-                            </tr>
-                        </thead>
-                        <tbody >
-                            <tr >
-                                <td>1</td>
-                                <td>Jacob</td>
-                                <td>3</td>
-                                <td>Mago</td>
-                                <td>350</td>
-                            </tr>
-                            <tr >
-                                <td>2</td>
-                                <td>Pau</td>
-                                <td>2</td>
-                                <td>Ladron</td>
-                                <td>280</td>
-                            </tr>
-                            <tr >
-                                <td>3</td>
-                                <td>Marc</td>
-                                <td>4</td>
-                                <td>Guerrero</td>
-                                <td>480</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
                 <div class="lv-header-alt clearfix m-b-0 bgm-green z-depth-1-bottom">
                     <h2 class="lvh-label  c-white f-18">Jugadores </h2>
                     <ul class="lv-actions actions">
@@ -260,75 +193,7 @@ include "../../Public/layouts/head.php";
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="lv-header-alt clearfix m-b-0 bgm-pink z-depth-1-bottom">
-                    <h2 class="lvh-label  c-white f-18">Enemigos</h2>
-                    <ul class="lv-actions actions">
-                        <li>
-                            <a data-toggle="tooltip" data-placement="right" title="Crea y gestiona tus propios Enemigos">
-                                <i class="zmdi zmdi-info c-white"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                                <i class="zmdi zmdi-more-vert c-white"></i>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <a href="#">Nuevo</a>
-                                </li>
-                                <li>
-                                    <a href="#">Modificar</a>
-                                </li>
-                                <li>
-                                    <a href="#">Eliminar</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body card-padding table-responsive p-0 card-body-partida">
-                    <table class="table b-0">
-                        <thead class="bgm-red b-0 c-white">
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Nivel</th>
-                                <th>Categoria</th>
-                                <th>exp_actual</th>
-                            </tr>
-                        </thead>
-                        <tbody >
-                            <tr >
-                                <td>1</td>
-                                <td>Jacob</td>
-                                <td>3</td>
-                                <td>Mago</td>
-                                <td>350</td>
-                            </tr>
-                            <tr >
-                                <td>2</td>
-                                <td>Pau</td>
-                                <td>2</td>
-                                <td>Ladron</td>
-                                <td>280</td>
-                            </tr>
-                            <tr >
-                                <td>3</td>
-                                <td>Marc</td>
-                                <td>4</td>
-                                <td>Guerrero</td>
-                                <td>480</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        
         <div class="col-md-6">
             <div class="card">
                 <div class="lv-header-alt clearfix m-b-0 bgm-orange z-depth-1-bottom">
@@ -418,6 +283,75 @@ include "../../Public/layouts/head.php";
                             
                             ?>
                             
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="lv-header-alt clearfix m-b-0 bgm-blue z-depth-1-bottom">
+                    <h2 class="lvh-label c-white f-18">Npc's</h2>
+                    <ul class="lv-actions actions">
+                        <li>
+                            <a data-toggle="tooltip" data-placement="right" title="Crea y gestiona tus propios NPC's">
+                                <i class="zmdi zmdi-info c-white"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                <i class="zmdi zmdi-more-vert c-white"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="#">Nuevo</a>
+                                </li>
+                                <li>
+                                    <a href="#">Modificar</a>
+                                </li>
+                                <li>
+                                    <a href="#">Eliminar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                    <table class="table b-0">
+                        <thead class="bgm-lightblue b-0 c-white">
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Nivel</th>
+                                <th>Categoria</th>
+                                <th>exp_actual</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr >
+                                <td>1</td>
+                                <td>Jacob</td>
+                                <td>3</td>
+                                <td>Mago</td>
+                                <td>350</td>
+                            </tr>
+                            <tr >
+                                <td>2</td>
+                                <td>Pau</td>
+                                <td>2</td>
+                                <td>Ladron</td>
+                                <td>280</td>
+                            </tr>
+                            <tr >
+                                <td>3</td>
+                                <td>Marc</td>
+                                <td>4</td>
+                                <td>Guerrero</td>
+                                <td>480</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
