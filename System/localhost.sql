@@ -52,7 +52,7 @@ CREATE TABLE Usuario (
 CREATE TABLE Personaje (
       id_personaje     int NOT NULL AUTO_INCREMENT,
       id_usuario     int NOT NULL,
-	  id_partida     int,
+  id_partida     int,
       id_categoria     int NOT NULL,
       nombre     varchar(32),
       apellido     varchar(32),
@@ -80,66 +80,66 @@ CREATE TABLE Personaje (
       nacionalidad     int(11),
       imagen     varchar(32),
       humano     varchar(8),
-	  puntos_hs     int,
-	  puntos_hp     int,
-	  puntos_totales     int,
-	  ha int,
-	  hp int,
-	  he int,
-	  la int,
-	  acrobacias int,
-	  atletismo int,
-	  montar int,
-	  nadar int,
-	  trepar int,
-	  saltar int,
-	  frialdad int,
-	  proezas_fuerza int,
-	  resistir_dolor int,
-	  advertir int,
-	  buscar int,
-	  rastrear int,
-	  animales int,
-	  ciencia int,
-	  herbolaria int,
-	  historia int,
-	  medicina int,
-	  memorizar int,
-	  navegacion int,
-	  ocultismo int,
-	  tasacion int,
-	  ley int,
-	  tactica int,
-	  estilo int,
-	  intimidar int,
-	  liderazgo int,
-	  persuasion int,
-	  comerciar int,
-	  callejeo int,
-	  etiqueta int,
-	  cerrajeria int,
-	  disfraz int,
-	  ocultarse int,
-	  robo int,
-	  sigilo int,
-	  tramperia int,
-	  venenos int,
-	  arte int,
-	  baile int,
-	  forja int,
-	  trucos_manos int,
-	  canto int,
-	  runas int,
-	  animismo int,
-	  alquimia int,
-	  especial1 int,
-	  especial2 int,
-	  especial3 int,
-	  especial4 int,
+  puntos_hs     int,
+  puntos_hp     int,
+  puntos_totales     int,
+  ha int,
+  hp int,
+  he int,
+  la int,
+  acrobacias int,
+  atletismo int,
+  montar int,
+  nadar int,
+  trepar int,
+  saltar int,
+  frialdad int,
+  proezas_fuerza int,
+  resistir_dolor int,
+  advertir int,
+  buscar int,
+  rastrear int,
+  animales int,
+  ciencia int,
+  herbolaria int,
+  historia int,
+  medicina int,
+  memorizar int,
+  navegacion int,
+  ocultismo int,
+  tasacion int,
+  ley int,
+  tactica int,
+  estilo int,
+  intimidar int,
+  liderazgo int,
+  persuasion int,
+  comerciar int,
+  callejeo int,
+  etiqueta int,
+  cerrajeria int,
+  disfraz int,
+  ocultarse int,
+  robo int,
+  sigilo int,
+  tramperia int,
+  venenos int,
+  arte int,
+  baile int,
+  forja int,
+  trucos_manos int,
+  canto int,
+  runas int,
+  animismo int,
+  alquimia int,
+  especial1 int,
+  especial2 int,
+  especial3 int,
+  especial4 int,
       PRIMARY KEY (`id_personaje`),
       KEY `id_usuario` (`id_usuario`),
       KEY `id_categoria` (`id_categoria`),
-	  KEY `nacionalidad` (`nacionalidad`)
+  KEY `nacionalidad` (`nacionalidad`)
 );
 
 
@@ -247,14 +247,14 @@ CREATE TABLE Nivel (
 
 CREATE TABLE Objeto (
       `id_objeto` int(11) NOT NULL AUTO_INCREMENT,
-	  `nombre` varchar(32) DEFAULT NULL,
-	  `descripcion` varchar(2000) DEFAULT NULL,
-	  `peso` float(4,1) DEFAULT '0',
-	  `precio` int(11) DEFAULT NULL,
-	  `public` varchar(8) DEFAULT 'true',
-	  `disponibilidad` varchar(8) DEFAULT '0',
-	  `calidad` int(11) DEFAULT '0',
-	  `id_tipo` int(11) DEFAULT '6',
+  `nombre` varchar(32) DEFAULT NULL,
+  `descripcion` varchar(2000) DEFAULT NULL,
+  `peso` float(4,1) DEFAULT '0',
+  `precio` int(11) DEFAULT NULL,
+  `public` varchar(8) DEFAULT 'true',
+  `disponibilidad` varchar(8) DEFAULT '0',
+  `calidad` int(11) DEFAULT '0',
+  `id_tipo` int(11) DEFAULT '6',
       PRIMARY KEY (`id_objeto`)
 );
 
@@ -297,7 +297,7 @@ CREATE TABLE Regeneracion (
 CREATE TABLE Tamanyo (
       id_tamanyo     int NOT NULL,
       altura     varchar(32),
-	  peso     varchar(32),
+  peso     varchar(32),
       PRIMARY KEY (`id_tamanyo`)
 );
 
@@ -325,7 +325,7 @@ CREATE TABLE Habilidades_Esenciales (
 CREATE TABLE EfectoEsencial (
       id_efecto_esencial     int NOT NULL AUTO_INCREMENT,
       nombre     varchar(150),
-	  valor		 int,
+  valor int,
       PRIMARY KEY (`id_efecto_esencial`)
 );
 
@@ -340,7 +340,7 @@ ALTER TABLE Ventaja_Efecto ADD PRIMARY KEY (id_ventaja,id_efecto);
 
 CREATE TABLE Habilidades_Esenciales_Efecto (
       id_habilidad     int NOT NULL,
-	  id_efecto_esencial     int NOT NULL
+  id_efecto_esencial     int NOT NULL
 );
 
 ALTER TABLE Habilidades_Esenciales_Efecto ADD PRIMARY KEY (id_habilidad,id_efecto_esencial);
@@ -381,7 +381,7 @@ CREATE TABLE Partida_Usuari (
       id_usuario    int NOT NULL,
       id_partida    int NOT NULL,
       pos   int DEFAULT NULL,
-	  aceptado varchar(50) DEFAULT 'false'
+  aceptado varchar(50) DEFAULT 'false'
 );
 
 
@@ -2048,9 +2048,13 @@ VALUES
 --
 -- Volcado de datos para la tabla `Personaje`
 --
-INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `acrobacias`, `atletismo`, `montar`, `nadar`, `trepar`, `saltar`, `frialdad`, `proezas_fuerza`, `resistir_dolor`, `advertir`, `buscar`, `rastrear`, `animales`, `ciencia`, `herbolaria`, `historia`, `medicina`, `memorizar`, `navegacion`, `ocultismo`, `tasacion`, `ley`, `tactica`, `estilo`, `intimidar`, `liderazgo`, `persuasion`, `comerciar`, `callejeo`, `etiqueta`, `cerrajeria`, `disfraz`, `ocultarse`, `robo`, `sigilo`, `tramperia`, `venenos`, `arte`, `baile`, `forja`, `trucos_manos`, `canto`) 
+INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `acrobacias`, `atletismo`, `montar`, `nadar`, `trepar`, `saltar`, `frialdad`, `proezas_fuerza`, `resistir_dolor`, `advertir`, `buscar`, `rastrear`, `animales`, `ciencia`, `herbolaria`, `historia`, `medicina`, `memorizar`, `navegacion`, `ocultismo`, `tasacion`, `ley`, `tactica`, `estilo`, `intimidar`, `liderazgo`, `persuasion`, `comerciar`, `callejeo`, `etiqueta`, `cerrajeria`, `disfraz`, `ocultarse`, `robo`, `sigilo`, `tramperia`, `venenos`, `arte`, `baile`, `forja`, `trucos_manos`, `canto`, `runas`, `animismo`, `alquimia`, `especial1`, `especial2`, `especial3`, `especial4`) 
 VALUES 
-('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', '0', '35', '10', NULL, NULL, NULL, NULL, NULL, '130', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', '0', '35', '10', NULL, NULL, NULL, NULL, NULL, '130', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('2', '0', '0', '10', 'Campesino', NULL, NULL, '0', '40', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', '0', '5', '5', '5', '5', '5', '5', '5', '5', NULL, NULL, 'false', '320', '80', '0', '20', '0', '20', '0', '0', '20', '10', '20', '20', '20', '0', '0', '0', '20', '20', '0', '30', '0', '30', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'),
+('3', '0', '0', '6', 'Cazador', NULL, NULL, '0', '50', '80', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', '0', '6', '5', '6', '5', '5', '6', '5', '5', NULL, NULL, 'false', '290', '120', '0', '35', '0', '25', '0', '0', '10', '25', '5', '15', '15', '0', '0', '0', '25', '25', '30', '35', '0', '35', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '25', '0', '25', '30', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'),
+('4', '0', '0', '10', 'Herrero', NULL, NULL, '0', '45', '85', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '12', '0', '5', '6', '6', '6', '5', '5', '5', '5', NULL, NULL, 'false', '340', '60', '0', '15', '15', '0', '0', '0', '10', '10', '0', '0', '0', '0', '25', '0', '20', '10', '0', '0', '0', '0', '0', '0', '0', '0', '0', '30', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '15', '0', '55', '0', '0', '0', '0', '0', '0', '0', '0', '0'),
+('5', '0', '0', '10', 'Erudito', NULL, NULL, '3', '55', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', '0', '5', '5', '5', '5', '8', '6', '6', '6', NULL, NULL, 'false', '360', '40', '0', '10', '0', '10', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '55', '45', '0', '30', '80', '30', '70', '30', '30', '0', '40', '40', '0', '0', '0', '0', '0', '40', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '75', '0', '0', '0', '0', '0', '0', '0', '75', '0', '0', '0');
 
 
 
