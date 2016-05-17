@@ -1,32 +1,32 @@
 <?php
     require_once __DIR__."/../config.php";
-    class Personaje_HS{
+    class Personaje_Objeto{
         /*Atributs*/
-        private $id_objeto;
         private $id_personaje;
+        private $id_objeto;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Personaje_HS(`id_personaje`, `id_objeto`) "
+            $result = $db->query("INSERT INTO Personaje_Objeto(`id_personaje`, `id_objeto`) "
                     . "VALUES ('$this->id_personaje', '$this->id_objeto')");
             $db->close();
             return $result;
         }
         public function delete($var){
             $db = new connexio();
-            $result = $sql = "delete from Personaje_HS where id_objeto = $var";
+            $result = $sql = "delete from Personaje_Objeto where id_objeto = $var";
             $db->query($sql);
             return $result;
         }
     
         public function view_all(){
             $db = new connexio();
-            $sql = "SELECT * FROM Personaje_HS";
+            $sql = "SELECT * FROM Personaje_Objeto";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_objeto"]);
+                $partida_objeto = new Personaje_Objeto($obj["id_personaje"],$obj["id_objeto"]);
                 //var_dump($Partida);
                 array_push($rtn, $partida_objeto);
             }
@@ -35,14 +35,14 @@
         }
         public function viewObj($id_personaje){
             $db = new connexio();
-            $sql = "SELECT * FROM Personaje_HS where id_personaje='$id_personaje'";
+            $sql = "SELECT * FROM Personaje_Objeto where id_personaje='$id_personaje'";
             $query = $db->query($sql);
             $db->close();
             $count = 0;
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_objeto"]);
+                    $partida_objeto = new Personaje_Objeto($obj["id_personaje"],$obj["id_objeto"]);
                 }
                 if($count == 1){
                     return $partida_objeto;
