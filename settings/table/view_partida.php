@@ -372,39 +372,35 @@ include "../../Public/layouts/head.php";
                         <tbody >
                             <?php
                             require_once "../../System/Classes/Personaje.php";
+                            require_once "../../System/Classes/Usuario.php";
+                            $Partida_Usuari = new Partida_Usuari();
+                            //Seleccionem el master de la partida
+                            $Partida_Usuari = $Partida_Usuari->SelectMaster($id_partida);
+                            var_dump($Partida_Usuari->getId_Usuario());     
                             $personajes = new Personaje();
-                            $personajes = $personajes->viewPNJPublic(3);
-                            var_dump($personajes);
+                            
+                            $personajes = $personajes->viewPNJPublic($id_Usuari['id_usuario']);
+                            
                             
                             if (!empty($personajes)) {
                                 foreach ($personajes as $row) {
                                     echo "<tr >
                                         <td class='text-capitalize text-success'>".$personajes['nombre']."</td>";     
                                         var_dump($personajes);
-                                    echo "<tr >";
+                                        
+                                    echo "
+                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>
+                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>
+                                        </tr >";
                                 }
                             }
                             
                             ?>
                             
-                            <tr >
+                            <tr>
                                 <td>Jacob</td>
                                 <td>3</td>
                                 <td>Mago</td>
-                            </tr>
-                            <tr >
-                                <td>2</td>
-                                <td>Pau</td>
-                                <td>2</td>
-                                <td>Ladron</td>
-                                <td>280</td>
-                            </tr>
-                            <tr >
-                                <td>3</td>
-                                <td>Marc</td>
-                                <td>4</td>
-                                <td>Guerrero</td>
-                                <td>480</td>
                             </tr>
                         </tbody>
                     </table>

@@ -181,6 +181,18 @@
             }
         }
         
+        public function SelectMaster($id_partida){
+            $db = new connexio();
+            $sql = "SELECT id_usuario FROM Partida_Usuari where id_partida='$id_partida' and aceptado='master'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                array_push($rtn, $obj);
+            }
+            $db->close();
+            return $rtn;
+        }
+        
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();
