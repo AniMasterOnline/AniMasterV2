@@ -1,8 +1,8 @@
 <?php
-                    define("FLAG","0");
+                    define("FLAG","1");
                     define("HOST","localhost");
-                    define("NOMUSUARI","root");
-                    define("CONTRASENYA","root");
+                    define("NOMUSUARI","animaster");
+                    define("CONTRASENYA","master");
                     define("NOMBDD","Animaster");
                     class connexio extends mysqli {
                         public function __construct() {
