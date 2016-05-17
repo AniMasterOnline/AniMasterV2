@@ -180,7 +180,7 @@
                 //var_dump($datos);
                 return $datos;
             }else{
-                return "error";
+                return null;
             }
         }
         public function updateExpe($experiencia_Nova,$id_personaje){
