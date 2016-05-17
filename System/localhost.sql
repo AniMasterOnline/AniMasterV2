@@ -1515,14 +1515,8 @@ INSERT INTO `Caracteristica` (`id_caracteristica`, `nombre`) VALUES
 (18, 'Localización'),
 (19, 'Classe'),
 (20, 'TA_FIL'),
-(21, 'TA_CON'),
-(22, 'TA_PEN'),
-(23, 'TA_CAL'),
-(24, 'TA_ELE'),
-(25, 'TA_FRI'),
-(26, 'TA_ENE'),
-(27, 'Penalización a la percepción'),
-(28, 'Dureza');
+(21, 'Penalización a la percepción'),
+(22, 'Dureza');
 
 
 
@@ -1577,12 +1571,6 @@ VALUES
 (20, 4, NULL),
 (21, 4, NULL),
 (22, 4, NULL),
-(23, 4, NULL),
-(24, 4, NULL),
-(25, 4, NULL),
-(26, 4, NULL),
-(27, 4, NULL),
-(28, 4, NULL),
 
 (1, 5, '35'),
 (2, 5, '-5'),
@@ -1606,12 +1594,6 @@ VALUES
 (20, 5, NULL),
 (21, 5, NULL),
 (22, 5, NULL),
-(23, 5, NULL),
-(24, 5, NULL),
-(25, 5, NULL),
-(26, 5, NULL),
-(27, 5, NULL),
-(28, 5, NULL),
 
 (1, 6, '35'),
 (2, 6, NULL),
@@ -1635,12 +1617,6 @@ VALUES
 (20, 6, NULL),
 (21, 6, NULL),
 (22, 6, NULL),
-(23, 6, NULL),
-(24, 6, NULL),
-(25, 6, NULL),
-(26, 6, NULL),
-(27, 6, NULL),
-(28, 6, NULL),
 
 (1, 7, '25'),
 (2, 7, '10'),
@@ -1664,12 +1640,6 @@ VALUES
 (20, 7, NULL),
 (21, 7, NULL),
 (22, 7, NULL),
-(23, 7, NULL),
-(24, 7, NULL),
-(25, 7, NULL),
-(26, 7, NULL),
-(27, 7, NULL),
-(28, 7, NULL),
 
 (1, 8, '50'),
 (2, 8, '-5'),
@@ -1693,12 +1663,6 @@ VALUES
 (20, 8, NULL),
 (21, 8, NULL),
 (22, 8, NULL),
-(23, 8, NULL),
-(24, 8, NULL),
-(25, 8, NULL),
-(26, 8, NULL),
-(27, 8, NULL),
-(28, 8, NULL),
 
 (1, 9, '30'),
 (2, 9, '20'),
@@ -1722,12 +1686,6 @@ VALUES
 (20, 9, NULL),
 (21, 9, NULL),
 (22, 9, NULL),
-(23, 9, NULL),
-(24, 9, NULL),
-(25, 9, NULL),
-(26, 9, NULL),
-(27, 9, NULL),
-(28, 9, NULL),
 
 (1, 10, '30'),
 (2, 10, '15'),
@@ -1751,12 +1709,6 @@ VALUES
 (20, 10, NULL),
 (21, 10, NULL),
 (22, 10, NULL),
-(23, 10, NULL),
-(24, 10, NULL),
-(25, 10, NULL),
-(26, 10, NULL),
-(27, 10, NULL),
-(28, 10, NULL),
 
 (1, 11, '55'),
 (2, 11, '-5'),
@@ -1780,12 +1732,6 @@ VALUES
 (20, 11, NULL),
 (21, 11, NULL),
 (22, 11, NULL),
-(23, 11, NULL),
-(24, 11, NULL),
-(25, 11, NULL),
-(26, 11, NULL),
-(27, 11, NULL),
-(28, 11, NULL),
 
 (1, 12, '70'),
 (2, 12, '-30'),
@@ -1809,12 +1755,6 @@ VALUES
 (20, 12, NULL),
 (21, 12, NULL),
 (22, 12, NULL),
-(23, 12, NULL),
-(24, 12, NULL),
-(25, 12, NULL),
-(26, 12, NULL),
-(27, 12, NULL),
-(28, 12, NULL),
 
 (1, 13, '40'),
 (2, 13, '15'),
@@ -1838,12 +1778,6 @@ VALUES
 (20, 13, NULL),
 (21, 13, NULL),
 (22, 13, NULL),
-(23, 13, NULL),
-(24, 13, NULL),
-(25, 13, NULL),
-(26, 13, NULL),
-(27, 13, NULL),
-(28, 13, NULL),
 
 (1, 14, '50'),
 (2, 14, NULL),
@@ -1867,12 +1801,6 @@ VALUES
 (20, 14, NULL),
 (21, 14, NULL),
 (22, 14, NULL),
-(23, 14, NULL),
-(24, 14, NULL),
-(25, 14, NULL),
-(26, 14, NULL),
-(27, 14, NULL),
-(28, 14, NULL),
 
 (1, 15, '25'),
 (2, 15, '20'),
@@ -1896,12 +1824,6 @@ VALUES
 (20, 15, NULL),
 (21, 15, NULL),
 (22, 15, NULL),
-(23, 15, NULL),
-(24, 15, NULL),
-(25, 15, NULL),
-(26, 15, NULL),
-(27, 15, NULL),
-(28, 15, NULL),
 
 (1, 16, NULL),
 (2, 16, NULL),
@@ -1923,14 +1845,8 @@ VALUES
 (18, 16, 'Camisola'),
 (19, 16, 'Blanda'),
 (20, 16, '1'),
-(21, 16, '1'),
-(22, 16, '1'),
-(23, 16, '1'),
-(24, 16, '2'),
-(25, 16, '2'),
-(26, 16, NULL),
-(27, 16, NULL),
-(28, 16, NULL),
+(21, 16, NULL),
+(22, 16, NULL),
 
 (1, 17, NULL),
 (2, 17, NULL),
@@ -1952,14 +1868,8 @@ VALUES
 (18, 17, 'Camisola'),
 (19, 17, 'Blanda'),
 (20, 17, '4'),
-(21, 17, '3'),
-(22, 17, '1'),
-(23, 17, '2'),
-(24, 17, NULL),
-(25, 17, '1'),
-(26, 17, NULL),
-(27, 17, NULL),
-(28, 17, NULL);
+(21, 17, NULL),
+(22, 17, NULL);
 
 
 
@@ -2008,27 +1918,12 @@ VALUES
 (40, 'Vulnerable a un tipo de daño', 20,10);
 
 
---
--- Volcado de datos para la tabla `Partida`
---
-INSERT INTO `Partida` (`id_partida`, `id_usuario`, `nombre`, `imagen`, `descripcion`, `anyo`, `nv_sobrenatural`, `limite`, `token`, `diario`) 
-VALUES 
-('1', '3', 'asgard', NULL, 'reyes', '983', '2', '4', NULL, NULL);
-
---
--- Volcado de datos para la tabla `Partida_Usuari`
---
-INSERT INTO `Partida_Usuari` (`id_usuario`, `id_partida`, `pos`, `aceptado`) 
-VALUES 
-('3', '1', '1', 'master'),
-('2', '1', '-1', 'true');
 
 --
 -- Volcado de datos para la tabla `Personaje`
 --
 INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`)
 VALUES 
-('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', NULL, '35'),
 ('2', '1', NULL, '10', 'Campesino', '', NULL, NULL, '40', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '5', '5', '5', '5', '5', '5', '5', '5', NULL, NULL, 'false', '320', '80', '400', '20', NULL, '20', NULL),
 ('3', '1', NULL, '6', 'Cazador', '', NULL, NULL, '50', '80', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '6', '5', '6', '5', '5', '6', '5', '5', NULL, NULL, 'false', '290', '120', '410', '35', NULL, '25', NULL),
 ('4', '1', NULL, '10', 'Herrero', '', NULL, NULL, '45', '85', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '12', NULL, '5', '6', '6', '6', '5', '5', '5', '5', NULL, NULL, 'false', '340', '60', '400', '15', '15', NULL, NULL),

@@ -35,8 +35,9 @@
         }
         public function signout($idu, $idp){
             $db = new connexio();
-            $result = $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and id_partida= '$idp'";
-            $db->query($sql);
+            $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and id_partida= '$idp'";
+            $result = $db->query($sql);
+            var_dump($result);
             return $result;
         }
         
@@ -163,6 +164,23 @@
                 return false;
             }
         }
+        public function selectUsers($id_partida){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida' and aceptado='true'";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"],$obj["aceptado"]);
+                    array_push($rtn, $partida_usuari);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
+        
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();

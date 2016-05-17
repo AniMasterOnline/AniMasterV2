@@ -210,6 +210,19 @@
             $db->close();
             return $result;
         }
+        public function viewPNJPublic($id_master){ 
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje WHERE id_partida =`null` or id_usuario = '$id_master'";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $Per = new Personaje($obj["nombre"], $obj["nivel"],$obj["id_categoria"]);
+                array_push($rtn, $Per);
+                //var_dump($Per);
+            }
+            return $rtn;
+        }
         
         //CONSTRUCTORS
         function __construct(){
