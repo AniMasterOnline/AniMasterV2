@@ -250,6 +250,11 @@ if (strpos($self,"zone.php")){
                 <p>Please wait...</p>
             </div>
         </div>
-    <?php 
-        include "menu.php";
+    <?php
+        if (strpos($self,"install.php")){
+            
+        }else{
+           include "menu.php"; 
+        }
+        
     ?>

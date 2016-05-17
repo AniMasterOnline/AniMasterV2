@@ -2,10 +2,12 @@
 $title='Install Animaster';
 $migas='#Home|index.php#Install|install.php';
 require_once "Public/layouts/head.php";
+set_time_limit(300);
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-12 m-t-15">
+        <div class="col-md-12 m-t-0">
+            <h2>Animaster <small>Install menu</small></h2>
             <form method="post" class="m-b-20" autocomplete="false" action="install.php">
                 <fieldset class="form-group">
                   <label for="exampleInputEmail1">Host</label>
@@ -35,7 +37,7 @@ require_once "Public/layouts/head.php";
                     $NOMUSUARI = $_POST['DBuser'];
                     $CONTRASENYA = $_POST['DBpass'];
                     $NOMBDD = $_POST['DBname'];
-
+                    
                     // Create and Load DB
                     $con = new mysqli($HOST,$NOMUSUARI,$CONTRASENYA);
                     if (!$con){
@@ -59,15 +61,27 @@ require_once "Public/layouts/head.php";
                         writefile($HOST, $NOMUSUARI, $CONTRASENYA, $NOMBDD);
                         echo '  <div class="alert alert-inverse m-b-0" style="border-radius:0px;">
                                 Database '.$NOMBDD.' created successfully.
-                            </div>';
-                    }
+                            </div>
+                            <button class="btn bgm-purple c-white w-100 z-depth-1 f-16 f-400" onclick="goBack()" style="border-radius:0px;" >Volver !</button>
+                            <script>
+                                function goBack() {
+                                    window.history.back();
+                                }
+                            </script>';
+                                    }
                     $con->close();
                 }
             }else{
                 echo '  <div class="alert alert-inverse m-b-0" style="border-radius:0px;">
                             <img src="Public/img/404.png" height="32" width="32">
                             <strong>404!</strong> This website has been installed already.
-                        </div>';
+                        </div>
+                        <button class="btn bgm-purple c-white w-100 z-depth-1 f-16 f-400" onclick="goBack()" style="border-radius:0px;" >Volver !</button>
+                            <script>
+                                function goBack() {
+                                    window.history.back();
+                                }
+                            </script>';
             }
 
             function writefile($HOST, $NOMUSUARI, $CONTRASENYA, $NOMBDD){

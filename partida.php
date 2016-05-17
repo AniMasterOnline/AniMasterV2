@@ -39,6 +39,11 @@ $(document).ready(function(){
                     $nv_sobrenatural = $row->getNv_Sobrenatural();
                     $limite = $row->getLimite();
                     $token = $row->getToken();
+
+                    $partida_usuari= new Partida_Usuari();
+                    if(isset($_SESSION['user'])){
+                        $invited = $partida_usuari->testInvited($value['id_usuario'], $id_partida);
+                    }
                     echo '  <div class="col-xs-8 col-sm-6 col-md-4">
                                 <div class="card">
                                     <div class="card-header custom-card" style="background-image: url(\'Public/img/partida/'.$imagen.'\');">
@@ -51,11 +56,43 @@ $(document).ready(function(){
                                                 </a>
 
                                                 <ul class="dropdown-menu dropdown-menu-right">';
-                                                    if($master == $value['id_usuario']){
-                                                        echo '';
+                                                    if(isset($_SESSION['user'])){
+                                                        if($master == $value['id_usuario']){
+                                                            echo '  <li>
+                                                                        <a href="settings/table/invite.php?id='.$id_partida.'">Gestionar Jugadores</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="settings/table/view_partida.php?id='.$id_partida.'">Gestionar Partida</a>
+                                                                    </li>
+                                                                    <li role="separator" class="divider"></li>
+                                                                    <li>
+                                                                        <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
+                                                                    </li>';
+                                                        }else if($invited){
+                                                            require_once "System/Classes/Personaje.php";
+                                                            $personaje = new Personaje();
+                                                            $return=$personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
+                                                            if($return !== null){
+                                                                echo '  <li>
+                                                                            <a href="settings/character/index.php?id_partida='.$id_partida.'">Gestionar Personaje</a>
+                                                                        </li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li>
+                                                                            <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
+                                                                        </li>';
+                                                            }else{
+                                                                echo '  <li>
+                                                                            <a href="settings/character/new_personaje1.php?id_partida='.$id_partida.'">Crear Personaje</a>
+                                                                        </li>';
+                                                            }
+                                                        }else{
+                                                            echo '  <li>
+                                                                        <a href="settings/table/invite.php?solid='.$id_partida.'">Solicitar Partida</a>
+                                                                    </li>';
+                                                        }  
                                                     }else{
                                                         echo '  <li>
-                                                                    <a href="settings/table/invite.php?solid='.$id_partida.'">Solicitar Partida</a>
+                                                                    <a href="login.php">Login</a>
                                                                 </li>';
                                                     }
                                             echo '</ul>
@@ -93,8 +130,9 @@ $(document).ready(function(){
                         $token = $row->getToken();
                         
                         $partida_usuari= new Partida_Usuari();
-                        $invited = $partida_usuari->testInvited($value['id_usuario'], $id_partida);
-                        
+                        if(isset($_SESSION['user'])){
+                            $invited = $partida_usuari->testInvited($value['id_usuario'], $id_partida);
+                        }
                         echo '  <div class="col-xs-8 col-sm-6 col-md-4">
                                     <div class="card">
                                         <div class="card-header custom-card" style="background-image: url(\'Public/img/partida/'.$imagen.'\');">
@@ -107,37 +145,43 @@ $(document).ready(function(){
                                                     </a>
 
                                                     <ul class="dropdown-menu dropdown-menu-right">';
-                                                    if($master == $value['id_usuario']){
-                                                        echo '  <li>
-                                                                    <a href="settings/table/invite.php?id='.$id_partida.'">Gestionar Jugadores</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="settings/table/view_partida.php?id='.$id_partida.'">Gestionar Partida</a>
-                                                                </li>
-                                                                <li role="separator" class="divider"></li>
-                                                                <li>
-                                                                    <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
-                                                                </li>';
-                                                    }else if($invited){
-                                                        require_once "System/Classes/Personaje.php";
-                                                        $personaje = new Personaje();
-                                                        $return=$personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
-                                                        if($return !== null){
+                                                    if(isset($_SESSION['user'])){
+                                                        if($master == $value['id_usuario']){
                                                             echo '  <li>
-                                                                        <a href="settings/character/index.php?id_partida='.$id_partida.'">Gestionar Personaje</a>
+                                                                        <a href="settings/table/invite.php?id='.$id_partida.'">Gestionar Jugadores</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="settings/table/view_partida.php?id='.$id_partida.'">Gestionar Partida</a>
                                                                     </li>
                                                                     <li role="separator" class="divider"></li>
                                                                     <li>
                                                                         <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
                                                                     </li>';
+                                                        }else if($invited){
+                                                            require_once "System/Classes/Personaje.php";
+                                                            $personaje = new Personaje();
+                                                            $return=$personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
+                                                            if($return !== null){
+                                                                echo '  <li>
+                                                                            <a href="settings/character/index.php?id_partida='.$id_partida.'">Gestionar Personaje</a>
+                                                                        </li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li>
+                                                                            <a href="settings/table/mesa.php?id='.$id_partida.'">Jugar</a>
+                                                                        </li>';
+                                                            }else{
+                                                                echo '  <li>
+                                                                            <a href="settings/character/new_personaje1.php?id_partida='.$id_partida.'">Crear Personaje</a>
+                                                                        </li>';
+                                                            }
                                                         }else{
                                                             echo '  <li>
-                                                                        <a href="settings/character/new_personaje1.php?id_partida='.$id_partida.'">Crear Personaje</a>
+                                                                        <a href="settings/table/invite.php?solid='.$id_partida.'">Solicitar Partida</a>
                                                                     </li>';
-                                                        }
+                                                        }  
                                                     }else{
                                                         echo '  <li>
-                                                                    <a href="settings/table/invite.php?solid='.$id_partida.'">Solicitar Partida</a>
+                                                                    <a href="login.php">Login</a>
                                                                 </li>';
                                                     }
                                             echo '</ul>
