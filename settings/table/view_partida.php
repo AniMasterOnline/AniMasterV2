@@ -15,6 +15,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         include '../404/404.php';
     }
     $nombre = $partida->getNombre();
+    $master = $partida->getId_Usuario();
     $imagen = $partida->getImagen();
     $descripcion = $partida->getDescripcion();
     $anyo = $partida->getAnyo();
@@ -373,35 +374,24 @@ include "../../Public/layouts/head.php";
                             <?php
                             require_once "../../System/Classes/Personaje.php";
                             require_once "../../System/Classes/Usuario.php";
-                            $Partida_Usuari = new Partida_Usuari();
-                            //Seleccionem el master de la partida
-                            $Partida_Usuari = $Partida_Usuari->SelectMaster($id_partida);
-                            var_dump($Partida_Usuari->getId_Usuario());     
+                            require_once "../../System/Classes/Categoria.php"; 
                             $personajes = new Personaje();
-                            
-                            $personajes = $personajes->viewPNJPublic($id_Usuari['id_usuario']);
-                            
-                            
+                            $personajes = $personajes->viewPNJ($master, $id_partida);
                             if (!empty($personajes)) {
                                 foreach ($personajes as $row) {
+                                    $id_cat = $row->getId_Categoria();
+                                    $categoria = new Categoria();
+                                    $categoria = $categoria->viewCar($id_cat);
+                                    $cat = $categoria->getNombre();
                                     echo "<tr >
-                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>";     
-                                        var_dump($personajes);
-                                        
-                                    echo "
-                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>
-                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>
+                                        <td class='text-capitalize text-success'>".$row->getNombre()."</td>
+                                        <td class='text-capitalize text-success'>".$row->getNivel()."</td>
+                                        <td class='text-capitalize text-success'>".$cat."</td>
                                         </tr >";
                                 }
                             }
                             
                             ?>
-                            
-                            <tr>
-                                <td>Jacob</td>
-                                <td>3</td>
-                                <td>Mago</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

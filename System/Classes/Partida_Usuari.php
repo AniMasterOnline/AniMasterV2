@@ -181,16 +181,13 @@
             }
         }
         
-        public function SelectMaster($id_partida){
+        public function selectMaster($id_partida){
             $db = new connexio();
             $sql = "SELECT id_usuario FROM Partida_Usuari where id_partida='$id_partida' and aceptado='master'";
             $query = $db->query($sql);
-            $rtn = array();
-            while($obj = $query->fetch_assoc()){
-                array_push($rtn, $obj);
-            }
+            $obj = $query->fetch_assoc();
             $db->close();
-            return $rtn;
+            return $obj;
         }
         
         //CONSTRUCTORS

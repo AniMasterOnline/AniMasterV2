@@ -161,18 +161,26 @@
             $db->close();
             return $result;
         }
-        public function viewPNJPublic($id_master){ 
+        public function viewPNJ($id_master, $id_partida){ 
             $db = new connexio();
-            $sql = "SELECT * FROM Personaje WHERE id_partida =`null` or id_usuario = '$id_master'";
+            $sql = "SELECT * FROM Personaje WHERE id_partida IS NULL or id_usuario = '$id_master' and id_partida = '$id_partida'";
             $query = $db->query($sql);
-            $rtn = array();
-            while($obj = $query->fetch_assoc()){
-                $Personaje = new Personaje($obj["id_personaje"],$obj["id_usuario"],$obj["id_partida"],$obj["id_categoria"],$obj["nombre"],$obj["nivel"]);
-                //var_dump($Usuario);
-                array_push($rtn, $Personaje);
-            }
+            $datos = array();
             $db->close();
-            return $rtn;
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()) {
+                    if (empty($obj["nivel"])){
+                        $obj["nivel"] = 0;
+                    }
+                    $Personaje = new Personaje($obj["id_personaje"],$obj["id_usuario"],$obj["id_partida"],$obj["id_categoria"],$obj["nombre"],$obj["nivel"]);
+                    //var_dump($Usuario);
+                    array_push($datos, $Personaje);
+                }
+                return $datos;
+            } else {
+                var_dump(null);
+                return null;
+            }
         }
         
         //CONSTRUCTORS
@@ -230,8 +238,8 @@
             $this->nombre = $a5;
         }
         
-        function __construct6($a2, $a3, $a4, $a5, $a6){
-            $this->id_personaje=0;
+        function __construct6($a1, $a2, $a3, $a4, $a5, $a6){
+            $this->id_personaje=$a1;
             $this->id_usuario = $a2;
             $this->id_partida=$a3;
             $this->id_categoria = $a4;
