@@ -392,7 +392,8 @@ ALTER TABLE Partida_Usuari ADD PRIMARY KEY (id_usuario,id_partida);
 
 CREATE TABLE Personaje_HS (
       id_personaje     int NOT NULL,
-      id_HS     int NOT NULL
+      id_HS     int NOT NULL,
+	  valor int DEFAULT 0
 );
 
 
@@ -424,7 +425,8 @@ ALTER TABLE Mensaje ADD PRIMARY KEY (id_usuario,Usuario_id_usuario);
 
 CREATE TABLE Personaje_Objeto (
       id_personaje     int NOT NULL,
-      id_objeto     int NOT NULL
+      id_objeto     int NOT NULL,
+	  cantidad int
 );
 
 
@@ -2041,15 +2043,27 @@ VALUES
 --
 -- Volcado de datos para la tabla `Personaje`
 --
-INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `acrobacias`, `atletismo`, `montar`, `nadar`, `trepar`, `saltar`, `frialdad`, `proezas_fuerza`, `resistir_dolor`, `advertir`, `buscar`, `rastrear`, `animales`, `ciencia`, `herbolaria`, `historia`, `medicina`, `memorizar`, `navegacion`, `ocultismo`, `tasacion`, `ley`, `tactica`, `estilo`, `intimidar`, `liderazgo`, `persuasion`, `comerciar`, `callejeo`, `etiqueta`, `cerrajeria`, `disfraz`, `ocultarse`, `robo`, `sigilo`, `tramperia`, `venenos`, `arte`, `baile`, `forja`, `trucos_manos`, `canto`, `runas`, `animismo`, `alquimia`, `especial1`, `especial2`, `especial3`, `especial4`) 
+INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`)
 VALUES 
-('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', NULL, '35', '10', NULL, NULL, NULL, NULL, NULL, '130', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('2', '1', NULL, '10', 'Campesino', '', NULL, NULL, '40', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '5', '5', '5', '5', '5', '5', '5', '5', NULL, NULL, 'false', '320', '80', NULL, '20', NULL, '20', NULL, NULL, '20', '10', '20', '20', '20', NULL, NULL, NULL, '20', '20', NULL, '30', NULL, '30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('3', '1', NULL, '6', 'Cazador', '', NULL, NULL, '50', '80', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '6', '5', '6', '5', '5', '6', '5', '5', NULL, NULL, 'false', '290', '120', NULL, '35', NULL, '25', NULL, NULL, '10', '25', '5', '15', '15', NULL, NULL, NULL, '25', '25', '30', '35', NULL, '35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '25', NULL, '25', '30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('4', '1', NULL, '10', 'Herrero', '', NULL, NULL, '45', '85', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '12', NULL, '5', '6', '6', '6', '5', '5', '5', '5', NULL, NULL, 'false', '340', '60', NULL, '15', '15', NULL, NULL, NULL, '10', '10', NULL, NULL, NULL, NULL, '25', NULL, '20', '10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15', NULL, '55', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('5', '1', NULL, '10', 'Erudito', '', NULL, '3', '55', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '5', '5', '5', '5', '8', '6', '6', '6', NULL, NULL, 'false', '360', '40', NULL, '10', NULL, '10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '55', '45', NULL, '30', '80', '30', '70', '30', '30', NULL, '40', '40', NULL, NULL, NULL, NULL, NULL, '40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '75', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '75', NULL, NULL, NULL);
+('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', NULL, '35'),
+('2', '1', NULL, '10', 'Campesino', '', NULL, NULL, '40', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '5', '5', '5', '5', '5', '5', '5', '5', NULL, NULL, 'false', '320', '80', '400', '20', NULL, '20', NULL),
+('3', '1', NULL, '6', 'Cazador', '', NULL, NULL, '50', '80', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '6', '5', '6', '5', '5', '6', '5', '5', NULL, NULL, 'false', '290', '120', '410', '35', NULL, '25', NULL),
+('4', '1', NULL, '10', 'Herrero', '', NULL, NULL, '45', '85', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '12', NULL, '5', '6', '6', '6', '5', '5', '5', '5', NULL, NULL, 'false', '340', '60', '400', '15', '15', NULL, NULL),
+('5', '1', NULL, '10', 'Erudito', '', NULL, '3', '55', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '5', '5', '5', '5', '8', '6', '6', '6', NULL, NULL, 'false', '360', '40', '400', '10', NULL, '10', NULL);
 
 
+--
+-- Volcado de datos para la tabla `Personaje_HS`
+--
+INSERT INTO `Personaje_HS` (`id_personaje`, `id_habilidad`, `valor`) 
+VALUES 
+(1, 1, 5),
+(1, 2, 10),
+(1, 3, 5),
+(1, 4, 5),
+(1, 47, 5),
+(1, 48, 5),
+(1, 49, 5);
 
 
 

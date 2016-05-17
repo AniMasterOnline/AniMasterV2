@@ -283,6 +283,7 @@ include "../../Public/layouts/head.php";
                             <tr>
                                 <th>Nombre</th>
                                 <th>Base</th>
+                                <th>Caract</th>
                                 <th>Bono</th>
                                 <th>Esp</th>
                                 <th>Cat</th>
@@ -298,36 +299,41 @@ include "../../Public/layouts/head.php";
                             
                             $Personaje = new Personaje(); 
                             $array = $Personaje->viewPersonaje($id_personaje);
-                            $HP = new Habilidades_Secundarias(); 
+                            $HS = new Habilidades_Secundarias(); 
                             $Caract_p = new Caracteristicas_p(); 
-                            $Categoria_HP = new Categoria_HS(); 
+                            $Categoria_HS = new Categoria_HS(); 
                             
-                            /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+                            /*Mostrem totes les hs del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
                             if (!empty($array)) {
                                     $contador = 0;
                                     while ($contador < 49){
                                         $contador++;
-                                        $arrayHP = $HP->view_HS($contador);
-                                        if( $contador < 3) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
-                                        }elseif ($contador == 3) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
-                                        }elseif ($contador == 4) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                        $arrayHP = $HS->view_HS($contador);
+                                        $caracteristicaPersonaje = "c_".$arrayHP->getCaracteristica();
+                                        var_dump($caracteristicaPersonaje);
+                                        
+                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array[$caracteristicaPersonaje]);
+                                        var_dump($arrayCaract_p);
+                                        
+                                        $arrayCategoria_HS = $Categoria_HS->viewHS($array['id_categoria'], $contador);
+                                        if (!empty($arrayCategoria_HS['incr_nv'])) {
+                                            $bonoCategoria = (0*(int)$array['nivel']);
+                                        }else {
+                                            $bonoCategoria = ((int)$arrayCategoria_HS['incr_nv']*(int)$array['nivel']);
                                         }
-                                        $arrayCategoria_HP = $Categoria_HP->viewHS($array['id_categoria'], $contador);
-                                        $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
-                                        $HAfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                        $HSfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
                                         echo "<tr>
-                                            <th class=''>".$arrayHP->getNombre()."</th>
-                                            <th class=''>".$array['ha']."</th>
+                                            <th class=''>".$arrayHP->getNombre()."</th>";
+                                        
+                                        //intentar automatitzar el bucle passant la id_secundaria de la taula personaje_HS en comptes de $contador
+                                        echo "
+                                            <th class=''>".$array[$contador]."</th>
                                             <th class=''>".$arrayHP->getCaracteristica()."</th>
                                             <th class=''>".$arrayCaract_p['bono']."</th>
                                             <th class=''>0</th>
                                             <th class=''>".$bonoCategoria."</th>
-                                            <th class=''>".$HAfinal."</th></tr>";
+                                            <th class=''>".$HSfinal."</th></tr>";
                                     }
-                                    
                             }
                             ?>
                         </tbody>
@@ -346,20 +352,28 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-lightblue b-0 c-white">
                             <tr>
-                                <th>#</th>
+                                <!--Fer una select de Objeto, Personaje?, Personaje_Objeto -->
                                 <th>Nombre</th>
-                                <th>???</th>
-                                <th>???</th>
-                                <th>???</th>
+                                <th>Tipo</th>
+                                <th>Peso</th>
+                                <th>Valor</th>
+                                <th>Cantidad</th>
                             </tr>
                         </thead>
                         <tbody >
                             <tr >
-                                <td>1</td>
-                                <td class="text-capitalize">Name</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td class="text-capitalize">Espada Larga</td>
+                                <td>Arma</td>
+                                <td>1 Kg</td>
+                                <td>5000 MC</td>
+                                <td>1 unidad</td>
+                            </tr>
+                            <tr >
+                                <td class="text-capitalize">Platas</td>
+                                <td>Útiles Varios</td>
+                                <td>0</td>
+                                <td>10 MC</td>
+                                <td>100</td>
                             </tr>
                         </tbody>
                     </table>
