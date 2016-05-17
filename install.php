@@ -5,7 +5,7 @@ require_once "Public/layouts/head.php";
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 m-t-15">
             <form method="post" class="m-b-20" autocomplete="false" action="install.php">
                 <fieldset class="form-group">
                   <label for="exampleInputEmail1">Host</label>
@@ -49,6 +49,7 @@ require_once "Public/layouts/head.php";
 
                     }else {
                         // Create database
+                        $con->query("SET NAMES 'utf8'");
                         $sql = "CREATE DATABASE ".$NOMBDD." DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci";
                         $con->query($sql);
                         $usedb = "USE `".$NOMBDD."`;";
@@ -57,7 +58,7 @@ require_once "Public/layouts/head.php";
                         run_sql_file($sql_file, $con);
                         writefile($HOST, $NOMUSUARI, $CONTRASENYA, $NOMBDD);
                         echo '  <div class="alert alert-inverse m-b-0" style="border-radius:0px;">
-                                <strong>404!</strong> Database '.$NOMBDD.' created successfully.
+                                Database '.$NOMBDD.' created successfully.
                             </div>';
                     }
                     $con->close();

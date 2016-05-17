@@ -1,7 +1,12 @@
 <!-- Home -- Header content box -->
-<?php 
+<?php
+require_once 'System/config.php';
+if(FLAG == 0){
+    header('location: install.php');
+}
 $title='Home';
 include "Public/layouts/head.php";?>
+
 <style>
     body{
         background-color: rgba(0,0,0,0.7);
