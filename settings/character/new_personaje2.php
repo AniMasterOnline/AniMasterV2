@@ -101,24 +101,18 @@ $limite_hp = $puntos*0.5;
 
 <form onchange="myFunction(this.value)" action="<?php echo 'new_personaje3.php?id_partida='.$id_partida; ?>" method="POST">
     <input class="form-control" type="hidden" id="limite_hp" value="<?php echo $limite_hp ?>">
-    <input class="form-control" type="hidden" id="ha2" value="<?php echo $ha ?>">
-    <input class="form-control" type="hidden" id="hp2" value="<?php echo $hp ?>">
-    <input class="form-control" type="hidden" id="he2" value="<?php echo $he ?>">
-    <input class="form-control" type="hidden" id="la2" value="<?php echo $le ?>">
     <input class="form-control" type="hidden" id="laa" name="puntosT" value="<?php echo $puntos ?>">
-    
     <div class="col-xs-3">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
                 require_once "../../System/Classes/Categoria_HP.php";
                 $cat_hp = new Categoria_HP();
-                $cat_hp=$cat_hp->viewHP1($id_categoria,1);
-                foreach($cat_hp as $cat_h){
-                    $ha=$cat_h->getCoste();
-                    echo "Ha - ".$ha;
-                }
+                $result=$cat_hp->viewHP1($id_categoria,1);
+                $ha = $result['coste'];
+                echo "Ha - ".$ha;
             ?>
+                <input class="form-control" type="hidden" id="ha2" value="<?php echo $ha ?>">
             </span>
             <input class="form-control" type="text" id="ha" name="ha" placeholder="Habilidad ataque" required>
         </div>
@@ -128,12 +122,11 @@ $limite_hp = $puntos*0.5;
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
                 $cat_hp = new Categoria_HP();
-                $cat_hp2=$cat_hp->viewHP2($id_categoria,2);
-                foreach($cat_hp2 as $cat_h2){
-                    $hp=$cat_h2->getCoste();
-                    echo "Hp - ".$hp;
-                }
+                $result=$cat_hp->viewHP2($id_categoria,2);
+                $hp = $result['coste'];
+                echo "Hp - ".$hp;
             ?>
+                <input class="form-control" type="hidden" id="hp2" value="<?php echo $hp ?>">
             </span>
             <input class="form-control" type="text" id="hp" name="hp" placeholder="Habilidad parada" required>
         </div>
@@ -142,12 +135,12 @@ $limite_hp = $puntos*0.5;
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
-                $cat_hp=$cat_hp->viewHP3($id_categoria,3);
-                foreach($cat_hp as $cat_h){
-                    $he=$cat_h->getCoste();
-                    echo "He - ".$he;
-                }
+                $cat_hp = new Categoria_HP();
+                $result=$cat_hp->viewHP3($id_categoria,3);
+                $he = $result['coste'];
+                echo "He - ".$he;
             ?>
+                <input class="form-control" type="hidden" id="he2" value="<?php echo $he ?>">
             </span>
             <input class="form-control" type="text" id="he" name="he" placeholder="Habilidad esquiva" required>
         </div>
@@ -157,14 +150,13 @@ $limite_hp = $puntos*0.5;
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
                 $cat_hp = new Categoria_HP();
-                $cat_hp=$cat_hp->viewHP4($id_categoria,4);
-                foreach($cat_hp as $cat_h){
-                    $le=$cat_h->getCoste();
-                    echo "Le - ".$le;
-                }
+                $return=$cat_hp->viewHP4($id_categoria,4);
+                $le = $result['coste'];
+                echo "Le - ".$le;
                 $array = array($id_categoria,$nombre,$apellido,$edad,$nivel2,$sexo,$pelo,$ojos,$altura,$peso,$apariencia,$agi,$con,$des,$fue,$int,$per,$pod,$vol,$nacionalidad,$ha,$hp,$he,$le);
                 $_SESSION['array']=$array;
             ?>
+                <input class="form-control" type="hidden" id="la2" value="<?php echo $le ?>">
             </span>
             <input class="form-control" type="text" id="la" name="la" placeholder="Llevar armadura" required>
         </div>
