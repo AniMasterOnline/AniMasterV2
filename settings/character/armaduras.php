@@ -14,18 +14,22 @@ include "../../Public/layouts/head.php";
                     <h2 class="form-signin-heading">Armaduras</h2>
                 </div>
 <?php
+$id_objeto=1;
 require_once "../../System/Classes/Caracteristica.php";
 $caracteristica=new Caracteristica();
 $caracteristica=$caracteristica->viewArmaduras();
 foreach ($caracteristica as $caracteristica){
     $nombre=$caracteristica->getNombre();
+    $id_caracteristica=$caracteristica->getId_Caracteristica();
 ?>
                 <div class="col-md-6">
                     <div class="col-md-12 cinput">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1" style="max-width:30px;"><?php echo $nombre ?></span>
                             <label for="<?php echo $nombre ?>" class="sr-only"><?php echo $nombre ?></label>
-                            <input type="text"  id="<?php echo $nombre ?>"  class="form-control" name="<?php echo $nombre ?>" placeholder="<?php echo $nombre ?> *" required>
+                            <input type="text"  id="<?php echo $nombre ?>" value="" class="form-control" name="<?php echo 'v'.$id_caracteristica ?>" placeholder="<?php echo $nombre ?> *" required>
+                            <input type="hidden"  id="<?php echo $id_caracteristica ?>"  class="form-control" name="<?php echo $id_caracteristica ?>" value="<?php echo $id_caracteristica ?>" required>
+                            <input type="hidden"  id="id_objeto"  class="form-control" name="id_objeto" value="<?php echo $id_objeto ?>" required>
                         </div>
                     </div>
                 </div>
