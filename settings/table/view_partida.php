@@ -162,7 +162,7 @@ include "../../Public/layouts/head.php";
                             <tr>
                                 <th>Usuario</th>
                                 <th>Personaje</th>
-                                <th>Nivel</th>
+                                <th class='text-center'>Nivel</th>
                                 <th class='text-center'>Eliminar</th>
                             </tr>
                         </thead>
@@ -171,31 +171,60 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Personaje.php";
                             require_once "../../System/Classes/Usuario.php";
                             
-                            $Personaje = new Personaje(); 
-                            //Agafem a tots els personatges que hi ha en la partida
-                            $arrayPersonajes = $Personaje->viewPersonajesPartida($id_partida);
-                            $usuario = new Usuario();
+                            //Buscar per partida-Usuari, id partida, agafar tots els usaris que estan en true i agafem la id_usuari
+                            //Tenim tots els usuaris de la pratida acceptats.
+                            //agafar la id del usuari a la funció que esborra els usuaris,
+                            //i si se vol fer millor, agafo la funció dintre Protocol
+                            //comprovar si te personaje en partida i si no es null esborrar el personaje per id_personaje en id_partida
                             
                             
+                            $PartidaUsuario = new Partida_Usuari();
+                            $PartidaUsuario = $PartidaUsuario->selectUsers($id_partida);
                             /*Mostrem tots els personatges que siguin d'aquesta partida*/
                             //Si hi ha personatges en la partida entrem al if
-                            if (!empty($arrayPersonajes)) {
+                            if (!empty($PartidaUsuario)) {
                                 //per a cada personatge busquem el seu usuari per la id_usuario
-                                foreach ($arrayPersonajes as $row) {
-                                $nombreUsuario = $usuario->return_user($row['id_usuario']);
-                                var_dump($row['id_usuario']);
-                                
-                                echo "<tr>
-                                    <td class='text-capitalize text-success'>".$nombreUsuario['nickname']."</td>                                    
-                                    <td class='text-capitalize text-info'>".$row['nombre']."</td>
-                                    <td class='text-danger text-center'>".$row['nivel']."</td>
-                                    <td class='text-center'>
-                                    <label class='m-r-10 p-0 '>
-                                                <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$nombreUsuario['id_usuario']."'>
-                                                    <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
-                                                </a>
-                                        </label>
-                                    </tr>";
+                                foreach ($PartidaUsuario as $linia) {
+                                    // id del usuari
+                                    $id_Usuari = $linia->getId_Usuario();
+                                    
+                                    // obtenim les dades del usuari
+                                    $usuari = new Usuario();
+                                    $datos = $usuari->return_user($id_Usuari);
+                                    
+                                    $nickname = $usuari->getNickname();
+                                    // busquem si te un pj i sino mostrem que no en te.
+                                    //Busquem dinte de personaje si la id del usuari te cap id personaje i si coincideix en la fila les id de partida
+                                    $personaje = new Personaje();
+                                    $personajeUsuarioPartida = $personaje->viewPersonajeUsuario($id_Usuari, $id_partida);
+                                    
+                                    if (!empty($personajeUsuarioPartida)){
+                                        //si te un pj
+                                        echo "<tr>
+                                        <td class='text-capitalize text-success'>".$datos['nickname']."</td>                                    
+                                        <td class='text-capitalize text-info'>".$personajeUsuarioPartida['nombre']."</td>
+                                        <td class='text-danger text-center'>".$personajeUsuarioPartida['nivel']."</td>
+                                        <td class='text-center'>
+                                        <label class='m-r-10 p-0 '>
+                                                    <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
+                                                        <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
+                                                    </a>
+                                            </label>
+                                        </tr>";
+                                    }else{
+                                        //Si no en te
+                                        echo "<tr>
+                                        <td class='text-capitalize text-success'>".$datos['nickname']."</td>                                    
+                                        <td class='text-capitalize text-info'> ??? </td>
+                                        <td class='text-danger text-center'> ??? </td>
+                                        <td class='text-center'>
+                                        <label class='m-r-10 p-0 '>
+                                                    <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
+                                                        <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
+                                                    </a>
+                                            </label>
+                                        </tr>";
+                                    }
                                 }
                             }
                             
@@ -335,20 +364,33 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-lightblue b-0 c-white">
                             <tr>
-                                <th>#</th>
                                 <th>Nombre</th>
                                 <th>Nivel</th>
                                 <th>Categoria</th>
-                                <th>exp_actual</th>
                             </tr>
                         </thead>
                         <tbody >
+                            <?php
+                            require_once "../../System/Classes/Personaje.php";
+                            $personajes = new Personaje();
+                            $personajes = $personajes->viewPNJPublic(3);
+                            var_dump($personajes);
+                            
+                            if (!empty($personajes)) {
+                                foreach ($personajes as $row) {
+                                    echo "<tr >
+                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>";     
+                                        var_dump($personajes);
+                                    echo "<tr >";
+                                }
+                            }
+                            
+                            ?>
+                            
                             <tr >
-                                <td>1</td>
                                 <td>Jacob</td>
                                 <td>3</td>
                                 <td>Mago</td>
-                                <td>350</td>
                             </tr>
                             <tr >
                                 <td>2</td>
