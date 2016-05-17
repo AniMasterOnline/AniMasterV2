@@ -33,6 +33,13 @@
             $db->query($sql);
             return $result;
         }
+        public function signout($idu, $idp){
+            $db = new connexio();
+            $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and id_partida= '$idp'";
+            $result = $db->query($sql);
+            var_dump($result);
+            return $result;
+        }
         
         public function view_all(){
             $db = new connexio();
@@ -101,7 +108,7 @@
         }
         public function viewInvited($id_usuario){
             $db = new connexio();
-            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='false'";
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and aceptado='false' and pos = '-1'";
             $query = $db->query($sql);
             $db->close();
             $rtn = array();
@@ -115,22 +122,18 @@
                 return null;
             }
         }
-        public function viewPartida($id_partida){
+        public function viewSolid($id_partida){
             $db = new connexio();
-            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida'";
+            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida' and aceptado='false' and pos = '-2'";
             $query = $db->query($sql);
             $db->close();
-            $count = 0;
+            $rtn = array();
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
-                    $count++;
-                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"]);
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"],$obj["aceptado"]);
+                    array_push($rtn, $partida_usuari);
                 }
-                if($count == 1){
-                    return $partida_usuari;
-                }else{
-                    return null;
-                }
+                return $rtn;
             }else{
                 return null;
             }
@@ -152,7 +155,7 @@
         }
         public function testInvited($id_usuario, $id_partida){
             $db = new connexio();
-            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and id_partida='$id_partida'";
+            $sql = "SELECT * FROM Partida_Usuari where id_usuario='$id_usuario' and id_partida='$id_partida' and aceptado='true'";
             $query = $db->query($sql);
             $db->close();
             if ($query->num_rows > 0) {
@@ -161,6 +164,35 @@
                 return false;
             }
         }
+        public function selectUsers($id_partida){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida_Usuari where id_partida='$id_partida' and aceptado='true'";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_usuari = new Partida_Usuari($obj["id_usuario"],$obj["id_partida"],$obj["pos"],$obj["aceptado"]);
+                    array_push($rtn, $partida_usuari);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
+        
+        public function SelectMaster($id_partida){
+            $db = new connexio();
+            $sql = "SELECT id_usuario FROM Partida_Usuari where id_partida='$id_partida' and aceptado='master'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                array_push($rtn, $obj);
+            }
+            $db->close();
+            return $rtn;
+        }
+        
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();

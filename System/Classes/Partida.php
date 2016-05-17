@@ -11,6 +11,7 @@
         private $nv_sobrenatural;
         private $limite;
         private $token;
+        private $diario;
         
         //METODES
         public function add(){
@@ -32,6 +33,12 @@
             $db->close();
             return $result;
         }
+        public function modDiario($id_partida, $diario){
+            $db = new connexio();
+            $result = $db->query("UPDATE Partida SET diario='$diario' WHERE id_partida= '$id_partida'");
+            $db->close();
+            return $result;
+        }
         public function delete($var){
             $db = new connexio();
             $result = $sql = "DELETE FROM Partida WHERE id_partida=$var";
@@ -47,7 +54,7 @@
             if ($query->num_rows > 0) {
                 $rtn = array();
                 while($obj = $query->fetch_assoc()){
-                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
+                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"],$obj['diario']);
                     //var_dump($Partida);
                     array_push($rtn, $Partida);
                 }
@@ -63,7 +70,7 @@
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
+                $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"],$obj['diario']);
                 //var_dump($Partida);
                 array_push($rtn, $Partida);
             }
@@ -80,7 +87,7 @@
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
                     $count++;
-                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"]);
+                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"],$obj['diario']);
                 }
                 if($count == 1){
                     return $Partida;
@@ -125,6 +132,7 @@
             $this->nv_sobrenatural = 0;
             $this->limite = 0;
             $this->token = "";
+            $this->diario = "";
         }
         
         function __construct7($a2, $a3, $a4, $a5, $a6, $a7, $a8){
@@ -137,9 +145,10 @@
             $this->nv_sobrenatural = $a7;
             $this->limite = $a8;
             $this->token = "";
+            $this->diario = "";
         }
         
-        function __construct9($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9){
+        function __construct10($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10){
             $this->id_partida = $a1;
             $this->id_usuario = $a2;
             $this->nombre = $a3;
@@ -149,6 +158,7 @@
             $this->nv_sobrenatural = $a7;
             $this->limite = $a8;
             $this->token = $a9;
+            $this->diario = $a10;
         }
            
         //METODES SET
@@ -177,7 +187,10 @@
             $this->limite = $limite;
         }
         public function setLToken($token) {
-            $this->limite = $token;
+            $this->token = $token;
+        }
+        public function setDiario($diario) {
+            $this->diario = $diario;
         }
         
         //METODES GET 
@@ -207,6 +220,9 @@
         }
         public function getToken() {
             return $this->token;
+        }
+        public function getDiario() {
+            return $this->diario;
         }
     }
 ?>

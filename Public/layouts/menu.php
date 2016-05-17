@@ -123,7 +123,7 @@
                         }
                     }else if (strpos($self,"settings/")){
                         if(isset($_SESSION['user'])){
-                            require_once "../../System/Classes/Partida_Usuari.php";
+                            require_once "../../System/Classes/Partida_Usuari.php"; 
                             require_once "../../System/Classes/Partida.php";
                             $partida_usuari = new Partida_Usuari();
                             $partida_usuari = $partida_usuari->viewInvited($value['id_usuario']);
@@ -152,23 +152,23 @@
                                                 <div class="lv-body">';
                                                 foreach ($partida_usuari as $row){
                                                     $id_partida = $row->getId_Partida();
-                                                        $partida= new Partida();
-                                                        $partida= $partida->viewPartida($id_partida);
-                                                        $nombre = $partida->getNombre();
-                                                        $imagen = $partida->getImagen();
-                                                        $descripcion = $partida->getDescripcion();
-                                                        echo '  
-                                                            <a class="lv-item" href="../../System/Protocols/Partida_Signin.php?idp='.$id_partida.'&idu='.$value['id_usuario'].'">
-                                                                <div class="media">
-                                                                    <div class="pull-left">
-                                                                        <img class="lv-img-sm" src="../../Public/img/partida/'.$imagen.'" alt="">
-                                                                    </div>
-                                                                    <div class="media-body">
-                                                                        <div class="lv-title">'.$nombre.'</div>
-                                                                        <small class="lv-small">'.$descripcion.'</small>
-                                                                    </div>
+                                                    $partida= new Partida();
+                                                    $partida= $partida->viewPartida($id_partida);
+                                                    $nombre = $partida->getNombre();
+                                                    $imagen = $partida->getImagen();
+                                                    $descripcion = $partida->getDescripcion();
+                                                    echo '  
+                                                        <a class="lv-item" href="../../System/Protocols/Partida_Signin.php?idp='.$id_partida.'&idu='.$value['id_usuario'].'">
+                                                            <div class="media">
+                                                                <div class="pull-left">
+                                                                    <img class="lv-img-sm" src="../../Public/img/partida/'.$imagen.'" alt="">
                                                                 </div>
-                                                            </a>';
+                                                                <div class="media-body">
+                                                                    <div class="lv-title">'.$nombre.'</div>
+                                                                    <small class="lv-small">'.$descripcion.'</small>
+                                                                </div>
+                                                            </div>
+                                                        </a>';
                                                 }
                                     echo '  </div>
                                     </div>

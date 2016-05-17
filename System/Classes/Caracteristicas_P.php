@@ -32,6 +32,18 @@
             $db->close();
             return $rtn;
         }
+        public function viewCaracteristica($value){ 
+            $db = new connexio();
+            $sql = "SELECT bono FROM Caracteristicas_p WHERE base = '$value'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                $obj = $query->fetch_assoc();
+                return $obj;
+            }else{
+                return null;
+            }
+        }
         
 
         //CONSTRUCTORS

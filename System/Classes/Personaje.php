@@ -39,55 +39,6 @@
         private $hp;
         private $he;
         private $la;
-        private $acrobacias;
-        private $atletismo;
-        private $montar;
-        private $nadar;
-        private $trepar;
-        private $saltar;
-        private $frialdad;
-        private $proezas_fuerza;
-        private $resistir_dolor;
-        private $advertir;
-        private $buscar;
-        private $rastrear;
-        private $animales;
-        private $ciencia;
-        private $herbolaria;
-        private $historia;
-        private $medicina;
-        private $memorizar;
-        private $navegacion;
-        private $ocultismo;
-        private $tasacion;
-        private $ley;
-        private $tactica;
-        private $estilo;
-        private $intimidar;
-        private $liderazgo;
-        private $persuasion;
-        private $comerciar;
-        private $callejeo;
-        private $etiqueta;
-        private $cerrajeria;
-        private $disfraz;
-        private $ocultarse;
-        private $robo;
-        private $sigilo;
-        private $tramperia;
-        private $venenos;
-        private $arte;
-        private $baile;
-        private $forja;
-        private $trucos_manos;
-        private $canto;
-        private $runas;
-        private $animismo;
-        private $alquimia;
-        private $especial1;
-        private $especial2;
-        private $especial3;
-        private $especial4;
         
         //METODES
         public function add(){
@@ -150,7 +101,7 @@
         }
         public function viewPersonajeUsuario($id_usuario, $id_partida){ 
             $db = new connexio();
-            $sql = "SELECT * FROM personaje WHERE id_usuario='$id_usuario' and id_partida='$id_partida'";
+            $sql = "SELECT * FROM Personaje WHERE id_usuario='$id_usuario' and id_partida='$id_partida'";
             $query = $db->query($sql);
             $db->close();
             if ($query->num_rows > 0) {
@@ -180,7 +131,7 @@
                 //var_dump($datos);
                 return $datos;
             }else{
-                return "error";
+                return null;
             }
         }
         public function updateExpe($experiencia_Nova,$id_personaje){
@@ -209,6 +160,19 @@
             
             $db->close();
             return $result;
+        }
+        public function viewPNJPublic($id_master){ 
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje WHERE id_partida =`null` or id_usuario = '$id_master'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $Personaje = new Personaje($obj["id_personaje"],$obj["id_usuario"],$obj["id_partida"],$obj["id_categoria"],$obj["nombre"],$obj["nivel"]);
+                //var_dump($Usuario);
+                array_push($rtn, $Personaje);
+            }
+            $db->close();
+            return $rtn;
         }
         
         //CONSTRUCTORS
@@ -259,55 +223,20 @@
             $this->hp = 0; 
             $this->he = 0; 
             $this->la = 0; 
-            $this->acrobacias = 0; 
-            $this->atletismo = 0; 
-            $this->montar = 0; 
-            $this->nadar = 0; 
-            $this->trepar = 0; 
-            $this->saltar = 0; 
-            $this->frialdad = 0; 
-            $this->proezas_fuerza = 0; 
-            $this->resistir_dolor = 0; 
-            $this->advertir = 0; 
-            $this->buscar = 0; 
-            $this->rastrear = 0; 
-            $this->animales = 0; 
-            $this->ciencia = 0; 
-            $this->herbolaria = 0; 
-            $this->historia = 0; 
-            $this->medicina = 0; 
-            $this->memorizar = 0; 
-            $this->navegacion = 0; 
-            $this->ocultismo = 0; 
-            $this->tasacion = 0; 
-            $this->ley = 0; 
-            $this->tactica = 0; 
-            $this->estilo = 0; 
-            $this->intimidar = 0; 
-            $this->liderazgo = 0; 
-            $this->persuasion = 0; 
-            $this->comerciar = 0; 
-            $this->callejeo = 0; 
-            $this->etiqueta = 0; 
-            $this->cerrajeria = 0; 
-            $this->disfraz = 0; 
-            $this->ocultarse = 0; 
-            $this->robo = 0; 
-            $this->sigilo = 0; 
-            $this->tramperia = 0; 
-            $this->venenos = 0; 
-            $this->arte = 0; 
-            $this->baile = 0; 
-            $this->forja = 0; 
-            $this->trucos_manos = 0; 
-            $this->canto = 0; 
-            $this->runas = 0; 
-            $this->animismo = 0; 
-            $this->alquimia = 0; 
-            $this->especial1 = 0; 
-            $this->especial2 = 0; 
-            $this->especial3 = 0; 
-            $this->especial4 = 0;
+        }
+        
+        function __construct1($a5){
+            $this->id_personaje=0;
+            $this->nombre = $a5;
+        }
+        
+        function __construct6($a2, $a3, $a4, $a5, $a6){
+            $this->id_personaje=0;
+            $this->id_usuario = $a2;
+            $this->id_partida=$a3;
+            $this->id_categoria = $a4;
+            $this->nombre = $a5;
+            $this->nivel = $a6;
         }
         
         function __construct9($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10){
@@ -322,7 +251,7 @@
             $this->turno = $a9; 
             $this->puntos_vida = $a10;
         }
-        function __construct85($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37, $a38, $a39, $a40, $a41, $a42, $a43, $a44, $a45, $a46, $a47, $a48, $a49, $a50, $a51, $a52, $a53, $a54, $a55, $a56, $a57, $a58, $a59, $a60, $a61, $a62, $a63, $a64, $a65, $a66, $a67, $a68, $a69, $a70, $a71, $a72, $a73, $a74, $a75, $a76, $a77, $a78, $a79, $a80, $a81, $a82, $a83, $a84, $a85, $a86){
+        function __construct36($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37){
             $this->id_personaje=0;
             $this->id_usuario = $a2;
             $this->id_partida=$a3;
@@ -360,63 +289,11 @@
             $this->hp = $a35; 
             $this->he = $a36; 
             $this->la = $a37; 
-            $this->acrobacias = $a38; 
-            $this->atletismo = $a39; 
-            $this->montar = $a40; 
-            $this->nadar = $a41; 
-            $this->trepar = $a42; 
-            $this->saltar = $a43; 
-            $this->frialdad = $a44; 
-            $this->proezas_fuerza = $a45; 
-            $this->resistir_dolor = $a46; 
-            $this->advertir = $a47; 
-            $this->buscar = $a48; 
-            $this->rastrear = $a49; 
-            $this->animales = $a50; 
-            $this->ciencia = $a51; 
-            $this->herbolaria = $a52; 
-            $this->historia = $a53; 
-            $this->medicina = $a54; 
-            $this->memorizar = $a55; 
-            $this->navegacion = $a56; 
-            $this->ocultismo = $a57; 
-            $this->tasacion = $a58; 
-            $this->ley = $a59; 
-            $this->tactica = $a60; 
-            $this->estilo = $a61; 
-            $this->intimidar = $a62; 
-            $this->liderazgo = $a63; 
-            $this->persuasion = $a64; 
-            $this->comerciar = $a65; 
-            $this->callejeo = $a66; 
-            $this->etiqueta = $a67; 
-            $this->cerrajeria = $a68; 
-            $this->disfraz = $a69; 
-            $this->ocultarse = $a70; 
-            $this->robo = $a71;
-            $this->sigilo = $a72; 
-            $this->tramperia = $a73; 
-            $this->venenos = $a74; 
-            $this->arte = $a75; 
-            $this->baile = $a76; 
-            $this->forja = $a77; 
-            $this->trucos_manos = $a78; 
-            $this->canto = $a79; 
-            $this->runas = $a80; 
-            $this->animismo = $a81; 
-            $this->alquimia = $a82; 
-            $this->especial1 = $a83; 
-            $this->especial2 = $a84; 
-            $this->especial3 = $a85; 
-            $this->especial4 = $a86; 
         }
         
-        function __construct1($a5){
-            $this->id_personaje=0;
-            $this->nombre = $a5;
-        }
         
-        function __construct86($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37, $a38, $a39, $a40, $a41, $a42, $a43, $a44, $a45, $a46, $a47, $a48, $a49, $a50, $a51, $a52, $a53, $a54, $a55, $a56, $a57, $a58, $a59, $a60, $a61, $a62, $a63, $a64, $a65, $a66, $a67, $a68, $a69, $a70, $a71, $a72, $a73, $a74, $a75, $a76, $a77, $a78, $a79, $a80, $a81, $a82, $a83, $a84, $a85, $a86){
+        
+        function __construct37($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37){
             $this->id_personaje=$a1;
             $this->id_usuario = $a2;
             $this->id_partida=$a3;
@@ -454,55 +331,6 @@
             $this->hp = $a35; 
             $this->he = $a36; 
             $this->la = $a37; 
-            $this->acrobacias = $a38; 
-            $this->atletismo = $a39; 
-            $this->montar = $a40; 
-            $this->nadar = $a41; 
-            $this->trepar = $a42; 
-            $this->saltar = $a43; 
-            $this->frialdad = $a44; 
-            $this->proezas_fuerza = $a45; 
-            $this->resistir_dolor = $a46; 
-            $this->advertir = $a47; 
-            $this->buscar = $a48; 
-            $this->rastrear = $a49; 
-            $this->animales = $a50; 
-            $this->ciencia = $a51; 
-            $this->herbolaria = $a52; 
-            $this->historia = $a53; 
-            $this->medicina = $a54; 
-            $this->memorizar = $a55; 
-            $this->navegacion = $a56; 
-            $this->ocultismo = $a57; 
-            $this->tasacion = $a58; 
-            $this->ley = $a59; 
-            $this->tactica = $a60; 
-            $this->estilo = $a61; 
-            $this->intimidar = $a62; 
-            $this->liderazgo = $a63; 
-            $this->persuasion = $a64; 
-            $this->comerciar = $a65; 
-            $this->callejeo = $a66; 
-            $this->etiqueta = $a67; 
-            $this->cerrajeria = $a68; 
-            $this->disfraz = $a69; 
-            $this->ocultarse = $a70; 
-            $this->robo = $a71;
-            $this->sigilo = $a72; 
-            $this->tramperia = $a73; 
-            $this->venenos = $a74; 
-            $this->arte = $a75; 
-            $this->baile = $a76; 
-            $this->forja = $a77; 
-            $this->trucos_manos = $a78; 
-            $this->canto = $a79; 
-            $this->runas = $a80; 
-            $this->animismo = $a81; 
-            $this->alquimia = $a82; 
-            $this->especial1 = $a83; 
-            $this->especial2 = $a84; 
-            $this->especial3 = $a85; 
-            $this->especial4 = $a86; 
         }
            
         //METODES SET

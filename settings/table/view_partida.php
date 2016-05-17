@@ -140,7 +140,10 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Invitar Jugador</a>
+                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Gestionar Invitaciónes</a>
+                                </li>
+                                <li>
+                                    <a <?php echo 'href="gestionar_experiencia.php?id='.$id_partida.'"';?>>Gestionar Experiencia</a>
                                 </li>
                                 <li>
                                     <a href="#">Modificar Jugador</a>
@@ -148,9 +151,7 @@ include "../../Public/layouts/head.php";
                                 <li>
                                     <a href="#">Eliminar Jugador</a>
                                 </li>
-                                <li>
-                                    <a <?php echo 'href="gestionar_experiencia.php?id='.$id_partida.'"';?>>Gestionar Experiencia</a>
-                                </li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -159,36 +160,71 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-lightgreen b-0 c-white">
                             <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Nivel</th>
-                                <th>Categoria</th>
-                                <th>exp_actual</th>
+                                <th>Usuario</th>
+                                <th>Personaje</th>
+                                <th class='text-center'>Nivel</th>
+                                <th class='text-center'>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody >
                             <?php
                             require_once "../../System/Classes/Personaje.php";
                             require_once "../../System/Classes/Usuario.php";
-                            require_once "../../System/Classes/Nivel.php";
                             
-                            $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonajesPartida($id_partida);
+                            //Buscar per partida-Usuari, id partida, agafar tots els usaris que estan en true i agafem la id_usuari
+                            //Tenim tots els usuaris de la pratida acceptats.
+                            //agafar la id del usuari a la funció que esborra els usuaris,
+                            //i si se vol fer millor, agafo la funció dintre Protocol
+                            //comprovar si te personaje en partida i si no es null esborrar el personaje per id_personaje en id_partida
                             
-                            $usuario = new Usuario();
                             
-                            
+                            $PartidaUsuario = new Partida_Usuari();
+                            $PartidaUsuario = $PartidaUsuario->selectUsers($id_partida);
                             /*Mostrem tots els personatges que siguin d'aquesta partida*/
-                            if (!empty($array['error'])) {
-                                foreach ($array as $row) {
-                                $nombreUsuario = $usuario->return_user($row['id_usuario']);
-                                
-                                echo "<tr>
-                                    <td class='text-capitalize text-success'>".$nombreUsuario['nickname']."</td>                                    
-                                    <td class='text-capitalize text-info'>".$row['nombre']."</td>
-                                    <td class='text-danger text-center'>".$row['categoria']."</td>
-                                    <td class='text-danger text-center'>".$row['nivel']."</td>
-                                    </tr>";
+                            //Si hi ha personatges en la partida entrem al if
+                            if (!empty($PartidaUsuario)) {
+                                //per a cada personatge busquem el seu usuari per la id_usuario
+                                foreach ($PartidaUsuario as $linia) {
+                                    // id del usuari
+                                    $id_Usuari = $linia->getId_Usuario();
+                                    
+                                    // obtenim les dades del usuari
+                                    $usuari = new Usuario();
+                                    $datos = $usuari->return_user($id_Usuari);
+                                    
+                                    $nickname = $usuari->getNickname();
+                                    // busquem si te un pj i sino mostrem que no en te.
+                                    //Busquem dinte de personaje si la id del usuari te cap id personaje i si coincideix en la fila les id de partida
+                                    $personaje = new Personaje();
+                                    $personajeUsuarioPartida = $personaje->viewPersonajeUsuario($id_Usuari, $id_partida);
+                                    
+                                    if (!empty($personajeUsuarioPartida)){
+                                        //si te un pj
+                                        echo "<tr>
+                                        <td class='text-capitalize text-success'>".$datos['nickname']."</td>                                    
+                                        <td class='text-capitalize text-info'>".$personajeUsuarioPartida['nombre']."</td>
+                                        <td class='text-danger text-center'>".$personajeUsuarioPartida['nivel']."</td>
+                                        <td class='text-center'>
+                                        <label class='m-r-10 p-0 '>
+                                                    <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
+                                                        <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
+                                                    </a>
+                                            </label>
+                                        </tr>";
+                                    }else{
+                                        //Si no en te
+                                        echo "<tr>
+                                        <td class='text-capitalize text-success'>".$datos['nickname']."</td>                                    
+                                        <td class='text-capitalize text-info'> ??? </td>
+                                        <td class='text-danger text-center'> ??? </td>
+                                        <td class='text-center'>
+                                        <label class='m-r-10 p-0 '>
+                                                    <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
+                                                        <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
+                                                    </a>
+                                            </label>
+                                        </tr>";
+                                    }
                                 }
                             }
                             
@@ -328,34 +364,43 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-lightblue b-0 c-white">
                             <tr>
-                                <th>#</th>
                                 <th>Nombre</th>
                                 <th>Nivel</th>
                                 <th>Categoria</th>
-                                <th>exp_actual</th>
                             </tr>
                         </thead>
                         <tbody >
-                            <tr >
-                                <td>1</td>
+                            <?php
+                            require_once "../../System/Classes/Personaje.php";
+                            require_once "../../System/Classes/Usuario.php";
+                            $Partida_Usuari = new Partida_Usuari();
+                            //Seleccionem el master de la partida
+                            $Partida_Usuari = $Partida_Usuari->SelectMaster($id_partida);
+                            var_dump($Partida_Usuari->getId_Usuario());     
+                            $personajes = new Personaje();
+                            
+                            $personajes = $personajes->viewPNJPublic($id_Usuari['id_usuario']);
+                            
+                            
+                            if (!empty($personajes)) {
+                                foreach ($personajes as $row) {
+                                    echo "<tr >
+                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>";     
+                                        var_dump($personajes);
+                                        
+                                    echo "
+                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>
+                                        <td class='text-capitalize text-success'>".$personajes['nombre']."</td>
+                                        </tr >";
+                                }
+                            }
+                            
+                            ?>
+                            
+                            <tr>
                                 <td>Jacob</td>
                                 <td>3</td>
                                 <td>Mago</td>
-                                <td>350</td>
-                            </tr>
-                            <tr >
-                                <td>2</td>
-                                <td>Pau</td>
-                                <td>2</td>
-                                <td>Ladron</td>
-                                <td>280</td>
-                            </tr>
-                            <tr >
-                                <td>3</td>
-                                <td>Marc</td>
-                                <td>4</td>
-                                <td>Guerrero</td>
-                                <td>480</td>
                             </tr>
                         </tbody>
                     </table>

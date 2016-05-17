@@ -4,6 +4,7 @@
         /*Atributs*/
         private $id_HS;
         private $id_personaje;
+        private $valor;
         
         //METODES
         public function add(){

@@ -16,13 +16,9 @@ if(isset($_GET['solid']) && !empty($_GET['solid'])){
         
         $partida_usuari = new Partida_Usuari($value['id_usuario'],$id_partida, -2,'false');
         $users = $partida_usuari->countUsers($id_partida);
-        if ($users < $limite){
-            $partida_usuari->add();
-            echo '<META http-equiv="refresh" content="0;URL=../../partida.php">'; 
-            exit;
-        }else{
-            include '../404/404.php';
-        }
+        $partida_usuari->add();
+        echo '<META http-equiv="refresh" content="0;URL=../../partida.php">'; 
+        exit;
     }else{
         include '../404/404.php';
     }
@@ -78,8 +74,35 @@ include "../../Public/layouts/head.php";
 <!-- Body content box -->
 <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <div class="card m-b-5">
+                <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
+                    <h2 class="lvh-label c-white f-18"><?php echo ''.$nombre; ?></h2>
+                    <ul class="lv-actions actions">
+                        <li>
+                            <a href="#">
+                                <i class="zmdi zmdi-info c-white"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                <i class="zmdi zmdi-more-vert c-white"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="view_partida.php?id=<?php echo $id_partida; ?>">Gestionar Partida</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card m-b-10">
                 <div class="lv-header-alt clearfix m-b-0 bgm-blue z-depth-1-bottom">
                     <h2 class="lvh-label  c-white f-18">Invitar por url</h2>
                     <ul class="lv-actions actions">
@@ -103,13 +126,13 @@ include "../../Public/layouts/head.php";
                 </div>
                 <div class="card-body card-padding bgm-lightblue c-white h-250 vcenter">
                     <div class="w-100 ">
-                        <textarea class="form-control input-sm m-b-10" readonly style="width: 100%; font-size: 13px; border: 0; padding: 10px 8px; resize: none; height: 100px;"><?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?token='.$token; ?></textarea>
+                        <textarea class="form-control input-sm m-b-10" readonly style="width: 100%; font-size: 13px; border: 0; padding: 10px 8px; resize: none; height: 100px;"><?php if($token != null){echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?token='.$token; }else{ echo ' ... ';}?></textarea>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card">
+            <div class="card m-b-10">
                 <div class="lv-header-alt clearfix m-b-0 bgm-green z-depth-1-bottom">
                     <h2 class="lvh-label  c-white f-18">Buscar Jugadores </h2>
                     <ul class="lv-actions actions">
@@ -146,7 +169,7 @@ include "../../Public/layouts/head.php";
                                     },
                                     success:  function (response) {
                                         console.log(response);
-                                        if(response === 'success'){
+                                        if(response == 001){
                                             swal("Invitación enviada!", "Jugador invitado correctamente!", "success");
                                         }else{
                                             swal("Error!", "Lo sentimos ya no puedes enviar mas invitaciónes!", "warning");
@@ -194,6 +217,57 @@ include "../../Public/layouts/head.php";
                         });
                         
                     </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="lv-header-alt clearfix m-b-0 bgm-red z-depth-1-bottom">
+            <h2 class="lvh-label  c-white f-18">Solicitudes de jugadores</h2>
+            <ul class="lv-actions actions">
+                <li>
+                    <a data-toggle="tooltip" data-placement="right" title="Aqui puedes aceptar a los jugadores que quieran unirse a tu partida">
+                        <i class="zmdi zmdi-info c-white"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body card-padding bgm-white c-white card-body-partida p-0">
+            <div class="listview lv-bordered lv-lg">
+                <div class="lv-body">
+                    <?php 
+                        require_once('../../System/Classes/Usuario.php');
+                        $partida_usuari = new Partida_Usuari();
+                        $partida_usuari = $partida_usuari->viewSolid($id_partida);
+                        $cont = 0;
+                        if ($partida_usuari != null){
+                            foreach ($partida_usuari as $row){
+                                $id_usuario = $row->getId_Usuario();
+                                $usuario = new Usuario();
+                                $datos = $usuario->return_user($id_usuario);
+                                
+                                echo '<div class="lv-item media">
+                                        <div class="checkbox pull-left">
+                                            <label class="m-r-10 p-0" >
+                                                <a href="../../System/Protocols/Partida_Signin.php?idp='.$id_partida.'&idu='.$id_usuario.'">
+                                                    <i class="zmdi zmdi-check c-black  f-16 c-green"></i>
+                                                </a>
+                                            </label>
+                                            <label class="m-r-10 p-0">
+                                                <a href="../../System/Protocols/Partida_SignoutMaster.php?idp='.$id_partida.'&idu='.$id_usuario.'">
+                                                    <i class="zmdi zmdi-delete c-black f-16 c-red"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title f-14">'.$datos['nickname'].'</div>
+                                        </div>
+                                    </div>';
+                            }
+                        }
+                    ?>
+                    
+
                 </div>
             </div>
         </div>
