@@ -163,6 +163,7 @@ include "../../Public/layouts/head.php";
                                 <th>Usuario</th>
                                 <th>Personaje</th>
                                 <th>Nivel</th>
+                                <th class='text-center'>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -182,11 +183,18 @@ include "../../Public/layouts/head.php";
                                 //per a cada personatge busquem el seu usuari per la id_usuario
                                 foreach ($arrayPersonajes as $row) {
                                 $nombreUsuario = $usuario->return_user($row['id_usuario']);
+                                var_dump($row['id_usuario']);
                                 
                                 echo "<tr>
                                     <td class='text-capitalize text-success'>".$nombreUsuario['nickname']."</td>                                    
                                     <td class='text-capitalize text-info'>".$row['nombre']."</td>
                                     <td class='text-danger text-center'>".$row['nivel']."</td>
+                                    <td class='text-center'>
+                                    <label class='m-r-10 p-0 '>
+                                                <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$nombreUsuario['id_usuario']."'>
+                                                    <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
+                                                </a>
+                                        </label>
                                     </tr>";
                                 }
                             }

@@ -35,8 +35,9 @@
         }
         public function signout($idu, $idp){
             $db = new connexio();
-            $result = $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and id_partida= '$idp'";
-            $db->query($sql);
+            $sql = "delete from Partida_Usuari WHERE id_usuario= '$idu' and id_partida= '$idp'";
+            $result = $db->query($sql);
+            var_dump($result);
             return $result;
         }
         

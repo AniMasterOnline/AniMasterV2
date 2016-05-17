@@ -2025,27 +2025,12 @@ VALUES
 (40, 'Vulnerable a un tipo de daño', 20,10);
 
 
---
--- Volcado de datos para la tabla `Partida`
---
-INSERT INTO `Partida` (`id_partida`, `id_usuario`, `nombre`, `imagen`, `descripcion`, `anyo`, `nv_sobrenatural`, `limite`, `token`, `diario`) 
-VALUES 
-('1', '3', 'asgard', NULL, 'reyes', '983', '2', '4', NULL, NULL);
-
---
--- Volcado de datos para la tabla `Partida_Usuari`
---
-INSERT INTO `Partida_Usuari` (`id_usuario`, `id_partida`, `pos`, `aceptado`) 
-VALUES 
-('3', '1', '1', 'master'),
-('2', '1', '-1', 'true');
 
 --
 -- Volcado de datos para la tabla `Personaje`
 --
 INSERT INTO `Personaje` (`id_personaje`, `id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`)
 VALUES 
-('1', '2', '1', '1', 'DarkAsasin', 'de la Torre', '20', '2', '55', '130', 'hombre', 'Humano', 'Negro', 'Azules', '1,80 mts', '80 kg', '7', '13', '157', '6', '7', '6', '6', '5', '6', '4', '6', '39', NULL, 'true', '280', '420', '700', '90', '85', NULL, '35'),
 ('2', '1', NULL, '10', 'Campesino', '', NULL, NULL, '40', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '5', '5', '5', '5', '5', '5', '5', '5', NULL, NULL, 'false', '320', '80', '400', '20', NULL, '20', NULL),
 ('3', '1', NULL, '6', 'Cazador', '', NULL, NULL, '50', '80', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '6', '5', '6', '5', '5', '6', '5', '5', NULL, NULL, 'false', '290', '120', '410', '35', NULL, '25', NULL),
 ('4', '1', NULL, '10', 'Herrero', '', NULL, NULL, '45', '85', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '12', NULL, '5', '6', '6', '6', '5', '5', '5', '5', NULL, NULL, 'false', '340', '60', '400', '15', '15', NULL, NULL),
