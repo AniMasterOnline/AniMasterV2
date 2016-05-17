@@ -2052,18 +2052,7 @@ VALUES
 ('5', '1', NULL, '10', 'Erudito', '', NULL, '3', '55', '70', NULL, 'Humana', NULL, NULL, NULL, NULL, NULL, '10', NULL, '5', '5', '5', '5', '8', '6', '6', '6', NULL, NULL, 'false', '360', '40', '400', '10', NULL, '10', NULL);
 
 
---
--- Volcado de datos para la tabla `Personaje_HS`
---
---INSERT INTO `Personaje_HS` (`id_personaje`, `id_habilidad`, `valor`) 
---VALUES 
---(1, 1, 5),
---(1, 2, 10),
---(1, 3, 5),
---(1, 4, 5),
---(1, 47, 5),
---(1, 48, 5),
---(1, 49, 5);
+
 
 
 
