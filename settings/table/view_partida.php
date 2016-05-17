@@ -160,34 +160,32 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-lightgreen b-0 c-white">
                             <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
+                                <th>Usuario</th>
+                                <th>Personaje</th>
                                 <th>Nivel</th>
-                                <th>Categoria</th>
-                                <th>exp_actual</th>
                             </tr>
                         </thead>
                         <tbody >
                             <?php
                             require_once "../../System/Classes/Personaje.php";
                             require_once "../../System/Classes/Usuario.php";
-                            require_once "../../System/Classes/Nivel.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonajesPartida($id_partida);
-                            
+                            //Agafem a tots els personatges que hi ha en la partida
+                            $arrayPersonajes = $Personaje->viewPersonajesPartida($id_partida);
                             $usuario = new Usuario();
                             
                             
                             /*Mostrem tots els personatges que siguin d'aquesta partida*/
-                            if (!empty($array['error'])) {
-                                foreach ($array as $row) {
+                            //Si hi ha personatges en la partida entrem al if
+                            if (!empty($arrayPersonajes)) {
+                                //per a cada personatge busquem el seu usuari per la id_usuario
+                                foreach ($arrayPersonajes as $row) {
                                 $nombreUsuario = $usuario->return_user($row['id_usuario']);
                                 
                                 echo "<tr>
                                     <td class='text-capitalize text-success'>".$nombreUsuario['nickname']."</td>                                    
                                     <td class='text-capitalize text-info'>".$row['nombre']."</td>
-                                    <td class='text-danger text-center'>".$row['categoria']."</td>
                                     <td class='text-danger text-center'>".$row['nivel']."</td>
                                     </tr>";
                                 }

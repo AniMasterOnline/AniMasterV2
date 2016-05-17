@@ -150,7 +150,7 @@
         }
         public function viewPersonajeUsuario($id_usuario, $id_partida){ 
             $db = new connexio();
-            $sql = "SELECT * FROM personaje WHERE id_usuario='$id_usuario' and id_partida='$id_partida'";
+            $sql = "SELECT * FROM Personaje WHERE id_usuario='$id_usuario' and id_partida='$id_partida'";
             $query = $db->query($sql);
             $db->close();
             if ($query->num_rows > 0) {

@@ -2055,15 +2055,15 @@ VALUES
 --
 -- Volcado de datos para la tabla `Personaje_HS`
 --
-INSERT INTO `Personaje_HS` (`id_personaje`, `id_habilidad`, `valor`) 
-VALUES 
-(1, 1, 5),
-(1, 2, 10),
-(1, 3, 5),
-(1, 4, 5),
-(1, 47, 5),
-(1, 48, 5),
-(1, 49, 5);
+--INSERT INTO `Personaje_HS` (`id_personaje`, `id_habilidad`, `valor`) 
+--VALUES 
+--(1, 1, 5),
+--(1, 2, 10),
+--(1, 3, 5),
+--(1, 4, 5),
+--(1, 47, 5),
+--(1, 48, 5),
+--(1, 49, 5);
 
 
 
