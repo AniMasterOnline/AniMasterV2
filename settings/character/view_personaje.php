@@ -256,14 +256,31 @@ include "../../Public/layouts/head.php";
                                         $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
                                         $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
                                         $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
-                                        echo "<tr>
+                                        $is0 = false;
+                                        if($hp == 0){
+                                            $HAfinal = 0;
+                                            $is0 = true;
+                                        }
+                                        if(!$is0){
+                                            echo "<tr>
                                             <th class='f-400'>".$arrayHP->getNombre()."</th>
                                             <th class='f-400'>".$hp."</th>
                                             <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
                                             <th class='f-400'>".$arrayCaract_p."</th>
                                             <th class='f-400'>0</th>
                                             <th class='f-400'>".$bonoCategoria."</th>
-                                            <th class='f-700'>".$HAfinal."</th></tr>";
+                                            <th class='f-700 c-green'>".$HAfinal."</th></tr>";
+                                        }else{
+                                            echo "<tr>
+                                            <th class='f-400'>".$arrayHP->getNombre()."</th>
+                                            <th class='f-400'>".$hp."</th>
+                                            <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                                            <th class='f-400'>".$arrayCaract_p."</th>
+                                            <th class='f-400'>0</th>
+                                            <th class='f-400'>".$bonoCategoria."</th>
+                                            <th class='f-700 c-red'>".$HAfinal."</th></tr>";
+                                        }
+                                        
                                     }
                                     
                             }
@@ -286,6 +303,7 @@ include "../../Public/layouts/head.php";
                                 <th>Base</th>
                                 <th>Caract</th>
                                 <th>Bono</th>
+                                <th>Esp</th>
                                 <th>Cat</th>
                                 <th>Final</th>
                             </tr>
@@ -326,14 +344,34 @@ include "../../Public/layouts/head.php";
                                 $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
 
                                 $hs_final = $hs_value + $hs_bono + $hs_catfin;
-                                echo '  <tr>
+                                $is0 = false;
+                                if($hs_value == 0){
+                                    $hs_final = 0;
+                                    $is0 = true;
+                                }
+                                
+                                if(!$is0){
+                                    echo '  <tr>
                                             <th class="f-400">'.$hs_name.'</th>
                                             <th class="f-400">'.$hs_value.'</th>
                                             <th class="f-400">'.$hs_car.'</th>
                                             <th class="f-400">'.$hs_bono.'</th>
+                                            <th class="f-400">0</th>
                                             <th class="f-400">'.$hs_catfin.'</th>
-                                            <th class="f-700">'.$hs_final.'</th>
+                                            <th class="f-700 c-green">'.$hs_final.'</th>
                                         </tr>';
+                                }else{
+                                    echo '  <tr>
+                                            <th class="f-400">'.$hs_name.'</th>
+                                            <th class="f-400">'.$hs_value.'</th>
+                                            <th class="f-400">'.$hs_car.'</th>
+                                            <th class="f-400">'.$hs_bono.'</th>
+                                            <th class="f-400">0</th>
+                                            <th class="f-400">'.$hs_catfin.'</th>
+                                            <th class="f-700 c-red">'.$hs_final.'</th>
+                                        </tr>';
+                                }
+                                
 
 
                             }
