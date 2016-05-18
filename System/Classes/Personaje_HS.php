@@ -54,6 +54,22 @@
                 return null;
             }
         }
+        public function viewPersonaje_HS($id_personaje){
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje_HS where id_personaje='$id_personaje'";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $personaje_hs = new Personaje_HS($obj["id_personaje"],$obj["id_HS"],$obj['valor']);
+                    array_push($rtn, $personaje_hs);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
         
 
         //CONSTRUCTORS

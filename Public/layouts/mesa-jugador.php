@@ -134,12 +134,12 @@
                  <div class="row">
                     <div class="col-md-12">
                         <div class="card m-0">
-                            <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
                                 <h2 class="lvh-label c-white f-18">Caracteristicas</h2>
                             </div>
                             <div class="card-body card-padding table-responsive p-0">
                                 <table class="table b-0 m-0">
-                                    <thead class="bgm-blue b-0 c-white">
+                                    <thead class="bgm-indigo b-0 c-white">
                                         <tr>
                                             <th class="text-center">Agi</th>
                                             <th class="text-center">Con</th>
@@ -178,12 +178,12 @@
                             </div>
                         </div>
                         <div class="card m-b-0">
-                            <div class="lv-header-alt clearfix m-b-0 bgm-lightblue z-depth-1-bottom">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
                                 <h2 class="lvh-label  c-white f-18">Habilidades Primarias </h2>
                             </div>
-                            <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                            <div class="card-body card-padding table-responsive p-0">
                                 <table class="table b-0">
-                                    <thead class="bgm-cyan b-0 c-white">
+                                    <thead class="bgm-blue b-0 c-white">
                                         <tr>
                                             <th>&nbsp;</th>
                                             <th>Base</th>
@@ -237,12 +237,12 @@
                                                     }
                                                     $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
                                                     $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
-                                                    $HAfinal = (int)$hp + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                                    $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
                                                     echo "<tr>
                                                         <th class='f-400'>".$arrayHP->getNombre()."</th>
                                                         <th class='f-400'>".$hp."</th>
                                                         <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
-                                                        <th class='f-400'>".$arrayCaract_p['bono']."</th>
+                                                        <th class='f-400'>".$arrayCaract_p."</th>
                                                         <th class='f-400'>0</th>
                                                         <th class='f-400'>".$bonoCategoria."</th>
                                                         <th class='f-700'>".$HAfinal."</th></tr>";
@@ -254,7 +254,77 @@
                                 </table>
                             </div>
                         </div>
-                        
+                        <div class="card m-0">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
+                                <h2 class="lvh-label  c-white f-18">Habilidades Secundarias </h2>
+                            </div>
+                            <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                                <table class="table b-0">
+                                    <thead class="bgm-blue b-0 c-white">
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Base</th>
+                                            <th>Caract</th>
+                                            <th>Bono</th>
+                                            <th>Cat</th>
+                                            <th>Final</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <?php
+                                        require_once "../../System/Classes/Personaje.php";
+                                        require_once "../../System/Classes/Personaje_HS.php";
+                                        require_once "../../System/Classes/Habilidades_Secundarias.php";
+                                        require_once "../../System/Classes/Caracteristicas_P.php";
+                                        require_once "../../System/Classes/Categoria_HS.php";
+
+                                         
+                                        $Categoria_HS = new Categoria_HS(); 
+                                        
+                                        /*Mostrem totes les hs del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+                                        $personaje_hs = new Personaje_HS();
+                                        $personaje_hs = $personaje_hs->viewPersonaje_HS($id_personaje);
+                                        foreach ($personaje_hs as $row){
+                                            $hs_value = $row->getValor(); // valor de la hs
+                                            $hs_id = $row->getId_HS();  // id de la hs
+                                            
+                                            $HS = new Habilidades_Secundarias();
+                                            $HS = $HS->view_HS($hs_id);
+                                            
+                                            $hs_name = $HS->getNombre(); // Nombre de la hs
+                                            $hs_car = $HS->getCaracteristica(); // Nombre de la caracteristica AGI ... etc
+                                            
+                                            $hs_base = $return['c_'.$hs_car]; // Base de la caracteristica del pj
+                                            
+                                            $Caract_p = new Caracteristicas_p();
+                                            $hs_bono = $Caract_p->viewCaracteristica($hs_base);
+                                            
+                                            $Categoria_HS = new Categoria_HS();
+                                            $arrayCat_HS = $Categoria_HS->viewHS1($return['id_categoria'], $hs_id);
+                                            $hs_incrlv = (int)$arrayCat_HS['incr_nv']; // incremento categoria
+                                            if($hs_incrlv == null){
+                                                $hs_incrlv = 0; 
+                                            }
+                                            $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
+                                            
+                                            $hs_final = $hs_value + $hs_bono + $hs_catfin;
+                                            echo '  <tr>
+                                                        <th class="f-400">'.$hs_name.'</th>
+                                                        <th class="f-400">'.$hs_value.'</th>
+                                                        <th class="f-400">'.$hs_car.'</th>
+                                                        <th class="f-400">'.$hs_bono.'</th>
+                                                        <th class="f-400">'.$hs_catfin.'</th>
+                                                        <th class="f-700">'.$hs_final.'</th>
+                                                    </tr>';
+                                            
+                                            
+                                        }
+                                        
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

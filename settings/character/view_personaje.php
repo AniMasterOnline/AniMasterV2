@@ -255,15 +255,15 @@ include "../../Public/layouts/head.php";
                                         }
                                         $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
                                         $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
-                                        $HAfinal = (int)$hp + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                        $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
                                         echo "<tr>
-                                            <th class=''>".$arrayHP->getNombre()."</th>
-                                            <th class=''>".$hp."</th>
-                                            <th class=''>".$arrayHP->getCaracteristica()."</th>
-                                            <th class=''>".$arrayCaract_p['bono']."</th>
-                                            <th class=''>0</th>
-                                            <th class=''>".$bonoCategoria."</th>
-                                            <th class=''>".$HAfinal."</th></tr>";
+                                            <th class='f-400'>".$arrayHP->getNombre()."</th>
+                                            <th class='f-400'>".$hp."</th>
+                                            <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                                            <th class='f-400'>".$arrayCaract_p."</th>
+                                            <th class='f-400'>0</th>
+                                            <th class='f-400'>".$bonoCategoria."</th>
+                                            <th class='f-700'>".$HAfinal."</th></tr>";
                                     }
                                     
                             }
@@ -286,7 +286,6 @@ include "../../Public/layouts/head.php";
                                 <th>Base</th>
                                 <th>Caract</th>
                                 <th>Bono</th>
-                                <th>Esp</th>
                                 <th>Cat</th>
                                 <th>Final</th>
                             </tr>
@@ -294,49 +293,52 @@ include "../../Public/layouts/head.php";
                         <tbody >
                             <?php
                             require_once "../../System/Classes/Personaje.php";
+                            require_once "../../System/Classes/Personaje_HS.php";
                             require_once "../../System/Classes/Habilidades_Secundarias.php";
                             require_once "../../System/Classes/Caracteristicas_P.php";
                             require_once "../../System/Classes/Categoria_HS.php";
                             
-                            $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
-                            $HS = new Habilidades_Secundarias(); 
-                            $Caract_p = new Caracteristicas_p(); 
-                            $Categoria_HS = new Categoria_HS(); 
-                            
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             /*Mostrem totes les hs del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
-                            if (!empty($array)) {
-                                    $contador = 0;
-                                    while ($contador < 49){
-                                        $contador++;
-                                        $arrayHP = $HS->view_HS($contador);
-                                        $caracteristicaPersonaje = "c_".$arrayHP->getCaracteristica();
-                                        //var_dump($caracteristicaPersonaje);
-                                        
-                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array[$caracteristicaPersonaje]);
-                                        //var_dump($arrayCaract_p);
-                                        
-                                        $return_CatHS = $Categoria_HS->viewHS1($array['id_categoria'], $contador);
-                                        if (!empty($return_CatHS['incr_nv'])) {
-                                            $bonoCategoria = (0*(int)$array['nivel']);
-                                        }else {
-                                            $bonoCategoria = ((int)$return_CatHS['incr_nv']*(int)$array['nivel']);
-                                        }
-                                        $HSfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
-                                        echo "<tr>
-                                            <th class=''>".$arrayHP->getNombre()."</th>";
-                                        
-                                        //intentar automatitzar el bucle passant la id_secundaria de la taula personaje_HS en comptes de $contador
-                                        echo "
-                                            <th class=''>".$array[$caracteristicaPersonaje]."</th>
-                                            <th class=''>".$arrayHP->getCaracteristica()."</th>
-                                            <th class=''>".$arrayCaract_p['bono']."</th>
-                                            <th class=''>0</th>
-                                            <th class=''>".$bonoCategoria."</th>
-                                            <th class=''>".$HSfinal."</th></tr>";
-                                    }
+                            $personaje_hs = new Personaje_HS();
+                            $personaje_hs = $personaje_hs->viewPersonaje_HS($id_personaje);
+                            foreach ($personaje_hs as $row){
+                                $hs_value = $row->getValor(); // valor de la hs
+                                $hs_id = $row->getId_HS();  // id de la hs
+
+                                $HS = new Habilidades_Secundarias();
+                                $HS = $HS->view_HS($hs_id);
+
+                                $hs_name = $HS->getNombre(); // Nombre de la hs
+                                $hs_car = $HS->getCaracteristica(); // Nombre de la caracteristica AGI ... etc
+
+                                $hs_base = $return['c_'.$hs_car]; // Base de la caracteristica del pj
+
+                                $Caract_p = new Caracteristicas_p();
+                                $hs_bono = $Caract_p->viewCaracteristica($hs_base);
+
+                                $Categoria_HS = new Categoria_HS();
+                                $arrayCat_HS = $Categoria_HS->viewHS1($return['id_categoria'], $hs_id);
+                                $hs_incrlv = (int)$arrayCat_HS['incr_nv']; // incremento categoria
+                                if($hs_incrlv == null){
+                                    $hs_incrlv = 0; 
+                                }
+                                $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
+
+                                $hs_final = $hs_value + $hs_bono + $hs_catfin;
+                                echo '  <tr>
+                                            <th class="f-400">'.$hs_name.'</th>
+                                            <th class="f-400">'.$hs_value.'</th>
+                                            <th class="f-400">'.$hs_car.'</th>
+                                            <th class="f-400">'.$hs_bono.'</th>
+                                            <th class="f-400">'.$hs_catfin.'</th>
+                                            <th class="f-700">'.$hs_final.'</th>
+                                        </tr>';
+
+
                             }
-                            ?>
+
+                        ?>
                         </tbody>
                     </table>
                 </div>

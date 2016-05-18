@@ -39,7 +39,7 @@
             $db->close();
             if ($query->num_rows > 0) {
                 $obj = $query->fetch_assoc();
-                return $obj;
+                return $obj['bono'];
             }else{
                 return null;
             }
