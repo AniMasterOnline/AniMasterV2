@@ -65,60 +65,6 @@ include "../../Public/layouts/head.php";?>
 
 <LINK HREF="../../Public/css/mesa.css" rel="stylesheet">
 <script src="../../Public/js/chat.js"></script>
-<script>
-    // ask user for name with popup prompt    
-    var file = '<?php echo $id_partida.'-'.$nombre ?>';
-    var name = '><?php echo $value['nickname']; ?>';
-    var color = "<?php if($id_master == $value['id_usuario']){ echo 'c-purple'; }else{ echo 'c-black'; } ?>";
-
-    var chat =  new Chat();
-    $(function() {
-        instanse = false;
-        chat.getState(file); 
-
-        $('#sendie-btn').click(function(e) {
-            var text = $('#sendie').val();
-            $('#sendie').val('');
-            chat.send(text, name, color, file);
-        });
-        $('#sendie-btnimg').click(function(e) {
-            console.log('send Image');
-            swal({
-                title: "Enviar Imagen!",
-                text: "url de la imagen:",
-                type: "input",
-                showCancelButton: true,
-                closeOnConfirm: false,
-                inputPlaceholder: "url"
-              }, function (inputValue) {
-                if (inputValue === false) return false;
-                if (inputValue === "") {
-                  swal.showInputError("Tienes que pegar aqui una url valida!");
-                  return false
-                }
-                chat.sendimg(inputValue, name, color, file);
-                swal("Imagen enviada!", "url: " + inputValue, "success");
-              });
-            
-        });
-        $('#sendie').keyup(function(e) {
-            var code = (e.keyCode ? e.keyCode : e.which);
-            if(code == 13) { //Enter keycode
-                var text = $('#sendie').val();
-                $('#sendie').val('');
-                chat.send(text, name, color, file);
-            }
-        });
-    });
-    $(window).load(function() {
-        chat.loadxat(file);
-        setInterval(myFunction(), 2000);
-
-        function myFunction() {
-            setInterval(function(){ chat.update(file); }, 1500);
-        }
-    });
-</script>
 <!-- Menu Toggle Script -->
 <?php
     function rcolor(){

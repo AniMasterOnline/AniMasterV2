@@ -153,8 +153,8 @@ $limite_hp = $puntos*0.5;
                 $return=$cat_hp->viewHP4($id_categoria,4);
                 $le = $result['coste'];
                 echo "Le - ".$le;
-                $array = array($id_categoria,$nombre,$apellido,$edad,$nivel2,$sexo,$pelo,$ojos,$altura,$peso,$apariencia,$agi,$con,$des,$fue,$int,$per,$pod,$vol,$nacionalidad,$ha,$hp,$he,$le);
-                $_SESSION['array']=$array;
+                $return = array($id_categoria,$nombre,$apellido,$edad,$nivel2,$sexo,$pelo,$ojos,$altura,$peso,$apariencia,$agi,$con,$des,$fue,$int,$per,$pod,$vol,$nacionalidad,$ha,$hp,$he,$le);
+                $_SESSION['array']=$return;
             ?>
                 <input class="form-control" type="hidden" id="la2" value="<?php echo $le ?>">
             </span>

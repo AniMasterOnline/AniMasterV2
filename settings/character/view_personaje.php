@@ -66,16 +66,16 @@ include "../../Public/layouts/head.php";
                             $Partida = new Partida(); 
                             $Personaje = new Personaje(); 
 
-                            $array = $Personaje->viewPersonaje($id_personaje);
-                            $array2 = $Partida->viewPartida($array['id_partida']);
+                            $return = $Personaje->viewPersonaje($id_personaje);
+                            $array2 = $Partida->viewPartida($return['id_partida']);
                             echo $array2->getNombre();
                         ?>
                         <small class="c-white p-l-5">
                             <?php 
                                 $Personaje = new Personaje(); 
                                 
-                                $array = $Personaje->viewPersonaje($id_personaje);
-                                echo $array['nombre'];
+                                $return = $Personaje->viewPersonaje($id_personaje);
+                                echo $return['nombre'];
                             ?>
                         </small></h2>
                     <ul class="lv-actions actions">
@@ -122,30 +122,30 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Nivel.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             
                             /*Mostrem tots els camps del personaje*/
-                            if (!empty($array)) {
+                            if (!empty($return)) {
                                 echo "<tr> ";
                                 $categoria = new Categoria(); 
-                                $arrayC = $categoria->viewCar($array['id_categoria']);
+                                $arrayC = $categoria->viewCar($return['id_categoria']);
                                 echo "
                                     <th class='text-center'>".$arrayC->getNombre()."
-                                    <th class='text-center'>".$array['nivel']."</th>
-                                    <th class='text-center'>".$array['raza']."</th>";
+                                    <th class='text-center'>".$return['nivel']."</th>
+                                    <th class='text-center'>".$return['raza']."</th>";
                                 $nivel = new Nivel(); 
-                                $arrayN = $nivel->viewNivel($array['nivel']);
+                                $arrayN = $nivel->viewNivel($return['nivel']);
                                 echo "
                                     <th class='text-center'>".$arrayN->getPuntos()."</th>
-                                    <th class='text-center'>".$array['puntos_totales']."</th>
-                                    <th class='text-center'>".$array['apariencia']."</th>
-                                    <th class='text-center'>".$array['tamanyo']."</th>
-                                    <th class='text-center'>".$array['edad']."</th>
-                                    <th class='text-center'>".$array['sexo']."</th>
-                                    <th class='text-center'>".$array['pelo']."</th>
-                                    <th class='text-center'>".$array['ojos']."</th>
-                                    <th class='text-center'>".$array['altura']."</th>
-                                    <th class='text-center'>".$array['peso']."</th>
+                                    <th class='text-center'>".$return['puntos_totales']."</th>
+                                    <th class='text-center'>".$return['apariencia']."</th>
+                                    <th class='text-center'>".$return['tamanyo']."</th>
+                                    <th class='text-center'>".$return['edad']."</th>
+                                    <th class='text-center'>".$return['sexo']."</th>
+                                    <th class='text-center'>".$return['pelo']."</th>
+                                    <th class='text-center'>".$return['ojos']."</th>
+                                    <th class='text-center'>".$return['altura']."</th>
+                                    <th class='text-center'>".$return['peso']."</th>
                                     </tr>";
                             }
                             
@@ -170,19 +170,19 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Personaje.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             
                             /*Mostrem totes les caracteristiques del personaje*/
-                            if (!empty($array)) {
+                            if (!empty($return)) {
                                 echo "<tr> 
-                                    <th class='text-center'>".$array['c_AGI']."</th>
-                                    <th class='text-center'>".$array['c_CON']."</th>
-                                    <th class='text-center'>".$array['c_DES']."</th>
-                                    <th class='text-center'>".$array['c_FUE']."</th>
-                                    <th class='text-center'>".$array['c_INT']."</th>
-                                    <th class='text-center'>".$array['c_PER']."</th>
-                                    <th class='text-center'>".$array['c_POD']."</th>
-                                    <th class='text-center'>".$array['c_VOL']."</th>
+                                    <th class='text-center'>".$return['c_AGI']."</th>
+                                    <th class='text-center'>".$return['c_CON']."</th>
+                                    <th class='text-center'>".$return['c_DES']."</th>
+                                    <th class='text-center'>".$return['c_FUE']."</th>
+                                    <th class='text-center'>".$return['c_INT']."</th>
+                                    <th class='text-center'>".$return['c_PER']."</th>
+                                    <th class='text-center'>".$return['c_POD']."</th>
+                                    <th class='text-center'>".$return['c_VOL']."</th>
                                     </tr>";
                             }
                             
@@ -220,41 +220,41 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Categoria_HP.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             
                             $HP = new Habilidades_Primarias(); 
                             $Caract_p = new Caracteristicas_p(); 
                             $Categoria_HP = new Categoria_HP(); 
                             
                             /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
-                            if (!empty($array)) {
+                            if (!empty($return)) {
                                     $contador = 0;
                                     while ($contador < 4){
                                         $contador++;
                                         $arrayHP = $HP->viewHP($contador);
                                         switch ($contador) {
                                             case 1:
-                                                $hp = $array['ha'];
+                                                $hp = $return['ha'];
                                                 break;
                                             case 2:
-                                                $hp = $array['hp'];
+                                                $hp = $return['hp'];
                                                 break;
                                             case 3:
-                                                $hp = $array['he'];
+                                                $hp = $return['he'];
                                                 break;
                                             case 4:
-                                                $hp = $array['la'];
+                                                $hp = $return['la'];
                                                 break;
                                         }
                                         if( $contador < 3) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_DES']);
                                         }elseif ($contador == 3) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_AGI']);
                                         }elseif ($contador == 4) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_FUE']);
                                         }
-                                        $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
-                                        $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
+                                        $arrayCategoria_HP = $Categoria_HP->viewHP1($return['id_categoria'], $contador);
+                                        $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$return['nivel']);
                                         $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
                                         $is0 = false;
                                         if($hp == 0){

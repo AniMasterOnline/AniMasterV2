@@ -1,10 +1,74 @@
 <?php
     require_once "../../System/Classes/Personaje.php";
+    require_once "../../System/Classes/Usuario.php";
+    require_once "../../System/Classes/Categoria.php";
+    require_once "../../System/Classes/Nivel.php";
+    require_once "../../System/Classes/Habilidades_Primarias.php";
+    require_once "../../System/Classes/Caracteristicas_P.php";
+    require_once "../../System/Classes/Categoria_HP.php";
+    require_once "../../System/Classes/Personaje_HS.php";
+    require_once "../../System/Classes/Habilidades_Secundarias.php";
+    require_once "../../System/Classes/Categoria_HS.php";
+    
     $personaje = new Personaje();
     $return = $personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
     $id_personaje = $return['id_personaje'];
-
+    $name_personaje = $return['nombre'];
 ?>
+<script>
+    // ask user for name with popup prompt    
+    var file = '<?php echo $id_partida.'-'.$nombre ?>';
+    var name = '><?php echo $value['nickname'].' / '.$name_personaje; ?>';
+    var color = "<?php if($id_master == $value['id_usuario']){ echo 'c-purple'; }else{ echo 'c-black'; } ?>";
+
+    var chat =  new Chat();
+    $(function() {
+        instanse = false;
+        chat.getState(file); 
+
+        $('#sendie-btn').click(function(e) {
+            var text = $('#sendie').val();
+            $('#sendie').val('');
+            chat.send(text, name, color, file);
+        });
+        $('#sendie-btnimg').click(function(e) {
+            console.log('send Image');
+            swal({
+                title: "Enviar Imagen!",
+                text: "url de la imagen:",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                inputPlaceholder: "url"
+              }, function (inputValue) {
+                if (inputValue === false) return false;
+                if (inputValue === "") {
+                  swal.showInputError("Tienes que pegar aqui una url valida!");
+                  return false
+                }
+                chat.sendimg(inputValue, name, color, file);
+                swal("Imagen enviada!", "url: " + inputValue, "success");
+              });
+            
+        });
+        $('#sendie').keyup(function(e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if(code == 13) { //Enter keycode
+                var text = $('#sendie').val();
+                $('#sendie').val('');
+                chat.send(text, name, color, file);
+            }
+        });
+    });
+    $(window).load(function() {
+        chat.loadxat(file);
+        setInterval(myFunction(), 2000);
+
+        function myFunction() {
+            setInterval(function(){ chat.update(file); }, 1500);
+        }
+    });
+</script>
 <div class="row">
     <ul class="nav nav-tabs nav-justified">
         <li role="presentation" class="active"><a href="#personaje" aria-controls="personaje" role="tab" data-toggle="tab">Personaje</a></li>
@@ -27,10 +91,7 @@
                                     Ficha del personaje
                                     <small class="c-white p-l-5">
                                         <?php 
-                                            $Personaje = new Personaje(); 
-
-                                            $array = $Personaje->viewPersonaje($id_personaje);
-                                            echo $array['nombre'];
+                                            echo $name_personaje;
                                         ?>
                                     </small></h2>
                                 <ul class="lv-actions actions">
@@ -47,81 +108,65 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="card-body card-padding table-responsive p-0">
+                            <div class="card-body card-padding p-0">
                                 <?php
-                                    require_once "../../System/Classes/Personaje.php";
-                                    require_once "../../System/Classes/Usuario.php";
-                                    require_once "../../System/Classes/Categoria.php";
-                                    require_once "../../System/Classes/Nivel.php";
-
-                                    $Personaje = new Personaje(); 
-                                    $array = $Personaje->viewPersonaje($id_personaje);
-
                                     /*Mostrem tots els camps del personaje*/
-                                    if (!empty($array)) {
+                                    if (!empty($return)) {
                                         echo "<tr> ";
                                         $categoria = new Categoria(); 
-                                        $arrayC = $categoria->viewCar($array['id_categoria']);
+                                        $arrayC = $categoria->viewCar($return['id_categoria']);
                                         $nivel = new Nivel(); 
-                                        $arrayN = $nivel->viewNivel($array['nivel']);
+                                        $arrayN = $nivel->viewNivel($return['nivel']);
                                     }
 
                                 ?>
-                                <div class="pmb-block ">
-                                    <div class="pmbb-body p-l-0">
-                                        <div class="pmbb-view">
-                                            <dl class="dl-horizontal">
-                                                <dt>Categoria</dt>
-                                                <dd><?php echo $arrayC->getNombre();?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Nivel</dt>
-                                                <dd><?php echo $array['nivel'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Raza</dt>
-                                                <dd><?php echo $array['raza'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>P.Desarrollo</dt>
-                                                <dd><?php echo $arrayN->getPuntos();?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>P.D Restantes</dt>
-                                                <dd><?php echo $array['puntos_totales'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Apariencia</dt>
-                                                <dd><?php echo $array['apariencia'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Tamaño</dt>
-                                                <dd><?php echo $array['tamanyo'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Edad</dt>
-                                                <dd><?php echo $array['edad'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Sexo</dt>
-                                                <dd><?php echo $array['sexo'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Pelo</dt>
-                                                <dd><?php echo $array['pelo'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Ojos</dt>
-                                                <dd><?php echo $array['ojos'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Altura</dt>
-                                                <dd><?php echo $array['altura'];?></dd>
-                                            </dl>
-                                            <dl class="dl-horizontal">
-                                                <dt>Peso</dt>
-                                                <dd><?php echo $array['peso'];?></dd>
-                                            </dl>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="pmb-block m-0">
+                                            <div class="pmbb-body p-l-0">
+                                                <div class="pmbb-view">
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="">Nombre</dt>
+                                                        <dd class=""><?php echo $name_personaje;?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Categoria</dt>
+                                                        <dd><?php echo $arrayC->getNombre();?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Nivel / Edad</dt>
+                                                        <dd><?php echo $return['nivel'].' / '.$return['edad'];?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Sexo</dt>
+                                                        <dd><?php echo $return['sexo'];?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Raza</dt>
+                                                        <dd><?php echo $return['raza'];?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Pelo / Ojos</dt>
+                                                        <dd><?php echo $return['pelo'].' / '.$return['ojos'];?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>P.Desarrollo</dt>
+                                                        <dd><?php echo $arrayN->getPuntos();?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>P.D Restantes</dt>
+                                                        <dd><?php echo $return['puntos_totales'];?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Altura / Peso</dt>
+                                                        <dd><?php echo $return['altura'].' / '.$return['peso'];?></dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>Apariencia / Tamaño</dt>
+                                                        <dd><?php echo $return['apariencia'].' / '.$return['tamanyo'];?></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -153,23 +198,18 @@
                                     </thead>
                                     <tbody >
                                         <?php
-                                        require_once "../../System/Classes/Personaje.php";
-
-                                        $Personaje = new Personaje(); 
-                                        $array = $Personaje->viewPersonaje($id_personaje);
-
                                         /*Mostrem totes les caracteristiques del personaje*/
-                                        if (!empty($array)) {
-                                            echo "<tr> 
-                                                <th class='text-center f-400'>".$array['c_AGI']."</th>
-                                                <th class='text-center f-400'>".$array['c_CON']."</th>
-                                                <th class='text-center f-400'>".$array['c_DES']."</th>
-                                                <th class='text-center f-400'>".$array['c_FUE']."</th>
-                                                <th class='text-center f-400'>".$array['c_INT']."</th>
-                                                <th class='text-center f-400'>".$array['c_PER']."</th>
-                                                <th class='text-center f-400'>".$array['c_POD']."</th>
-                                                <th class='text-center f-400'>".$array['c_VOL']."</th>
-                                                </tr>";
+                                        if (!empty($return)) {
+                                            echo "  <tr> 
+                                                        <th class='text-center f-400'>".$return['c_AGI']."</th>
+                                                        <th class='text-center f-400'>".$return['c_CON']."</th>
+                                                        <th class='text-center f-400'>".$return['c_DES']."</th>
+                                                        <th class='text-center f-400'>".$return['c_FUE']."</th>
+                                                        <th class='text-center f-400'>".$return['c_INT']."</th>
+                                                        <th class='text-center f-400'>".$return['c_PER']."</th>
+                                                        <th class='text-center f-400'>".$return['c_POD']."</th>
+                                                        <th class='text-center f-400'>".$return['c_VOL']."</th>
+                                                    </tr>";
                                         }
 
                                         ?>
@@ -196,50 +236,42 @@
                                     </thead>
                                     <tbody >
                                         <?php
-                                        require_once "../../System/Classes/Personaje.php";
-                                        require_once "../../System/Classes/Habilidades_Primarias.php";
-                                        require_once "../../System/Classes/Caracteristicas_P.php";
-                                        require_once "../../System/Classes/Categoria_HP.php";
-
-                                        $Personaje = new Personaje(); 
-                                        $array = $Personaje->viewPersonaje($id_personaje);
-
                                         $HP = new Habilidades_Primarias(); 
                                         $Caract_p = new Caracteristicas_p(); 
                                         $Categoria_HP = new Categoria_HP(); 
 
                                         /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
-                                        if (!empty($array)) {
+                                        if (!empty($return)) {
                                                 $contador = 0;
                                                 while ($contador < 4){
                                                     $contador++;
                                                     $arrayHP = $HP->viewHP($contador);
                                                     switch ($contador) {
                                                         case 1:
-                                                            $hp = $array['ha'];
+                                                            $hp = $return['ha'];
                                                             break;
                                                         case 2:
-                                                            $hp = $array['hp'];
+                                                            $hp = $return['hp'];
                                                             break;
                                                         case 3:
-                                                            $hp = $array['he'];
+                                                            $hp = $return['he'];
                                                             break;
                                                         case 4:
-                                                            $hp = $array['la'];
+                                                            $hp = $return['la'];
                                                             break;
                                                     }
                                                     if( $contador < 3) {
-                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_DES']);
                                                     }elseif ($contador == 3) {
-                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_AGI']);
                                                     }elseif ($contador == 4) {
-                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_FUE']);
                                                     }
-                                                    $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
-                                                    $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
+                                                    $arrayCategoria_HP = $Categoria_HP->viewHP1($return['id_categoria'], $contador);
+                                                    $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$return['nivel']);
                                                     $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
                                                     $is0 = false;
-                                                    if($hp == 0){
+                                                    if($hp <= 0){
                                                         $HAfinal = 0;
                                                         $is0 = true;
                                                     }
@@ -289,15 +321,6 @@
                                     </thead>
                                     <tbody >
                                         <?php
-                                        require_once "../../System/Classes/Personaje.php";
-                                        require_once "../../System/Classes/Personaje_HS.php";
-                                        require_once "../../System/Classes/Habilidades_Secundarias.php";
-                                        require_once "../../System/Classes/Caracteristicas_P.php";
-                                        require_once "../../System/Classes/Categoria_HS.php";
-
-                                         
-                                        $Categoria_HS = new Categoria_HS(); 
-                                        
                                         /*Mostrem totes les hs del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
                                         $personaje_hs = new Personaje_HS();
                                         $personaje_hs = $personaje_hs->viewPersonaje_HS($id_personaje);
@@ -327,11 +350,10 @@
                                             $hs_final = $hs_value + $hs_bono + $hs_catfin; // Suma final
                                             
                                             $is0 = false;
-                                            if($hs_value == 0){ //si la base es 0 el valor final sera 0
+                                            if($hs_value <= 0){ //si la base es 0 el valor final sera 0
                                                 $hs_final = 0;
                                                 $is0 = true;
                                             }
-
                                             if(!$is0){
                                                 echo '  <tr>
                                                         <th class="f-400">'.$hs_name.'</th>

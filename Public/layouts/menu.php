@@ -352,6 +352,11 @@
                         <li class="waves-effect"><a href="partida.php">Partidas de Rol</a></li>
                         <li class="waves-effect active"><a href="zone.php">Zona Roleo</a></li>
                         <li class="waves-effect"><a href="settings/table">Mi Mesa</a></li>';
+            }else if (strpos($self,"settings/table/mesa.php")){
+                echo '  <li class="waves-effect"><a href="../../index.php">Inicio</a></li>
+                        <li class="waves-effect"><a href="../../partida.php">Partidas de Rol</a></li>
+                        <li class="waves-effect"><a href="../../zone.php">Zona Roleo</a></li>
+                        <li class="waves-effect"><a href="../../settings/table">Mi Mesa</a></li>';
             }else if (strpos($self,"settings/table/")){
                 echo '  <li class="waves-effect"><a href="../../index.php">Inicio</a></li>
                         <li class="waves-effect"><a href="../../partida.php">Partidas de Rol</a></li>

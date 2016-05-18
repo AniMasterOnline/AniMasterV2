@@ -66,8 +66,8 @@ foreach($cat_hp as $cat_h){
     echo "Le ".$le;
 }
 
-$array = array($id_categoria,$ha,$hp,$he,$le,$id_personaje);
-$_SESSION['arrayMod']=$array;
+$return = array($id_categoria,$ha,$hp,$he,$le,$id_personaje);
+$_SESSION['arrayMod']=$return;
 ?>
 
 <form onchange="myFunction(this.value)" action="mod_personaje2.php" method="POST">

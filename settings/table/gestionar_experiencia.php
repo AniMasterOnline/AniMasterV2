@@ -104,15 +104,15 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Nivel.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonajesPartida($id_partida);
+                            $return = $Personaje->viewPersonajesPartida($id_partida);
                             
                             $nivel = new Nivel();
                             $usuario = new Usuario();
                             
                             
                             /*Mostrem tots els personatges que siguin d'aquesta partida*/
-                            if (!empty($array['error'])) {
-                                foreach ($array as $row) {
+                            if (!empty($return['error'])) {
+                                foreach ($return as $row) {
                                 $nombreUsuario = $usuario->return_user($row['id_usuario']);
                                 $exp_nec = $nivel->viewNivel($row['nivel']+1);
                                 echo "<tr>
