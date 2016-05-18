@@ -9,8 +9,8 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $result = $db->query("INSERT INTO Personaje_HS(`id_personaje`, `id_HS`) "
-                    . "VALUES ('$this->id_personaje', '$this->id_HS')");
+            $result = $db->query("INSERT INTO Personaje_HS(`id_personaje`, `id_HS`, `valor`) "
+                    . "VALUES ('$this->id_personaje', '$this->id_HS', '$this->valor')");
             $db->close();
             return $result;
         }
@@ -27,7 +27,7 @@
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_HS"]);
+                $partida_objeto = new Personaje_HS($obj["id_personaje"],$obj["id_HS"],$obj["valor"]);
                 //var_dump($Partida);
                 array_push($rtn, $partida_objeto);
             }
@@ -68,11 +68,14 @@
         function __construct0(){
             $this->id_personaje = 0;
             $this->id_HS = 0;
+            $this->valor = 0;
         }
         
-        function __construct2($a1, $a2){
+        function __construct3($a1, $a2, $a3){
             $this->id_personaje = $a1;
             $this->id_HS = $a2;
+            $this->valor = $a3;
+
         }
            
         //METODES SET
@@ -82,6 +85,9 @@
         public function setId_HS($id_HS) {
             $this->id_HS = $id_HS;
         }
+        public function setValor($valor) {
+            $this->valor = $valor;
+        }
         
         //METODES GET 
         public function getId_Personaje() {
@@ -89,6 +95,9 @@
         }
         public function getId_HS() {
             return $this->id_HS;
+        }
+        public function getValor() {
+            return $this->valor;
         }
     }
 ?>

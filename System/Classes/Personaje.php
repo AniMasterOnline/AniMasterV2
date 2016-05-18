@@ -45,15 +45,12 @@
         //METODES
         public function add(){
             $db = new connexio();
-            $db2 = $db->query("INSERT INTO Personaje(`id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `danyo`, `TA`) "
+            $db->query("INSERT INTO Personaje(`id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `danyo`, `TA`) "
                     . "VALUES ('$this->id_usuario', '$this->id_partida', '$this->id_categoria', '$this->nombre', '$this->apellido', '$this->edad', '$this->nivel', '$this->turno', '$this->puntos_vida', '$this->sexo', '$this->raza', '$this->pelo', '$this->ojos', '$this->altura', '$this->peso', '$this->apariencia', '$this->tamanyo', '$this->exp_actual', '$this->c_AGI', '$this->c_CON', '$this->c_DES', '$this->c_FUE', '$this->c_INT', '$this->c_PER', '$this->c_POD', '$this->c_VOL', '$this->nacionalidad', '$this->imagen', '$this->humano', '$this->puntos_hs', '$this->puntos_hp', '$this->puntos_totales', '$this->ha', '$this->hp', '$this->he', '$this->la', '$this->danyo', '$this->TA')");
-            //echo '<br><br>';
-            //var_dump($db2);
-            //echo '<br><br>';
-            //var_dump($db);
             
+            $id = $db->insert_id;
             $db->close();
-            return $db2;
+            return $id;
         }
         
         public function delete($var){
@@ -237,33 +234,8 @@
             $this->TA = 0; 
         }
         
-        function __construct1($a5){
-            $this->id_personaje=0;
-            $this->nombre = $a5;
-        }
-        
-        function __construct6($a1, $a2, $a3, $a4, $a5, $a6){
-            $this->id_personaje=$a1;
-            $this->id_usuario = $a2;
-            $this->id_partida=$a3;
-            $this->id_categoria = $a4;
-            $this->nombre = $a5;
-            $this->nivel = $a6;
-        }
-        
-        function __construct9($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10){
-            $this->id_personaje=0;
-            $this->id_usuario = $a2;
-            $this->id_partida=$a3;
-            $this->id_categoria = $a4;
-            $this->nombre = $a5;
-            $this->apellido = $a6;
-            $this->edad = $a7;
-            $this->nivel = $a8;
-            $this->turno = $a9; 
-            $this->puntos_vida = $a10;
-        }
         function __construct38($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37, $a38, $a39){
+            
             $this->id_personaje=0;
             $this->id_usuario = $a2;
             $this->id_partida=$a3;
