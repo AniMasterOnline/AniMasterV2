@@ -47,7 +47,33 @@
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
-                $Objeto = new Objeto($obj["nombre"],$obj["descripcion"],$obj["peso"],$obj["precio"],$obj["public"],$obj["disponibilidad"],$obj["calidad"],$obj["id_tipo"]);
+                $Objeto = new Objeto($obj["id_objeto"],$obj["nombre"],$obj["descripcion"],$obj["peso"],$obj["precio"],$obj["public"],$obj["disponibilidad"],$obj["calidad"],$obj["id_tipo"]);
+                //var_dump($Objeto);
+                array_push($rtn, $Objeto);
+            }
+            $db->close();
+            return $rtn;
+        }
+        public function viewArmas(){
+            $db = new connexio();
+            $sql = "SELECT * FROM Objeto where id_tipo='3'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $Objeto = new Objeto($obj["id_objeto"],$obj["nombre"],$obj["descripcion"],$obj["peso"],$obj["precio"],$obj["public"],$obj["disponibilidad"],$obj["calidad"],$obj["id_tipo"]);
+                //var_dump($Objeto);
+                array_push($rtn, $Objeto);
+            }
+            $db->close();
+            return $rtn;
+        }
+        public function viewArmadura(){
+            $db = new connexio();
+            $sql = "SELECT * FROM Objeto where id_tipo='2'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $Objeto = new Objeto($obj["id_objeto"],$obj["nombre"],$obj["descripcion"],$obj["peso"],$obj["precio"],$obj["public"],$obj["disponibilidad"],$obj["calidad"],$obj["id_tipo"]);
                 //var_dump($Objeto);
                 array_push($rtn, $Objeto);
             }

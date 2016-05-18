@@ -21,30 +21,30 @@ $id_personaje=1;
                 <div class="col-md-6">
                     <h2 class="form-signin-heading">Armas</h2>
                         <?php
-                        require_once "../../System/Classes/Caracteristica.php";
-                        $caracteristica=new Caracteristica();
-                        $caracteristica=$caracteristica->viewArma();
-                        foreach ($caracteristica as $caracteristica){
-                            $nombre=$caracteristica->getNombre();
-                            $id_caracteristica=$caracteristica->getId_Caracteristica();
+                        require_once "../../System/Classes/Objeto.php";
+                        $objeto=new Objeto();
+                        $objeto=$objeto->viewArmas();
+                        foreach ($objeto as $objeto){
+                            $nombre=$objeto->getNombre();
+                            $id_objeto=$objeto->getId_Objeto();
                         ?>
                     <div class="col-md-6">
-                        <input type="checkbox" name="armas" value="<?php echo $id_caracteristica ?>" id="<?php echo $id_caracteristica ?>" ><?php echo " ".$nombre ?>
+                        <input type="checkbox" name="armas" value="<?php echo $id_objeto ?>" id="<?php echo $id_objeto ?>" ><?php echo " ".$nombre ?>
                     </div>
                         <?php  } ?>
                 </div>
                 <div class="col-md-6">
                     <h2 class="form-signin-heading">Armaduras</h2>
                     <?php
-                        require_once "../../System/Classes/Caracteristica.php";
-                        $caracteristica=new Caracteristica();
-                        $caracteristica=$caracteristica->viewArmaduras();
-                        foreach ($caracteristica as $caracteristica){
-                            $nombre=$caracteristica->getNombre();
-                            $id_caracteristica=$caracteristica->getId_Caracteristica();
+                        require_once "../../System/Classes/Objeto.php";
+                        $objeto=new Objeto();
+                        $objeto=$objeto->viewArmadura();
+                        foreach ($objeto as $objeto){
+                            $nombre=$objeto->getNombre();
+                            $id_objeto=$objeto->getId_Objeto();
                         ?>
                     <div class="col-md-6">
-                        <input type="checkbox" name="armadura" value="<?php echo $id_caracteristica ?>" id="<?php echo $id_caracteristica ?>"><?php echo " ".$nombre ?>
+                        <input type="checkbox" name="armadura" value="<?php echo $id_objeto ?>" id="<?php echo $id_objeto ?>"><?php echo " ".$nombre ?>
                     </div>
                         <?php  } ?>
                 </div>
