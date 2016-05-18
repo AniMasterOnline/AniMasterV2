@@ -486,6 +486,15 @@ CREATE TABLE Categoria_HS (
 
 ALTER TABLE Categoria_HS ADD PRIMARY KEY (id_categoria,id_HS);
 
+CREATE TABLE Combate (
+      id_personaje     int NOT NULL,
+      id_partida     int NOT NULL
+);
+
+
+ALTER TABLE Combate ADD PRIMARY KEY (id_partida);
+
+
 
 
 

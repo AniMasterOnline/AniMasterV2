@@ -14,8 +14,8 @@ public class AniMasterBD {
     static Connection conn = null;
     
     public AniMasterBD(){
-        login = "root";
-        password = "root";
+        login = "animaster";
+        password = "master";
         url = "jdbc:mysql://localhost:3306/Animaster";
         Open(login, password, url);
     }
