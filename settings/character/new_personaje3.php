@@ -85,34 +85,23 @@ $suma3= $suma+$suma2;
 $limite_hp = $puntosF-($suma3);
 echo "<div class='alert alert-info m-b-5' role='alert'><strong>Habilidades secundarias</strong><br> Te quedan ".$limite_hp." puntos</div>";
 ?>
-
-
-<?php
-    require_once "../../System/Classes/Categoria_HS.php";
-    $categoria=new Categoria_HS();
-    $categoria=$categoria->viewHS($id_categoria);
-    //var_dump($categoria);
-    $i=0;
-    ?>
 <form onchange="myFunction(this.value)" action="<?php echo '../../System/Protocols/Personaje_Add.php?id_partida='.$id_partida; ?>" method="POST">
-        <?php
-    foreach ($categoria as $categoria){
-        $id_HS = $categoria->getId_HS();
-        $coste = $categoria->getCoste();
-        require_once "../../System/Classes/Habilidades_Secundarias.php";
-        $hs=new Habilidades_Secundarias();
-        $hs=$hs->view_HS($id_HS);
-        foreach ($hs as $has){
-            $name = $has->getNombre();
-        echo '<input type="hidden" name="coste'.$id_HS.'" id="coste'.$id_HS.'" value="'.$coste.'">';
+<?php
+require_once "../../System/Classes/Categoria_HS.php";
+$categoria=new Categoria_HS();
+$categoria=$categoria->viewHS($id_categoria);
+foreach ($categoria as $categoria){
+    $id_HS=$categoria->getId_HS();
+    $coste=$categoria->getCoste();
+       
+         echo '<input type="hidden" name="coste'.$id_HS.'" id="coste'.$id_HS.'" value="'.$coste.'">';
+         echo '<input type="hidden" name="'.$id_HS.'" id="'.$id_HS.'" value="'.$id_HS.'">';
         echo '<div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">'.$coste.'</span>
-      <span class="input-group-addon" id="basic-addon1">'.$name.'</span>';
+      <span class="input-group-addon" id="basic-addon1">'.$coste.'</span>';
         echo '<input type="text" name="hs'.$id_HS.'" id="hs'.$id_HS.'" class="form-control" aria-describedby="basic-addon1"></div>';
-    }
+    
 }
 ?>
-
     <input type="hidden" name="puntosF" id="puntosF" value="<?php echo $limite_hp; ?>">
     <input type="hidden" name="suma3" id="suma3" value="<?php echo $suma3; ?>">
     <input type="hidden" name="puntos_totals" id="puntos_totals" value="<?php echo $puntosF; ?>">
