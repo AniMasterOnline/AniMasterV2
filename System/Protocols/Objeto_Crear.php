@@ -21,5 +21,13 @@ var_dump($id_objeto);
 require_once "../Classes/Partida_Objeto.php";
 $parObj=new Partida_Objeto($id_objeto,$id_partida);
 $parObj->add();
-header('Location: ../../settings/table/');
+if($tipo==2){
+    header('Location: ../../settings/character/armas.php');
+}else if($tipo==3){
+    header('Location: ../../settings/character/armaduras.php');
+}
+else{
+    header('Location: ../../settings/character/new_equipment.php');
+
+}
 ?>
