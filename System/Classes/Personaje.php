@@ -243,7 +243,32 @@
             $this->danyo = 0; 
             $this->TA = 0; 
         }
+        function __construct1($a5){
+            $this->id_personaje=0;
+            $this->nombre = $a5;
+        }
         
+        function __construct6($a1, $a2, $a3, $a4, $a5, $a6){
+            $this->id_personaje=$a1;
+            $this->id_usuario = $a2;
+            $this->id_partida=$a3;
+            $this->id_categoria = $a4;
+            $this->nombre = $a5;
+            $this->nivel = $a6;
+        }
+        
+        function __construct9($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10){
+            $this->id_personaje=0;
+            $this->id_usuario = $a2;
+            $this->id_partida=$a3;
+            $this->id_categoria = $a4;
+            $this->nombre = $a5;
+            $this->apellido = $a6;
+            $this->edad = $a7;
+            $this->nivel = $a8;
+            $this->turno = $a9; 
+            $this->puntos_vida = $a10;
+        }
         function __construct38($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37, $a38, $a39){
             
             $this->id_personaje=0;

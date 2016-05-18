@@ -99,19 +99,19 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0 m-0">
                         <thead class="bgm-purple b-0 c-white">
                             <tr>
-                                <th>Categoria</th>
-                                <th>Nivel</th>
-                                <th>Raza</th>
-                                <th>P.Desarrollo</th>
-                                <th>P.D Restantes</th>
-                                <th>Apariencia</th>
-                                <th>Tamaño</th>
-                                <th>Edad</th>
-                                <th>Sexo</th>
-                                <th>Pelo</th>
-                                <th>Ojos</th>
-                                <th>Altura</th>
-                                <th>Peso</th>
+                                <th class='text-center'>Categoria</th>
+                                <th class='text-center'>Nivel</th>
+                                <th class='text-center'>Raza</th>
+                                <th class='text-center'>P.Desarrollo</th>
+                                <th class='text-center'>P.D Restantes</th>
+                                <th class='text-center'>Apariencia</th>
+                                <th class='text-center'>Tamaño</th>
+                                <th class='text-center'>Edad</th>
+                                <th class='text-center'>Sexo</th>
+                                <th class='text-center'>Pelo</th>
+                                <th class='text-center'>Ojos</th>
+                                <th class='text-center'>Altura</th>
+                                <th class='text-center'>Peso</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -216,11 +216,12 @@ include "../../Public/layouts/head.php";
                             <?php
                             require_once "../../System/Classes/Personaje.php";
                             require_once "../../System/Classes/Habilidades_Primarias.php";
-                            require_once "../../System/Classes/Caracteristicas_p.php";
+                            require_once "../../System/Classes/Caracteristicas_P.php";
                             require_once "../../System/Classes/Categoria_HP.php";
                             
                             $Personaje = new Personaje(); 
                             $array = $Personaje->viewPersonaje($id_personaje);
+                            
                             $HP = new Habilidades_Primarias(); 
                             $Caract_p = new Caracteristicas_p(); 
                             $Categoria_HP = new Categoria_HP(); 
@@ -294,7 +295,7 @@ include "../../Public/layouts/head.php";
                             <?php
                             require_once "../../System/Classes/Personaje.php";
                             require_once "../../System/Classes/Habilidades_Secundarias.php";
-                            require_once "../../System/Classes/Caracteristicas_p.php";
+                            require_once "../../System/Classes/Caracteristicas_P.php";
                             require_once "../../System/Classes/Categoria_HS.php";
                             
                             $Personaje = new Personaje(); 
