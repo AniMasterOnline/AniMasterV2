@@ -34,6 +34,33 @@
             return $rtn;
         }
         
+        public function selectArma($id_objeto){
+            $db = new connexio();
+            $sql = "SELECT * FROM Objeto_Caracteristica where id_objeto='$id_objeto' and id_caracteristica='1'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
+                //var_dump($Objeto);
+                array_push($rtn, $objCaracter);
+            }
+            $db->close();
+            return $rtn;
+        }
+        public function selectArmadura($id_objeto){
+            $db = new connexio();
+            $sql = "SELECT * FROM Objeto_Caracteristica where id_objeto='$id_objeto' and id_caracteristica='20'";
+            $query = $db->query($sql);
+            $rtn = array();
+            while($obj = $query->fetch_assoc()){
+                $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
+                //var_dump($Objeto);
+                array_push($rtn, $objCaracter);
+            }
+            $db->close();
+            return $rtn;
+        }
+        
         public function viewObjCar($id_caracteristica){
             $db = new connexio();
             $sql = "SELECT * FROM Objeto_Caracteristica where id_caracteristica='$id_caracteristica'";
