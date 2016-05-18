@@ -46,6 +46,18 @@
             $db->close();
             return $rtn;
         }
+        public function viewHS1($id_categoria, $id_HS){
+            $db = new connexio();
+            $sql = "SELECT * FROM Categoria_HS where id_categoria='$id_categoria' and id_HS='$id_HS'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                $row = $query->fetch_assoc();
+                return $row;
+            }else{
+                return null;
+            }
+        }
         
         //CONSTRUCTORS
         function __construct(){

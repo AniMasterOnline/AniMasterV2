@@ -310,16 +310,16 @@ include "../../Public/layouts/head.php";
                                         $contador++;
                                         $arrayHP = $HS->view_HS($contador);
                                         $caracteristicaPersonaje = "c_".$arrayHP->getCaracteristica();
-                                        var_dump($caracteristicaPersonaje);
+                                        //var_dump($caracteristicaPersonaje);
                                         
                                         $arrayCaract_p = $Caract_p->viewCaracteristica($array[$caracteristicaPersonaje]);
-                                        var_dump($arrayCaract_p);
+                                        //var_dump($arrayCaract_p);
                                         
-                                        $arrayCategoria_HS = $Categoria_HS->viewHS($array['id_categoria'], $contador);
-                                        if (!empty($arrayCategoria_HS['incr_nv'])) {
+                                        $return_CatHS = $Categoria_HS->viewHS1($array['id_categoria'], $contador);
+                                        if (!empty($return_CatHS['incr_nv'])) {
                                             $bonoCategoria = (0*(int)$array['nivel']);
                                         }else {
-                                            $bonoCategoria = ((int)$arrayCategoria_HS['incr_nv']*(int)$array['nivel']);
+                                            $bonoCategoria = ((int)$return_CatHS['incr_nv']*(int)$array['nivel']);
                                         }
                                         $HSfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
                                         echo "<tr>
@@ -327,7 +327,7 @@ include "../../Public/layouts/head.php";
                                         
                                         //intentar automatitzar el bucle passant la id_secundaria de la taula personaje_HS en comptes de $contador
                                         echo "
-                                            <th class=''>".$array[$contador]."</th>
+                                            <th class=''>".$array[$caracteristicaPersonaje]."</th>
                                             <th class=''>".$arrayHP->getCaracteristica()."</th>
                                             <th class=''>".$arrayCaract_p['bono']."</th>
                                             <th class=''>0</th>
