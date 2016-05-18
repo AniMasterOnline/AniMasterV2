@@ -1501,8 +1501,22 @@ VALUES
 (14, 'Espada larga', '', 1.4, 5000, 'true', NULL, 0, 3),
 (15, 'Estilete', '', 0.4, 600, 'true', NULL, 0, 3),
 (16, 'Acolchada', '', 3, 1000, 'true', NULL, 0, 2),
-(17, 'Anillas', '', 9, 50000, 'true', NULL, 0, 2);
-
+(17, 'Anillas', '', 9, 50000, 'true', NULL, 0, 2),
+(18, 'Completa', '', 20, 400000, 'true', NULL, 0, 2),
+(19, 'Completa de cuero', '', 7, 5000, 'true', NULL, 0, 2),
+(20, 'Completa de campaña', '', 25, 800000, 'true', NULL, 0, 2),
+(21, 'Completa pesada', '', 30, 700000, 'true', NULL, 0, 2),
+(22, 'Cota de cuero', '', 3, 1000, 'true', NULL, 0, 2),
+(23, 'Cuero endurecido', '', 4, 15000, 'true', NULL, 0, 2),
+(24, 'Cuero tachonado', '', 4.5, 25000, 'true', NULL, 0, 2),
+(25, 'Escamas', '', 9, 120000, 'true', NULL, 0, 2),
+(26, 'Gabardina', '', 1.5, 50, 'true', NULL, 0, 2),
+(27, 'Mallas', '', 13, 70000, 'true', NULL, 0, 2),
+(28, 'Peto', '', 4, 40000, 'true', NULL, 0, 2),
+(29, 'Piel', '', 2, 5000, 'true', NULL, 0, 2),
+(30, 'Piezas', '', 6, 40000, 'true', NULL, 0, 2),
+(31, 'Placas', '', 18, 300000, 'true', NULL, 0, 2),
+(32, 'Semicompleta', '', 13, 100000, 'true', NULL, 0, 2);
 
 --
 -- Volcado de datos para la tabla `objeto_caracteristica`
