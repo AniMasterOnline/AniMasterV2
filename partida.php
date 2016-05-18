@@ -1,6 +1,6 @@
 <!-- Header content box -->
 <?php 
-$title='Login';
+$title='Partidas de rol';
 $migas='#Index|index.php#Partidas de rol';
 include "Public/layouts/head.php";?>
 <script>
