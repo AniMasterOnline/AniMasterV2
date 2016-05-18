@@ -4,15 +4,7 @@
         <li role="presentation"><a href="#habilidades" aria-controls="habilidades" role="tab" data-toggle="tab">Habilidades</a></li>
         <li role="presentation"><a href="#combate" aria-controls="combate" role="tab" data-toggle="tab">Combate</a></li>
         <li role="presentation"><a href="#equipo" aria-controls="equipo" role="tab" data-toggle="tab">Equipo</a></li>
-        <li role="presentation" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            Otros <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-                <li role="presentation"><a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab">Mapa</a></li>
-                <li role="presentation"><a href="#batalla" aria-controls="batalla" role="tab" data-toggle="tab">Batalla</a></li>
-          </ul>
-        </li>
+        <li role="presentation"><a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab">Mapa</a></li>        
     </ul>
 </div>
 <div class="row" >
@@ -55,35 +47,14 @@
                         <h1>Equipo</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-
                     </div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade p-0" id="mapa">
                 <div id='map'></div>
-                                                <div class="alert bgm-dark m-t-0 m-b-0" id="latlong" style="border-radius: 0px;">
-                                                        <p>Latitude: <input class="form-control disabled" type="text" id="latbox" name="lat" value="0"></p>
-                                                        <p>Longitude: <input class="form-control disabled" type="text" id="lngbox" name="lng" value="0"></p>
-                                                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade p-l-15 p-r-15" id="batalla">
-                 <div class="row">
-                    <div class="col-md-12">
-                        <h1>Registro de batalla</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade p-l-15 p-r-15" id="diario">
-                 <div class="row">
-                    <div class="col-md-12">
-                        <h1>Diario del jugador</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-
-                    </div>
+                <div class="alert bgm-dark m-t-0 m-b-0" id="latlong" style="border-radius: 0px;">
+                        <p>Latitude: <input class="form-control disabled" type="text" id="latbox" name="lat" value="0"></p>
+                        <p>Longitude: <input class="form-control disabled" type="text" id="lngbox" name="lng" value="0"></p>
                 </div>
             </div>
         </div>
@@ -119,7 +90,7 @@
               },
               tileSize: new google.maps.Size(256, 256),
               maxZoom: 4,
-              minZoom: 1,
+              minZoom: 2,
               radius: 1738000,
               name: 'anima'
             });

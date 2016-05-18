@@ -11,7 +11,7 @@
           <ul class="dropdown-menu">
                 <li role="presentation"><a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab">Mapa</a></li>
                 <li role="presentation"><a href="#diario" aria-controls="diario" role="tab" data-toggle="tab">Diario del master</a></li>
-                <li role="presentation"><a href="#opc" aria-controls="opc" role="tab" data-toggle="tab">Configuración</a></li>
+                <!--<li role="presentation"><a href="#opc" aria-controls="opc" role="tab" data-toggle="tab">Configuración</a></li> -->
           </ul>
         </li>
     </ul>
