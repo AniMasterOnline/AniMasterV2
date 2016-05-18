@@ -79,11 +79,6 @@ include "../../Public/layouts/head.php";
                 <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
                     <h2 class="lvh-label c-white f-18"><?php echo ''.$nombre; ?></h2>
                     <ul class="lv-actions actions">
-                        <li>
-                            <a href="#">
-                                <i class="zmdi zmdi-info c-white"></i>
-                            </a>
-                        </li>
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                                 <i class="zmdi zmdi-more-vert c-white"></i>

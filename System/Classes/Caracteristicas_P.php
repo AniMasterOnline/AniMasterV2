@@ -34,7 +34,7 @@
         }
         public function viewCaracteristica($value){ 
             $db = new connexio();
-            $sql = "SELECT bono FROM Caracteristicas_p WHERE base = '$value'";
+            $sql = "SELECT bono FROM Caracteristicas_P WHERE base = '$value'";
             $query = $db->query($sql);
             $db->close();
             if ($query->num_rows > 0) {

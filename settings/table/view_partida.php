@@ -91,7 +91,7 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a <?php echo 'href="mod_partida.php?id='.$id_partida.'"';?>>Configuraciones</a>
+                                    <a <?php echo 'href="mod_partida.php?id='.$id_partida.'"';?>>Modificar Partida</a>
                                 </li>
                                 <li>
                                     <a href="#" id="eliminar">Eliminar partida</a>
