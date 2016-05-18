@@ -39,12 +39,14 @@
         private $hp;
         private $he;
         private $la;
+        private $danyo;
+        private $TA;
         
         //METODES
         public function add(){
             $db = new connexio();
-            $db2 = $db->query("INSERT INTO Personaje(`id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `acrobacias`, `atletismo`, `montar`, `nadar`, `trepar`, `saltar`, `frialdad`, `proezas_fuerza`, `resistir_dolor`, `advertir`, `buscar`, `rastrear`, `animales`, `ciencia`, `herbolaria`, `historia`, `medicina`, `memorizar`, `navegacion`, `ocultismo`, `tasacion`, `ley`, `tactica`, `estilo`, `intimidar`, `liderazgo`, `persuasion`, `comerciar`, `callejeo`, `etiqueta`, `cerrajeria`, `disfraz`, `ocultarse`, `robo`, `sigilo`, `tramperia`, `venenos`, `arte`, `baile`, `forja`, `trucos_manos`, `canto`, `runas`, `animismo`, `alquimia`, `especial1`, `especial2`, `especial3`, `especial4`) "
-                    . "VALUES ('$this->id_usuario', '$this->id_partida', '$this->id_categoria', '$this->nombre', '$this->apellido', '$this->edad', '$this->nivel', '$this->turno', '$this->puntos_vida', '$this->sexo', '$this->raza', '$this->pelo', '$this->ojos', '$this->altura', '$this->peso', '$this->apariencia', '$this->tamanyo', '$this->exp_actual', '$this->c_AGI', '$this->c_CON', '$this->c_DES', '$this->c_FUE', '$this->c_INT', '$this->c_PER', '$this->c_POD', '$this->c_VOL', '$this->nacionalidad', '$this->imagen', '$this->humano', '$this->puntos_hs', '$this->puntos_hp', '$this->puntos_totales', '$this->ha', '$this->hp', '$this->he', '$this->la', '$this->acrobacias', '$this->atletismo', '$this->montar', '$this->nadar', '$this->trepar', '$this->saltar', '$this->frialdad', '$this->proezas_fuerza', '$this->resistir_dolor', '$this->advertir', '$this->buscar', '$this->rastrear', '$this->animales', '$this->ciencia', '$this->herbolaria', '$this->historia', '$this->medicina', '$this->memorizar', '$this->navegacion', '$this->ocultismo', '$this->tasacion', '$this->ley', '$this->tactica', '$this->estilo', '$this->intimidar', '$this->liderazgo', '$this->persuasion', '$this->comerciar', '$this->callejeo', '$this->etiqueta', '$this->cerrajeria', '$this->disfraz', '$this->ocultarse', '$this->robo', '$this->sigilo', '$this->tramperia', '$this->venenos', '$this->arte', '$this->baile', '$this->forja', '$this->trucos_manos', '$this->canto', '$this->runas', '$this->animismo', '$this->alquimia', '$this->especial1', '$this->especial2', '$this->especial3', '$this->especial4')");
+            $db2 = $db->query("INSERT INTO Personaje(`id_usuario`, `id_partida`, `id_categoria`, `nombre`, `apellido`, `edad`, `nivel`, `turno`, `puntos_vida`, `sexo`, `raza`, `pelo`, `ojos`, `altura`, `peso`, `apariencia`, `tamanyo`, `exp_actual`, `c_AGI`, `c_CON`, `c_DES`, `c_FUE`, `c_INT`, `c_PER`, `c_POD`, `c_VOL`, `nacionalidad`, `imagen`, `humano`, `puntos_hs`, `puntos_hp`, `puntos_totales`, `ha`, `hp`, `he`, `la`, `danyo`, `TA`) "
+                    . "VALUES ('$this->id_usuario', '$this->id_partida', '$this->id_categoria', '$this->nombre', '$this->apellido', '$this->edad', '$this->nivel', '$this->turno', '$this->puntos_vida', '$this->sexo', '$this->raza', '$this->pelo', '$this->ojos', '$this->altura', '$this->peso', '$this->apariencia', '$this->tamanyo', '$this->exp_actual', '$this->c_AGI', '$this->c_CON', '$this->c_DES', '$this->c_FUE', '$this->c_INT', '$this->c_PER', '$this->c_POD', '$this->c_VOL', '$this->nacionalidad', '$this->imagen', '$this->humano', '$this->puntos_hs', '$this->puntos_hp', '$this->puntos_totales', '$this->ha', '$this->hp', '$this->he', '$this->la', '$this->danyo', '$this->TA')");
             //echo '<br><br>';
             //var_dump($db2);
             //echo '<br><br>';
@@ -231,6 +233,8 @@
             $this->hp = 0; 
             $this->he = 0; 
             $this->la = 0; 
+            $this->danyo = 0; 
+            $this->TA = 0; 
         }
         
         function __construct1($a5){
@@ -259,7 +263,7 @@
             $this->turno = $a9; 
             $this->puntos_vida = $a10;
         }
-        function __construct36($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37){
+        function __construct38($a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37, $a38, $a39){
             $this->id_personaje=0;
             $this->id_usuario = $a2;
             $this->id_partida=$a3;
@@ -297,11 +301,13 @@
             $this->hp = $a35; 
             $this->he = $a36; 
             $this->la = $a37; 
+            $this->danyo = $a38; 
+            $this->TA = $a39; 
         }
         
         
         
-        function __construct37($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37){
+        function __construct39($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10, $a11, $a12, $a13, $a14, $a15, $a16, $a17, $a18, $a19, $a20, $a21, $a22, $a23, $a24, $a25, $a26, $a27, $a28, $a29, $a30, $a31, $a32, $a33, $a34, $a35, $a36, $a37, $a38, $a39){
             $this->id_personaje=$a1;
             $this->id_usuario = $a2;
             $this->id_partida=$a3;
@@ -339,6 +345,8 @@
             $this->hp = $a35; 
             $this->he = $a36; 
             $this->la = $a37; 
+            $this->danyo = $a38; 
+            $this->TA = $a39; 
         }
            
         //METODES SET
@@ -453,154 +461,12 @@
         public function setLa($la) {
             $this->la = $la;
         }
-        public function setAcrobacias($acrobacias) {
-            $this->acrobacias = $acrobacias;
+        public function setDanyo($danyo) {
+            $this->danyo = $danyo;
         }
-        public function setAtletismo($atletismo) {
-            $this->atletismo = $atletismo;
+        public function setTa($TA) {
+            $this->TA = $TA;
         }
-        public function setMontar($montar) {
-            $this->montar = $montar;
-        }
-        public function setNadar($nadar) {
-            $this->nadar = $nadar;
-        }
-        public function setTrepar($trepar) {
-            $this->trepar = $trepar;
-        }
-        public function setSaltar($saltar) {
-            $this->saltar = $saltar;
-        }
-        public function setFrialdad($frialdad) {
-            $this->frialdad = $frialdad;
-        }
-        public function setProezas_Fuerza($proezas_fuerza) {
-            $this->proezas_fuerza = $proezas_fuerza;
-        }
-        public function setResistir_Dolor($resistir_dolor) {
-            $this->resistir_dolor = $resistir_dolor;
-        }
-        public function setAdvertir($advertir) {
-            $this->advertir = $advertir;
-        }
-        public function setBuscar($buscar) {
-            $this->buscar = $buscar;
-        }
-        public function setRastrear($rastrear) {
-            $this->rastrear = $rastrear;
-        }
-        public function setAnimales($animales) {
-            $this->animales = $animales;
-        }
-        public function setCiencia($ciencia) {
-            $this->ciencia = $ciencia;
-        }
-        public function setHerbolaria($herbolaria) {
-            $this->herbolaria = $herbolaria;
-        }
-        public function setHistoria($historia) {
-            $this->historia = $historia;
-        }
-        public function setMedicina($medicina) {
-            $this->medicina = $medicina;
-        }
-        public function setMemorizar($memorizar) {
-            $this->memorizar = $memorizar;
-        }
-        public function setNavegacion($navegacion) {
-            $this->navegacion = $navegacion;
-        }
-        public function setOcultismo($ocultismo) {
-            $this->ocultismo = $ocultismo;
-        }
-        public function setTasacion($tasacion) {
-            $this->tasacion = $tasacion;
-        }
-        public function setLey($ley) {
-            $this->ley = $ley;
-        }
-        public function setTactica($tactica) {
-            $this->tactica = $tactica;
-        }
-        public function setEstilo($estilo) {
-            $this->estilo = $estilo;
-        }
-        public function setIntimidar($intimidar) {
-            $this->intimidar = $intimidar;
-        }
-        public function setLiderazgo($liderazgo) {
-            $this->liderazgo = $liderazgo;
-        }
-        public function setPersuasion($persuasion) {
-            $this->persuasion = $persuasion;
-        }
-        public function setComerciar($comerciar) {
-            $this->comerciar = $comerciar;
-        }
-        public function setCallejeo($callejeo) {
-            $this->callejeo = $callejeo;
-        }
-        public function setEtiqueta($etiqueta) {
-            $this->etiqueta = $etiqueta;
-        }
-        public function setCerrajeria($cerrajeria) {
-            $this->cerrajeria = $cerrajeria;
-        }
-        public function setDisfraz($disfraz) {
-            $this->disfraz = $disfraz;
-        }
-        public function setOcultarse($ocultarse) {
-            $this->ocultarse = $ocultarse;
-        }
-        public function setRobo($robo) {
-            $this->robo = $robo;
-        }
-        public function setSigilo($sigilo) {
-            $this->sigilo = $sigilo;
-        }
-        public function setTramperia($tramperia) {
-            $this->tramperia = $tramperia;
-        }
-        public function setVenenos($venenos) {
-            $this->venenos = $venenos;
-        }
-        public function setArte($arte) {
-            $this->arte = $arte;
-        }
-        public function setBaile($baile) {
-            $this->baile = $baile;
-        }
-        public function setForja($forja) {
-            $this->forja = $forja;
-        }
-        public function setTrucos_Manos($trucos_manos) {
-            $this->trucos_manos = $trucos_manos;
-        }
-        public function setCanto($canto) {
-            $this->canto = $canto;
-        }
-        public function setRunas($runas) {
-            $this->runas = $runas;
-        }
-        public function setAnimismo($animismo) {
-            $this->animismo = $animismo;
-        }
-        public function setAlquimia($alquimia) {
-            $this->alquimia = $alquimia;
-        }
-        public function setEspecial1($especial1) {
-            $this->especial1 = $especial1;
-        }
-        public function setEspecial2($especial2) {
-            $this->especial2 = $especial2;
-        }
-        public function setEspecial3($especial3) {
-            $this->especial3 = $especial3;
-        }
-        public function setEspecial4($especial4) {
-            $this->especial4 = $especial4;
-        }
-        
         
         //METODES GET 
         public function getId_Personaje() {
@@ -714,152 +580,11 @@
         public function getLa() {
             return $this->la;
         }
-        public function getAcrobacias() {
-            return $this->acrobacias;
+        public function getDanyo() {
+            return $this->danyo;
         }
-        public function getAtletismo() {
-            return $this->atletismo;
-        }
-        public function getMontar() {
-            return $this->montar;
-        }
-        public function getNadar() {
-            return $this->nadar;
-        }
-        public function getTrepar() {
-            return $this->trepar;
-        }
-        public function getSaltar() {
-            return $this->saltar;
-        }
-        public function getFrialdad() {
-            return $this->frialdad;
-        }
-        public function getProezas_fuerza() {
-            return $this->proezas_fuerza;
-        }
-        public function getResistir_dolor() {
-            return $this->resistir_dolor;
-        }
-        public function getAdvertir() {
-            return $this->advertir;
-        }
-        public function getBuscar() {
-            return $this->buscar;
-        }
-        public function getRastrear() {
-            return $this->rastrear;
-        }
-        public function getAnimales() {
-            return $this->animales;
-        }
-        public function getCiencia() {
-            return $this->ciencia;
-        }
-        public function getHerbolaria() {
-            return $this->herbolaria;
-        }
-        public function getHistoria() {
-            return $this->historia;
-        }
-        public function getMedicina() {
-            return $this->medicina;
-        }
-        public function getMemorizar() {
-            return $this->memorizar;
-        }
-        public function getNavegacion() {
-            return $this->navegacion;
-        }
-        public function getOcultismo() {
-            return $this->ocultismo;
-        }
-        public function getTasacion() {
-            return $this->tasacion;
-        }
-        public function getLey() {
-            return $this->ley;
-        }
-        public function getTactica() {
-            return $this->tactica;
-        }
-        public function getEstilo() {
-            return $this->estilo;
-        }
-        public function getIntimidar() {
-            return $this->intimidar;
-        }
-        public function getLiderazgo() {
-            return $this->liderazgo;
-        }
-        public function getPersuasion() {
-            return $this->persuasion;
-        }
-        public function getComerciar() {
-            return $this->comerciar;
-        }
-        public function getCallejeo() {
-            return $this->callejeo;
-        }
-        public function getEtiqueta() {
-            return $this->etiqueta;
-        }
-        public function getCerrajeria() {
-            return $this->cerrajeria;
-        }
-        public function getDisfraz() {
-            return $this->disfraz;
-        }
-        public function getOcultarse() {
-            return $this->ocultarse;
-        }
-        public function getRobo() {
-            return $this->robo;
-        }
-        public function getSigilo() {
-            return $this->sigilo;
-        }
-        public function getTramperia() {
-            return $this->tramperia;
-        }
-        public function getVenenos() {
-            return $this->venenos;
-        }
-        public function getArte() {
-            return $this->arte;
-        }
-        public function getBaile() {
-            return $this->baile;
-        }
-        public function getForja() {
-            return $this->forja;
-        }
-        public function getTrucos_manos() {
-            return $this->trucos_manos;
-        }
-        public function getCanto() {
-            return $this->canto;
-        }
-        public function getRunas() {
-            return $this->runas;
-        }
-        public function getAnimismo() {
-            return $this->animismo;
-        }
-        public function getAlquimia() {
-            return $this->alquimia;
-        }
-        public function getEspecial1() {
-            return $this->especial1;
-        }
-        public function getEspecial2() {
-            return $this->especial2;
-        }
-        public function getEspecial3() {
-            return $this->especial3;
-        }
-        public function getEspecial4() {
-            return $this->especial4;
+        public function getTA() {
+            return $this->TA;
         }
     }
 ?>
