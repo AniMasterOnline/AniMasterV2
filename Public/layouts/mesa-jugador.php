@@ -21,8 +21,8 @@
             <div role="tabpanel" class="tab-pane fade in active p-0" id="personaje">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card m-0 m-b-10">
-                            <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
+                        <div class="card m-0 m-b-0">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
                                 <h2 class="lvh-label c-white f-18">
                                     Ficha del personaje
                                     <small class="c-white p-l-5">
@@ -67,7 +67,7 @@
                                     }
 
                                 ?>
-                                <div class="pmb-block p-t-15">
+                                <div class="pmb-block ">
                                     <div class="pmbb-body p-l-0">
                                         <div class="pmbb-view">
                                             <dl class="dl-horizontal">
@@ -127,13 +127,19 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade p-0" id="habilidades">
+                 <div class="row">
+                    <div class="col-md-12">
                         <div class="card m-0">
-                            <div class="lv-header-alt clearfix m-b-0 bgm-green z-depth-1-bottom">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
                                 <h2 class="lvh-label c-white f-18">Caracteristicas</h2>
                             </div>
                             <div class="card-body card-padding table-responsive p-0">
                                 <table class="table b-0 m-0">
-                                    <thead class="bgm-lightgreen b-0 c-white">
+                                    <thead class="bgm-blue b-0 c-white">
                                         <tr>
                                             <th class="text-center">Agi</th>
                                             <th class="text-center">Con</th>
@@ -155,14 +161,14 @@
                                         /*Mostrem totes les caracteristiques del personaje*/
                                         if (!empty($array)) {
                                             echo "<tr> 
-                                                <th class='text-center'>".$array['c_AGI']."</th>
-                                                <th class='text-center'>".$array['c_CON']."</th>
-                                                <th class='text-center'>".$array['c_DES']."</th>
-                                                <th class='text-center'>".$array['c_FUE']."</th>
-                                                <th class='text-center'>".$array['c_INT']."</th>
-                                                <th class='text-center'>".$array['c_PER']."</th>
-                                                <th class='text-center'>".$array['c_POD']."</th>
-                                                <th class='text-center'>".$array['c_VOL']."</th>
+                                                <th class='text-center f-400'>".$array['c_AGI']."</th>
+                                                <th class='text-center f-400'>".$array['c_CON']."</th>
+                                                <th class='text-center f-400'>".$array['c_DES']."</th>
+                                                <th class='text-center f-400'>".$array['c_FUE']."</th>
+                                                <th class='text-center f-400'>".$array['c_INT']."</th>
+                                                <th class='text-center f-400'>".$array['c_PER']."</th>
+                                                <th class='text-center f-400'>".$array['c_POD']."</th>
+                                                <th class='text-center f-400'>".$array['c_VOL']."</th>
                                                 </tr>";
                                         }
 
@@ -171,16 +177,84 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade p-l-15 p-r-15" id="habilidades">
-                 <div class="row">
-                    <div class="col-md-12">
-                        <h1>Habilidades</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <div class="card m-b-0">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-lightblue z-depth-1-bottom">
+                                <h2 class="lvh-label  c-white f-18">Habilidades Primarias </h2>
+                            </div>
+                            <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                                <table class="table b-0">
+                                    <thead class="bgm-cyan b-0 c-white">
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <th>Base</th>
+                                            <th>Car</th>
+                                            <th>Bono</th>
+                                            <th>Esp</th>
+                                            <th>Cat</th>
+                                            <th>Final</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <?php
+                                        require_once "../../System/Classes/Personaje.php";
+                                        require_once "../../System/Classes/Habilidades_Primarias.php";
+                                        require_once "../../System/Classes/Caracteristicas_P.php";
+                                        require_once "../../System/Classes/Categoria_HP.php";
 
+                                        $Personaje = new Personaje(); 
+                                        $array = $Personaje->viewPersonaje($id_personaje);
+
+                                        $HP = new Habilidades_Primarias(); 
+                                        $Caract_p = new Caracteristicas_p(); 
+                                        $Categoria_HP = new Categoria_HP(); 
+
+                                        /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+                                        if (!empty($array)) {
+                                                $contador = 0;
+                                                while ($contador < 4){
+                                                    $contador++;
+                                                    $arrayHP = $HP->viewHP($contador);
+                                                    switch ($contador) {
+                                                        case 1:
+                                                            $hp = $array['ha'];
+                                                            break;
+                                                        case 2:
+                                                            $hp = $array['hp'];
+                                                            break;
+                                                        case 3:
+                                                            $hp = $array['he'];
+                                                            break;
+                                                        case 4:
+                                                            $hp = $array['la'];
+                                                            break;
+                                                    }
+                                                    if( $contador < 3) {
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
+                                                    }elseif ($contador == 3) {
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                                    }elseif ($contador == 4) {
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                                    }
+                                                    $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
+                                                    $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
+                                                    $HAfinal = (int)$hp + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
+                                                    echo "<tr>
+                                                        <th class='f-400'>".$arrayHP->getNombre()."</th>
+                                                        <th class='f-400'>".$hp."</th>
+                                                        <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                                                        <th class='f-400'>".$arrayCaract_p['bono']."</th>
+                                                        <th class='f-400'>0</th>
+                                                        <th class='f-400'>".$bonoCategoria."</th>
+                                                        <th class='f-700'>".$HAfinal."</th></tr>";
+                                                }
+
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -307,7 +381,7 @@
                 var x = coord.x;
                 // tile range in one direction range is dependent on zoom level
                 // 0 = 1 tile, 1 = 2 tiles, 2 = 4 tiles, 3 = 8 tiles, etc
-                var tileRange = 100 << zoom;
+                var tileRange = 1 << zoom;
                 // don't repeat across y-axis (vertically)
                 if (y < 0 || y >= tileRange) {
                   return null;
