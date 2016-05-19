@@ -7,8 +7,7 @@ include "../../Public/layouts/head.php";
 
 <!-- Body content box -->
 <?php
-//$id_personaje=$_GET['id_personaje'];
-$id_personaje=1;
+$id_personaje=$_GET['id_personaje'];
 ?>
 <div class="container" >
     <form method="POST" name="myForm" action="../../System/Protocols/Equipment.php">

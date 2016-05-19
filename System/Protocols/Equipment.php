@@ -1,10 +1,10 @@
 <?php
 $id_personaje=$_POST['id_personaje'];
-$armas = $_POST['armas'];
+$arma = $_POST['armas'];
 $armadura=$_POST['armadura'];
 if (isset($_POST['armas'])){
         require_once "../Classes/Personaje_Objeto.php";
-        $perObj=new Personaje_Objeto($id_personaje, $armas);
+        $perObj=new Personaje_Objeto($id_personaje, $arma);
         $perObj->add();
 }
 if (isset($_POST['armadura'])){

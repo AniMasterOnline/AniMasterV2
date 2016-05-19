@@ -59,4 +59,6 @@ $objCar=new Objeto_Caracteristica($car13,$id_objeto,$val13);
 $objCar->add();
 $objCar=new Objeto_Caracteristica($car14,$id_objeto,$val14);
 $objCar->add();
+
+header('Location: ../../settings/table');
 ?>

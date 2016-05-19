@@ -7,5 +7,5 @@ $parObj = new Partida_Objeto();
 $parObj=$parObj->delete2($id_objeto);
 $objeto=$objeto->delete($id_objeto);
 
-header('Location: ../../settings/character/view_objeto.php');
+header('Location: ../../settings/table/');
 ?>
