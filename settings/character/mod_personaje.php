@@ -13,6 +13,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $return=$personaje->viewPersonaje($id_personaje);
     $id_categoria=$return['id_categoria'];
     $nivel2=$return['nivel'];
+    $id_partida=$return['id_partida'];
     
 }else{
     include '../404/404.php';
@@ -21,13 +22,29 @@ $title='Modificar Personaje';
 $migas='#Index|../../index.php#Zona roleo|../../zone.php# Modificar Personaje 1 / 2';
 include "../../Public/layouts/head.php";
 ?>
-
+<div class="content">
+    <div class="col-md-12">
+        <div class="col-xs-12">
+            <div class="card m-b-5">
+                <div class="card-header">
+                    <h2><small class="c-white f-400 f-14">Modificar personaje 1 / 2</small></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="progress m-b-5" style="border-radius: 0px;">
+                <div class="progress-bar bgm-brown" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66.66666%; border-radius: 0px;">
+                  2 / 2
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
 <?php
 require_once "../../System/Classes/Nivel.php";
 $nivel=new Nivel();
 $nivel=$nivel->viewNivel($nivel2);
 $puntos = $nivel->getPuntos();
-echo "Puntos totales: ".$puntos;
+echo "<div class='col-xs-12'> <div class='alert alert-info m-b-10' role='alert'><strong> Puntos totales: ".$puntos;
 $limite=0;
 $limite2=0;
 if($id_categoria == 8 || $id_categoria == 9){
@@ -39,92 +56,145 @@ if($id_categoria == 8 || $id_categoria == 9){
     $limite2 =$limite*$puntos;
     echo "<br>Puntos máximos a invertir en Habilidades Primarias ".$limite2." puntos";
 }
-echo "<br>".$limite2;
 $limite_hp = $puntos*0.5;
+$limite_le = $limite2 - $limite_hp;
 ?>
-<br>Los costes son:<br>
-<?php
-require_once "../../System/Classes/Categoria_HP.php";
-$cat_hp = new Categoria_HP();
-$cat_hp=$cat_hp->viewHP1($id_categoria,1);
-foreach($cat_hp as $cat_h){
-    $ha=$cat_h->getCoste();
-    echo "HA ".$ha;
-}
-$cat_hp = new Categoria_HP();
-$cat_hp2=$cat_hp->viewHP2($id_categoria,2);
-foreach($cat_hp2 as $cat_h2){
-    $hp=$cat_h2->getCoste();
-    echo "Hp ".$hp;
-}
-$cat_hp=$cat_hp->viewHP3($id_categoria,3);
-foreach($cat_hp as $cat_h){
-    $he=$cat_h->getCoste();
-    echo "He ".$he;
-}
-$cat_hp = new Categoria_HP();
-$cat_hp=$cat_hp->viewHP4($id_categoria,4);
-foreach($cat_hp as $cat_h){
-    $le=$cat_h->getCoste();
-    echo "Le ".$le;
-}
 
-$return = array($id_categoria,$ha,$hp,$he,$le,$id_personaje);
+            
+<form onchange="myFunction(this.value)" action="mod_personaje2.php?id=<?php echo $id_personaje ?>" method="POST">
+    <div class="col-xs-9 m-b-10">
+        <input type="hidden" name="points" id="limite_hp" value="<?php echo $limite_hp ?>" readonly>
+        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_hp_fake" value="<?php echo $limite_hp ?>" readonly>
+    </div>
+    <div class="col-xs-3 m-b-10">
+        <input type="hidden" name="points" id="limite_le" value="<?php echo $limite_le ?>" readonly>
+        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_le_fake" value="<?php echo $limite_le ?>" readonly>
+    </div>
+    <input type="hidden" name="puntosT" value="<?php echo $puntos ?>" readonly>
+    <div class="col-xs-3">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <?php
+                require_once "../../System/Classes/Categoria_HP.php";
+                $cat_hp = new Categoria_HP();
+                $result=$cat_hp->viewHP1($id_categoria,1);
+                $ha = $result['coste'];
+                echo "Ha - ".$ha;
+            ?>
+                <input class="form-control" type="hidden" id="ha2" value="<?php echo $ha ?>">
+            </span>
+            <input class="form-control" type="text" id="ha" name="ha" value="<?php echo $return['ha']/$ha ?>" placeholder="Habilidad ataque" required>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <?php
+                $cat_hp = new Categoria_HP();
+                $result=$cat_hp->viewHP2($id_categoria,2);
+                $hp = $result['coste'];
+                echo "Hp - ".$hp;
+            ?>
+                <input class="form-control" type="hidden" id="hp2" value="<?php echo $hp ?>">
+            </span>
+            <input class="form-control" type="text" id="hp" name="hp" value="<?php echo $return['hp']/$hp ?>" placeholder="Habilidad parada" required>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <?php
+                $cat_hp = new Categoria_HP();
+                $result=$cat_hp->viewHP3($id_categoria,3);
+                $he = $result['coste'];
+                echo "He - ".$he;
+            ?>
+                <input class="form-control" type="hidden" id="he2" value="<?php echo $he ?>">
+            </span>
+            <input class="form-control" type="text" id="he" name="he"  value="<?php echo $return['he']/$he ?>" placeholder="Habilidad esquiva" required>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <?php
+                $cat_hp = new Categoria_HP();
+                $result=$cat_hp->viewHP4($id_categoria,4);
+                $le = $result['coste'];
+                echo "Le - ".$le;
+            ?>
+                <input class="form-control" type="hidden" id="la2" value="<?php echo $le ?>">
+            </span>
+            <input class="form-control" type="text" id="la" name="la" value="<?php echo $return['la']/$le ?>"  placeholder="Llevar armadura" required>
+        </div>
+    </div>
+<?php
+$return = array($id_categoria,$ha,$hp,$he,$le,$id_personaje,$id_partida);
 $_SESSION['arrayMod']=$return;
 ?>
-
-<form onchange="myFunction(this.value)" action="mod_personaje2.php" method="POST">
-    <br>Habilidades Primarias<br>
-    Habilidad Ataque
-    <input type="text" name="ha" id="ha" value="<?php echo $return['ha']/$ha ?>"><br>
-    Habilidad Parada
-    <input type="text" name="hp" id="hp" value="<?php echo $return['hp']/$hp ?>"><br>
-    Habilidad Esquiva
-    <input type="text" name="he" id="he" value="<?php echo $return['he']/$he ?>"><br>
-    Llevar Armadura
-    <input type="text" name="la" id="la" value="<?php echo $return['la']/$le ?>"><br>
-    <input type="hidden" id="laa" name="puntosT" value="<?php echo $puntos ?>">
-    <input type="hidden" id="limite_hp" value="<?php echo $limite_hp ?>">
-    <input type="hidden" id="ha2" value="<?php echo $ha ?>">
-    <input type="hidden" id="hp2" value="<?php echo $hp ?>">
-    <input type="hidden" id="he2" value="<?php echo $he ?>">
-    <input type="hidden" id="la2" value="<?php echo $le ?>">
-    <input type="submit" name="submit" id="submit" value="Siguiente"><br>
+<div class=" clearfix m-b-5"></div>
+    <div class="col-xs-12">
+        <input class="btn btn-default bgm-indigo c-white p-0" type="submit" id="submit" value="Siguiente" name="submit" id="submit">
+    </div>
 </form>
 
    
 <script>
 function myFunction(val) {
-    var ha=document.getElementById("ha").value;
-    var ha2=document.getElementById("ha2").value;
-    var hp=document.getElementById("hp").value;
-    var hp2=document.getElementById("hp2").value;
-    var he=document.getElementById("he").value;
-    var he2=document.getElementById("he2").value;
-    var la=document.getElementById("la").value;
-    var la2=document.getElementById("la2").value;
-    var limite_hp=document.getElementById("limite_hp").value;
+    flaghp = false;
+    flagle = false;
+    var ha=document.getElementById("ha").value; //value
+    var ha2=document.getElementById("ha2").value; // coste Ha
     
-    var suma = ha*ha2+hp*hp2+he*he2;
-    //var suma = ha*2+hp*2+he*2;
-    if(suma > limite_hp){
-        alert("Error, solo puedes utilizar 50% de los puntos totals!");
-        document.getElementById("submit").disabled = true;
+    var hp=document.getElementById("hp").value; //value
+    var hp2=document.getElementById("hp2").value; // coste Hp
+    
+    var he=document.getElementById("he").value; //value
+    var he2=document.getElementById("he2").value; // coste He
+    
+    var la=document.getElementById("la").value; //value
+    var la2=document.getElementById("la2").value; // coste La
+    
+    var limite_hp=document.getElementById("limite_hp").value; // Value real
+    
+    var limite_le=document.getElementById("limite_le").value; // Value real
+    
+    var suma_hp = ha*ha2+hp*hp2+he*he2;
+    document.getElementById("limite_hp_fake").value = limite_hp - suma_hp;
+    if(suma_hp > limite_hp){
+        flaghp = false;
+        $('#limite_hp_fake').removeClass('c-green');
+        $('#limite_hp_fake').addClass('c-red');
+    }else{
+        flaghp = true;
+        $('#limite_hp_fake').removeClass('c-red');
+        $('#limite_hp_fake').addClass('c-green');
+    }
+    
+    var suma_le = la*la2;
+    document.getElementById("limite_le_fake").value = limite_le - suma_le;
+    if(suma_le > limite_le){
+        flagle = false;
+        $('#limite_le_fake').removeClass('c-green');
+        $('#limite_le_fake').addClass('c-red');
+    }else{
+        flagle = true;
+        $('#limite_le_fake').removeClass('c-red');
+        $('#limite_le_fake').addClass('c-green');
+    }
+    
+    
+    if(flagle && flaghp){
+        document.getElementById("submit").disabled = false;
         return false;
     }
     else{
-        var suma2 = limite_hp-suma;
-        var la3 = la*la2;
-        if(suma2<la3){
-            alert("Solo puedes utilizar "+suma2+" puntos");
-            document.getElementById("submit").disabled = true;
-            return false;
-        }
-        else{
-            document.getElementById("submit").disabled = false;
-            return true;
-        }
+        document.getElementById("submit").disabled = true;
+        return true;
     }
     
 }
 </script>
+        </div>
+    </div>
+</div>

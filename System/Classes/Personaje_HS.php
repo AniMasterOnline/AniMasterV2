@@ -60,6 +60,18 @@
                 return null;
             }
         }
+        
+         public function modPerHS($id_personaje, $id_HS, $valor){
+            $db = new connexio();
+            
+            $sqlmod = "UPDATE Personaje_HS SET valor='$valor' WHERE id_personaje = '$id_personaje' and id_HS='$id_HS'";
+            
+            $result = $db->query($sqlmod);
+            
+            $db->close();
+            return $result;
+        }
+        
         public function viewPersonaje_HS($id_personaje){
             $db = new connexio();
             $sql = "SELECT * FROM Personaje_HS where id_personaje='$id_personaje'";
@@ -77,7 +89,18 @@
             }
         }
         
-
+        public function viewPersonaje_HS2($id_personaje, $id_HS){
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje_HS where id_personaje='$id_personaje' and id_HS='$id_HS'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                $row = $query->fetch_assoc();
+                return $row;
+            }else{
+                return null;
+            }
+        }
         //CONSTRUCTORS
         function __construct(){
             $args = func_get_args();
