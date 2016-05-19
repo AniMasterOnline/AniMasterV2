@@ -398,10 +398,60 @@ include "../../Public/layouts/head.php";
                                 <th>Tipo</th>
                                 <th>Peso</th>
                                 <th>Valor</th>
-                                <th>Cantidad</th>
+                                <th>Daño</th>
+                                <th>TA</th>
                             </tr>
                         </thead>
                         <tbody >
+                            <?php
+                            require_once "../../System/Classes/Personaje_Objeto.php";
+                            require_once "../../System/Classes/Objeto.php";
+                            require_once "../../System/Classes/Tipo.php";
+                            
+                            $Personaje_Objeto = new Personaje_Objeto();
+                            $Personaje_Objeto = $Personaje_Objeto->viewObj($id_personaje);
+                            var_dump($id_personaje);
+                            
+                            /*Agafem totes les id_objeto que te el pj mitjançant id_personaje*/
+                            foreach ($Personaje_Objeto as $row){
+                                //per cada id_objeto select a objeto where id_objeto = id_objeto;
+                                $id_objeto = $row->getId_Objeto();
+                                
+                                //mostrem el nom, pes, valor, id_tipus, id_objeto_caracteristica=1(danyo), (TA).
+                                $objeto = new Objeto();
+                                $objeto = $objeto->viewObj($id_objeto);     //select * del objeto
+                                
+                                $nombre_objeto = $objeto->getNombre();  //nombre del objeto
+                                $peso = $objeto->getPeso(); //peso del objeto
+                                $precio = $objeto->getPrecio(); //precio del objeto
+                                $id_tipo = $objeto->getId_Tipo();
+                                
+                                $tipo = new Tipo();
+                                $tipo = $tipo->view_nombre($id_tipo);
+                                $nombre_tipo = $tipo->getNombre(); //nombre del tipo de objeto (Arma)
+                                
+                                $danyo = 0;
+                                $TA = 0;
+                                if($id_tipo == '2' || $id_tipo == '3') {
+                                    $Caracteristicas_Objeto = new Objeto_Caracteristica();
+                                    $danyo = $Caracteristicas_Objeto->selectArma($id_objeto); //select de danyo
+                                    $TA = $Caracteristicas_Objeto->selectArmadura($id_objeto); //select de TA
+                                }
+                                
+                                if(!$is0){
+                                    echo '  <tr>
+                                            <th class="f-400">'.$nombre_objeto.'</th>
+                                            <th class="f-400">'.$nombre_tipo.'</th>
+                                            <th class="f-400">'.$peso.'</th>
+                                            <th class="f-400">'.$precio.'</th>
+                                            <th class="f-400">'.$danyo.'</th>
+                                            <th class="f-400">'.$TA.'</th>
+                                        </tr>';
+                                }
+                            }
+                        ?>
+                            
+                            
                             <tr >
                                 <td class="text-capitalize">Espada Larga</td>
                                 <td>Arma</td>

@@ -53,6 +53,20 @@
                 return null;
             }
         }
+        public function viewObjPerson($id_personaje){
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje_Objeto WHERE id_personaje='$id_personaje'";
+            $query = $db->query($sql);
+            $db->close();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_objeto = new Personaje_Objeto($obj["id_personaje"],$obj["id_objeto"]);
+                }
+                return $partida_objeto;
+            }else{
+                return null;
+            }
+        }
         
 
         //CONSTRUCTORS
