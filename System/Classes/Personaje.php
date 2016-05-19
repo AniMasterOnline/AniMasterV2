@@ -170,6 +170,16 @@
             $db->close();
             return $result;
         }
+        public function modPer($id_personaje, $puntos_hp,$puntos_hs,$puntos_queden,$ha,$hp,$he,$le){
+            $db = new connexio();
+            
+            $sqlmod = "UPDATE Personaje SET puntos_hs='$puntos_hs', puntos_hp='$puntos_hp', puntos_totales='$puntos_queden', ha='$ha', hp='$hp', he='$he', la='$le' WHERE id_personaje = '$id_personaje'";
+            
+            $result = $db->query($sqlmod);
+            
+            $db->close();
+            return $result;
+        }
         public function viewPNJ($id_master, $id_partida){ 
             $db = new connexio();
             $sql = "SELECT * FROM Personaje WHERE id_partida IS NULL or id_usuario = '$id_master' and id_partida = '$id_partida'";

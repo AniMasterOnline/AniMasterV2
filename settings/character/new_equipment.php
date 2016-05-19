@@ -16,8 +16,9 @@ $id_partida=$_GET['id_partida'];
             <div class="col-md-12">
                 <div class="col-md-12 cinput m-l-15 ">
                     <h2 class="form-signin-heading">Crear nuevo equipamentos</h2>                    
-                    <input type="hidden" name="id_personaje" value="<?php echo $id_personaje ?>"
-                    <input type="hidden" name="id_partida" value="<?php echo $id_partida ?>"
+                    <input type="hidden" name="id_personaje" value="<?php echo $id_personaje ?>">
+                    <input type="hidden" name="id_partida" value="<?php echo $id_partida ?>">
+                    Seleccione 1 arma y 1 armadura únicamente:
                 </div>
                 <div class="col-md-6">
                     <h2 class="form-signin-heading">Armas</h2>
@@ -30,7 +31,7 @@ $id_partida=$_GET['id_partida'];
                             $id_objeto=$objeto->getId_Objeto();
                         ?>
                     <div class="col-md-6">
-                        <input type="checkbox" name="armas" value="<?php echo $id_objeto ?>" id="<?php echo $id_objeto ?>" ><?php echo " ".$nombre ?>
+                        <input type="radio" name="armas" value="<?php echo $id_objeto ?>" id="<?php echo $id_objeto ?>" ><?php echo " ".$nombre ?>
                     </div>
                         <?php  } ?>
                 </div>
@@ -45,7 +46,7 @@ $id_partida=$_GET['id_partida'];
                             $id_objeto=$objeto->getId_Objeto();
                         ?>
                     <div class="col-md-6">
-                        <input type="checkbox" name="armadura" value="<?php echo $id_objeto ?>" id="<?php echo $id_objeto ?>"><?php echo " ".$nombre ?>
+                        <input type="radio" name="armadura" value="<?php echo $id_objeto ?>" id="<?php echo $id_objeto ?>"><?php echo " ".$nombre ?>
                     </div>
                         <?php  } ?>
                 </div>
