@@ -1,10 +1,11 @@
 <?php
 $id_personaje=$_POST['id_personaje'];
-$armas = $_POST['armas'];
+$id_partida=$_POST['id_partida'];
+$arma = $_POST['armas'];
 $armadura=$_POST['armadura'];
 if (isset($_POST['armas'])){
         require_once "../Classes/Personaje_Objeto.php";
-        $perObj=new Personaje_Objeto($id_personaje, $armas);
+        $perObj=new Personaje_Objeto($id_personaje, $arma);
         $perObj->add();
 }
 if (isset($_POST['armadura'])){
@@ -29,4 +30,5 @@ echo $valor2;
 require_once "../../System/Classes/Personaje.php";
 $personaje=new Personaje();
 $personaje=$personaje->modDanyoTA($id_personaje, $valor, $valor2);
+header('Location: ../../settings/character/view_personaje?id_personaje='.$id_personaje.'&id_partida='.$id_partida.'');
 ?>

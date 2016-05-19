@@ -359,7 +359,7 @@ foreach ($cantidad as $cantidad){
     $personaje_HS->add();
     $personaje_HS=new Personaje_HS($id_personaje, $id_HS49, $FIespecial4);
     $personaje_HS->add();
-    header('Location: ../../settings/character/new_equipment.php');
+    header('Location: ../../settings/character/new_equipment.php?id_personaje='.$id_personaje.'&id_partida='.$id_partida.'');
 
 }
 }

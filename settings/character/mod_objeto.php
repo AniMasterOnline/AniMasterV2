@@ -44,7 +44,7 @@ foreach ($objeto as $objeto){
                     <div class="col-md-6 cinput">
                         <label for="inputDisponibilidad" class="sr-only">Disponibilidad</label>
                         <select class="selectpicker" data-style="btn-primary" data-width="100%" type="text" id="inputDisponibilidad" name="disponibilidad" placeholder="Disponibilidad *" required>
-                            <option value="<?php echo $disponibilidad ?>"><?php echo $disponibilidad ?></option>
+                            <option value="<?php echo $disponibilidad ?>">Disponibilidad (<?php echo $disponibilidad ?>)</option>
                             <option value="0">0</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
@@ -53,7 +53,7 @@ foreach ($objeto as $objeto){
                     <div class="col-md-6 cinput">
                         <label for="inputCalidad" class="sr-only">Calidad</label>
                         <select class="selectpicker" data-style="btn-primary" data-width="100%" type="text" id="inputCalidad" name="calidad" placeholder="Calidad *" required>
-                            <option value="<?php echo $calidad ?>"><?php echo $calidad ?></option>
+                            <option value="<?php echo $calidad ?>">Calidad (<?php echo $calidad ?>)</option>
                             <option value="-5">-5</option>
                             <option value="-10">-10</option>
                             <option value="0">0</option>

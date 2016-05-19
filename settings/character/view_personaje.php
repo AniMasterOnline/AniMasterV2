@@ -89,7 +89,7 @@ include "../../Public/layouts/head.php";
                                     <a <?php echo 'href="mod_personaje.php?id='.$id_personaje.'"';?>>Modificar personaje</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="eliminar">Eliminar personaje</a>
+                                    <a <?php echo 'href="../../System/Protocols/Personaje_Del.php?id='.$id_personaje.'"';?>>Eliminar personaje</a>
                                 </li>
                             </ul>
                         </li>

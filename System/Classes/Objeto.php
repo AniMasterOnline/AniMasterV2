@@ -63,7 +63,7 @@
         }
         public function viewArmas(){
             $db = new connexio();
-            $sql = "SELECT * FROM Objeto where id_tipo='3'";
+            $sql = "SELECT * FROM Objeto where id_tipo='3' and public='false'";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){
@@ -76,7 +76,7 @@
         }
         public function viewArmadura(){
             $db = new connexio();
-            $sql = "SELECT * FROM Objeto where id_tipo='2'";
+            $sql = "SELECT * FROM Objeto where id_tipo='2' and public='false'";
             $query = $db->query($sql);
             $rtn = array();
             while($obj = $query->fetch_assoc()){

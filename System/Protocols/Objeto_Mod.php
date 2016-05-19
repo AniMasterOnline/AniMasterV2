@@ -10,5 +10,5 @@ echo $descripcion=$_POST['descripcion'];
 require_once "../Classes/Objeto.php";
 $objeto = new Objeto();
 $objeto=$objeto->modObj($id_objeto,$nombre,$descripcion,$peso,$precio,$disponibilidad,$calidad);
-header('Location: ../../settings/character/mod_objeto.php?id_objeto=20');
+header('Location: ../../settings/table/');
 ?>
