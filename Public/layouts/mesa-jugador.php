@@ -273,6 +273,8 @@
                                                     }
                                                     $arrayCategoria_HP = $Categoria_HP->viewHP1($return['id_categoria'], $contador);
                                                     $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$return['nivel']);
+                                                    $coste = $arrayCategoria_HP['coste'];
+                                                    $hp = $hp / $coste;
                                                     $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
                                                     $is0 = false;
                                                     if($hp <= 0){
