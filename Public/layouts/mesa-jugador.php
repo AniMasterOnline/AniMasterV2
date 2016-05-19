@@ -277,8 +277,7 @@
                                                     $hp = $hp / $coste;
                                                     $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
                                                     $is0 = false;
-                                                    if($hp <= 0){
-                                                        $HAfinal = 0;
+                                                    if($hp < 0){
                                                         $is0 = true;
                                                     }
                                                     if(!$is0){
