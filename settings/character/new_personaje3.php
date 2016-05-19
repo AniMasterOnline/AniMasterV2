@@ -39,6 +39,19 @@ $title='Crear Personaje';
 $migas='#Index|../../index.php#Zona roleo|../../zone.php#'.$nombre.'# Crear Personaje 3 / 3';
 include "../../Public/layouts/head.php";
 ?>
+<style>
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: left;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+</style>
 <div class="content">
     <div class="col-md-12">
         <div class="col-xs-12">
@@ -85,19 +98,29 @@ $suma3= $suma+$suma2;
 $limite_hp = $puntosF-($suma3);
 echo "<div class='alert alert-info m-b-5' role='alert'><strong>Habilidades secundarias</strong><br> Te quedan ".$limite_hp." puntos</div>";
 ?>
+<div class="col-md-8 col-md-offset-2">
+    <input type="text" value="<?php echo $limite_hp; ?>" class="form-control f-400 text-center c-green" id="suma_fake" aria-describedby="basic-addon1" readonly>
+
 <form onchange="myFunction(this.value)" action="<?php echo '../../System/Protocols/Personaje_Add.php?id_partida='.$id_partida; ?>" method="POST">
 <?php
 require_once "../../System/Classes/Categoria_HS.php";
+require_once "../../System/Classes/Habilidades_Secundarias.php";
 $categoria=new Categoria_HS();
 $categoria=$categoria->viewHS($id_categoria);
+echo '<div class="input-group"><span class="input-group-addon f-700" id="basic-addon1">( Coste ) Habilidad</span>';
+echo '<input type="text" value="Base" class="form-control f-700" aria-describedby="basic-addon1" readonly></div>';
 foreach ($categoria as $categoria){
     $id_HS=$categoria->getId_HS();
     $coste=$categoria->getCoste();
+    $HaSec = new Habilidades_Secundarias();
+    $HaSec = $HaSec->view_HS($id_HS);
+    $name = $HaSec->getNombre();
+    
        
          echo '<input type="hidden" name="coste'.$id_HS.'" id="coste'.$id_HS.'" value="'.$coste.'">';
          echo '<input type="hidden" name="'.$id_HS.'" id="'.$id_HS.'" value="'.$id_HS.'">';
         echo '<div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">'.$coste.'</span>';
+      <span class="input-group-addon" id="basic-addon1">( '.$coste.' ) '.$name.'</span>';
         echo '<input type="text" name="hs'.$id_HS.'" id="hs'.$id_HS.'" class="form-control" aria-describedby="basic-addon1"></div>';
     
 }
@@ -111,6 +134,7 @@ foreach ($categoria as $categoria){
     <input type="hidden" name="FIla" id="FIla" value="<?php echo $FIla; ?>">
     <input class="btn btn-default bgm-indigo c-white p-0 m-t-5" type="submit" name="submit" id="submit" value="Crear">
 </form>
+</div>
 <script>
 function myFunction(val) {
     var coste1=document.getElementById("coste1").value;
@@ -216,10 +240,16 @@ function myFunction(val) {
     
     var suma=hs1*coste1+hs2*coste2+hs3*coste3+hs4*coste4+hs5*coste5+hs6*coste6+hs7*coste7+hs8*coste8+hs9*coste9+hs10*coste10+hs11*coste11+hs12*coste12+hs13*coste13+hs14*coste14+hs15*coste15+hs16*coste16+hs17*coste17+hs18*coste18+hs19*coste19+hs20*coste20+hs21*coste21+hs22*coste22+hs23*coste23+hs24*coste24+hs25*coste25+hs26*coste26+hs27*coste27+hs28*coste28+hs29*coste29+hs30*coste30+hs31*coste31+hs32*coste32+hs33*coste33+hs34*coste34+hs35*coste35+hs36*coste36+hs37*coste37+hs38*coste38+hs39*coste39+hs40*coste40+hs41*coste41+hs42*coste42+hs43*coste43+hs44*coste44+hs45*coste45+hs46*coste46+hs47*coste47+hs48*coste48+hs49*coste49;
     //alert(suma);
-      if(suma>puntosF){
-        alert("Error, la suma de todos los campos tiene que ser menor o igual que "+puntosF);
+    //suma_fake
+    document.getElementById("suma_fake").value = puntosF - suma;
+    if(suma>puntosF){
+        swal("Error!", "has usado más puntos de los que dispones!");
+        $('#suma_fake').removeClass('c-green');
+        $('#suma_fake').addClass('c-red');
         document.getElementById("submit").disabled = true;
     }else{
+        $('#suma_fake').removeClass('c-red');
+        $('#suma_fake').addClass('c-green');
         document.getElementById("submit").disabled = false;
     }
 }

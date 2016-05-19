@@ -9,6 +9,10 @@
     require_once "../../System/Classes/Personaje_HS.php";
     require_once "../../System/Classes/Habilidades_Secundarias.php";
     require_once "../../System/Classes/Categoria_HS.php";
+    require_once "../../System/Classes/Personaje_Objeto.php";
+    require_once "../../System/Classes/Objeto.php";
+    require_once "../../System/Classes/Tipo.php";
+    require_once "../../System/Classes/Objeto_Caracteristica.php";
     
     $personaje = new Personaje();
     $return = $personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
@@ -310,7 +314,7 @@
                                 <table class="table b-0">
                                     <thead class="bgm-blue b-0 c-white">
                                         <tr>
-                                            <th>Nombre</th>
+                                            <th></th>
                                             <th>Base</th>
                                             <th>Caract</th>
                                             <th>Bono</th>
@@ -414,23 +418,79 @@
                                             <th>Peso</th>
                                             <th>Valor</th>
                                             <th>Cantidad</th>
+                                            <th>Daño</th>
+                                            <th>TA</th>
                                         </tr>
                                     </thead>
                                     <tbody >
-                                        <tr >
-                                            <td class="text-capitalize">Espada Larga</td>
-                                            <td>Arma</td>
-                                            <td>1 Kg</td>
-                                            <td>5000 MC</td>
-                                            <td>1 unidad</td>
-                                        </tr>
-                                        <tr >
-                                            <td class="text-capitalize">Platas</td>
-                                            <td>Útiles Varios</td>
-                                            <td>0</td>
-                                            <td>10 MC</td>
-                                            <td>100</td>
-                                        </tr>
+                                        <?php
+                                        $Personaje_Objeto = new Personaje_Objeto();
+                                        $Personaje_Objeto = $Personaje_Objeto->viewObjPerson($id_personaje);
+                                        if($Personaje_Objeto != null){
+                                           /*Agafem totes les id_objeto que te el pj mitjançant id_personaje*/
+                                            foreach ($Personaje_Objeto as $row){
+                                                //per cada id_objeto select a objeto where id_objeto = id_objeto;
+                                                $id_objeto = $row->getId_Objeto();
+                                                $cantidad = $row->getCantidad();    //cantidad del objeto
+
+                                                //mostrem el nom, pes, valor, id_tipus, id_objeto_caracteristica=1(danyo), (TA).
+                                                $objeto = new Objeto();
+                                                $objeto = $objeto->viewObj($id_objeto);     //select * del objeto
+
+                                                $nombre_objeto = $objeto[0]->getNombre();  //nombre del objeto
+                                                $peso = $objeto[0]->getPeso(); //peso del objeto
+                                                $precio = $objeto[0]->getPrecio(); //precio del objeto
+                                                $id_tipo = $objeto[0]->getId_Tipo();
+
+                                                $tipo = new Tipo();
+                                                $tipo = $tipo->view_nombre($id_tipo);
+                                                $nombre_tipo = $tipo->getNombre(); //nombre del tipo de objeto (Arma)
+
+
+                                                if($id_tipo == '2' || $id_tipo == '3') {
+                                                    $Caracteristicas_Objeto = new Objeto_Caracteristica();
+
+                                                    $Caracteristicas_Objeto_Arma = $Caracteristicas_Objeto->selectArmaValor($id_objeto); 
+                                                    $danyo = $Caracteristicas_Objeto_Arma->getValor(); //select de danyo
+
+                                                    $Caracteristicas_Objeto_Armadura = $Caracteristicas_Objeto->selectArmaduraValor($id_objeto);
+                                                    $TA = $Caracteristicas_Objeto_Armadura->getValor(); //select de TA
+                                                }else{
+                                                    $danyo = 0;
+                                                    $TA = 0;
+                                                }
+
+
+                                                if(empty($TA)){
+                                                    $TA = 0;
+                                                }else if(empty($danyo)){
+                                                    $danyo = 0;
+                                                }
+
+                                                echo '  <tr>
+                                                        <th class="f-400">'.$nombre_objeto.'</th>
+                                                        <th class="f-400">'.$nombre_tipo.'</th>
+                                                        <th class="f-400">'.$peso.'</th>
+                                                        <th class="f-400">'.$precio.'</th>
+                                                        <th class="f-400">'.$cantidad.'</th>
+                                                        <th class="f-400">'.$danyo.'</th>
+                                                        <th class="f-400">'.$TA.'</th>
+                                                    </tr>';
+                                            } 
+                                        }else{
+                                            echo '  <tr>
+                                                        <th class="f-400"> ??? </th>
+                                                        <th class="f-400"> ??? </th>
+                                                        <th class="f-400"> ??? </th>
+                                                        <th class="f-400"> ??? </th>
+                                                        <th class="f-400"> ??? </th>
+                                                        <th class="f-400"> ??? </th>
+                                                        <th class="f-400"> ??? </th>
+                                                    </tr>';
+                                        }
+
+                                        
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

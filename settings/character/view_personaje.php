@@ -130,22 +130,22 @@ include "../../Public/layouts/head.php";
                                 $categoria = new Categoria(); 
                                 $arrayC = $categoria->viewCar($return['id_categoria']);
                                 echo "
-                                    <th class='text-center'>".$arrayC->getNombre()."
-                                    <th class='text-center'>".$return['nivel']."</th>
-                                    <th class='text-center'>".$return['raza']."</th>";
+                                    <th class='text-center f-400'>".$arrayC->getNombre()."
+                                    <th class='text-center f-400'>".$return['nivel']."</th>
+                                    <th class='text-center f-400'>".$return['raza']."</th>";
                                 $nivel = new Nivel(); 
                                 $arrayN = $nivel->viewNivel($return['nivel']);
                                 echo "
-                                    <th class='text-center'>".$arrayN->getPuntos()."</th>
-                                    <th class='text-center'>".$return['puntos_totales']."</th>
-                                    <th class='text-center'>".$return['apariencia']."</th>
-                                    <th class='text-center'>".$return['tamanyo']."</th>
-                                    <th class='text-center'>".$return['edad']."</th>
-                                    <th class='text-center'>".$return['sexo']."</th>
-                                    <th class='text-center'>".$return['pelo']."</th>
-                                    <th class='text-center'>".$return['ojos']."</th>
-                                    <th class='text-center'>".$return['altura']."</th>
-                                    <th class='text-center'>".$return['peso']."</th>
+                                    <th class='text-center f-400'>".$arrayN->getPuntos()."</th>
+                                    <th class='text-center f-400'>".$return['puntos_totales']."</th>
+                                    <th class='text-center f-400'>".$return['apariencia']."</th>
+                                    <th class='text-center f-400'>".$return['tamanyo']."</th>
+                                    <th class='text-center f-400'>".$return['edad']."</th>
+                                    <th class='text-center f-400'>".$return['sexo']."</th>
+                                    <th class='text-center f-400'>".$return['pelo']."</th>
+                                    <th class='text-center f-400'>".$return['ojos']."</th>
+                                    <th class='text-center f-400'>".$return['altura']."</th>
+                                    <th class='text-center f-400'>".$return['peso']."</th>
                                     </tr>";
                             }
                             
@@ -175,14 +175,14 @@ include "../../Public/layouts/head.php";
                             /*Mostrem totes les caracteristiques del personaje*/
                             if (!empty($return)) {
                                 echo "<tr> 
-                                    <th class='text-center'>".$return['c_AGI']."</th>
-                                    <th class='text-center'>".$return['c_CON']."</th>
-                                    <th class='text-center'>".$return['c_DES']."</th>
-                                    <th class='text-center'>".$return['c_FUE']."</th>
-                                    <th class='text-center'>".$return['c_INT']."</th>
-                                    <th class='text-center'>".$return['c_PER']."</th>
-                                    <th class='text-center'>".$return['c_POD']."</th>
-                                    <th class='text-center'>".$return['c_VOL']."</th>
+                                    <th class='text-center f-400'>".$return['c_AGI']."</th>
+                                    <th class='text-center f-400'>".$return['c_CON']."</th>
+                                    <th class='text-center f-400'>".$return['c_DES']."</th>
+                                    <th class='text-center f-400'>".$return['c_FUE']."</th>
+                                    <th class='text-center f-400'>".$return['c_INT']."</th>
+                                    <th class='text-center f-400'>".$return['c_PER']."</th>
+                                    <th class='text-center f-400'>".$return['c_POD']."</th>
+                                    <th class='text-center f-400'>".$return['c_VOL']."</th>
                                     </tr>";
                             }
                             
@@ -412,57 +412,68 @@ include "../../Public/layouts/head.php";
                             
                             $Personaje_Objeto = new Personaje_Objeto();
                             $Personaje_Objeto = $Personaje_Objeto->viewObjPerson($id_personaje);
-                            
-                            /*Agafem totes les id_objeto que te el pj mitjançant id_personaje*/
-                            foreach ($Personaje_Objeto as $row){
-                                //per cada id_objeto select a objeto where id_objeto = id_objeto;
-                                $id_objeto = $row->getId_Objeto();
-                                $cantidad = $row->getCantidad();    //cantidad del objeto
-                                
-                                //mostrem el nom, pes, valor, id_tipus, id_objeto_caracteristica=1(danyo), (TA).
-                                $objeto = new Objeto();
-                                $objeto = $objeto->viewObj($id_objeto);     //select * del objeto
-                                
-                                $nombre_objeto = $objeto[0]->getNombre();  //nombre del objeto
-                                $peso = $objeto[0]->getPeso(); //peso del objeto
-                                $precio = $objeto[0]->getPrecio(); //precio del objeto
-                                $id_tipo = $objeto[0]->getId_Tipo();
-                                
-                                $tipo = new Tipo();
-                                $tipo = $tipo->view_nombre($id_tipo);
-                                $nombre_tipo = $tipo->getNombre(); //nombre del tipo de objeto (Arma)
-                                
-                                
-                                if($id_tipo == '2' || $id_tipo == '3') {
-                                    $Caracteristicas_Objeto = new Objeto_Caracteristica();
-                                    
-                                    $Caracteristicas_Objeto_Arma = $Caracteristicas_Objeto->selectArmaValor($id_objeto); 
-                                    $danyo = $Caracteristicas_Objeto_Arma->getValor(); //select de danyo
-                                    
-                                    $Caracteristicas_Objeto_Armadura = $Caracteristicas_Objeto->selectArmaduraValor($id_objeto);
-                                    $TA = $Caracteristicas_Objeto_Armadura->getValor(); //select de TA
-                                }else{
-                                    $danyo = 0;
-                                    $TA = 0;
-                                }
-                                
-                                
-                                if(empty($TA)){
-                                    $TA = 0;
-                                }else if(empty($danyo)){
-                                    $danyo = 0;
-                                }
-                                
-                                echo '  <tr>
-                                        <th class="f-400">'.$nombre_objeto.'</th>
-                                        <th class="f-400">'.$nombre_tipo.'</th>
-                                        <th class="f-400">'.$peso.'</th>
-                                        <th class="f-400">'.$precio.'</th>
-                                        <th class="f-400">'.$cantidad.'</th>
-                                        <th class="f-400">'.$danyo.'</th>
-                                        <th class="f-400">'.$TA.'</th>
-                                    </tr>';
-                            }
+                            if($Personaje_Objeto != null){
+                                /*Agafem totes les id_objeto que te el pj mitjançant id_personaje*/
+                                 foreach ($Personaje_Objeto as $row){
+                                     //per cada id_objeto select a objeto where id_objeto = id_objeto;
+                                     $id_objeto = $row->getId_Objeto();
+                                     $cantidad = $row->getCantidad();    //cantidad del objeto
+
+                                     //mostrem el nom, pes, valor, id_tipus, id_objeto_caracteristica=1(danyo), (TA).
+                                     $objeto = new Objeto();
+                                     $objeto = $objeto->viewObj($id_objeto);     //select * del objeto
+
+                                     $nombre_objeto = $objeto[0]->getNombre();  //nombre del objeto
+                                     $peso = $objeto[0]->getPeso(); //peso del objeto
+                                     $precio = $objeto[0]->getPrecio(); //precio del objeto
+                                     $id_tipo = $objeto[0]->getId_Tipo();
+
+                                     $tipo = new Tipo();
+                                     $tipo = $tipo->view_nombre($id_tipo);
+                                     $nombre_tipo = $tipo->getNombre(); //nombre del tipo de objeto (Arma)
+
+
+                                     if($id_tipo == '2' || $id_tipo == '3') {
+                                         $Caracteristicas_Objeto = new Objeto_Caracteristica();
+
+                                         $Caracteristicas_Objeto_Arma = $Caracteristicas_Objeto->selectArmaValor($id_objeto); 
+                                         $danyo = $Caracteristicas_Objeto_Arma->getValor(); //select de danyo
+
+                                         $Caracteristicas_Objeto_Armadura = $Caracteristicas_Objeto->selectArmaduraValor($id_objeto);
+                                         $TA = $Caracteristicas_Objeto_Armadura->getValor(); //select de TA
+                                     }else{
+                                         $danyo = 0;
+                                         $TA = 0;
+                                     }
+
+
+                                     if(empty($TA)){
+                                         $TA = 0;
+                                     }else if(empty($danyo)){
+                                         $danyo = 0;
+                                     }
+
+                                     echo '  <tr>
+                                             <th class="f-400">'.$nombre_objeto.'</th>
+                                             <th class="f-400">'.$nombre_tipo.'</th>
+                                             <th class="f-400">'.$peso.'</th>
+                                             <th class="f-400">'.$precio.'</th>
+                                             <th class="f-400">'.$cantidad.'</th>
+                                             <th class="f-400">'.$danyo.'</th>
+                                             <th class="f-400">'.$TA.'</th>
+                                         </tr>';
+                                 } 
+                             }else{
+                                 echo '  <tr>
+                                             <th class="f-400"> ??? </th>
+                                             <th class="f-400"> ??? </th>
+                                             <th class="f-400"> ??? </th>
+                                             <th class="f-400"> ??? </th>
+                                             <th class="f-400"> ??? </th>
+                                             <th class="f-400"> ??? </th>
+                                             <th class="f-400"> ??? </th>
+                                         </tr>';
+                             }
                             ?>
                         </tbody>
                     </table>

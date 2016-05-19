@@ -84,7 +84,7 @@ require_once "../../System/Classes/Nivel.php";
 $nivel=new Nivel();
 $nivel=$nivel->viewNivel($nivel2);
 $puntos = $nivel->getPuntos();
-echo "<div class='col-xs-12'> <div class='alert alert-info' role='alert'><strong> Puntos totales: ".$puntos;
+echo "<div class='col-xs-12'> <div class='alert alert-info m-b-10' role='alert'><strong> Puntos totales: ".$puntos;
 $limite=0;
 $limite2=0;
 if($id_categoria == 8 || $id_categoria == 9){
@@ -97,11 +97,20 @@ if($id_categoria == 8 || $id_categoria == 9){
     echo "</strong><br>Puntos máximos a invertir en Habilidades Primarias ".$limite2." puntos </div></div>";
 }
 $limite_hp = $puntos*0.5;
+$limite_le = $limite2 - $limite_hp;
 ?>
 
 <form onchange="myFunction(this.value)" action="<?php echo 'new_personaje3.php?id_partida='.$id_partida; ?>" method="POST">
-    <input class="form-control" type="hidden" id="limite_hp" value="<?php echo $limite_hp ?>">
-    <input class="form-control" type="hidden" id="laa" name="puntosT" value="<?php echo $puntos ?>">
+    <div class="col-xs-9 m-b-10">
+        <input type="hidden" name="points" id="limite_hp" value="<?php echo $limite_hp ?>" readonly>
+        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_hp_fake" value="<?php echo $limite_hp ?>" readonly>
+    </div>
+    <div class="col-xs-3 m-b-10">
+        <input type="hidden" name="points" id="limite_le" value="<?php echo $limite_le ?>" readonly>
+        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_le_fake" value="<?php echo $limite_le ?>" readonly>
+    </div>
+    <input type="hidden" name="puntosT" value="<?php echo $puntos ?>" readonly>
+    
     <div class="col-xs-3">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
@@ -170,35 +179,56 @@ $limite_hp = $puntos*0.5;
     
 <script>
 function myFunction(val) {
-    var ha=document.getElementById("ha").value;
-    var ha2=document.getElementById("ha2").value;
-    var hp=document.getElementById("hp").value;
-    var hp2=document.getElementById("hp2").value;
-    var he=document.getElementById("he").value;
-    var he2=document.getElementById("he2").value;
-    var la=document.getElementById("la").value;
-    var la2=document.getElementById("la2").value;
-    var limite_hp=document.getElementById("limite_hp").value;
+    flaghp = false;
+    flagle = false;
+    var ha=document.getElementById("ha").value; //value
+    var ha2=document.getElementById("ha2").value; // coste Ha
     
-    var suma = ha*ha2+hp*hp2+he*he2;
-    //var suma = ha*2+hp*2+he*2;
-    if(suma > limite_hp){
-        alert("Error, solo puedes utilizar 50% de los puntos totals!");
-        document.getElementById("submit").disabled = true;
+    var hp=document.getElementById("hp").value; //value
+    var hp2=document.getElementById("hp2").value; // coste Hp
+    
+    var he=document.getElementById("he").value; //value
+    var he2=document.getElementById("he2").value; // coste He
+    
+    var la=document.getElementById("la").value; //value
+    var la2=document.getElementById("la2").value; // coste La
+    
+    var limite_hp=document.getElementById("limite_hp").value; // Value real
+    
+    var limite_le=document.getElementById("limite_le").value; // Value real
+    
+    var suma_hp = ha*ha2+hp*hp2+he*he2;
+    document.getElementById("limite_hp_fake").value = limite_hp - suma_hp;
+    if(suma_hp > limite_hp){
+        flaghp = false;
+        $('#limite_hp_fake').removeClass('c-green');
+        $('#limite_hp_fake').addClass('c-red');
+    }else{
+        flaghp = true;
+        $('#limite_hp_fake').removeClass('c-red');
+        $('#limite_hp_fake').addClass('c-green');
+    }
+    
+    var suma_le = la*la2;
+    document.getElementById("limite_le_fake").value = limite_le - suma_le;
+    if(suma_le > limite_le){
+        flagle = false;
+        $('#limite_le_fake').removeClass('c-green');
+        $('#limite_le_fake').addClass('c-red');
+    }else{
+        flagle = true;
+        $('#limite_le_fake').removeClass('c-red');
+        $('#limite_le_fake').addClass('c-green');
+    }
+    
+    
+    if(flagle && flaghp){
+        document.getElementById("submit").disabled = false;
         return false;
     }
     else{
-        var suma2 = limite_hp-suma;
-        var la3 = la*la2;
-        if(suma2<la3){
-            alert("Solo puedes utilizar "+suma2+" puntos");
-            document.getElementById("submit").disabled = true;
-            return false;
-        }
-        else{
-            document.getElementById("submit").disabled = false;
-            return true;
-        }
+        document.getElementById("submit").disabled = true;
+        return true;
     }
     
 }
