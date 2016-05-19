@@ -66,9 +66,17 @@
             if (($message) != "\n") { 
                 $color = $_POST['color'];
                 $val = $_POST['val'];
-                $val = calculatedices($val);
+                $res = calculatedices($val);
+                if($res < 0){
+                    $val = '<code class="c-white">Pifia en <strong>'.$message.':</strong> de <strong>'.$res.'</strong></code>';
+                }else{
+                    if($val == 0){
+                        $res = $res - 30;
+                    }
+                    $val = '<code class="c-white">Tirada en <strong>'.$message.':</strong> de <strong>'.$res.'</strong></code>';
+                }
                 fwrite(fopen($file, 'a'), "<div class='chatbox pull-left'> <div class='chatnick'><code class='".$color."'><span class='nick'>". $nickname . 
-                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg bgm-brown c-white'>" . $message = str_replace("\n", " ", $message)." ".$val.
+                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg bgm-brown c-white'>" . $val.
                         "</div></div><div class='clearfix'></div> \n"); 
             }
             break;
@@ -78,9 +86,14 @@
             if (($message) != "\n") {
                 $color = $_POST['color'];
                 $val = $_POST['val'];
-                $val = calculatedices($val);
+                $res = calculatedices($val);
+                if($res < 0){
+                    $val = '<code class="c-white"><strong>'.$message.':</strong> Pifia de <strong>'.$res.'</strong></code>';
+                }else{
+                    $val = '<code class="c-white"><strong>'.$message.':</strong> Tirada de <strong>'.$res.'</strong></code>';
+                }
                 fwrite(fopen($file, 'a'), "<div class='chatbox pull-left'> <div class='chatnick'><code class='".$color."'><span class='nick'>". $nickname . 
-                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg bgm-red c-white'>" . $message = str_replace("\n", " ", $message)." ".$val.
+                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg bgm-red c-white'>" .$val.
                         "</div></div><div class='clearfix'></div> \n"); 
             }
             break;
@@ -100,36 +113,45 @@
     
     
     function calculatedices($base){
+        if($base == 0){
+            $base = 0;
+        }
         $getbase = $base;
         $high = 90;
         $throwdices = rand( 1 , 100 );
         $base = (int)$getbase;
-
-        if($base >= 200){                                            //En cas de tindre maestria
-            if($throwdices <= 2){                                //Pifia
-                $result = rand( 1 , 100 );
+        if($base >= 200){//En cas de tindre maestria
+            //echo '<br>(Maestria) 1: '.$throwdices;
+            if($throwdices <= 2){ //Pifia
+                $result = rand( -1 , -100 );
+                //echo '<br>(Maestria)Pifia 2: '.$result;
                 return $result;
-            }else{                                              //Tirada normal
+            }else{ //Tirada normal
                 $result = $throwdices;
                 while($throwdices >= $high){ //En cas de que sigui una tirada obert
                         $throwdices = rand( 1 , 100 );
                         $result += $throwdices;
+                        //echo '<br>(Maestria)Obert 2: '.$throwdices.' -> '.$result.' | '.$high;
                         if($high != 100){
                             $high++;
                         }
                 }
+
                 $result += $base;
                 return $result;
             }
-        }else if($getbase != ""){ //En cas de no tindre maestria
-            if(throwdices <= 3){  //Pifia
-                $result = rand( 1 , 100 );
+        }else { //En cas de no tindre maestria
+            //echo '<br> 1: '.$throwdices;
+            if($throwdices <= 3){  //Pifia
+                $result = rand( -1 , -100 );
+                //echo '<br>Pifia 2: '.$result;
                 return $result;
             }else{
                 $result = $throwdices;
                 while($throwdices >= $high){ //En cas de que sigui una tirada obert
                         $throwdices = rand( 1 , 100 );
                         $result += $throwdices;
+                        //echo '<br>Obert 2: '.$throwdices.' -> '.$result.' | '.$high;
                         if($high != 100){
                             $high++;
                         }
