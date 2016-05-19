@@ -66,16 +66,16 @@ include "../../Public/layouts/head.php";
                             $Partida = new Partida(); 
                             $Personaje = new Personaje(); 
 
-                            $array = $Personaje->viewPersonaje($id_personaje);
-                            $array2 = $Partida->viewPartida($array['id_partida']);
+                            $return = $Personaje->viewPersonaje($id_personaje);
+                            $array2 = $Partida->viewPartida($return['id_partida']);
                             echo $array2->getNombre();
                         ?>
                         <small class="c-white p-l-5">
                             <?php 
                                 $Personaje = new Personaje(); 
                                 
-                                $array = $Personaje->viewPersonaje($id_personaje);
-                                echo $array['nombre'];
+                                $return = $Personaje->viewPersonaje($id_personaje);
+                                echo $return['nombre'];
                             ?>
                         </small></h2>
                     <ul class="lv-actions actions">
@@ -122,30 +122,30 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Nivel.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             
                             /*Mostrem tots els camps del personaje*/
-                            if (!empty($array)) {
+                            if (!empty($return)) {
                                 echo "<tr> ";
                                 $categoria = new Categoria(); 
-                                $arrayC = $categoria->viewCar($array['id_categoria']);
+                                $arrayC = $categoria->viewCar($return['id_categoria']);
                                 echo "
                                     <th class='text-center'>".$arrayC->getNombre()."
-                                    <th class='text-center'>".$array['nivel']."</th>
-                                    <th class='text-center'>".$array['raza']."</th>";
+                                    <th class='text-center'>".$return['nivel']."</th>
+                                    <th class='text-center'>".$return['raza']."</th>";
                                 $nivel = new Nivel(); 
-                                $arrayN = $nivel->viewNivel($array['nivel']);
+                                $arrayN = $nivel->viewNivel($return['nivel']);
                                 echo "
                                     <th class='text-center'>".$arrayN->getPuntos()."</th>
-                                    <th class='text-center'>".$array['puntos_totales']."</th>
-                                    <th class='text-center'>".$array['apariencia']."</th>
-                                    <th class='text-center'>".$array['tamanyo']."</th>
-                                    <th class='text-center'>".$array['edad']."</th>
-                                    <th class='text-center'>".$array['sexo']."</th>
-                                    <th class='text-center'>".$array['pelo']."</th>
-                                    <th class='text-center'>".$array['ojos']."</th>
-                                    <th class='text-center'>".$array['altura']."</th>
-                                    <th class='text-center'>".$array['peso']."</th>
+                                    <th class='text-center'>".$return['puntos_totales']."</th>
+                                    <th class='text-center'>".$return['apariencia']."</th>
+                                    <th class='text-center'>".$return['tamanyo']."</th>
+                                    <th class='text-center'>".$return['edad']."</th>
+                                    <th class='text-center'>".$return['sexo']."</th>
+                                    <th class='text-center'>".$return['pelo']."</th>
+                                    <th class='text-center'>".$return['ojos']."</th>
+                                    <th class='text-center'>".$return['altura']."</th>
+                                    <th class='text-center'>".$return['peso']."</th>
                                     </tr>";
                             }
                             
@@ -170,19 +170,19 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Personaje.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             
                             /*Mostrem totes les caracteristiques del personaje*/
-                            if (!empty($array)) {
+                            if (!empty($return)) {
                                 echo "<tr> 
-                                    <th class='text-center'>".$array['c_AGI']."</th>
-                                    <th class='text-center'>".$array['c_CON']."</th>
-                                    <th class='text-center'>".$array['c_DES']."</th>
-                                    <th class='text-center'>".$array['c_FUE']."</th>
-                                    <th class='text-center'>".$array['c_INT']."</th>
-                                    <th class='text-center'>".$array['c_PER']."</th>
-                                    <th class='text-center'>".$array['c_POD']."</th>
-                                    <th class='text-center'>".$array['c_VOL']."</th>
+                                    <th class='text-center'>".$return['c_AGI']."</th>
+                                    <th class='text-center'>".$return['c_CON']."</th>
+                                    <th class='text-center'>".$return['c_DES']."</th>
+                                    <th class='text-center'>".$return['c_FUE']."</th>
+                                    <th class='text-center'>".$return['c_INT']."</th>
+                                    <th class='text-center'>".$return['c_PER']."</th>
+                                    <th class='text-center'>".$return['c_POD']."</th>
+                                    <th class='text-center'>".$return['c_VOL']."</th>
                                     </tr>";
                             }
                             
@@ -220,50 +220,67 @@ include "../../Public/layouts/head.php";
                             require_once "../../System/Classes/Categoria_HP.php";
                             
                             $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             
                             $HP = new Habilidades_Primarias(); 
                             $Caract_p = new Caracteristicas_p(); 
                             $Categoria_HP = new Categoria_HP(); 
                             
                             /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
-                            if (!empty($array)) {
+                            if (!empty($return)) {
                                     $contador = 0;
                                     while ($contador < 4){
                                         $contador++;
                                         $arrayHP = $HP->viewHP($contador);
                                         switch ($contador) {
                                             case 1:
-                                                $hp = $array['ha'];
+                                                $hp = $return['ha'];
                                                 break;
                                             case 2:
-                                                $hp = $array['hp'];
+                                                $hp = $return['hp'];
                                                 break;
                                             case 3:
-                                                $hp = $array['he'];
+                                                $hp = $return['he'];
                                                 break;
                                             case 4:
-                                                $hp = $array['la'];
+                                                $hp = $return['la'];
                                                 break;
                                         }
                                         if( $contador < 3) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_DES']);
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_DES']);
                                         }elseif ($contador == 3) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_AGI']);
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_AGI']);
                                         }elseif ($contador == 4) {
-                                            $arrayCaract_p = $Caract_p->viewCaracteristica($array['c_FUE']);
+                                            $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_FUE']);
                                         }
-                                        $arrayCategoria_HP = $Categoria_HP->viewHP1($array['id_categoria'], $contador);
-                                        $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$array['nivel']);
-                                        $HAfinal = (int)$hp + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
-                                        echo "<tr>
-                                            <th class=''>".$arrayHP->getNombre()."</th>
-                                            <th class=''>".$hp."</th>
-                                            <th class=''>".$arrayHP->getCaracteristica()."</th>
-                                            <th class=''>".$arrayCaract_p['bono']."</th>
-                                            <th class=''>0</th>
-                                            <th class=''>".$bonoCategoria."</th>
-                                            <th class=''>".$HAfinal."</th></tr>";
+                                        $arrayCategoria_HP = $Categoria_HP->viewHP1($return['id_categoria'], $contador);
+                                        $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$return['nivel']);
+                                        $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
+                                        $is0 = false;
+                                        if($hp == 0){
+                                            $HAfinal = 0;
+                                            $is0 = true;
+                                        }
+                                        if(!$is0){
+                                            echo "<tr>
+                                            <th class='f-400'>".$arrayHP->getNombre()."</th>
+                                            <th class='f-400'>".$hp."</th>
+                                            <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                                            <th class='f-400'>".$arrayCaract_p."</th>
+                                            <th class='f-400'>0</th>
+                                            <th class='f-400'>".$bonoCategoria."</th>
+                                            <th class='f-700 c-green'>".$HAfinal."</th></tr>";
+                                        }else{
+                                            echo "<tr>
+                                            <th class='f-400'>".$arrayHP->getNombre()."</th>
+                                            <th class='f-400'>".$hp."</th>
+                                            <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                                            <th class='f-400'>".$arrayCaract_p."</th>
+                                            <th class='f-400'>0</th>
+                                            <th class='f-400'>".$bonoCategoria."</th>
+                                            <th class='f-700 c-red'>".$HAfinal."</th></tr>";
+                                        }
+                                        
                                     }
                                     
                             }
@@ -294,49 +311,72 @@ include "../../Public/layouts/head.php";
                         <tbody >
                             <?php
                             require_once "../../System/Classes/Personaje.php";
+                            require_once "../../System/Classes/Personaje_HS.php";
                             require_once "../../System/Classes/Habilidades_Secundarias.php";
                             require_once "../../System/Classes/Caracteristicas_P.php";
                             require_once "../../System/Classes/Categoria_HS.php";
                             
-                            $Personaje = new Personaje(); 
-                            $array = $Personaje->viewPersonaje($id_personaje);
-                            $HS = new Habilidades_Secundarias(); 
-                            $Caract_p = new Caracteristicas_p(); 
-                            $Categoria_HS = new Categoria_HS(); 
-                            
+                            $return = $Personaje->viewPersonaje($id_personaje);
                             /*Mostrem totes les hs del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
-                            if (!empty($array)) {
-                                    $contador = 0;
-                                    while ($contador < 49){
-                                        $contador++;
-                                        $arrayHP = $HS->view_HS($contador);
-                                        $caracteristicaPersonaje = "c_".$arrayHP->getCaracteristica();
-                                        //var_dump($caracteristicaPersonaje);
-                                        
-                                        $arrayCaract_p = $Caract_p->viewCaracteristica($array[$caracteristicaPersonaje]);
-                                        //var_dump($arrayCaract_p);
-                                        
-                                        $return_CatHS = $Categoria_HS->viewHS1($array['id_categoria'], $contador);
-                                        if (!empty($return_CatHS['incr_nv'])) {
-                                            $bonoCategoria = (0*(int)$array['nivel']);
-                                        }else {
-                                            $bonoCategoria = ((int)$return_CatHS['incr_nv']*(int)$array['nivel']);
-                                        }
-                                        $HSfinal = (int)$array['ha'] + (int)$arrayCaract_p['bono'] + (int)$bonoCategoria;
-                                        echo "<tr>
-                                            <th class=''>".$arrayHP->getNombre()."</th>";
-                                        
-                                        //intentar automatitzar el bucle passant la id_secundaria de la taula personaje_HS en comptes de $contador
-                                        echo "
-                                            <th class=''>".$array[$caracteristicaPersonaje]."</th>
-                                            <th class=''>".$arrayHP->getCaracteristica()."</th>
-                                            <th class=''>".$arrayCaract_p['bono']."</th>
-                                            <th class=''>0</th>
-                                            <th class=''>".$bonoCategoria."</th>
-                                            <th class=''>".$HSfinal."</th></tr>";
-                                    }
+                            $personaje_hs = new Personaje_HS();
+                            $personaje_hs = $personaje_hs->viewPersonaje_HS($id_personaje);
+                            foreach ($personaje_hs as $row){
+                                $hs_value = $row->getValor(); // valor de la hs
+                                $hs_id = $row->getId_HS();  // id de la hs
+
+                                $HS = new Habilidades_Secundarias();
+                                $HS = $HS->view_HS($hs_id);
+
+                                $hs_name = $HS->getNombre(); // Nombre de la hs
+                                $hs_car = $HS->getCaracteristica(); // Nombre de la caracteristica AGI ... etc
+
+                                $hs_base = $return['c_'.$hs_car]; // Base de la caracteristica del pj
+
+                                $Caract_p = new Caracteristicas_p();
+                                $hs_bono = $Caract_p->viewCaracteristica($hs_base);
+
+                                $Categoria_HS = new Categoria_HS();
+                                $arrayCat_HS = $Categoria_HS->viewHS1($return['id_categoria'], $hs_id);
+                                $hs_incrlv = (int)$arrayCat_HS['incr_nv']; // incremento categoria
+                                if($hs_incrlv == null){
+                                    $hs_incrlv = 0; 
+                                }
+                                $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
+
+                                $hs_final = $hs_value + $hs_bono + $hs_catfin;
+                                $is0 = false;
+                                if($hs_value == 0){
+                                    $hs_final = 0;
+                                    $is0 = true;
+                                }
+                                
+                                if(!$is0){
+                                    echo '  <tr>
+                                            <th class="f-400">'.$hs_name.'</th>
+                                            <th class="f-400">'.$hs_value.'</th>
+                                            <th class="f-400">'.$hs_car.'</th>
+                                            <th class="f-400">'.$hs_bono.'</th>
+                                            <th class="f-400">0</th>
+                                            <th class="f-400">'.$hs_catfin.'</th>
+                                            <th class="f-700 c-green">'.$hs_final.'</th>
+                                        </tr>';
+                                }else{
+                                    echo '  <tr>
+                                            <th class="f-400">'.$hs_name.'</th>
+                                            <th class="f-400">'.$hs_value.'</th>
+                                            <th class="f-400">'.$hs_car.'</th>
+                                            <th class="f-400">'.$hs_bono.'</th>
+                                            <th class="f-400">0</th>
+                                            <th class="f-400">'.$hs_catfin.'</th>
+                                            <th class="f-700 c-red">'.$hs_final.'</th>
+                                        </tr>';
+                                }
+                                
+
+
                             }
-                            ?>
+
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -359,23 +399,71 @@ include "../../Public/layouts/head.php";
                                 <th>Peso</th>
                                 <th>Valor</th>
                                 <th>Cantidad</th>
+                                <th>Daño</th>
+                                <th>TA</th>
                             </tr>
                         </thead>
                         <tbody >
-                            <tr >
-                                <td class="text-capitalize">Espada Larga</td>
-                                <td>Arma</td>
-                                <td>1 Kg</td>
-                                <td>5000 MC</td>
-                                <td>1 unidad</td>
-                            </tr>
-                            <tr >
-                                <td class="text-capitalize">Platas</td>
-                                <td>Útiles Varios</td>
-                                <td>0</td>
-                                <td>10 MC</td>
-                                <td>100</td>
-                            </tr>
+                            <?php
+                            require_once "../../System/Classes/Personaje_Objeto.php";
+                            require_once "../../System/Classes/Objeto.php";
+                            require_once "../../System/Classes/Tipo.php";
+                            require_once "../../System/Classes/Objeto_Caracteristica.php";
+                            
+                            $Personaje_Objeto = new Personaje_Objeto();
+                            $Personaje_Objeto = $Personaje_Objeto->viewObjPerson($id_personaje);
+                            
+                            /*Agafem totes les id_objeto que te el pj mitjançant id_personaje*/
+                            foreach ($Personaje_Objeto as $row){
+                                //per cada id_objeto select a objeto where id_objeto = id_objeto;
+                                $id_objeto = $row->getId_Objeto();
+                                $cantidad = $row->getCantidad();    //cantidad del objeto
+                                
+                                //mostrem el nom, pes, valor, id_tipus, id_objeto_caracteristica=1(danyo), (TA).
+                                $objeto = new Objeto();
+                                $objeto = $objeto->viewObj($id_objeto);     //select * del objeto
+                                
+                                $nombre_objeto = $objeto[0]->getNombre();  //nombre del objeto
+                                $peso = $objeto[0]->getPeso(); //peso del objeto
+                                $precio = $objeto[0]->getPrecio(); //precio del objeto
+                                $id_tipo = $objeto[0]->getId_Tipo();
+                                
+                                $tipo = new Tipo();
+                                $tipo = $tipo->view_nombre($id_tipo);
+                                $nombre_tipo = $tipo->getNombre(); //nombre del tipo de objeto (Arma)
+                                
+                                
+                                if($id_tipo == '2' || $id_tipo == '3') {
+                                    $Caracteristicas_Objeto = new Objeto_Caracteristica();
+                                    
+                                    $Caracteristicas_Objeto_Arma = $Caracteristicas_Objeto->selectArmaValor($id_objeto); 
+                                    $danyo = $Caracteristicas_Objeto_Arma->getValor(); //select de danyo
+                                    
+                                    $Caracteristicas_Objeto_Armadura = $Caracteristicas_Objeto->selectArmaduraValor($id_objeto);
+                                    $TA = $Caracteristicas_Objeto_Armadura->getValor(); //select de TA
+                                }else{
+                                    $danyo = 0;
+                                    $TA = 0;
+                                }
+                                
+                                
+                                if(empty($TA)){
+                                    $TA = 0;
+                                }else if(empty($danyo)){
+                                    $danyo = 0;
+                                }
+                                
+                                echo '  <tr>
+                                        <th class="f-400">'.$nombre_objeto.'</th>
+                                        <th class="f-400">'.$nombre_tipo.'</th>
+                                        <th class="f-400">'.$peso.'</th>
+                                        <th class="f-400">'.$precio.'</th>
+                                        <th class="f-400">'.$cantidad.'</th>
+                                        <th class="f-400">'.$danyo.'</th>
+                                        <th class="f-400">'.$TA.'</th>
+                                    </tr>';
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

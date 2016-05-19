@@ -67,6 +67,25 @@ include "../../Public/layouts/head.php";
             });
         });
     });
+    function confirm_click(data){
+        url = data;
+        swal({
+            title: "Estas seguro?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Si, Eliminar!",
+            cancelButtonText: "No, cancelar!",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        },
+        function(isConfirm) {
+            if (isConfirm) {
+                window.location.href = url.getAttribute("href");
+            } 
+        });
+        return false;    
+    }
     
 </script>
 
@@ -146,13 +165,6 @@ include "../../Public/layouts/head.php";
                                 <li>
                                     <a <?php echo 'href="gestionar_experiencia.php?id='.$id_partida.'"';?>>Gestionar Experiencia</a>
                                 </li>
-                                <li>
-                                    <a href="#">Modificar Jugador</a>
-                                </li>
-                                <li>
-                                    <a href="#">Eliminar Jugador</a>
-                                </li>
-                                
                             </ul>
                         </li>
                     </ul>
@@ -164,7 +176,8 @@ include "../../Public/layouts/head.php";
                                 <th>Usuario</th>
                                 <th>Personaje</th>
                                 <th class='text-center'>Nivel</th>
-                                <th class='text-center'>Eliminar</th>
+                                <th class='text-center'>&nbsp;</th>
+                                <th class='text-center'>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -206,8 +219,15 @@ include "../../Public/layouts/head.php";
                                         <td class='text-capitalize text-info'>".$personajeUsuarioPartida['nombre']."</td>
                                         <td class='text-danger text-center'>".$personajeUsuarioPartida['nivel']."</td>
                                         <td class='text-center'>
-                                        <label class='m-r-10 p-0 '>
-                                                    <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
+                                            <label class='m-r-10 p-0'>
+                                                    <a href='#'>
+                                                        <i class='zmdi zmdi-edit c-black f-16 c-green '></i>
+                                                    </a>
+                                            </label>
+                                        </td>
+                                        <td class='text-center'>
+                                            <label class='m-r-10 p-0'>
+                                                    <a onclick='return confirm_click(this);' href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
                                                         <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
                                                     </a>
                                             </label>
@@ -219,8 +239,15 @@ include "../../Public/layouts/head.php";
                                         <td class='text-capitalize text-info'> ??? </td>
                                         <td class='text-danger text-center'> ??? </td>
                                         <td class='text-center'>
-                                        <label class='m-r-10 p-0 '>
-                                                    <a href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
+                                            <label class='m-r-10 p-0'>
+                                                    <a href='#'>
+                                                        <i class='zmdi zmdi-edit c-black f-16 c-green '></i>
+                                                    </a>
+                                            </label>
+                                        </td>
+                                        <td class='text-center'>
+                                        <label class='m-r-10 p-0 ' >
+                                                    <a onclick='return confirm_click(this);' href='../../System/Protocols/Partida_SignoutMaster.php?idp=".$id_partida."&idu=".$id_Usuari."'>
                                                         <i class='zmdi zmdi-delete c-black f-16 c-red '></i>
                                                     </a>
                                             </label>

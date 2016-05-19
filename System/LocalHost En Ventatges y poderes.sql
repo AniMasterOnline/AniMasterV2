@@ -360,7 +360,7 @@ ALTER TABLE Mensaje ADD PRIMARY KEY (id_usuario,Usuario_id_usuario);
 CREATE TABLE Personaje_Objeto (
       id_personaje     int NOT NULL,
       id_objeto     int NOT NULL,
-	  cantidad int
+	  cantidad int DEFAULT 0
 );
 
 
@@ -940,7 +940,35 @@ VALUES
 ('1', '3', '2', NULL),
 ('2', '3', '2', '5'),
 ('3', '3', '2', NULL),
-('4', '3', '2', '10');
+('4', '3', '2', '10'),
+('1', '4', '2', '5'),
+('2', '4', '2', NULL),
+('3', '4', '2', NULL),
+('4', '4', '2', '5'),
+('1', '5', '2', '5'),
+('2', '5', '2', '5'),
+('3', '5', '2', NULL),
+('4', '5', '1', '10'),
+('1', '6', '2', '5'),
+('2', '6', '2', NULL),
+('3', '6', '2', NULL),
+('4', '6', '2', NULL),
+('1', '7', '2', '5'),
+('2', '7', '3', NULL),
+('3', '7', '2', '5'),
+('4', '7', '2', NULL),
+('1', '8', '2', NULL),
+('2', '8', '3', NULL),
+('3', '8', '2', '5'),
+('4', '8', '3', NULL),
+('1', '9', '2', '5'),
+('2', '9', '3', NULL),
+('3', '9', '2', NULL),
+('4', '9', '3', NULL),
+('1', '10', '2', NULL),
+('2', '10', '2', NULL),
+('3', '10', '2', NULL),
+('4', '10', '2', NULL);
 
 --
 -- Volcado de datos para la tabla `categoria_hs`
@@ -1501,8 +1529,22 @@ VALUES
 (14, 'Espada larga', '', 1.4, 5000, 'true', NULL, 0, 3),
 (15, 'Estilete', '', 0.4, 600, 'true', NULL, 0, 3),
 (16, 'Acolchada', '', 3, 1000, 'true', NULL, 0, 2),
-(17, 'Anillas', '', 9, 50000, 'true', NULL, 0, 2);
-
+(17, 'Anillas', '', 9, 50000, 'true', NULL, 0, 2),
+(18, 'Completa', '', 20, 400000, 'true', NULL, 0, 2),
+(19, 'Completa de cuero', '', 7, 5000, 'true', NULL, 0, 2),
+(20, 'Completa de campaña', '', 25, 800000, 'true', NULL, 0, 2),
+(21, 'Completa pesada', '', 30, 700000, 'true', NULL, 0, 2),
+(22, 'Cota de cuero', '', 3, 1000, 'true', NULL, 0, 2),
+(23, 'Cuero endurecido', '', 4, 15000, 'true', NULL, 0, 2),
+(24, 'Cuero tachonado', '', 4.5, 25000, 'true', NULL, 0, 2),
+(25, 'Escamas', '', 9, 120000, 'true', NULL, 0, 2),
+(26, 'Gabardina', '', 1.5, 50, 'true', NULL, 0, 2),
+(27, 'Mallas', '', 13, 70000, 'true', NULL, 0, 2),
+(28, 'Peto', '', 4, 40000, 'true', NULL, 0, 2),
+(29, 'Piel', '', 2, 5000, 'true', NULL, 0, 2),
+(30, 'Piezas', '', 6, 40000, 'true', NULL, 0, 2),
+(31, 'Placas', '', 18, 300000, 'true', NULL, 0, 2),
+(32, 'Semicompleta', '', 13, 100000, 'true', NULL, 0, 2);
 
 --
 -- Volcado de datos para la tabla `objeto_caracteristica`

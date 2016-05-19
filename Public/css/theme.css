@@ -3098,51 +3098,51 @@ body.login-content:before {
   left: 88px;
 }
 
-#profile-main .pmb-block {
+.pmb-block {
   margin-bottom: 20px;
 }
 
 @media (min-width: 1200px) {
-  #profile-main .pmb-block {
+  .pmb-block {
     padding: 40px 42px 0;
   }
 }
 
 @media (max-width: 1199px) {
-  #profile-main .pmb-block {
+  .pmb-block {
     padding: 30px 20px 0;
   }
 }
 
-#profile-main .pmb-block:last-child {
+.pmb-block:last-child {
   margin-bottom: 50px;
 }
 
-#profile-main .pmb-block .pmbb-header {
+.pmb-block .pmbb-header {
   margin-bottom: 25px;
   position: relative;
 }
 
-#profile-main .pmb-block .pmbb-header .actions {
+.pmb-block .pmbb-header .actions {
   position: absolute;
   top: -2px;
   right: 0;
 }
 
-#profile-main .pmb-block .pmbb-header h2 {
+.pmb-block .pmbb-header h2 {
   margin: 0;
   font-weight: 100;
   font-size: 20px;
 }
 
-#profile-main .pmb-block .pmbb-edit {
+.pmb-block .pmbb-edit {
   position: relative;
   z-index: 1;
   display: none;
 }
 
-#profile-main .pmb-block .pmbb-edit,
-#profile-main .pmb-block .pmbb-view {
+.pmb-block .pmbb-edit,
+.pmb-block .pmbb-view {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
   -webkit-animation-duration: 1000ms;
@@ -3151,11 +3151,11 @@ body.login-content:before {
   animation-fill-mode: both;
 }
 
-#profile-main .pmb-block.toggled .pmbb-edit {
+.pmb-block.toggled .pmbb-edit {
   display: block;
 }
 
-#profile-main .pmb-block.toggled .pmbb-view {
+.pmb-block.toggled .pmbb-view {
   display: none;
 }
 
@@ -3718,6 +3718,69 @@ body.login-content:before {
 
 .btn-group{
     border-radius: 0;
+}
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 9px;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-bottom: 0;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px;
+}
+
+.list-inline > li {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+dt,
+dd {
+  line-height: 1.42857143;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    clear: left;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dl-horizontal dd {
+    margin-left: 160px;
+  }
 }
 
 

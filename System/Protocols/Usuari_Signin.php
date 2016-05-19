@@ -2,7 +2,7 @@
     require_once('../Classes/Usuario.php');
     //Requiered inputs
     ob_start();
-    $newUser = $_POST['user'];
+    $newUser = strtolower ($_POST['user']);
     $newPass = md5($_POST['pass']);
     $newEmail = $_POST['email'];
     //Tipus d'usuari >> User = 2<<

@@ -121,35 +121,34 @@ include "../Public/layouts/head.php";?>
                     <table class="table b-0">
                         <thead class="bgm-lightblue b-0 c-white">
                             <tr>
-                                <th>#</th>
                                 <th>Nombre</th>
                                 <th>Nivel</th>
                                 <th>Categoria</th>
-                                <th>exp_actual</th>
                             </tr>
                         </thead>
                         <tbody >
-                            <tr >
-                                <td>1</td>
-                                <td>Jacob</td>
-                                <td>3</td>
-                                <td>Mago</td>
-                                <td>350</td>
-                            </tr>
-                            <tr >
-                                <td>2</td>
-                                <td>Pau</td>
-                                <td>2</td>
-                                <td>Ladron</td>
-                                <td>280</td>
-                            </tr>
-                            <tr >
-                                <td>3</td>
-                                <td>Marc</td>
-                                <td>4</td>
-                                <td>Guerrero</td>
-                                <td>480</td>
-                            </tr>
+                            <?php
+                            require_once "../System/Classes/Personaje.php";
+                            require_once "../System/Classes/Categoria.php"; 
+                            $personajes = new Personaje();
+                            $id_parNull = null;
+                            $id_master = 1;
+                            $personajes = $personajes->viewPNJ($id_master, $id_parNull);
+                            if (!empty($personajes)) {
+                                foreach ($personajes as $row) {
+                                    $id_cat = $row->getId_Categoria();
+                                    $categoria = new Categoria();
+                                    $categoria = $categoria->viewCar($id_cat);
+                                    $cat = $categoria->getNombre();
+                                    echo "<tr >
+                                        <td class='text-capitalize text-success'>".$row->getNombre()."</td>
+                                        <td class='text-capitalize text-success'>".$row->getNivel()."</td>
+                                        <td class='text-capitalize text-success'>".$cat."</td>
+                                        </tr >";
+                                }
+                            }
+                            
+                            ?>
                         </tbody>
                     </table>
                 </div>
