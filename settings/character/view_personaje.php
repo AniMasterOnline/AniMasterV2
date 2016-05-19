@@ -441,6 +441,9 @@ include "../../Public/layouts/head.php";
                                     
                                     $Caracteristicas_Objeto_Armadura = $Caracteristicas_Objeto->selectArmaduraValor($id_objeto);
                                     $TA = $Caracteristicas_Objeto_Armadura->getValor(); //select de TA
+                                }else{
+                                    $danyo = 0;
+                                    $TA = 0;
                                 }
                                 
                                 
