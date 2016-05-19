@@ -20,6 +20,12 @@
             $db->query($sql);
             return $result;
         }
+        public function delete2($var){
+            $db = new connexio();
+            $result = $sql = "delete from Personaje_Objeto where id_personaje = $var";
+            $db->query($sql);
+            return $result;
+        }
     
         public function view_all(){
             $db = new connexio();
