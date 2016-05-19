@@ -6,8 +6,7 @@ include "../../Public/layouts/head.php";
 ?>
 
 <?php
-//$id_objeto=$_POST['id_objeto'];
-$id_objeto=21;
+$id_objeto=$_GET['id_objeto'];
 require_once "../../System/Classes/Objeto.php";
 $objeto=new Objeto();
 $objeto=$objeto->viewObj($id_objeto);
@@ -65,21 +64,6 @@ foreach ($objeto as $objeto){
                         </select>
                     </div>
                     
-                    <div class="col-md-12 cinput ">
-                        <label for="inputTipo" class="sr-only">Tipo</label>
-                        <?php
-                        include "../../System/Classes/Tipo.php";
-                        $tipo = new Tipo();
-                        $tipo=$tipo->view_all();                        
-                        echo '<select type="text" class="selectpicker" data-style="btn-primary" data-width="100%" id="inputTipo" name="tipo" placeholder="Tipo *" required>';
-                            echo '<option value="'.$tipo2.'">'.$tipo2.'</option>';
-                        foreach ($tipo as $row) {
-                            //var_dump($row);
-                            echo '<option value="'.$row->getId_Tipo().'">'.ucfirst($row->getNombre()).'</option>';
-                        }
-                        echo '</select>';
-                        ?>
-                    </div>
                    <input type="hidden" id="id_objeto" name="id_objeto" value="<?php echo $id_objeto ?>">
                 </div>
                 <div class="col-md-6">

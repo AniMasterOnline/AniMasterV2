@@ -1,7 +1,11 @@
 <?php
-//$id_objeto=$_POST['id_objeto'];
-$id_objeto=18;
+$id_objeto=$_GET['id_objeto'];
 require_once "../Classes/Objeto.php";
+require_once "../Classes/Partida_Objeto.php";
 $objeto = new Objeto();
-$objeto->delete($id_objeto);
+$parObj = new Partida_Objeto();
+$parObj=$parObj->delete2($id_objeto);
+$objeto=$objeto->delete($id_objeto);
+
+header('Location: ../../settings/character/view_objeto.php');
 ?>

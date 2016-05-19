@@ -1,15 +1,14 @@
 <?php
-$id_objeto=$_POST['id_objeto'];
-$nombre=$_POST['nombre'];
-$peso=$_POST['peso'];
-$precio=$_POST['precio'];
-$disponibilidad=$_POST['disponibilidad'];
-$calidad=$_POST['calidad'];
-$tipo=$_POST['tipo'];
-$descripcion=$_POST['descripcion'];
+echo $id_objeto=$_POST['id_objeto'];
+echo $nombre=$_POST['nombre'];
+echo $peso=$_POST['peso'];
+echo $precio=$_POST['precio'];
+echo $disponibilidad=$_POST['disponibilidad'];
+echo $calidad=$_POST['calidad'];
+echo $descripcion=$_POST['descripcion'];
 
 require_once "../Classes/Objeto.php";
 $objeto = new Objeto();
-$objeto=$objeto->modObj($id_objeto,$nombre,$descripcion,$peso,$precio,$disponibilidad,$calidad,$tipo);
-header('Location: ../../settings/table/');
+$objeto=$objeto->modObj($id_objeto,$nombre,$descripcion,$peso,$precio,$disponibilidad,$calidad);
+header('Location: ../../settings/character/mod_objeto.php?id_objeto=20');
 ?>

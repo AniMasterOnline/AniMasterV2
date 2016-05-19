@@ -98,6 +98,26 @@
                 return null;
             }
         }
+        public function viewPartida2($id){
+            $db = new connexio();
+            $sql = "SELECT * FROM Partida where id_usuario='$id'";
+            $query = $db->query($sql);
+            $db->close();
+            $count = 0;
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $count++;
+                    $Partida = new Partida($obj["id_partida"],$obj["id_usuario"],$obj["nombre"],$obj["imagen"],$obj["descripcion"],$obj["anyo"],$obj["nv_sobrenatural"],$obj["limite"],$obj["token"],$obj['diario']);
+                }
+                if($count == 1){
+                    return $Partida;
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+        }
         public function returnId_Partida($token){ 
             $db = new connexio();
             $sql = "SELECT id_partida FROM Partida WHERE token='$token'";

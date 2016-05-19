@@ -19,6 +19,12 @@
             $db->query($sql);
             return $result;
         }
+        public function delete2($var){
+            $db = new connexio();
+            $result = $sql = "delete from Partida_Objeto where id_objeto = $var";
+            $db->query($sql);
+            return $result;
+        }
     
         public function view_all(){
             $db = new connexio();
@@ -66,6 +72,7 @@
             $db->close();
             return $rtn;
         }
+        
 
         //CONSTRUCTORS
         function __construct(){

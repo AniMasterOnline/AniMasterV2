@@ -253,13 +253,10 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="#">Nuevo</a>
+                                    <a href="../character/new_objeto.php?id_partida=<?php echo $id_partida ?>">Nuevo</a>
                                 </li>
                                 <li>
-                                    <a href="#">Modificar</a>
-                                </li>
-                                <li>
-                                    <a href="#">Eliminar</a>
+                                    <a href="../character/view_objeto.php">Mis objetos</a>
                                 </li>
                             </ul>
                         </li>

@@ -6,8 +6,7 @@ include "../../Public/layouts/head.php";
 ?>
 
 <?php
-//$id_partida=$_GET['id'];
-$id_partida=2;
+$id_partida=$_GET['id_partida'];
 ?>
 <!-- Body content box -->
 <div class="container" >

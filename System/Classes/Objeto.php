@@ -21,6 +21,13 @@
             return $db2;
         }
        
+         public function modObj($id_objeto,$nombre,$descripcion,$peso,$precio,$disponibilidad,$calidad){
+            $db = new connexio();
+            $result = $db->query("UPDATE Objeto SET nombre='$nombre', descripcion='$descripcion', peso='$peso', precio='$precio', disponibilidad='$disponibilidad', calidad='$calidad' WHERE id_objeto= '$id_objeto'");
+            $db->close();
+            return $result;
+        }
+        
         public function delete($var){
             $db = new connexio();
             $result = $sql = "delete from Objeto where id_objeto = $var";
