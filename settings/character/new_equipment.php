@@ -16,8 +16,8 @@ $id_partida=$_GET['id_partida'];
             <div class="col-md-12">
                 <div class="col-md-12 cinput m-l-15 ">
                     <h2 class="form-signin-heading">Crear nuevo equipamentos</h2>                    
-                    <input type="hidden" name="id_personaje" value="<?php echo $id_personaje ?>"
-                    <input type="hidden" name="id_partida" value="<?php echo $id_partida ?>"
+                    <input type="hidden" name="id_personaje" value="<?php echo $id_personaje ?>">
+                    <input type="text" name="id_partida" value="<?php echo $id_partida ?>">
                 </div>
                 <div class="col-md-6">
                     <h2 class="form-signin-heading">Armas</h2>

@@ -1,23 +1,26 @@
-<!-- Header content box -->
-<?php 
-$title='PNJ';
-$migas='#Index|index.php#Partidas de rol';
+<?php
+session_start();
+if(isset($_SESSION['user'])){
+    $value=$_SESSION['user'];
+    //var_dump($value);
+}
+
+if(isset($_GET['id']) && !empty($_GET['id'])){
+    $id_personaje = $_GET['id'];
+    
+    require_once "../../System/Classes/Personaje.php";
+    $personaje = new Personaje();
+    $return=$personaje->viewPersonaje($id_personaje);
+    $id_categoria=$return['id_categoria'];
+    $nivel2=$return['nivel'];
+    
+}else{
+    include '../404/404.php';
+}
+$title='Modificar Personaje';
+$migas='#Index|../../index.php#Zona roleo|../../zone.php# Modificar Personaje 1 / 2';
 include "../../Public/layouts/head.php";
 ?>
-
-Modificar personaje<br>
-
-<?php
-$id_personaje=1;
-require_once "../../System/Classes/Personaje.php";
-$personaje = new Personaje();
-$return=$personaje->viewPersonaje($id_personaje);
-echo $return['nombre']."<br>";
-echo $return['apellido']."<br>";
-$id_categoria=$return['id_categoria'];
-$nivel2=$return['nivel'];
-?>
-
 
 <?php
 require_once "../../System/Classes/Nivel.php";

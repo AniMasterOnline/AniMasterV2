@@ -30,15 +30,15 @@ foreach ($objeto as $objeto){
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-12 cinput ">
-                        <label for="inputNombre" class="sr-only">Nombre</label>
+                        <label for="inputNombre" class="sr-only">Nombre</label><p>Nombre</p>
                         <input type="text"  id="inputNombre"  class="form-control" value="<?php echo $nombre ?>" name="nombre" placeholder="Nombre *" required autofocus>
                     </div>
                     <div class="col-md-6 cinput">
-                        <label for="inputPeso" class="sr-only">Peso</label>
+                        <label for="inputPeso" class="sr-only">Peso</label><p>Peso</p>
                         <input type="text"  id="inputPeso"  class="form-control" name="peso" value="<?php echo $peso ?>" placeholder="Peso *" required>
                     </div>
                     <div class="col-md-6 cinput">
-                        <label for="inputPrecio" class="sr-only">Precio</label>
+                        <label for="inputPrecio" class="sr-only">Precio</label><p>Precio</p>
                         <input type="text"  id="inputPrecio"  class="form-control" name="precio" value="<?php echo $precio ?>" placeholder="Precio *" required>
                     </div>
                     <div class="col-md-6 cinput">
@@ -68,7 +68,7 @@ foreach ($objeto as $objeto){
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-12 cinput">
-                        <label for="inputDescripcion" class="sr-only">Descripcion</label>
+                        <label for="inputDescripcion" class="sr-only">Descripcion</label><p>Descripcion</p>
                         <textarea type="text"  id="inputDescripcion"  class="form-control" value="" name="descripcion" placeholder="Descripcion *" rows="10" required><?php echo $desc ?></textarea>
                     </div>
                 </div>
