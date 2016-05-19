@@ -72,7 +72,7 @@
         }
         public function viewHP4($id,$id_HP){
             $db = new connexio();
-            $sql = "SELECT * FROM Categoria_HP where id_categoria='$id' and id_HP='$id_HP'";
+            $sql = "SELECT coste FROM Categoria_HP where id_categoria='$id' and id_HP='$id_HP'";
             $query = $db->query($sql);
             $db->close();
             if ($query->num_rows > 0) {

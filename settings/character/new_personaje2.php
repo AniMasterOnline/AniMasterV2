@@ -150,7 +150,7 @@ $limite_hp = $puntos*0.5;
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
                 $cat_hp = new Categoria_HP();
-                $return=$cat_hp->viewHP4($id_categoria,4);
+                $result=$cat_hp->viewHP4($id_categoria,4);
                 $le = $result['coste'];
                 echo "Le - ".$le;
                 $return = array($id_categoria,$nombre,$apellido,$edad,$nivel2,$sexo,$pelo,$ojos,$altura,$peso,$apariencia,$agi,$con,$des,$fue,$int,$per,$pod,$vol,$nacionalidad,$ha,$hp,$he,$le);
