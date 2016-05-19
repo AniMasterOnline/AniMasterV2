@@ -60,7 +60,30 @@
                         "</div></div><div class='clearfix'></div> \n"); 
             }
             break;
-        
+        case('sendhs'):
+            $nickname = htmlentities(strip_tags($_POST['nickname']));
+            $message = htmlentities(strip_tags($_POST['message']));
+            if (($message) != "\n") { 
+                $color = $_POST['color'];
+                $val = $_POST['val'];
+                $val = calculatedices($val);
+                fwrite(fopen($file, 'a'), "<div class='chatbox pull-left'> <div class='chatnick'><code class='".$color."'><span class='nick'>". $nickname . 
+                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg bgm-brown c-white'>" . $message = str_replace("\n", " ", $message)." ".$val.
+                        "</div></div><div class='clearfix'></div> \n"); 
+            }
+            break;
+        case('sendhp'):
+            $nickname = htmlentities(strip_tags($_POST['nickname']));
+            $message = htmlentities(strip_tags($_POST['message']));
+            if (($message) != "\n") {
+                $color = $_POST['color'];
+                $val = $_POST['val'];
+                $val = calculatedices($val);
+                fwrite(fopen($file, 'a'), "<div class='chatbox pull-left'> <div class='chatnick'><code class='".$color."'><span class='nick'>". $nickname . 
+                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg bgm-red c-white'>" . $message = str_replace("\n", " ", $message)." ".$val.
+                        "</div></div><div class='clearfix'></div> \n"); 
+            }
+            break;
         case('sendimg'):
             $nickname = htmlentities(strip_tags($_POST['nickname']));
             $imgurl = htmlentities(strip_tags($_POST['message']));
@@ -74,5 +97,47 @@
             break;
     }
     echo json_encode($log);
+    
+    
+    function calculatedices($base){
+        $getbase = $base;
+        $high = 90;
+        $throwdices = rand( 1 , 100 );
+        $base = (int)$getbase;
+
+        if($base >= 200){                                            //En cas de tindre maestria
+            if($throwdices <= 2){                                //Pifia
+                $result = rand( 1 , 100 );
+                return $result;
+            }else{                                              //Tirada normal
+                $result = $throwdices;
+                while($throwdices >= $high){ //En cas de que sigui una tirada obert
+                        $throwdices = rand( 1 , 100 );
+                        $result += $throwdices;
+                        if($high != 100){
+                            $high++;
+                        }
+                }
+                $result += $base;
+                return $result;
+            }
+        }else if($getbase != ""){ //En cas de no tindre maestria
+            if(throwdices <= 3){  //Pifia
+                $result = rand( 1 , 100 );
+                return $result;
+            }else{
+                $result = $throwdices;
+                while($throwdices >= $high){ //En cas de que sigui una tirada obert
+                        $throwdices = rand( 1 , 100 );
+                        $result += $throwdices;
+                        if($high != 100){
+                            $high++;
+                        }
+                }
+                $result += $base;
+                return $result;
+            }
+        }
+    }
 ?>
 

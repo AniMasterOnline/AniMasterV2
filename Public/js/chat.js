@@ -9,6 +9,8 @@ $(document).ready(function() {
 function Chat () {
     this.update = updateChat;
     this.send = sendChat;
+    this.sendhs = sendChaths;
+    this.sendhp = sendChathp;
     this.sendimg = sendChatImg;
     this.getState = getStateOfChat;
     this.loadxat = loadChat;
@@ -87,6 +89,35 @@ function sendChat(message, nickname, color, file) {
         data: {'function': 'send','message': message,'nickname': nickname,'file': file, 'color': color},
         dataType: "json",
         success: function(data){
+            updateChat(file);
+        }
+    });
+}
+
+//send the hs tirada
+function sendChaths(txt, val, nickname, color, file) { 
+    updateChat(file);
+    $.ajax({
+        type: "POST",
+        url: "../../System/Partida_Chat.php",
+        data: {'function': 'sendhs','message': txt, 'val':val, 'nickname': nickname,'file': file, 'color': color},
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            updateChat(file);
+        }
+    });
+}
+//send the hs tirada
+function sendChathp(txt, val, nickname, color, file) { 
+    updateChat(file);
+    $.ajax({
+        type: "POST",
+        url: "../../System/Partida_Chat.php",
+        data: {'function': 'sendhp','message': txt, 'val':val,'nickname': nickname,'file': file, 'color': color},
+        dataType: "json",
+        success: function(data){
+            console.log(data);
             updateChat(file);
         }
     });

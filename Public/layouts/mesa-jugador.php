@@ -63,6 +63,18 @@
                 chat.send(text, name, color, file);
             }
         });
+        $('#sel1-but').click(function(e) {
+            var txt = $( "#sel1 option:selected" ).text();
+            var val = $( "#sel1 option:selected" ).val();
+            console.log(txt+' '+val);
+            chat.sendhs(txt, val, name, color, file);
+        });
+        $('#sel2-but').click(function(e) {
+            var txt = $( "#sel2 option:selected" ).text();
+            var val = $( "#sel2 option:selected" ).val();
+            console.log(txt+' '+val);
+            chat.sendhp(txt, val, name, color, file);
+        });
     });
     $(window).load(function() {
         chat.loadxat(file);
@@ -392,13 +404,104 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade p-l-15 p-r-15" id="combate">
+            <div role="tabpanel" class="tab-pane fade p-l-0" id="combate">
                  <div class="row">
                     <div class="col-md-12">
-                        <h1>Combate</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <div class="card m-0">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-amber z-depth-1-bottom">
+                                <h2 class="lvh-label c-white f-18">Tirada de habilidades secundarias</h2>
+                            </div>
+                            <div class="card-body card-padding table-responsive p-0">
+                                <div class="form-group p-15">
+                                    <select class="form-control m-b-10" id="sel1">
+                                    <?php
+                                        foreach ($personaje_hs as $row){
+                                            $hs_value = $row->getValor(); // valor de la hs
+                                            $hs_id = $row->getId_HS();  // id de la hs
 
+                                            $HS = new Habilidades_Secundarias();
+                                            $HS = $HS->view_HS($hs_id);
+
+                                            $hs_name = $HS->getNombre(); // Nombre de la hs
+                                            $hs_car = $HS->getCaracteristica(); // Nombre de la caracteristica AGI ... etc
+
+                                            $hs_base = $return['c_'.$hs_car]; // Base de la caracteristica del pj
+
+                                            $Caract_p = new Caracteristicas_p();
+                                            $hs_bono = $Caract_p->viewCaracteristica($hs_base);
+
+                                            $Categoria_HS = new Categoria_HS();
+                                            $arrayCat_HS = $Categoria_HS->viewHS1($return['id_categoria'], $hs_id);
+                                            $hs_incrlv = (int)$arrayCat_HS['incr_nv']; // incremento categoria
+                                            if($hs_incrlv == null){
+                                                $hs_incrlv = 0; 
+                                            }
+                                            $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
+
+                                            $hs_final = $hs_value + $hs_bono + $hs_catfin; // Suma final
+
+                                            if($hs_value <= 0){ //si la base es 0 el valor final sera 0
+                                                $hs_final = -30;
+                                            }
+                                            echo '<option value="'.$hs_final.'">'.$hs_name.'</option>';
+                                        }
+
+                                    ?>
+                                    </select>
+                                    <button class="btn btn-success p-l-15 p-r-15 z-depth-1" id="sel1-but">Tirar dados</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card m-0">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-red z-depth-1-bottom">
+                                <h2 class="lvh-label c-white f-18">Tirada de habilidades primarias</h2>
+                            </div>
+                            <div class="card-body card-padding table-responsive p-0">
+                                <div class="form-group p-15">
+                                    <select class="form-control m-b-10" id="sel2">
+                                    <?php
+                                        $HP = new Habilidades_Primarias(); 
+                                        $Caract_p = new Caracteristicas_p(); 
+                                        $Categoria_HP = new Categoria_HP(); 
+
+                                        /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+                                        if (!empty($return)) {
+                                                $contador = 0;
+                                                while ($contador < 3){
+                                                    $contador++;
+                                                    $arrayHP = $HP->viewHP($contador);
+                                                    switch ($contador) {
+                                                        case 1:
+                                                            $hp = $return['ha'];
+                                                            break;
+                                                        case 2:
+                                                            $hp = $return['hp'];
+                                                            break;
+                                                        case 3:
+                                                            $hp = $return['he'];
+                                                            break;
+                                                    }
+                                                    if( $contador < 3) {
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_DES']);
+                                                    }elseif ($contador == 3) {
+                                                        $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_AGI']);
+                                                    }
+                                                    $arrayCategoria_HP = $Categoria_HP->viewHP1($return['id_categoria'], $contador);
+                                                    $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$return['nivel']);
+                                                    $coste = $arrayCategoria_HP['coste'];
+                                                    $hp = $hp / $coste;
+                                                    $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
+                                                    
+                                                    echo '<option value="'.$HAfinal.'">'.$arrayHP->getNombre().'</option>';
+                                        
+                                                }
+                                        }
+                                        ?>
+                                    </select>
+                                    <button class="btn btn-success p-l-15 p-r-15 z-depth-1" id="sel2-but">Tirar dados</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
