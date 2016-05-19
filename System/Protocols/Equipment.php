@@ -30,5 +30,5 @@ echo $valor2;
 require_once "../../System/Classes/Personaje.php";
 $personaje=new Personaje();
 $personaje=$personaje->modDanyoTA($id_personaje, $valor, $valor2);
-header('Location: ../../settings/character/view_personaje?id_personaje='.$id_personaje.'&id_partida='.$id_partida.'');
+header('Location: ../../settings/character/view_personaje.php?id_personaje='.$id_personaje.'&id_partida='.$id_partida.'');
 ?>
