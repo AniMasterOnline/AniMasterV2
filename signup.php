@@ -42,7 +42,7 @@ include "Public/layouts/head.php";?>
             </div>
             <div class="col-md-12 cinput">
                 <label for="inputUser" class="sr-only">Usuario</label>
-                <input type="text"  id="inputUser"  class="form-control" name="user" placeholder="Usuario *" required autofocus>
+                <input type="text"  id="inputUser"  class="form-control" name="user" placeholder="Usuario *" value="" required autofocus>
             </div>
             <div class="col-md-12 cinput" id="alertUser">
                 
@@ -57,29 +57,10 @@ include "Public/layouts/head.php";?>
                     </span>
                 </div>
             </div>
-            <div class="col-md-6 cinput">
-                <div class="input-group">
-                    <label for="inputPass2" id="inputPass2Label" class="sr-only">Repite tu contraseña</label>
-                    <input type="password"  id="inputPass2"  class="form-control" name="pass2" placeholder="Repite tu contraseña *" required>
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="methods2"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-12 cinput" id="alertPass">
-                
-            </div>
             
             <div class="col-md-6 cinput">
                 <label for="inputEmail" class="sr-only">E-mail</label>
                 <input type="text"  id="inputEmail"  class="form-control" name="email" placeholder="E-mail *" required>
-            </div>
-            <div class="col-md-6 cinput">
-                <label for="inputEmail2" class="sr-only">Repite tu e-mail</label>
-                <input type="text"  id="inputEmail2"  class="form-control" name="email2" placeholder="Repite tu e-mail *" required>
-            </div>
-            <div class="col-md-12 cinput" id="alertEmail">
-                
             </div>
             <div class="col-md-12 cinput">
                 <button class="btn btn-lg bgm-green c-white btn-block" type="submit">Registra't</button>
