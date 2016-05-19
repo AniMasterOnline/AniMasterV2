@@ -4,6 +4,7 @@
         /*Atributs*/
         private $id_personaje;
         private $id_objeto;
+        private $cantidad;
         
         //METODES
         public function add(){
@@ -58,11 +59,13 @@
             $sql = "SELECT * FROM Personaje_Objeto WHERE id_personaje='$id_personaje'";
             $query = $db->query($sql);
             $db->close();
+            $rtn = array();
             if ($query->num_rows > 0) {
                 while($obj = $query->fetch_assoc()){
-                    $partida_objeto = new Personaje_Objeto($obj["id_personaje"],$obj["id_objeto"]);
+                    $partida_objeto = new Personaje_Objeto($obj["id_personaje"],$obj["id_objeto"],$obj["cantidad"]);
+                    array_push($rtn, $partida_objeto);
                 }
-                return $partida_objeto;
+                return $rtn;
             }else{
                 return null;
             }
@@ -87,6 +90,11 @@
             $this->id_personaje = $a1;
             $this->id_objeto = $a2;
         }
+        function __construct3($a1, $a2, $a3){
+            $this->id_personaje = $a1;
+            $this->id_objeto = $a2;
+            $this->cantidad = $a3;
+        }
            
         //METODES SET
         public function setId_Personaje($id_personaje) {
@@ -95,6 +103,9 @@
         public function setId_Objeto($id_objeto) {
             $this->id_objeto = $id_objeto;
         }
+        public function setCantidad($cantidad) {
+            $this->cantidad = $cantidad;
+        }
         
         //METODES GET 
         public function getId_Personaje() {
@@ -102,6 +113,9 @@
         }
         public function getId_Objeto() {
             return $this->id_objeto;
+        }
+        public function getCantidad() {
+            return $this->cantidad;
         }
     }
 ?>
