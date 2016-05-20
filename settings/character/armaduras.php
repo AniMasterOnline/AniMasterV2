@@ -25,7 +25,7 @@ foreach ($caracteristica as $caracteristica){
                 <div class="col-md-6">
                     <div class="col-md-12 cinput">
                         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1" style="max-width:30px;"><?php echo $nombre ?></span>
+                            <span class="input-group-addon" id="basic-addon1" style="max-width:200px;"><?php echo $nombre ?></span>
                             <label for="<?php echo $nombre ?>" class="sr-only"><?php echo $nombre ?></label>
                             <input type="text"  id="<?php echo $nombre ?>" value="" class="form-control" name="<?php echo 'v'.$id_caracteristica ?>" placeholder="<?php echo $nombre ?> *" required>
                             <input type="hidden"  id="<?php echo $id_caracteristica ?>"  class="form-control" name="<?php echo $id_caracteristica ?>" value="<?php echo $id_caracteristica ?>" required>
@@ -38,7 +38,11 @@ foreach ($caracteristica as $caracteristica){
                     <button class="btn btn-lg btn-success btn-block" name="submit" id="submit" type="submit">Crear armaduras</button>
                 </div>
             </div>
-            
+            <?php
+                if(isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
+                    echo '<input type="hidden"  id="id_partida"  class="form-control" name="id_partida" value="'.$_GET['id_partida'].'">';
+                }
+            ?>
         </div>
     </form>
 </div> 

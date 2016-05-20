@@ -9,6 +9,16 @@ if(isset($_GET['id_personaje']) && !empty($_GET['id_personaje'])){
 }else{
     include '../404/404.php';
 }
+require_once "../../System/Classes/Partida.php";
+require_once "../../System/Classes/Personaje.php";
+$Partida = new Partida(); 
+$Personaje = new Personaje(); 
+$return = $Personaje->viewPersonaje($id_personaje);
+$array2 = $Partida->viewPartida($return['id_partida']);
+if($array2 == null){
+    include '../404/404.php';
+    exit();
+}
 
 $title='Panel del personaje';
 $migas='#Home|../../index.php#Zone|../../zone.php#Personaje|view_partida.php?id_personaje='.$id_personaje;

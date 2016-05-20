@@ -220,7 +220,7 @@ include "../../Public/layouts/head.php";
                                         <td class='text-danger text-center'>".$personajeUsuarioPartida['nivel']."</td>
                                         <td class='text-center'>
                                             <label class='m-r-10 p-0'>
-                                                    <a href=../character/mod_personaje.php?id=".$row['id_personaje'].">
+                                                    <a href=../character/mod_personaje.php?id=".$id_Usuari.">
                                                         <i class='zmdi zmdi-edit c-black f-16 c-green '></i>
                                                     </a>
                                             </label>
@@ -280,7 +280,7 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="../character/new_objeto.php?id_partida=<?php echo $id_partida ?>">Nuevo</a>
+                                    <a href="new_objeto.php?id_partida=<?php echo $id_partida ?>">Nuevo</a>
                                 </li>
                             </ul>
                         </li>
@@ -292,8 +292,8 @@ include "../../Public/layouts/head.php";
                             <tr>
                                 <th>Nombre</th>
                                 <th>Categoría</th>
-                                <th class='text-center'>Modificar</th>
-                                <th class='text-center'>Eliminar</th>
+                                <th class='text-center'>&nbsp;</th>
+                                <th class='text-center'>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -320,7 +320,7 @@ include "../../Public/layouts/head.php";
                                     $tipoNombre = $tipo->view_nombre($row2->getId_Tipo());
                                     echo "
                                         <td>".strval($tipoNombre->getNombre())."</td>
-                                        <td class='text-center'><a href='../character/mod_objeto.php?id_objeto=".strval($row2->getId_Objeto())."'><i class='zmdi zmdi-edit c-black f-20 c-green '></i></a></td>
+                                        <td class='text-center'><a href='mod_objeto.php?id_objeto=".strval($row2->getId_Objeto())."&id_partida=".$id_partida."'><i class='zmdi zmdi-edit c-black f-20 c-green '></i></a></td>
                                         <td class='text-center'><a href='../../System/Protocols/Objeto_Del.php?id_objeto=".strval($row2->getId_Objeto())."&id_partida=".$id_partida."'><i class='zmdi zmdi-delete c-black f-20 c-red '></i></a></td>
                                         </tr>";
                                 }
@@ -370,13 +370,7 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="new_personaje1.php?id_partida=<?php echo $id_partida ?>">Nuevo</a>
-                                </li>
-                                <li>
-                                    <a href="#">Modificar</a>
-                                </li>
-                                <li>
-                                    <a href="#">Eliminar</a>
+                                    <a target='_blank' href="new_personaje1.php?id_partida=<?php echo $id_partida ?>">Nuevo</a>
                                 </li>
                             </ul>
                         </li>
@@ -389,6 +383,7 @@ include "../../Public/layouts/head.php";
                                 <th>Nombre</th>
                                 <th>Nivel</th>
                                 <th>Categoria</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -404,11 +399,31 @@ include "../../Public/layouts/head.php";
                                     $categoria = new Categoria();
                                     $categoria = $categoria->viewCar($id_cat);
                                     $cat = $categoria->getNombre();
-                                    echo "<tr >
+                                    $fakeidpart = $row->getId_Partida();
+                                    $fakeidnpcs = $row->getId_Personaje();
+                                    if($fakeidpart == $id_partida){
+                                        echo "<tr >
                                         <td class='text-capitalize text-success'>".$row->getNombre()."</td>
                                         <td class='text-capitalize text-success'>".$row->getNivel()."</td>
                                         <td class='text-capitalize text-success'>".$cat."</td>
-                                        </tr >";
+                                        <td>
+                                            <label class='m-r-10 p-0'>
+                                                    <a target='_blank' href=../character/view_personaje.php?id_personaje=".$fakeidnpcs."&id_partida=".$fakeidpart.">
+                                                        <i class='zmdi zmdi-eye c-black f-16 c-amber'></i>
+                                                    </a>
+                                            </label>
+                                        
+                                        </td>";
+                                    }else{
+                                        echo "<tr >
+                                        <td class='text-capitalize text-success'>".$row->getNombre()."</td>
+                                        <td class='text-capitalize text-success'>".$row->getNivel()."</td>
+                                        <td class='text-capitalize text-success'>".$cat."</td>
+                                        <td>
+                                            &nbsp;
+                                        </td>";
+                                    }
+                                    
                                 }
                             }
                             

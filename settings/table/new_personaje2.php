@@ -12,23 +12,17 @@ if(isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
     $id_partida = $_GET['id_partida'];
     $id_usuario = $value['id_usuario'];
     
-    /* Comprobacion de si el jugador tiene personaje */
-    require_once "../../System/Classes/Personaje.php";
-    $personaje = new Personaje();
-    $return=$personaje->viewPersonajeUsuario($value['id_usuario'], $id_partida);
-    if($return !== null){
-       header('location: ../../zone.php'); //redireccion a zona de partidas
-       exit();
-    }
     /* Comprobacion de si el usuario tiene acceso a la partida o si existe*/
     $partida= new Partida();
     $partida= $partida->viewPartida($id_partida);
-    $partida_usuari= new Partida_Usuari();
-    $you_can_not_pass = $partida_usuari->testInvited($id_usuario, $id_partida);
+    if ($partida->getId_Usuario() == $value['id_usuario']){
+        $you_can_not_pass = true;
+    }else{
+        $you_can_not_pass = false;
+    }
     if(empty($partida) || $you_can_not_pass!== true ){
         include '../404/404.php';
     }
-    
     /* Variables de la partida */
     $nombre = $partida->getNombre();
     $imagen = $partida->getImagen();
@@ -36,9 +30,10 @@ if(isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
     include '../404/404.php';
 }
 $title='Crear Personaje';
-$migas='#Index|../../index.php#Zona roleo|../../zone.php#'.$nombre.'# Crear Personaje 2 / 3';
+$migas='#Index|../../index.php#Zona roleo|../../zone.php#'.$nombre.'# Crear Npc 2 / 3';
 include "../../Public/layouts/head.php";
 ?>
+
 <div class="content">
     <div class="col-md-12">
         <div class="col-xs-12">

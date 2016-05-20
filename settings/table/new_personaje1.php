@@ -31,7 +31,7 @@ if(isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
     include '../404/404.php';
 }
 $title='Crear Personaje';
-$migas='#Index|../../index.php#Zona roleo|../../zone.php#'.$nombre.'# Crear Personaje 1 / 3';
+$migas='#Index|../../index.php#Zona roleo|../../zone.php#'.$nombre.'# Crear Npc 1 / 3';
 include "../../Public/layouts/head.php";
 ?>
 

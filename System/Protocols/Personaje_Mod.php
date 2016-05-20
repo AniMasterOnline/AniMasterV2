@@ -4,7 +4,7 @@ session_start();
         $value=$_SESSION['user'];
 
 $arr=$_SESSION['arrayMod'];
-var_dump($arr);
+//var_dump($arr);
 $id_categoria=$arr[0];
 $ha2=$arr[1];
 $hp2=$arr[2];

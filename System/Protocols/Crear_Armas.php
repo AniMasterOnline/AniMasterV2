@@ -60,5 +60,10 @@ $objCar->add();
 $objCar=new Objeto_Caracteristica($car14,$id_objeto,$val14);
 $objCar->add();
 
-header('Location: ../../settings/table');
+if(isset($_POST['id_partida']) && !empty($_POST['id_partida'])){
+    $id_partida = $_POST['id_partida'];
+    header('Location: ../../settings/table/view_partida.php?id='.$id_partida);
+}else{
+    header('Location: ../../zone.php');
+}
 ?>

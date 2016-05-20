@@ -39,7 +39,11 @@ foreach ($caracteristica as $caracteristica){
                     <button class="btn btn-lg btn-success btn-block" name="submit" id="submit" type="submit">Crear armas</button>
                 </div>
             </div>
-            
+            <?php
+                if(isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
+                    echo '<input type="hidden"  id="id_partida"  class="form-control" name="id_partida" value="'.$_GET['id_partida'].'">';
+                }
+            ?>
         </div>
     </form>
 </div> 
