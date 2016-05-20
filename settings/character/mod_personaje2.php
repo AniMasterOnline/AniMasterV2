@@ -75,7 +75,7 @@ echo "<div class='alert alert-info m-b-5' role='alert'><strong>Habilidades secun
 <div class="col-md-8 col-md-offset-2">
     <input type="text" value="<?php echo $limite_hp; ?>" class="form-control f-400 text-center c-green" id="suma_fake" aria-describedby="basic-addon1" readonly>
 
-    <form onchange="myFunction(this.value)" action="../../System/Protocols/Personaje_Mod.php" method="POST">
+    <form onchange="myFunction()" action="../../System/Protocols/Personaje_Mod.php" method="POST">
 <?php
 require_once "../../System/Classes/Categoria_HS.php";
 require_once "../../System/Classes/Habilidades_Secundarias.php";
@@ -112,7 +112,7 @@ foreach ($categoria as $categoria){
 </form>
 </div>
 <script>
-function myFunction(val) {
+function myFunction() {
     var coste1=document.getElementById("coste1").value;
     var coste2=document.getElementById("coste2").value;
     var coste3=document.getElementById("coste3").value;
@@ -229,6 +229,9 @@ function myFunction(val) {
         document.getElementById("submit").disabled = false;
     }
 }
+$(window).load(function() {
+    myFunction();
+});
 </script>
 
         </div>

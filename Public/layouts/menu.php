@@ -43,7 +43,7 @@
             </div>
         </li>
         <li class="logo hidden-xs">
-            <a href="../index.php">AniMaster Online v2</a>
+            <a href="#"><i class="zmdi zmdi-shield-security shadowicon"></i> AniMaster Online</a>
         </li>
         <li class="pull-right">
             <ul class="top-menu">
@@ -273,21 +273,18 @@
                                     if (strpos($self,"admin/")){
                                         echo '  <li><a href="../admin/"><i class="zmdi zmdi-lock-open"></i></i> Admin Panel</a></li>
                                                 <li><a href="../settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
-                                                <li><a href="../help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
                                                 <li><a href="../logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li class="dropdown-header">Actions</li>';
                                     }else if (strpos($self,"settings/")){
                                         echo '  <li><a href="../../admin/"><i class="zmdi zmdi-lock-open"></i></i> Admin Panel</a></li>
                                                 <li><a href="../../settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
-                                                <li><a href="../../help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
                                                 <li><a href="../../logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li class="dropdown-header">Actions</li>';
                                     }else{
                                         echo '  <li><a href="admin/"><i class="zmdi zmdi-lock-open"></i></i> Admin Panel</a></li>
                                                 <li><a href="settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
-                                                <li><a href="help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
                                                 <li><a href="logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li class="dropdown-header">Actions</li>';
@@ -301,13 +298,11 @@
                                                 <li class="dropdown-header">Actions</li>';
                                     }else if (strpos($self,"settings/")){
                                         echo '  <li><a href="../../settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
-                                                <li><a href="../../help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
                                                 <li><a href="../../logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li class="dropdown-header">Actions</li>';
                                     }else{
                                         echo '  <li><a href="settings/"><i class="zmdi zmdi-settings"></i> Configuración</a></li>
-                                                <li><a href="help.php"><i class="zmdi zmdi-help"></i> Ayuda</a></li>
                                                 <li><a href="logout.php"><i class="zmdi zmdi-time-restore"></i> Logout</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li class="dropdown-header">Actions</li>';

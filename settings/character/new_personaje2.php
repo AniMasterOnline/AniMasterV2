@@ -89,12 +89,12 @@ $limite=0;
 $limite2=0;
 if($id_categoria == 8 || $id_categoria == 9){
     $limite = 0.5;
-    echo "</strong><br>Puntos máximos a invertir en Habilidades Primarias ".$limite2 =$limite*$puntos." puntos";
+    echo "</strong><br>Puntos máximos a invertir en Habilidades Primarias ".$limite2 =$limite*$puntos." puntos</div>";
     
 }else{
     $limite = 0.6;
     $limite2 =$limite*$puntos;
-    echo "</strong><br>Puntos máximos a invertir en Habilidades Primarias ".$limite2." puntos </div></div>";
+    echo "</strong><br>Puntos máximos a invertir en Habilidades Primarias ".$limite2." puntos </div>";
 }
 $limite_hp = $puntos*0.5;
 $limite_le = $limite2 - $limite_hp;

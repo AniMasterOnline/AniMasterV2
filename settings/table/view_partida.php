@@ -292,8 +292,8 @@ include "../../Public/layouts/head.php";
                             <tr>
                                 <th>Nombre</th>
                                 <th>Categoría</th>
-                                <th>Modificar</th>
-                                <th>Eliminar</th>
+                                <th class='text-center'>Modificar</th>
+                                <th class='text-center'>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -320,8 +320,8 @@ include "../../Public/layouts/head.php";
                                     $tipoNombre = $tipo->view_nombre($row2->getId_Tipo());
                                     echo "
                                         <td>".strval($tipoNombre->getNombre())."</td>
-                                        <td><a href='../character/mod_objeto.php?id_objeto=".strval($row2->getId_Objeto())."'><i class='zmdi zmdi-edit c-black f-20 c-green '></i></a></td>
-                                        <td><a href='../../System/Protocols/Objeto_Del.php?id_objeto=".strval($row2->getId_Objeto())."'><i class='zmdi zmdi-delete c-black f-20 c-red '></i></a></td>
+                                        <td class='text-center'><a href='../character/mod_objeto.php?id_objeto=".strval($row2->getId_Objeto())."'><i class='zmdi zmdi-edit c-black f-20 c-green '></i></a></td>
+                                        <td class='text-center'><a href='../../System/Protocols/Objeto_Del.php?id_objeto=".strval($row2->getId_Objeto())."&id_partida=".$id_partida."'><i class='zmdi zmdi-delete c-black f-20 c-red '></i></a></td>
                                         </tr>";
                                 }
                             }
@@ -339,8 +339,8 @@ include "../../Public/layouts/head.php";
                                 $tipoNombre = $tipo->view_nombre($row->getId_Tipo());
                                 echo "
                                     <td>".strval($tipoNombre->getNombre())."</td>
-                                    <td>".strval($row->getPrecio())."</td>
-                                    <td>".strval($row->getPeso())."</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
                                     </tr>";
                             }
                             
