@@ -73,27 +73,28 @@
         <li role="presentation" class="active"><a href="#jugadores" aria-controls="jugadores" role="tab" data-toggle="tab">Jugadores</a></li>
         <li role="presentation"><a href="#personajes" aria-controls="personajes" role="tab" data-toggle="tab">Personajes</a></li>
         <li role="presentation"><a href="#objetos" aria-controls="objetos" role="tab" data-toggle="tab">Objetos</a></li>
-        <li role="presentation"><a href="#combate" aria-controls="combate" role="tab" data-toggle="tab">Combate</a></li>
-        <li role="presentation" class="dropdown">
+        <!-- <li role="presentation"><a href="#combate" aria-controls="combate" role="tab" data-toggle="tab">Combate</a></li> -->
+        <li role="presentation"><a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab">Mapa</a></li>
+        <li role="presentation"><a href="#diario" aria-controls="diario" role="tab" data-toggle="tab">Diario del master</a></li>
+        <!--<li role="presentation" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             Otros <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-                <li role="presentation"><a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab">Mapa</a></li>
-                <li role="presentation"><a href="#diario" aria-controls="diario" role="tab" data-toggle="tab">Diario del master</a></li>
-                <!--<li role="presentation"><a href="#opc" aria-controls="opc" role="tab" data-toggle="tab">Configuración</a></li> -->
+                
+                <li role="presentation"><a href="#opc" aria-controls="opc" role="tab" data-toggle="tab">Configuración</a></li>
           </ul>
-        </li>
+        </li> -->
     </ul>
 </div>
 <div class="row" >
     <div class="col-md-12 bgm-white z-depth-1-bottom p-l-0 p-r-0" id="mesa-container">
         <!-- Tab panes -->
         <div class="tab-content ">
-            <div role="tabpanel" class="tab-pane fade in active p-l-5 p-r-5 p-t-5" id="jugadores">
+            <div role="tabpanel" class="tab-pane fade in active p-l-5 p-r-5 p-t-0" id="jugadores">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel-group m-b-5" id="accordion">
+                        <div class="panel-group m-b-5 m-t-5" id="accordion">
                             <?php
                             $Personaje = new Personaje(); 
                             $return = $Personaje->viewPersonajesPartida($id_partida);
@@ -486,23 +487,135 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade p-l-15 p-r-15" id="personajes">
+            <div role="tabpanel" class="tab-pane fade p-0" id="personajes">
                  <div class="row">
                     <div class="col-md-12">
-                        <h1>Personajes</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <div class="card m-0">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-blue z-depth-1-bottom">
+                                <h2 class="lvh-label c-white f-18">Npc's</h2>
+                            </div>
+                            <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                                <table class="table b-0">
+                                    <thead class="bgm-lightblue b-0 c-white">
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Nivel</th>
+                                            <th>Categoria</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <?php
+                                        require_once "../../System/Classes/Personaje.php";
+                                        require_once "../../System/Classes/Usuario.php";
+                                        require_once "../../System/Classes/Categoria.php"; 
+                                        $personajes = new Personaje();
+                                        $personajes = $personajes->viewPNJ($value['id_usuario'], $id_partida);
+                                        if (!empty($personajes)) {
+                                            foreach ($personajes as $row) {
+                                                $id_cat = $row->getId_Categoria();
+                                                $categoria = new Categoria();
+                                                $categoria = $categoria->viewCar($id_cat);
+                                                $cat = $categoria->getNombre();
+                                                echo "<tr >
+                                                    <td class='text-capitalize text-success'>".$row->getNombre()."</td>
+                                                    <td class='text-capitalize text-success'>".$row->getNivel()."</td>
+                                                    <td class='text-capitalize text-success'>".$cat."</td>
+                                                    </tr >";
+                                            }
+                                        }
 
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade p-l-15 p-r-15" id="objetos">
+            <div role="tabpanel" class="tab-pane fade p-0" id="objetos">
                  <div class="row">
                     <div class="col-md-12">
-                        <h1>Objetos</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <div class="card m-0">
+                            <div class="lv-header-alt clearfix m-b-0 bgm-orange z-depth-1-bottom">
+                                <h2 class="lvh-label  c-white f-18">Objetos</h2>
+                                <ul class="lv-actions actions">
+                                    <li class="dropdown">
+                                        <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                            <i class="zmdi zmdi-more-vert c-white"></i>
+                                        </a>
 
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <a target="_blank" href="../character/new_objeto.php?id_partida=<?php echo $id_partida ?>">Nuevo</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                                <table class="table b-0">
+                                    <thead class="bgm-amber b-0 c-white">
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Categoría</th>
+                                            <th>Valor (MC)</th>
+                                            <th>Peso</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <?php
+                                        require_once "../../System/Classes/Partida_Objeto.php";
+                                        require_once "../../System/Classes/Objeto.php";
+                                        require_once "../../System/Classes/Tipo.php";
+
+                                        $partida_objeto = new Partida_Objeto();
+                                        $id_objeto = $partida_objeto->view_Objetos_Partida($id_partida);
+
+                                        $tipo = new Tipo();
+                                        /*Seleccionem la id de partida i busquem els seus objectes propis de partida*/
+                                        foreach ($id_objeto as $row) {
+                                            $objeto1 = new Objeto(); 
+                                            $objeto1 = $objeto1->viewObj($row->getId_Objeto());
+
+                                            /*Per a cada objecte mostrem el contingut que volem*/
+                                            foreach ($objeto1 as $row2) {
+                                                echo "<tr >
+                                                    <td>".strval($row2->getNombre())."</td>";
+
+                                                /*Per saber el nom del id_tipo hem de fer una select*/
+                                                $tipoNombre = $tipo->view_nombre($row2->getId_Tipo());
+                                                echo "
+                                                    <td>".strval($tipoNombre->getNombre())."</td>
+                                                    <td>".strval($row2->getPrecio())."</td>
+                                                    <td>".strval($row2->getPeso())."</td>
+                                                    </tr>";
+                                            }
+                                        }
+
+
+                                        $objeto = new Objeto(); 
+                                        $objeto = $objeto->viewObjetosPublicos();
+
+                                        /*Mostrem tots els objectes que siguin public*/
+                                        foreach ($objeto as $row) {
+                                            echo "<tr >
+                                                <td>".strval($row->getNombre())."</td>";
+
+                                            /*Per saber el nom del id_tipo hem de fer una select*/
+                                            $tipoNombre = $tipo->view_nombre($row->getId_Tipo());
+                                            echo "
+                                                <td>".strval($tipoNombre->getNombre())."</td>
+                                                <td>".strval($row->getPrecio())."</td>
+                                                <td>".strval($row->getPeso())."</td>
+                                                </tr>";
+                                        }
+
+                                        ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -512,7 +625,6 @@
                         <h1>Combate</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-
                     </div>
                 </div>
             </div>

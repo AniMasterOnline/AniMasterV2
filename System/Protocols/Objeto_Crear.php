@@ -25,9 +25,8 @@ if($tipo==2){
     header('Location: ../../settings/character/armas.php');
 }else if($tipo==3){
     header('Location: ../../settings/character/armaduras.php');
-}
-else{
-    header('Location: ../../settings/character/new_equipment.php');
+}else{
+    header('Location: ../../settings/table/view_partida.php?id='.$id_partida);
 
 }
 ?>

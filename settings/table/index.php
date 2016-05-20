@@ -64,7 +64,7 @@ include "../../Public/layouts/head.php";?>
 
                                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                                     <li>
-                                                                        <a href="invite.php?id='.$id_partida.'">Gestionar Jugadores</a>
+                                                                        <a href="invite.php?id='.$id_partida.'">Gestionar Invitaciónes</a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="view_partida.php?id='.$id_partida.'">Gestionar Partida</a>
