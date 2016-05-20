@@ -6,6 +6,11 @@ if(isset($_SESSION['user'])){
 }
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
+    if(isset($_GET['idp'])&& !empty($_GET['idp'])){
+        $id_part = $_GET['idp'];
+    }else{
+        $id_part = null;
+    }
     $id_personaje = $_GET['id'];
     
     require_once "../../System/Classes/Personaje.php";
@@ -61,7 +66,7 @@ $limite_le = $limite2 - $limite_hp;
 ?>
 
             
-<form onchange="myFunction(this.value)" action="mod_personaje2.php?id=<?php echo $id_personaje ?>" method="POST">
+<form onchange="myFunction(this.value)" action="mod_personaje2.php?id=<?php echo $id_personaje.'&idp='.$id_part.'"' ?>" method="POST">
     <div class="col-xs-9 m-b-10">
         <?php
             require_once "../../System/Classes/Categoria_HP.php";

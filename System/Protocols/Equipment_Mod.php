@@ -1,4 +1,9 @@
 <?php
+if(isset($_GET['idp'])&& !empty($_GET['idp'])){
+    $id_part = $_GET['idp'];
+}else{
+    $id_part = null;
+}
 require_once('../Classes/Usuario.php');
     session_start();
     if(isset($_SESSION['user'])){
@@ -42,10 +47,16 @@ $personaje=$personaje->viewPersonaje($id_personaje);
 $userPer=$personaje['id_usuario'];
 
 echo $userConectat=$value['id_usuario'];
-if($userPer==$userConectat){
-    header('Location: ../../settings/character/view_personaje.php?id_personaje='.$id_personaje.'&id_partida='.$id_partida.'');
+
+if(isset($_GET['idp'])&& !empty($_GET['idp'])){
+    header('Location: ../../settings/table/view_personaje.php?id_personaje='.$id_personaje.'&id_partida='.$id_part.'');
 }else{
-    header('Location: ../../settings/table/view_partida.php?id='.$id_partida.'');
+    if($userPer==$userConectat){
+        header('Location: ../../settings/character/view_personaje.php?id_personaje='.$id_personaje.'&id_partida='.$id_partida.'');
+    }else{
+        header('Location: ../../settings/table/view_partida.php?id='.$id_partida.'');
+    }
 }
+
     }
 ?>

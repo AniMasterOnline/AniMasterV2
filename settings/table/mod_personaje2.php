@@ -7,6 +7,11 @@ if(isset($_SESSION['user'])){
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $id_personaje = $_GET['id'];
+    if(isset($_GET['idp'])&& !empty($_GET['idp'])){
+        $id_part = $_GET['idp'];
+    }else{
+        $id_part = null;
+    }
 }else{
     include '../404/404.php';
 }
@@ -75,7 +80,7 @@ echo "<div class='alert alert-info m-b-5' role='alert'><strong>Habilidades secun
 <div class="col-md-8 col-md-offset-2">
     <input type="text" value="<?php echo $limite_hp; ?>" class="form-control f-400 text-center c-green" id="suma_fake" aria-describedby="basic-addon1" readonly>
 
-    <form onchange="myFunction()" action="../../System/Protocols/Personaje_Mod.php" method="POST">
+    <form onchange="myFunction()" action="<?php echo '../../System/Protocols/Personaje_Mod.php?idp='.$id_part ?>" method="POST">
 <?php
 require_once "../../System/Classes/Categoria_HS.php";
 require_once "../../System/Classes/Habilidades_Secundarias.php";

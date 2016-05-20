@@ -102,6 +102,7 @@
                             $usuario = new Usuario();
                             if (!empty($return)) {
                                 foreach ($return as $row) {
+                                    if($row['id_usuario'] != $partida->getId_Usuario()){
                                     $nombreUsuario = $usuario->return_user($row['id_usuario']);
                                     $categoria = new Categoria(); 
                                     $arrayC = $categoria->viewCar($row['id_categoria']);
@@ -480,6 +481,7 @@
                                                     </div>
                                                 </div>
                                             </div>';
+                                        }
                                 }
                             }
                             ?>

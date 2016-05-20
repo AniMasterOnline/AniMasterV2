@@ -294,7 +294,7 @@ $(document).ready(function(){
                             ?>
                         </div>
                         <div class="input-group m-b-10">
-                            <span class="input-group-addon" id="basic-addon5">Telefono</span>
+                            <span class="input-group-addon" id="basic-addon5">Teléfono</span>
                             <input type="text" class="form-control" id="inputTelefono" name="telefono" placeholder="Telefono" aria-describedby="basic-addon5" onkeypress="return aceptNum(event)" onpaste="return false;" value="<?php echo $value['telefono']?>">
                         </div>
                         <script>
@@ -311,7 +311,7 @@ $(document).ready(function(){
             <form id="form" action="../../System/Protocols/Usuari_Image.php" method="post" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-header bgm-green">
-                    <h2>Imagen de cuenta <small class=" f-12">Que tal es tener una nueva cara?</small></h2>
+                    <h2>Imagen de cuenta <small class=" f-12">Qué tal es tener una nueva cara?</small></h2>
                 </div>
                 <div class="card-body card-padding">
                     <style>
@@ -365,7 +365,7 @@ $(document).ready(function(){
             </form>
             <div class="card">
                 <div class="card-header bgm-red">
-                    <h2>Eliminar Cuenta <small class=" f-12">Esto es un adios?</small></h2>
+                    <h2>Eliminar Cuenta <small class=" f-12">Esto es un adiós?</small></h2>
                 </div>
 
                 <div class="card-body card-padding">

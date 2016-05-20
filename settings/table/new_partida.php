@@ -36,13 +36,13 @@ if($num_partida >= 0 && $num_partida < 9){
                         <input type="text"  id="inputNivel"  class="form-control" name="nivel" placeholder="Nivel *" required>
                     </div>
                     <div class="col-md-12 cinput">
-                        <label for="inputDescripcion" class="sr-only">Descripcion</label>
-                        <textarea type="text"  id="inputDescripcion"  class="form-control" name="descripcion" placeholder="Descripcion *" rows="10" required></textarea>
+                        <label for="inputDescripcion" class="sr-only">Descripción</label>
+                        <textarea type="text"  id="inputDescripcion"  class="form-control" name="descripcion" placeholder="Descripción *" rows="10" required maxlength="250"></textarea>
                     </div>
                     
                 </div>
                 <div class="col-md-6">
-                    <div class="output m-b-10">
+                    <div class="output m-b-10" style="border: 1px solid #333;">
                         <img id="output" >
                     </div>
                     <div class="col-md-12 cinput">

@@ -63,12 +63,12 @@ include "Public/layouts/head.php";?>
                 <input type="text"  id="inputEmail"  class="form-control" name="email" placeholder="E-mail *" required>
             </div>
             <div class="col-md-12 cinput">
-                <button class="btn btn-lg bgm-green c-white btn-block" type="submit">Registra't</button>
+                <button class="btn btn-lg bgm-green c-white btn-block" type="submit">Registrate ya!</button>
             </div>  
             <div class="col-md-12" id="alertmsg">
                 <div class="alert alert-default" role="alert">
-                    Al registrar-te, acceptes les <a class="link" href="#">Condicions del Servei</a> i la <a class="link" href="#">Política de Privacitat</a>, 
-                    incluïnt el <a class="link" href="#">Ús de Cookies</a>.
+                    Al registrarte, aceptas las <a class="link" href="#">Condiciones del Servicio </a> y la <a class="link" href="#">Política de Privacidad</a>, 
+                    Incluso el <a class="link" href="#">Uso de Cookies</a>.
                 </div>
             </div> 
                 

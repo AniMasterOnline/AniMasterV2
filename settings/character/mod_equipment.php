@@ -13,10 +13,15 @@ $id_partida=$_GET['id_partida'];
 require_once "../../System/Classes/Personaje_Objeto.php";
 $perObj=new Personaje_Objeto();
 $return=$perObj->viewObjPerson2($id_personaje);
+if(isset($_GET['idp'])&& !empty($_GET['idp'])){
+    $id_part = $_GET['idp'];
+}else{
+    $id_part = null;
+}
 
 ?>
 <div class="container" >
-    <form method="POST" name="myForm" action="../../System/Protocols/Equipment_Mod.php">
+    <form method="POST" name="myForm" action="<?php echo '../../System/Protocols/Equipment_Mod.php?idp='.$id_part ?>">
         <?php
                     $i=1;
                     foreach( $return as $row){
@@ -50,7 +55,7 @@ $return=$perObj->viewObjPerson2($id_personaje);
                         }
                     }
                     ?>
-                    selecionado.
+                    .
                 </div>
                 <div class="col-md-6">
                     <h2 class="form-signin-heading">Armas</h2>

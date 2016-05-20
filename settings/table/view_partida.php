@@ -98,11 +98,6 @@ include "../../Public/layouts/head.php";
                 <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
                     <h2 class="lvh-label c-white f-18"><?php echo ''.$nombre; ?></h2>
                     <ul class="lv-actions actions">
-                        <li>
-                            <a href="#">
-                                <i class="zmdi zmdi-info c-white"></i>
-                            </a>
-                        </li>
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                                 <i class="zmdi zmdi-more-vert c-white"></i>
@@ -123,10 +118,10 @@ include "../../Public/layouts/head.php";
                     <table class="table b-0">
                         <thead class="bgm-purple b-0 c-white">
                             <tr>
-                                <th>Descripcion</th>
+                                <th>Descripción</th>
                                 <th>Año</th>
                                 <th>Nv_Sobrenatural</th>
-                                <th>Max_Jugadores</th>
+                                <th>Máx_Jugadores</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -160,7 +155,7 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Gestionar Invitaciónes</a>
+                                    <a <?php echo 'href="invite.php?id='.$id_partida.'"';?>>Gestionar Invitaciones</a>
                                 </li>
                                 <li>
                                     <a <?php echo 'href="gestionar_experiencia.php?id='.$id_partida.'"';?>>Gestionar Experiencia</a>
@@ -235,7 +230,7 @@ include "../../Public/layouts/head.php";
                                     }else{
                                         //Si no en te
                                         echo "<tr>
-                                        <td class='text-capitalize text-success'>".$datos['nickname']."</td>                                    
+                                        <td class='text-capitalize text-success'>???</td>                                    
                                         <td class='text-capitalize text-info'> ??? </td>
                                         <td class='text-danger text-center'> ??? </td>
                                         <td class='text-center'>

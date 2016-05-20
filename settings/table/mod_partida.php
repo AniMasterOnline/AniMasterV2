@@ -66,11 +66,11 @@ include "../../Public/layouts/head.php";?>
                 <div class="col-md-6">
                     <div class="col-md-12 cinput ">
                         <div class="input-group">
-                            <span class="input-group-addon">Jugadores Maximos</span>
-                            <select id="max-players" class="selectpicker form-control" name="max_players" data-live-search="true" title=" Sin incluir al master">
+                            <span class="input-group-addon">Jugadores Máximos</span>
+                            <select id="max-players" class="selectpicker form-control" name="max_players" data-live-search="false" title=" Nº de jugadores" required>
                                 <option>2</option>
                                 <option>3</option>
-                                <option selected="selected" >4</option>
+                                <option>4</option>
                                 <option>5</option>
                                 <option>6</option>
                                 <option>7</option>
@@ -102,7 +102,7 @@ include "../../Public/layouts/head.php";?>
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <span class="btn btn-primary btn-file">
-                                    Browse… <input type="file" name="imagen" onchange="loadFile(event)">
+                                    Browse… <input type="file" name="imagen" onchange="loadFile(event)" required>
                                 </span>
                             </span>
                             <input id="fileselected" class="form-control " readonly="" type="text" >

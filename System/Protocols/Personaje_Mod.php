@@ -332,6 +332,11 @@ $perHS=$perHS->modPerHS($id_personaje,$id_HS48,$FIespecial3);
 $perHS=new Personaje_HS();
 $perHS=$perHS->modPerHS($id_personaje,$id_HS49,$FIespecial4);
 
-header('Location: ../../settings/character/mod_equipment.php?id_personaje='.$id_personaje.'&id_partida='.$id_partida);
+if(isset($_GET['idp'])&& !empty($_GET['idp'])){
+    $id_part = $_GET['idp'];
+}else{
+    $id_part = null;
+}
+header('Location: ../../settings/character/mod_equipment.php?id_personaje='.$id_personaje.'&id_partida='.$id_partida.'&idp='.$id_part);
 }
 ?>

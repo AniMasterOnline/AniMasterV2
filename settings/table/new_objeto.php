@@ -71,8 +71,8 @@ $id_partida=$_GET['id_partida'];
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-12 cinput">
-                        <label for="inputDescripcion" class="sr-only">Descripcion</label>
-                        <textarea type="text"  id="inputDescripcion"  class="form-control" name="descripcion" placeholder="Descripcion *" rows="10" required></textarea>
+                        <label for="inputDescripcion" class="sr-only">Descripción</label>
+                        <textarea type="text"  id="inputDescripcion"  class="form-control" name="descripcion" placeholder="Descripción *" rows="10" required></textarea>
                     </div>
                 </div>
                 <div class="col-md-12 cinput m-l-15">

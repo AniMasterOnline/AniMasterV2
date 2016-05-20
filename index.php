@@ -43,16 +43,19 @@ include "Public/layouts/head.php";?>
     <div class="inner cover">
           <h1 class="cover-heading text-title c-yellow">AniMaster tu web de Rol Online.</h1>
           <p class="lead c-white">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
-            anim id est laborum.
-                
+              <strong>Bienvenido a AniMaster Online</strong>
+              <br>Esta es una web dedicada a un juego de rol la qual sirve de herramienta para facilitar 
+              la comunicación entre diversos usuarios de este juego y poder llevar acabo tus propias aventuras.
+              <br><br>El juego de rol Anima: Beyond Fantasy y el mundo de Gaia te sumergen en una ambientación de 
+              fantasía que combina lo místico con lo realista, la verdad con las mentiras y la luz con las tinieblas
+              <br>
           </p>
           <p class="lead">
-              <a href="partida.php" class="btn btn-primary b-0 bgm-red">Empieza ya ...</a>
+              <div class="btn-group ">
+                    <a target="_blank" class="btn btn-primary bgm-deeppurple b-0" href="http://www.edgeent.com/libros/coleccion/anima_beyond_fantasy">Anima Edge Tienda</a>
+                    <a href="partida.php" class="btn btn-primary b-0 bgm-red">Empieza tu aventura</a>
+                    <a target="_blank" class="btn btn-primary bgm-indigo b-0" href="http://www.edgeent.com/foro/anima_beyond_fantasy">Anima Edge Foros</a>
+              </div>
           </p>
     </div>
 </div>

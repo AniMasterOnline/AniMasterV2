@@ -10,7 +10,7 @@ include "../../Public/layouts/head.php";?>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bgm-dark">
-                    <h2>Master <small>Diviertete creando y gestionando tus propias partidas e historias</small></h2>
+                    <h2>Máster <small>Diviértete creando y gestionando tus propias partidas e historias</small></h2>
                 </div>
                 <div class="card-body card-padding p-t-5">
                     <div class="row">

@@ -15,7 +15,7 @@ include "Public/layouts/head.php";?>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bgm-deeppurple">
-                    <h2>Jugador <small>Diviertete interpretando a tu propio personaje</small></h2>
+                    <h2>Jugador <small>Diviértete interpretando a tu propio personaje</small></h2>
                 </div>
                 <div class="card-body card-padding">
                     <div class="row">

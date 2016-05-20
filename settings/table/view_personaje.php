@@ -100,7 +100,7 @@ include "../../Public/layouts/head.php";
                                     <a href="view_partida.php?id=<?php echo $id_partida; ?>">Gestionar Partida</a>
                                 </li>
                                 <li>
-                                    <a <?php echo 'href="mod_personaje.php?id='.$id_personaje.'"';?>>Modificar personaje</a>
+                                    <a <?php echo 'href="mod_personaje.php?id='.$id_personaje.'&idp='.$id_partida.'"';?>>Modificar personaje</a>
                                 </li>
                                 <li>
                                     <a <?php echo 'href="../../System/Protocols/Personaje_Del.php?id='.$id_personaje.'&idp='.$id_partida.'"';?>>Eliminar personaje</a>
