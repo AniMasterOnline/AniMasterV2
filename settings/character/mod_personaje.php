@@ -49,12 +49,12 @@ $limite=0;
 $limite2=0;
 if($id_categoria == 8 || $id_categoria == 9){
     $limite = 0.5;
-    echo "<br>Puntos máximos a invertir en Habilidades Primarias ".$limite2 =$limite*$puntos." puntos";
+    echo "<br>Puntos máximos a invertir en Habilidades Primarias ".$limite2 =$limite*$puntos." puntos </div>";
     
 }else{
     $limite = 0.6;
     $limite2 =$limite*$puntos;
-    echo "<br>Puntos máximos a invertir en Habilidades Primarias ".$limite2." puntos";
+    echo "<br>Puntos máximos a invertir en Habilidades Primarias ".$limite2." puntos </div>";
 }
 $limite_hp = $puntos*0.5;
 $limite_le = $limite2 - $limite_hp;
@@ -63,22 +63,36 @@ $limite_le = $limite2 - $limite_hp;
             
 <form onchange="myFunction(this.value)" action="mod_personaje2.php?id=<?php echo $id_personaje ?>" method="POST">
     <div class="col-xs-9 m-b-10">
+        <?php
+            require_once "../../System/Classes/Categoria_HP.php";
+            $cat_hp = new Categoria_HP();
+            $result=$cat_hp->viewHP1($id_categoria,1);
+            $ha = $result['coste'];
+            
+            $cat_hp = new Categoria_HP();
+            $result=$cat_hp->viewHP2($id_categoria,2);
+            $hp = $result['coste'];
+            
+            $cat_hp = new Categoria_HP();
+            $result=$cat_hp->viewHP3($id_categoria,3);
+            $he = $result['coste'];
+            
+            $cat_hp = new Categoria_HP();
+            $result=$cat_hp->viewHP4($id_categoria,4);
+            $le = $result['coste'];
+        ?>
         <input type="hidden" name="points" id="limite_hp" value="<?php echo $limite_hp ?>" readonly>
-        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_hp_fake" value="<?php echo $limite_hp ?>" readonly>
+        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_hp_fake" value="<?php $rest =  $limite_hp -($return['ha'] + $return['hp'] + $return['he']); echo $rest?>" readonly>
     </div>
     <div class="col-xs-3 m-b-10">
         <input type="hidden" name="points" id="limite_le" value="<?php echo $limite_le ?>" readonly>
-        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_le_fake" value="<?php echo $limite_le ?>" readonly>
+        <input class="form-control bgm-white b-0 z-depth-1 text-center c-green" type="text" name="points" id="limite_le_fake" value="<?php echo $return['la'] - $limite_le ?>" readonly>
     </div>
     <input type="hidden" name="puntosT" value="<?php echo $puntos ?>" readonly>
     <div class="col-xs-3">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
-                require_once "../../System/Classes/Categoria_HP.php";
-                $cat_hp = new Categoria_HP();
-                $result=$cat_hp->viewHP1($id_categoria,1);
-                $ha = $result['coste'];
                 echo "Ha - ".$ha;
             ?>
                 <input class="form-control" type="hidden" id="ha2" value="<?php echo $ha ?>">
@@ -90,9 +104,6 @@ $limite_le = $limite2 - $limite_hp;
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
-                $cat_hp = new Categoria_HP();
-                $result=$cat_hp->viewHP2($id_categoria,2);
-                $hp = $result['coste'];
                 echo "Hp - ".$hp;
             ?>
                 <input class="form-control" type="hidden" id="hp2" value="<?php echo $hp ?>">
@@ -104,9 +115,6 @@ $limite_le = $limite2 - $limite_hp;
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
-                $cat_hp = new Categoria_HP();
-                $result=$cat_hp->viewHP3($id_categoria,3);
-                $he = $result['coste'];
                 echo "He - ".$he;
             ?>
                 <input class="form-control" type="hidden" id="he2" value="<?php echo $he ?>">
@@ -118,9 +126,6 @@ $limite_le = $limite2 - $limite_hp;
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
             <?php
-                $cat_hp = new Categoria_HP();
-                $result=$cat_hp->viewHP4($id_categoria,4);
-                $le = $result['coste'];
                 echo "Le - ".$le;
             ?>
                 <input class="form-control" type="hidden" id="la2" value="<?php echo $le ?>">

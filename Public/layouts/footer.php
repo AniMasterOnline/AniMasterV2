@@ -8,10 +8,7 @@ if (strpos($self,"AniMasterV2/index.php")){
                     echo '  <li><a href="login.php">Login</a></li>
                             <li><a href="signup.php">Registrate</a></li>';
                 }  
-              echo '<li><a href="help.php">Ayuda</a></li>
-                    <li><a href="help.php">Preguntas frecuentes</a></li>
-                    <li><a href="help.php">Soporte</a></li>
-                    <li><a href="mailto:support@animaster.com">Contact</a></li>
+              echo '<li><a href="mailto:support@animaster.com">Contact</a></li>
                 </ul>
             </footer>';
 }

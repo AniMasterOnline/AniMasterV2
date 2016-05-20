@@ -323,7 +323,7 @@
                             <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
                                 <h2 class="lvh-label  c-white f-18">Habilidades Secundarias </h2>
                             </div>
-                            <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                            <div class="card-body card-padding table-responsive p-0">
                                 <table class="table b-0">
                                     <thead class="bgm-blue b-0 c-white">
                                         <tr>

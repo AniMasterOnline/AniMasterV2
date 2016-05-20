@@ -135,6 +135,11 @@ html {
     background-color: #373737;
     color: #999999;
 }
+.shadowicon{
+    text-shadow:1px 1px 5px #9E9E9E;
+    color: white;
+    font-size: 19px;
+}
 
 
 
