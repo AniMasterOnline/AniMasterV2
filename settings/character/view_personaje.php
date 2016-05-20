@@ -91,6 +91,9 @@ include "../../Public/layouts/head.php";
                                 <li>
                                     <a <?php echo 'href="../../System/Protocols/Personaje_Del.php?id='.$id_personaje.'"';?>>Eliminar personaje</a>
                                 </li>
+                                <li>
+                                    <a <?php echo 'href="personajePDF.php?id='.$id_personaje.'"';?>>Imprimir PDF</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

@@ -1,5 +1,5 @@
 <?php
-$id_personaje=8;
+$id_personaje=$_GET['id'];
 require_once '../../Public/dompdf/autoload.inc.php';
 
 require_once "../../System/Classes/Partida.php";
@@ -82,9 +82,9 @@ $gavi='<html><body>'
         . '<td width=70 align=center>'.$return['c_VOL'].'</td>'
         . '</tr>'
         . '</table></div>';
-    $gavi  .= 'Habilidades Primarias'
+    $gavi  .= '<div class=hp>Habilidades Primarias</div>'
         . '<table class=header2><tr>'
-        . '<td width=70 align=center>Habilidad</td>'
+        . '<td width=120 align=center>Habilidad</td>'
         . '<td width=70 align=center>Base</td>'
         . '<td width=70 align=center>Car</td>'
         . '<td width=70 align=center>Bono</td>'
@@ -144,27 +144,98 @@ if (!empty($return)) {
                 $is0 = true;
             }
             if(!$is0){
-                echo "<tr>
-                <th class='f-400'>".$arrayHP->getNombre()."</th>
-                <th class='f-400'>".$hp."</th>
-                <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
-                <th class='f-400'>".$arrayCaract_p."</th>
-                <th class='f-400'>0</th>
-                <th class='f-400'>".$bonoCategoria."</th>
-                <th class='f-700 c-green'>".$HAfinal."</th></tr>";
+                $gavi.= '<table class=header3><tr>
+                <td width=120 align=center>'.$arrayHP->getNombre().'</td>
+                <td width=70 align=center>'.$hp.'</td>
+                <td width=70 align=center>'.$arrayHP->getCaracteristica().'</td>
+                <td width=70 align=center>'.$arrayCaract_p.'</td>
+                <td width=70 align=center>0</td>
+                <td width=70 align=center>'.$bonoCategoria.'</td>
+                <td width=70 align=center>'.$HAfinal.'</td></tr></table>';
             }else{
-                echo "<tr>
-                <th class='f-400'>".$arrayHP->getNombre()."</th>
-                <th class='f-400'>".$hp."</th>
-                <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
-                <th class='f-400'>".$arrayCaract_p."</th>
-                <th class='f-400'>0</th>
-                <th class='f-400'>".$bonoCategoria."</th>
-                <th class='f-700 c-red'>".$HAfinal."</th></tr>";
+                $gavi.= '<table class=header3><tr>
+                <td width=200 align=center>'.$arrayHP->getNombre().'</td>
+                <td width=70 align=center>'.$hp.'</td>
+                <td width=70 align=center>'.$arrayHP->getCaracteristica().'</td>
+                <td width=70 align=center>'.$arrayCaract_p.'</td>
+                <td width=70 align=center>0</td>
+                <td width=70 align=center>'.$bonoCategoria.'</td>
+                <td width=70 align=center>'.$HAfinal.'</td></tr></table>';
             }
-
         }
+}
+$gavi.='<div class=hs>Habilidades Secundaria</div>';
+$gavi.='<table class=header2><tr width=50%>
+	<td width=200 align=center>Nombre</td>
+	<td width=70 align=center>Base</td>
+	<td width=70 align=center>Caract</td>
+	<td width=70 align=center>Bono</td>
+	<td width=70 align=center>Esp</td>
+	<td width=70 align=center>Cat</td>
+	<td width=70 align=left>Final</td>
+</tr></table>';
 
+require_once "../../System/Classes/Personaje.php";
+require_once "../../System/Classes/Personaje_HS.php";
+require_once "../../System/Classes/Habilidades_Secundarias.php";
+require_once "../../System/Classes/Caracteristicas_P.php";
+require_once "../../System/Classes/Categoria_HS.php";
+
+$return = $Personaje->viewPersonaje($id_personaje);
+/*Mostrem totes les hs del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+$personaje_hs = new Personaje_HS();
+$personaje_hs = $personaje_hs->viewPersonaje_HS($id_personaje);
+foreach ($personaje_hs as $row){
+	$hs_value = $row->getValor(); // valor de la hs
+	$hs_id = $row->getId_HS();  // id de la hs
+
+	$HS = new Habilidades_Secundarias();
+	$HS = $HS->view_HS($hs_id);
+
+	$hs_name = $HS->getNombre(); // Nombre de la hs
+	$hs_car = $HS->getCaracteristica(); // Nombre de la caracteristica AGI ... etc
+
+	$hs_base = $return['c_'.$hs_car]; // Base de la caracteristica del pj
+
+	$Caract_p = new Caracteristicas_p();
+	$hs_bono = $Caract_p->viewCaracteristica($hs_base);
+
+	$Categoria_HS = new Categoria_HS();
+	$arrayCat_HS = $Categoria_HS->viewHS1($return['id_categoria'], $hs_id);
+	$hs_incrlv = (int)$arrayCat_HS['incr_nv']; // incremento categoria
+	if($hs_incrlv == null){
+		$hs_incrlv = 0; 
+	}
+	$hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
+
+	$hs_final = $hs_value + $hs_bono + $hs_catfin;
+	$is0 = false;
+	if($hs_value == 0){
+		$hs_final = 0;
+		$is0 = true;
+	}
+	
+	if(!$is0){
+		$gavi.='<table class=header3><tr>
+				<td width=200 align=center>'.$hs_name.'</td>
+				<td width=70 align=center>'.$hs_value.'</td>
+				<td width=70 align=center>'.$hs_car.'</td>
+				<td width=70 align=center>'.$hs_bono.'</td>
+				<td width=70 align=center>0</td>
+				<td width=70 align=center>'.$hs_catfin.'</td>
+				<td width=70 align=center">'.$hs_final.'</td>
+			</tr></table>';
+	}else{
+		$gavi.= '<table class=header3><tr>
+				<td width=200 align=center>'.$hs_name.'</td>
+				<td width=70 align=center>'.$hs_value.'</td>
+				<td width=70 align=center>'.$hs_car.'</td>
+				<td width=70 align=center>'.$hs_bono.'</td>
+				<td width=70 align=center>0</td>
+				<td width=70 align=center>'.$hs_catfin.'</td>
+				<td width=70 align=left>'.$hs_final.'</td>
+			</tr></table>';
+	}
 }
 use Dompdf\Dompdf;
 
