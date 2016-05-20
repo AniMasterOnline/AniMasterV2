@@ -81,8 +81,8 @@ $gavi='<html><body>'
         . '<td width=70 align=center>'.$return['c_POD'].'</td>'
         . '<td width=70 align=center>'.$return['c_VOL'].'</td>'
         . '</tr>'
-        . '</table></div>'
-        . 'Habilidades Primarias'
+        . '</table></div>';
+    $gavi  .= 'Habilidades Primarias'
         . '<table class=header2><tr>'
         . '<td width=70 align=center>Habilidad</td>'
         . '<td width=70 align=center>Base</td>'
@@ -92,7 +92,80 @@ $gavi='<html><body>'
         . '<td width=70 align=center>Cat</td>'
         . '<td width=70 align=center>Final</td>'
         . '</tr></table>';
+    
+require_once "../../System/Classes/Personaje.php";
+require_once "../../System/Classes/Habilidades_Primarias.php";
+require_once "../../System/Classes/Caracteristicas_P.php";
+require_once "../../System/Classes/Categoria_HP.php";
 
+$Personaje = new Personaje(); 
+$return = $Personaje->viewPersonaje($id_personaje);
+
+$HP = new Habilidades_Primarias(); 
+$Caract_p = new Caracteristicas_p(); 
+$Categoria_HP = new Categoria_HP(); 
+
+/*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+if (!empty($return)) {
+        $contador = 0;
+        while ($contador < 4){
+            $contador++;
+            $arrayHP = $HP->viewHP($contador);
+            switch ($contador) {
+                case 1:
+                    $hp = $return['ha'];
+                    break;
+                case 2:
+                    $hp = $return['hp'];
+                    break;
+                case 3:
+                    $hp = $return['he'];
+                    break;
+                case 4:
+                    $hp = $return['la'];
+                    break;
+            }
+            if( $contador < 3) {
+                $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_DES']);
+            }elseif ($contador == 3) {
+                $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_AGI']);
+            }elseif ($contador == 4) {
+                $arrayCaract_p = $Caract_p->viewCaracteristica($return['c_FUE']);
+            }
+            $arrayCategoria_HP = $Categoria_HP->viewHP1($return['id_categoria'], $contador);
+            $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$return['nivel']);
+
+            $coste = $arrayCategoria_HP['coste'];
+            $hp = $hp / $coste;
+
+            $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
+            $is0 = false;
+            if($hp < 0){
+                $is0 = true;
+            }
+            if(!$is0){
+                echo "<tr>
+                <th class='f-400'>".$arrayHP->getNombre()."</th>
+                <th class='f-400'>".$hp."</th>
+                <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                <th class='f-400'>".$arrayCaract_p."</th>
+                <th class='f-400'>0</th>
+                <th class='f-400'>".$bonoCategoria."</th>
+                <th class='f-700 c-green'>".$HAfinal."</th></tr>";
+            }else{
+                echo "<tr>
+                <th class='f-400'>".$arrayHP->getNombre()."</th>
+                <th class='f-400'>".$hp."</th>
+                <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                <th class='f-400'>".$arrayCaract_p."</th>
+                <th class='f-400'>0</th>
+                <th class='f-400'>".$bonoCategoria."</th>
+                <th class='f-700 c-red'>".$HAfinal."</th></tr>";
+            }
+
+        }
+
+}
 use Dompdf\Dompdf;
 
 // instantiate and use the dompdf class
