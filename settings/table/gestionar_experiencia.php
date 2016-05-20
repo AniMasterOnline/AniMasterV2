@@ -106,12 +106,13 @@ include "../../Public/layouts/head.php";
                             $Personaje = new Personaje(); 
                             $return = $Personaje->viewPersonajesPartida($id_partida);
                             
+                            
                             $nivel = new Nivel();
                             $usuario = new Usuario();
                             
                             
                             /*Mostrem tots els personatges que siguin d'aquesta partida*/
-                            if (!empty($return['error'])) {
+                            if (!empty($return)) {
                                 foreach ($return as $row) {
                                 $nombreUsuario = $usuario->return_user($row['id_usuario']);
                                 $exp_nec = $nivel->viewNivel($row['nivel']+1);
