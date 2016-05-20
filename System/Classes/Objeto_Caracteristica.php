@@ -102,9 +102,8 @@
             $query = $db->query($sql);
             $db->close();
             if ($query->num_rows > 0) {
-                while($obj = $query->fetch_assoc()){
-                    $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
-                }
+                $obj = $query->fetch_assoc();
+                $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
                 return $objCaracter;
             }
         }
@@ -114,9 +113,8 @@
             $query = $db->query($sql);
             $db->close();
             if ($query->num_rows > 0) {
-                while($obj = $query->fetch_assoc()){
-                    $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
-                }
+                $obj = $query->fetch_assoc();
+                $objCaracter = new Objeto_Caracteristica($obj["id_caracteristica"],$obj["id_objeto"],$obj["valor"]);
                 return $objCaracter;
             }
         }
@@ -166,7 +164,11 @@
             return $this->id_objeto;
         }
         public function getValor() {
-            return $this->valor;
+            if($this->valor == null){
+                return 0;
+            }else{
+                return $this->valor;
+            }
         }
     }
 ?>

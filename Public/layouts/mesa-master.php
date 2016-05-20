@@ -132,7 +132,7 @@
 
                                                                         <ul class="dropdown-menu dropdown-menu-right">
                                                                             <li>
-                                                                                <a href="../character/mod_personaje.php?id='.$row['id_personaje'].'">Modificar personaje</a>
+                                                                                <a target="_blank" href="../character/mod_personaje.php?id='.$row['id_personaje'].'">Modificar personaje</a>
                                                                             </li>
                                                                         </ul>
                                                                     </li>
@@ -193,11 +193,292 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card m-0">
+                                                                <div class="lv-header-alt clearfix m-b-0 bgm-deeppurple z-depth-1-bottom">
+                                                                    <h2 class="lvh-label c-white f-18">Caracteristicas</h2>
+                                                                </div>
+                                                                <div class="card-body card-padding table-responsive p-0">
+                                                                    <table class="table b-0 m-0">
+                                                                        <thead class="bgm-indigo b-0 c-white">
+                                                                            <tr>
+                                                                                <th class="text-center">Agi</th>
+                                                                                <th class="text-center">Con</th>
+                                                                                <th class="text-center">Des</th>
+                                                                                <th class="text-center">Fue</th>
+                                                                                <th class="text-center">Int</th>
+                                                                                <th class="text-center">Per</th>
+                                                                                <th class="text-center">Pod</th>
+                                                                                <th class="text-center">Vol</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody >
+                                                                            <tr> 
+                                                                                <th class=\'text-center f-400\'>'.$row['c_AGI'].'</th>
+                                                                                <th class=\'text-center f-400\'>'.$row['c_CON'].'</th>
+                                                                                <th class=\'text-center f-400\'>'.$row['c_DES'].'</th>
+                                                                                <th class=\'text-center f-400\'>'.$row['c_FUE'].'</th>
+                                                                                <th class=\'text-center f-400\'>'.$row['c_INT'].'</th>
+                                                                                <th class=\'text-center f-400\'>'.$row['c_PER'].'</th>
+                                                                                <th class=\'text-center f-400\'>'.$row['c_POD'].'</th>
+                                                                                <th class=\'text-center f-400\'>'.$row['c_VOL'].'</th>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card m-b-0">
+                                                                <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
+                                                                    <h2 class="lvh-label  c-white f-18">Habilidades Primarias </h2>
+                                                                </div>
+                                                                <div class="card-body card-padding table-responsive p-0">
+                                                                    <table class="table b-0">
+                                                                        <thead class="bgm-blue b-0 c-white">
+                                                                            <tr>
+                                                                                <th>&nbsp;</th>
+                                                                                <th>Base</th>
+                                                                                <th>Car</th>
+                                                                                <th>Bono</th>
+                                                                                <th>Esp</th>
+                                                                                <th>Cat</th>
+                                                                                <th>Final</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody >';
+                                                                            $HP = new Habilidades_Primarias(); 
+                                                                            $Caract_p = new Caracteristicas_p(); 
+                                                                            $Categoria_HP = new Categoria_HP(); 
+
+                                                                            /*Mostrem totes les hp del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+                                                                            $contador = 0;
+                                                                            while ($contador < 4){
+                                                                                $contador++;
+                                                                                $arrayHP = $HP->viewHP($contador);
+                                                                                switch ($contador) {
+                                                                                    case 1:
+                                                                                        $hp = $row['ha'];
+                                                                                        break;
+                                                                                    case 2:
+                                                                                        $hp = $row['hp'];
+                                                                                        break;
+                                                                                    case 3:
+                                                                                        $hp = $row['he'];
+                                                                                        break;
+                                                                                    case 4:
+                                                                                        $hp = $row['la'];
+                                                                                        break;
+                                                                                }
+                                                                                if( $contador < 3) {
+                                                                                    $arrayCaract_p = $Caract_p->viewCaracteristica($row['c_DES']);
+                                                                                }elseif ($contador == 3) {
+                                                                                    $arrayCaract_p = $Caract_p->viewCaracteristica($row['c_AGI']);
+                                                                                }elseif ($contador == 4) {
+                                                                                    $arrayCaract_p = $Caract_p->viewCaracteristica($row['c_FUE']);
+                                                                                }
+                                                                                $arrayCategoria_HP = $Categoria_HP->viewHP1($row['id_categoria'], $contador);
+                                                                                $bonoCategoria = ((int)$arrayCategoria_HP['incr_nv']*(int)$row['nivel']);
+                                                                                $coste = $arrayCategoria_HP['coste'];
+                                                                                $hp = $hp / $coste;
+                                                                                $HAfinal = (int)$hp + (int)$arrayCaract_p + (int)$bonoCategoria;
+                                                                                $is0 = false;
+                                                                                if($hp < 0){
+                                                                                    $is0 = true;
+                                                                                }
+                                                                                if(!$is0){
+                                                                                    echo "<tr>
+                                                                                    <th class='f-400'>".$arrayHP->getNombre()."</th>
+                                                                                    <th class='f-400'>".$hp."</th>
+                                                                                    <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                                                                                    <th class='f-400'>".$arrayCaract_p."</th>
+                                                                                    <th class='f-400'>0</th>
+                                                                                    <th class='f-400'>".$bonoCategoria."</th>
+                                                                                    <th class='f-700 c-green'>".$HAfinal."</th></tr>";
+                                                                                }else{
+                                                                                    echo "<tr>
+                                                                                    <th class='f-400'>".$arrayHP->getNombre()."</th>
+                                                                                    <th class='f-400'>".$hp."</th>
+                                                                                    <th class='f-400'>".$arrayHP->getCaracteristica()."</th>
+                                                                                    <th class='f-400'>".$arrayCaract_p."</th>
+                                                                                    <th class='f-400'>0</th>
+                                                                                    <th class='f-400'>".$bonoCategoria."</th>
+                                                                                    <th class='f-700 c-red'>".$HAfinal."</th></tr>";
+                                                                                }
+                                                                            }
+                                                                        echo '</tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card m-0">
+                                                                <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
+                                                                    <h2 class="lvh-label  c-white f-18">Habilidades Secundarias </h2>
+                                                                </div>
+                                                                <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                                                                    <table class="table b-0">
+                                                                        <thead class="bgm-blue b-0 c-white">
+                                                                            <tr>
+                                                                                <th></th>
+                                                                                <th>Base</th>
+                                                                                <th>Caract</th>
+                                                                                <th>Bono</th>
+                                                                                <th>Esp</th>
+                                                                                <th>Cat</th>
+                                                                                <th>Final</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody >';
+                                                                            /*Mostrem totes les hs del personaje, en noms, base, caracteristica, bono, especial, categoria, final*/
+                                                                            $personaje_hs = new Personaje_HS();
+                                                                            $personaje_hs = $personaje_hs->viewPersonaje_HS($row['id_personaje']);
+                                                                            foreach ($personaje_hs as $row_hs){
+                                                                                $hs_value = $row_hs->getValor(); // valor de la hs
+                                                                                $hs_id = $row_hs->getId_HS();  // id de la hs
+
+                                                                                $HS = new Habilidades_Secundarias();
+                                                                                $HS = $HS->view_HS($hs_id);
+
+                                                                                $hs_name = $HS->getNombre(); // Nombre de la hs
+                                                                                $hs_car = $HS->getCaracteristica(); // Nombre de la caracteristica AGI ... etc
+
+                                                                                $hs_base = $row['c_'.$hs_car]; // Base de la caracteristica del pj
+
+                                                                                $Caract_p = new Caracteristicas_p();
+                                                                                $hs_bono = $Caract_p->viewCaracteristica($hs_base);
+
+                                                                                $Categoria_HS = new Categoria_HS();
+                                                                                $arrayCat_HS = $Categoria_HS->viewHS1($row['id_categoria'], $hs_id);
+                                                                                $hs_incrlv = (int)$arrayCat_HS['incr_nv']; // incremento categoria
+                                                                                if($hs_incrlv == null){
+                                                                                    $hs_incrlv = 0; 
+                                                                                }
+                                                                                $hs_catfin = $hs_incrlv * $row['nivel']; // incremento categoria * level
+
+                                                                                $hs_final = $hs_value + $hs_bono + $hs_catfin; // Suma final
+
+                                                                                $is0 = false;
+                                                                                if($hs_value <= 0){ //si la base es 0 el valor final sera 0
+                                                                                    $hs_final = 0;
+                                                                                    $is0 = true;
+                                                                                }
+                                                                                if(!$is0){
+                                                                                    echo '  <tr>
+                                                                                            <th class="f-400">'.$hs_name.'</th>
+                                                                                            <th class="f-400">'.$hs_value.'</th>
+                                                                                            <th class="f-400">'.$hs_car.'</th>
+                                                                                            <th class="f-400">'.$hs_bono.'</th>
+                                                                                            <th class="f-400">0</th>
+                                                                                            <th class="f-400">'.$hs_catfin.'</th>
+                                                                                            <th class="f-700 c-green">'.$hs_final.'</th>
+                                                                                        </tr>';
+                                                                                }else{
+                                                                                    echo '  <tr>
+                                                                                            <th class="f-400">'.$hs_name.'</th>
+                                                                                            <th class="f-400">'.$hs_value.'</th>
+                                                                                            <th class="f-400">'.$hs_car.'</th>
+                                                                                            <th class="f-400">'.$hs_bono.'</th>
+                                                                                            <th class="f-400">0</th>
+                                                                                            <th class="f-400">'.$hs_catfin.'</th>
+                                                                                            <th class="f-700 c-red">'.$hs_final.'</th>
+                                                                                        </tr>';
+                                                                                }
 
 
+                                                                            }
+                                                                        echo '</tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card m-0">
+                                                        <div class="lv-header-alt clearfix m-b-0 bgm-blue z-depth-1-bottom">
+                                                            <h2 class="lvh-label c-white f-18">Inventario</h2>
+                                                        </div>
+                                                        <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                                                            <table class="table b-0">
+                                                                <thead class="bgm-lightblue b-0 c-white">
+                                                                    <tr>
+                                                                        <!--Fer una select de Objeto, Personaje?, Personaje_Objeto -->
+                                                                        <th>Nombre</th>
+                                                                        <th>Tipo</th>
+                                                                        <th>Peso</th>
+                                                                        <th>Valor</th>
+                                                                        <th>Cantidad</th>
+                                                                        <th>Daño</th>
+                                                                        <th>TA</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody >';
+                                                                    $Personaje_Objeto = new Personaje_Objeto();
+                                                                    $Personaje_Objeto = $Personaje_Objeto->viewObjPerson($row['id_personaje']);
+                                                                    if($Personaje_Objeto != null){
+                                                                       /*Agafem totes les id_objeto que te el pj mitjançant id_personaje*/
+                                                                        foreach ($Personaje_Objeto as $rowpo){
+                                                                            //per cada id_objeto select a objeto where id_objeto = id_objeto;
+                                                                            $id_objeto = $rowpo->getId_Objeto();
+                                                                            $cantidad = $rowpo->getCantidad();    //cantidad del objeto
 
-                                            </div>
-                                        </div>';
+                                                                            //mostrem el nom, pes, valor, id_tipus, id_objeto_caracteristica=1(danyo), (TA).
+                                                                            $objeto = new Objeto();
+                                                                            $objeto = $objeto->viewObj($id_objeto);     //select * del objeto
+
+                                                                            $nombre_objeto = $objeto[0]->getNombre();  //nombre del objeto
+                                                                            $peso = $objeto[0]->getPeso(); //peso del objeto
+                                                                            $precio = $objeto[0]->getPrecio(); //precio del objeto
+                                                                            $id_tipo = $objeto[0]->getId_Tipo();
+
+                                                                            $tipo = new Tipo();
+                                                                            $tipo = $tipo->view_nombre($id_tipo);
+                                                                            $nombre_tipo = $tipo->getNombre(); //nombre del tipo de objeto (Arma)
+
+
+                                                                            if($id_tipo == '2' || $id_tipo == '3') {
+                                                                                $Caracteristicas_Objeto = new Objeto_Caracteristica();
+
+                                                                                $Caracteristicas_Objeto_Arma = $Caracteristicas_Objeto->selectArmaValor($id_objeto);
+                                                                                $danyo = $Caracteristicas_Objeto_Arma->getValor();
+
+                                                                                $Caracteristicas_Objeto_Armadura = $Caracteristicas_Objeto->selectArmaduraValor($id_objeto);
+                                                                                $TA = $Caracteristicas_Objeto_Armadura->getValor();
+                                                                            }else{
+                                                                                $danyo = 0;
+                                                                                $TA = 0;
+                                                                            }
+
+
+                                                                            if(empty($TA)){
+                                                                                $TA = 0;
+                                                                            }else if(empty($danyo)){
+                                                                                $danyo = 0;
+                                                                            }
+
+                                                                            echo '  <tr>
+                                                                                    <th class="f-400">'.$nombre_objeto.'</th>
+                                                                                    <th class="f-400">'.$nombre_tipo.'</th>
+                                                                                    <th class="f-400">'.$peso.'</th>
+                                                                                    <th class="f-400">'.$precio.'</th>
+                                                                                    <th class="f-400">'.$cantidad.'</th>
+                                                                                    <th class="f-400">'.$danyo.'</th>
+                                                                                    <th class="f-400">'.$TA.'</th>
+                                                                                </tr>';
+                                                                        } 
+                                                                    }else{
+                                                                        echo '  <tr>
+                                                                                    <th class="f-400"> ??? </th>
+                                                                                    <th class="f-400"> ??? </th>
+                                                                                    <th class="f-400"> ??? </th>
+                                                                                    <th class="f-400"> ??? </th>
+                                                                                    <th class="f-400"> ??? </th>
+                                                                                    <th class="f-400"> ??? </th>
+                                                                                    <th class="f-400"> ??? </th>
+                                                                                </tr>';
+                                                                    }
+                                                                echo '</tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
                                 }
                             }
                             ?>
