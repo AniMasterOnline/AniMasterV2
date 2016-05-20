@@ -370,7 +370,7 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="#">Nuevo</a>
+                                    <a href="new_personaje1.php?id_partida=<?php echo $id_partida ?>">Nuevo</a>
                                 </li>
                                 <li>
                                     <a href="#">Modificar</a>
