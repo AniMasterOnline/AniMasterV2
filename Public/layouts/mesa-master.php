@@ -1,3 +1,19 @@
+<?php
+    require_once "../../System/Classes/Personaje.php";
+    require_once "../../System/Classes/Usuario.php";
+    require_once "../../System/Classes/Categoria.php";
+    require_once "../../System/Classes/Nivel.php";
+    require_once "../../System/Classes/Habilidades_Primarias.php";
+    require_once "../../System/Classes/Caracteristicas_P.php";
+    require_once "../../System/Classes/Categoria_HP.php";
+    require_once "../../System/Classes/Personaje_HS.php";
+    require_once "../../System/Classes/Habilidades_Secundarias.php";
+    require_once "../../System/Classes/Categoria_HS.php";
+    require_once "../../System/Classes/Personaje_Objeto.php";
+    require_once "../../System/Classes/Objeto.php";
+    require_once "../../System/Classes/Tipo.php";
+    require_once "../../System/Classes/Objeto_Caracteristica.php";
+?>
 <script>
     // ask user for name with popup prompt    
     var file = '<?php echo $id_partida.'-'.$nombre ?>';
@@ -74,13 +90,118 @@
     <div class="col-md-12 bgm-white z-depth-1-bottom p-l-0 p-r-0" id="mesa-container">
         <!-- Tab panes -->
         <div class="tab-content ">
-            <div role="tabpanel" class="tab-pane fade in active p-l-15 p-r-15" id="jugadores">
+            <div role="tabpanel" class="tab-pane fade in active p-l-5 p-r-5 p-t-5" id="jugadores">
                 <div class="row">
                     <div class="col-md-12">
-                            <h1>Jugadores <small>Subtext for header</small></h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <div class="panel-group m-b-5" id="accordion">
+                            <?php
+                            $Personaje = new Personaje(); 
+                            $return = $Personaje->viewPersonajesPartida($id_partida);
+                            $nivel = new Nivel();
+                            $usuario = new Usuario();
+                            if (!empty($return)) {
+                                foreach ($return as $row) {
+                                    $nombreUsuario = $usuario->return_user($row['id_usuario']);
+                                    $categoria = new Categoria(); 
+                                    $arrayC = $categoria->viewCar($row['id_categoria']);
+                                    $nivel = new Nivel(); 
+                                    $arrayN = $nivel->viewNivel($row['nivel']);
+                                
+                                    echo '<div class="panel panel-default">
+                                            <div class="panel-heading">
+                                              <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#'.$nombreUsuario['nickname'].'">'.$row['nombre'].' <small>Lvl: '.$row['nivel'].'</small></a>
+                                              </h4>
+                                            </div>
+                                            <div id="'.$nombreUsuario['nickname'].'" class="panel-collapse collapse">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="card m-0 m-b-0">
+                                                            <div class="lv-header-alt clearfix m-b-0 bgm-indigo z-depth-1-bottom">
+                                                                <h2 class="lvh-label c-white f-18">
+                                                                    Ficha del personaje
+                                                                    <small class="c-white p-l-5">
+                                                                        '.$row['nombre'].'
+                                                                    </small>
+                                                                </h2>
+                                                                <ul class="lv-actions actions">
+                                                                    <li class="dropdown">
+                                                                        <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                                                            <i class="zmdi zmdi-more-vert c-white"></i>
+                                                                        </a>
 
+                                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                                            <li>
+                                                                                <a href="../character/mod_personaje.php?id='.$row['id_personaje'].'">Modificar personaje</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="card-body card-padding p-0">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="pmb-block m-0">
+                                                                            <div class="pmbb-body p-l-0">
+                                                                                <div class="pmbb-view">
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt class="">Nombre</dt>
+                                                                                        <dd class="">'.$row['nombre'].'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>Categoria</dt>
+                                                                                        <dd>'.$arrayC->getNombre().'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>Nivel / Edad</dt>
+                                                                                        <dd>'.$row['nivel'].' / '.$row['edad'].'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>Sexo</dt>
+                                                                                        <dd>'.$row['sexo'].'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>Raza</dt>
+                                                                                        <dd>'.$row['raza'].'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>Pelo / Ojos</dt>
+                                                                                        <dd>'.$row['pelo'].' / '.$row['ojos'].'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>P.Desarrollo</dt>
+                                                                                        <dd>'.$arrayN->getPuntos().'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>P.D Restantes</dt>
+                                                                                        <dd>'.$row['puntos_totales'].'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>Altura / Peso</dt>
+                                                                                        <dd>'.$row['altura'].' / '.$row['peso'].'</dd>
+                                                                                    </dl>
+                                                                                    <dl class="dl-horizontal">
+                                                                                        <dt>Apariencia / Tamaño</dt>
+                                                                                        <dd>'.$row['apariencia'].' / '.$row['tamanyo'].'</dd>
+                                                                                    </dl>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>';
+                                }
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
