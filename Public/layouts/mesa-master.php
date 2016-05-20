@@ -552,7 +552,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="card-body card-padding table-responsive p-0 card-body-partida">
+                            <div class="card-body card-padding table-responsive p-0">
                                 <table class="table b-0">
                                     <thead class="bgm-amber b-0 c-white">
                                         <tr>
