@@ -9,6 +9,11 @@ $personajeHS=new Personaje_HS();
 $personajeHS=$personajeHS->delete2($id_personaje);
 $personajeObj=$personajeObj->delete2($id_personaje);
 $personaje=$personaje->delete($id_personaje);
-header('Location: ../../zone.php');
+if(isset($_GET['idp']) && !empty($_GET['idp'])){
+    $id_partida = $_GET['idp'];
+    header('Location: ../../settings/table/view_partida.php?id='.$id_partida);
+}else{
+    header('Location: ../../zone.php');
+}
 ?>
 

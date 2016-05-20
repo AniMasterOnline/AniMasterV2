@@ -4,14 +4,25 @@ if(isset($_SESSION['user'])){
     $value=$_SESSION['user'];
     //var_dump($value);
 }
-if(isset($_GET['id_personaje']) && !empty($_GET['id_personaje'])){
+if(isset($_GET['id_personaje']) && !empty($_GET['id_personaje']) && isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
     $id_personaje = $_GET['id_personaje'];
+    $id_partida = $_GET['id_partida'];
 }else{
     include '../404/404.php';
 }
+require_once "../../System/Classes/Partida.php";
+require_once "../../System/Classes/Personaje.php";
+$Partida = new Partida(); 
+$Personaje = new Personaje(); 
+$return = $Personaje->viewPersonaje($id_personaje);
+$array2 = $Partida->viewPartida($return['id_partida']);
+if($array2 == null){
+    include '../404/404.php';
+    exit();
+}
 
 $title='Panel del personaje';
-$migas='#Home|../../index.php#Zone|../../zone.php#Personaje|view_partida.php?id_personaje='.$id_personaje;
+$migas='#Home|../../index.php#Mesa|../../settings/table/index.php#'.$array2->getNombre().'|view_partida.php?id='.$id_partida.'#'.$return['nombre'];
 include "../../Public/layouts/head.php";
 ?>
 
@@ -86,13 +97,16 @@ include "../../Public/layouts/head.php";
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
+                                    <a href="view_partida.php?id=<?php echo $id_partida; ?>">Gestionar Partida</a>
+                                </li>
+                                <li>
                                     <a <?php echo 'href="mod_personaje.php?id='.$id_personaje.'"';?>>Modificar personaje</a>
                                 </li>
                                 <li>
-                                    <a <?php echo 'href="../../System/Protocols/Personaje_Del.php?id='.$id_personaje.'"';?>>Eliminar personaje</a>
+                                    <a <?php echo 'href="../../System/Protocols/Personaje_Del.php?id='.$id_personaje.'&idp='.$id_partida.'"';?>>Eliminar personaje</a>
                                 </li>
                                 <li>
-                                    <a <?php echo 'href="personajePDF.php?id='.$id_personaje.'"';?>>Imprimir PDF</a>
+                                    <a <?php echo 'href="../character/personajePDF.php?id='.$id_personaje.'"';?>>Imprimir PDF</a>
                                 </li>
                             </ul>
                         </li>

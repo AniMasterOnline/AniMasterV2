@@ -501,6 +501,7 @@
                                             <th>Nombre</th>
                                             <th>Nivel</th>
                                             <th>Categoria</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody >
@@ -516,11 +517,31 @@
                                                 $categoria = new Categoria();
                                                 $categoria = $categoria->viewCar($id_cat);
                                                 $cat = $categoria->getNombre();
-                                                echo "<tr >
+                                                $fakeidpart = $row->getId_Partida();
+                                                $fakeidnpcs = $row->getId_Personaje();
+                                                if($fakeidpart == $id_partida){
+                                                    echo "<tr >
                                                     <td class='text-capitalize text-success'>".$row->getNombre()."</td>
                                                     <td class='text-capitalize text-success'>".$row->getNivel()."</td>
                                                     <td class='text-capitalize text-success'>".$cat."</td>
-                                                    </tr >";
+                                                    <td>
+                                                        <label class='m-r-10 p-0'>
+                                                                <a target='_blank' href=view_personaje.php?id_personaje=".$fakeidnpcs."&id_partida=".$fakeidpart.">
+                                                                    <i class='zmdi zmdi-eye c-black f-16 c-amber'></i>
+                                                                </a>
+                                                        </label>
+
+                                                    </td>";
+                                                }else{
+                                                    echo "<tr >
+                                                    <td class='text-capitalize text-success'>".$row->getNombre()."</td>
+                                                    <td class='text-capitalize text-success'>".$row->getNivel()."</td>
+                                                    <td class='text-capitalize text-success'>".$cat."</td>
+                                                    <td>
+                                                        &nbsp;
+                                                    </td>";
+                                                }
+
                                             }
                                         }
 

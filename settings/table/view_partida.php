@@ -408,7 +408,7 @@ include "../../Public/layouts/head.php";
                                         <td class='text-capitalize text-success'>".$cat."</td>
                                         <td>
                                             <label class='m-r-10 p-0'>
-                                                    <a target='_blank' href=../character/view_personaje.php?id_personaje=".$fakeidnpcs."&id_partida=".$fakeidpart.">
+                                                    <a href=view_personaje.php?id_personaje=".$fakeidnpcs."&id_partida=".$fakeidpart.">
                                                         <i class='zmdi zmdi-eye c-black f-16 c-amber'></i>
                                                     </a>
                                             </label>
