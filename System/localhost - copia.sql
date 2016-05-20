@@ -291,7 +291,7 @@ ALTER TABLE Personaje_HP ADD PRIMARY KEY (id_personaje,id_HP);
 CREATE TABLE Personaje_Objeto (
       id_personaje     int NOT NULL,
       id_objeto     int NOT NULL,
-	  cantidad int DEFAULT 0
+	  cantidad int DEFAULT 1
 );
 
 

@@ -360,7 +360,7 @@ ALTER TABLE Mensaje ADD PRIMARY KEY (id_usuario,Usuario_id_usuario);
 CREATE TABLE Personaje_Objeto (
       id_personaje     int NOT NULL,
       id_objeto     int NOT NULL,
-	  cantidad int DEFAULT 0
+	  cantidad int DEFAULT 1
 );
 
 
