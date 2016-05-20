@@ -167,7 +167,7 @@ include "../../Public/layouts/head.php";
                                         if(response == 001){
                                             swal("Invitación enviada!", "Jugador invitado correctamente!", "success");
                                         }else{
-                                            swal("Error!", "Lo sentimos ya no puedes enviar mas invitaciónes!", "warning");
+                                            swal("Error!", "Lo sentimos ya no puedes enviar más invitaciones!", "warning");
                                         }
                                     }
                                 });

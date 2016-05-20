@@ -441,7 +441,7 @@
                                             $hs_final = $hs_value + $hs_bono + $hs_catfin; // Suma final
 
                                             if($hs_value <= 0){ //si la base es 0 el valor final sera 0
-                                                $hs_final = -30;
+                                                $hs_final = 0;
                                             }
                                             echo '<option value="'.$hs_final.'">'.$hs_name.'</option>';
                                         }

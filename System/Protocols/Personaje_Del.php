@@ -9,6 +9,6 @@ $personajeHS=new Personaje_HS();
 $personajeHS=$personajeHS->delete2($id_personaje);
 $personajeObj=$personajeObj->delete2($id_personaje);
 $personaje=$personaje->delete($id_personaje);
-header('Location: ../../settings/table/');
+header('Location: ../../zone.php');
 ?>
 
