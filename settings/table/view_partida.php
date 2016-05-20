@@ -220,7 +220,7 @@ include "../../Public/layouts/head.php";
                                         <td class='text-danger text-center'>".$personajeUsuarioPartida['nivel']."</td>
                                         <td class='text-center'>
                                             <label class='m-r-10 p-0'>
-                                                    <a href='#'>
+                                                    <a href=../character/mod_personaje.php?id=".$row['id_personaje'].">
                                                         <i class='zmdi zmdi-edit c-black f-16 c-green '></i>
                                                     </a>
                                             </label>

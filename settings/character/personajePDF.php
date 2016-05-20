@@ -237,6 +237,87 @@ foreach ($personaje_hs as $row){
 			</tr></table>';
 	}
 }
+$gavi.='<div class=table5><h1>Inventario</h1></div>';
+$gavi.='<table class=table5-1><tr>'
+        . '<th>Nombre</th>
+            <th>Tipo</th>
+            <th>Peso</th>
+            <th>Valor</th>
+            <th>Cantidad</th>
+            <th>Daño</th>
+            <th>TA</th>'
+        . '</tr></table>';
+require_once "../../System/Classes/Personaje_Objeto.php";
+require_once "../../System/Classes/Objeto.php";
+require_once "../../System/Classes/Tipo.php";
+require_once "../../System/Classes/Objeto_Caracteristica.php";
+
+$Personaje_Objeto = new Personaje_Objeto();
+$Personaje_Objeto = $Personaje_Objeto->viewObjPerson($id_personaje);
+if($Personaje_Objeto != null){
+    /*Agafem totes les id_objeto que te el pj mitjançant id_personaje*/
+     foreach ($Personaje_Objeto as $row){
+         //per cada id_objeto select a objeto where id_objeto = id_objeto;
+         $id_objeto = $row->getId_Objeto();
+         $cantidad = $row->getCantidad();    //cantidad del objeto
+
+         //mostrem el nom, pes, valor, id_tipus, id_objeto_caracteristica=1(danyo), (TA).
+         $objeto = new Objeto();
+         $objeto = $objeto->viewObj($id_objeto);     //select * del objeto
+
+         $nombre_objeto = $objeto[0]->getNombre();  //nombre del objeto
+         $peso = $objeto[0]->getPeso(); //peso del objeto
+         $precio = $objeto[0]->getPrecio(); //precio del objeto
+         $id_tipo = $objeto[0]->getId_Tipo();
+
+         $tipo = new Tipo();
+         $tipo = $tipo->view_nombre($id_tipo);
+         $nombre_tipo = $tipo->getNombre(); //nombre del tipo de objeto (Arma)
+
+
+         if($id_tipo == '2' || $id_tipo == '3') {
+             $Caracteristicas_Objeto = new Objeto_Caracteristica();
+
+             $Caracteristicas_Objeto_Arma = $Caracteristicas_Objeto->selectArmaValor($id_objeto); 
+             $danyo = $Caracteristicas_Objeto_Arma->getValor(); //select de danyo
+
+             $Caracteristicas_Objeto_Armadura = $Caracteristicas_Objeto->selectArmaduraValor($id_objeto);
+             $TA = $Caracteristicas_Objeto_Armadura->getValor(); //select de TA
+         }else{
+             $danyo = 0;
+             $TA = 0;
+         }
+
+
+         if(empty($TA)){
+             $TA = 0;
+         }else if(empty($danyo)){
+             $danyo = 0;
+         }
+if($cantidad==""){
+    $cantidad=0;
+}
+         $gavi.= '<table class=table5-2>  <tr>
+                 <td width=160 align=center>'.$nombre_objeto.'</td>
+                 <td width=110 align=center>'.$nombre_tipo.'</td>
+                 <td width=55 align=center>'.$peso.'</td>
+                 <td width=155 align=center>'.$precio.'</td>
+                 <td width=150 align=center>'.$cantidad.'</td>
+                 <td width=145 align=center>'.$danyo.'</td>
+                 <td width=25 align=center>'.$TA.'</td>
+             </tr></table>';
+     } 
+ }else{
+     $gavi.= '  <table class=table5-2><tr>
+                 <td> ??? </td>
+                 <td> ??? </td>
+                 <td> ??? </td>
+                 <td> ??? </td>
+                 <td> ??? </td>
+                 <td> ??? </td>
+                 <td> ??? </td>
+             </tr></table>';
+ }
 use Dompdf\Dompdf;
 
 // instantiate and use the dompdf class

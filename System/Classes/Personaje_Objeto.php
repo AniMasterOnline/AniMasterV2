@@ -26,7 +26,13 @@
             $db->query($sql);
             return $result;
         }
-    
+        
+        public function modPerObj($id_personaje, $id_objeto, $arma){
+            $db = new connexio();
+            $result = $db->query("UPDATE Personaje_Objeto SET  id_objeto='$arma' WHERE id_personaje= '$id_personaje' and id_objeto='$id_objeto'");
+            $db->close();
+            return $result;
+        }
         public function view_all(){
             $db = new connexio();
             $sql = "SELECT * FROM Personaje_Objeto";
