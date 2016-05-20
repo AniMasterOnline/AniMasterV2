@@ -1,0 +1,80 @@
+En cas que no funcionin per falta de enllaç de pàgines, resoldre'-ho.
+En cas contrari, eliminar el botó o amagar-lo.
+
+Provar si un master dona punts d'experiència a un personaje, éste pugui pujar de nivell en modificar personaje o level up (habilitat).	
+## No es pot
+Provar d'esborrar sent jugador (propietari del personatge)																				
+## Si
+Provar d'elminar un jugador 																											
+## Si
+Provar de modificar un personaje, equipamiento, (objetos), arma y armadura. Redirecció correcta? (view_personaje)						
+## User si / master falta link a view_partida
+
+Provar de crear un pnj sent master							
+## No es pot
+Provar de modificar un pnj es pot sent master? (private)	
+## No es pot
+Provar d'eliminar un pnj creat pel master (private)			
+## No es pot ja que no san creat ?? :D 
+
+Provar de modificar fitxa en partida sent master, es pot? 										
+## Si (falta modificar arma i armadura)
+Provar de veure fitxa personaje en partida sent master 											
+## Si
+Provar de veure la fitxa del personaje sent usauri, jugador, propietario del personaje. 		
+## Si
+
+Provar de escriure en el diario del master, es guarda? es visualitza? 			
+## Si, Si
+Provar d'invitar un jugador a una partida. 										
+## Si
+El jugador accepta la partida, apareix en la llista de jugadors del master? 	
+## Si
+El jugador denega la participació a la partida, s'esborra? 						
+## Si
+El jugador busca i troba una partida per nom, pot sol·licitar entrar a jugar? 	
+## Si
+El jugador vol sortir d'una partida, com ho fa? 								
+## No pot sortir :D .... pot solicitaru al master ??? ...
+El master vol esborrar una partida, pot?										
+## Si
+
+En la partida, el jugador pot tirar per una habilitat primaria els daus?	
+## Si
+apareixen en pantalla jugador? Es mostren pel xat?							
+## Si
+Pot un jugador tirar per habilitat secundaria?								
+## Si
+apareixen en pantalla jugador? Es mostren pel xat?							
+## Si
+
+Es poden enviar emoticonos pel xat?											
+## No
+Reben tots els membres de la partida els missatges?							
+## Si
+Si hi ha el número máxim de jugadors en la partida, és poden invitar més?	
+## Si, Fet(Impedir que es puguin enviar)
+Pot un jugador enviar una sol·licitud a una partida plena de jugadors?		
+## Si, pot .... (corregir pls .... )
+
+Pot un usuari enviar un missatge a un altre usuari? Per demanar ampliar el limit de una partida.  
+## No hi ha misatges entre usuaris
+
+Es pot imprimir el pdf? Es mostren les característiques del pj, secundaries, primaries, objectes? 
+## Si (Falta css )
+
+Creus que ia ne tenim prou? ... la veritat io també.	
+## Si pls!! :D 
+Si se't ocurreix alguna més apunta-al tu mateix :D		
+## Estic masa cremat ja D: 
+
+Ánimos 
+##Gracies
+
+
+
+
+
+
+
+
