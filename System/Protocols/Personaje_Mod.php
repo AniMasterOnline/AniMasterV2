@@ -332,6 +332,6 @@ $perHS=$perHS->modPerHS($id_personaje,$id_HS48,$FIespecial3);
 $perHS=new Personaje_HS();
 $perHS=$perHS->modPerHS($id_personaje,$id_HS49,$FIespecial4);
 
-header('Location: ../../settings/table/view_partida.php?id='.$id_partida);
+header('Location: ../../settings/character/mod_equipment.php?id_personaje='.$id_personaje.'&id_partida='.$id_partida);
 }
 ?>

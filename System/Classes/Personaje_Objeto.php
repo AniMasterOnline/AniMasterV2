@@ -40,6 +40,7 @@
             $db->close();
             return $rtn;
         }
+         
         public function viewObj($id_personaje){
             $db = new connexio();
             $sql = "SELECT * FROM Personaje_Objeto where id_personaje='$id_personaje'";
@@ -63,6 +64,22 @@
         public function viewObjPerson($id_personaje){
             $db = new connexio();
             $sql = "SELECT * FROM Personaje_Objeto WHERE id_personaje='$id_personaje'";
+            $query = $db->query($sql);
+            $db->close();
+            $rtn = array();
+            if ($query->num_rows > 0) {
+                while($obj = $query->fetch_assoc()){
+                    $partida_objeto = new Personaje_Objeto($obj["id_personaje"],$obj["id_objeto"],$obj["cantidad"]);
+                    array_push($rtn, $partida_objeto);
+                }
+                return $rtn;
+            }else{
+                return null;
+            }
+        }
+        public function viewObjPerson2($id_personaje){
+            $db = new connexio();
+            $sql = "SELECT * FROM Personaje_Objeto where id_personaje='$id_personaje'";
             $query = $db->query($sql);
             $db->close();
             $rtn = array();

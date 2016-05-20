@@ -484,4 +484,5 @@ include "../../Public/layouts/head.php";
             </div>
         </div>
     </div>
+    </div>
 <?php include "../../Public/layouts/footer.php";?> 
