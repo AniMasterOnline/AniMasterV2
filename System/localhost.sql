@@ -449,11 +449,11 @@ INSERT INTO  `Animaster`.`Usuario` (
 )
 VALUES 
 
-(NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  NULL),
+(NULL ,  'Admin', NULL ,  'admin', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  '0'),
 (NULL ,  'david', NULL ,  'david', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  NULL),
 (NULL ,  'marc', NULL ,  'marc', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  '1'),
 (NULL ,  'gurwinder', NULL ,  'gurwinder', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  NULL),
-(NULL ,  'admin2', NULL ,  'admin2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  NULL),
+(NULL ,  'admin2', NULL ,  'admin2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  '0'),
 (NULL ,  'test', NULL ,  'test', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  NULL),
 (NULL ,  'test2', NULL ,  'test2', NULL , NULL , NULL ,  'eb0a191797624dd3a48fa681d3061212',  NULL,  NULL);
 
