@@ -39,10 +39,7 @@ include "../Public/layouts/head.php";?>
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="#">Nuevo</a>
-                                </li>
-                                <li>
-                                    <a href="#">Eliminar</a>
+                                    <a href="new_objeto.php">Nuevo</a>
                                 </li>
                             </ul>
                         </li>

@@ -60,7 +60,7 @@ include "Public/layouts/head.php";?>
             
             <div class="col-md-6 cinput">
                 <label for="inputEmail" class="sr-only">E-mail</label>
-                <input type="text"  id="inputEmail"  class="form-control" name="email" placeholder="E-mail *" required>
+                <input type="text"  id="inputEmail"  class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail *" required>
             </div>
             <div class="col-md-12 cinput">
                 <button class="btn btn-lg bgm-green c-white btn-block" type="submit">Registrate ya!</button>

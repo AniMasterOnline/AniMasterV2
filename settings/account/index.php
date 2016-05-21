@@ -261,7 +261,7 @@ $(document).ready(function(){
                     </div>
                     <div class="input-group m-b-10">
                         <span class="input-group-addon" id="basic-addon2">E-mail&nbsp;&nbsp;</span>
-                        <input type="text" class="form-control" id="inputEmail" name="email" placeholder="E-mail" aria-describedby="basic-addon2" value="<?php echo $value['email']?>">
+                        <input type="text" class="form-control" id="inputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" placeholder="E-mail" aria-describedby="basic-addon2" value="<?php echo $value['email']?>">
                     </div>
                     <button type="button" id="mod1" class="btn btn-primary btn-sm" onsubmit="valpass()">Guardar cambios</button>
                 </div>

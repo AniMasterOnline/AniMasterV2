@@ -1,5 +1,4 @@
 <?php
-$id_partida=$_POST['id_partida'];
 $nombre=$_POST['nombre'];
 $peso=$_POST['peso'];
 $precio=$_POST['precio'];
@@ -22,11 +21,11 @@ require_once "../Classes/Partida_Objeto.php";
 $parObj=new Partida_Objeto($id_objeto,$id_partida);
 $parObj->add();
 if($tipo==3){
-    header('Location: ../../settings/character/armas.php?id_partida='.$id_partida);
+    header('Location: ../../admin/armas.php?id_objeto='.$id_objeto);
 }else if($tipo==2){
-    header('Location: ../../settings/character/armaduras.php?id_partida='.$id_partida);
+    header('Location: ../../admin/armaduras.php?id_objeto='.$id_objeto);
 }else{
-    header('Location: ../../settings/table/view_partida.php?id='.$id_partida);
+    header('Location: ../../admin/index.php');
 
 }
 ?>

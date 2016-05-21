@@ -1,21 +1,21 @@
 <!-- User Menu -- Header content box -->
 <?php 
 $title='Armas';
-$migas='#Inicio|../../index.php#Mesa|../../settings/character/#Armas';
-include "../../Public/layouts/head.php";
+$migas='#Inicio|../index.php#Mesa|../settings/character/#Armas';
+include "../Public/layouts/head.php";
 ?>
 
 <!-- Body content box -->
 <div class="container" >
-    <form method="POST" name="myForm" action="../../System/Protocols/Crear_Armas.php">
+    <form method="POST" name="myForm" action="../System/Protocols/Crear_Armas2.php">
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-12 cinput m-l-15 ">
                     <h2 class="form-signin-heading">Armas</h2>
                 </div>
 <?php
-$id_objeto=$_POST['id_objeto'];
-require_once "../../System/Classes/Caracteristica.php";
+$id_objeto=$_GET['id_objeto'];
+require_once "../System/Classes/Caracteristica.php";
 $caracteristica=new Caracteristica();
 $caracteristica=$caracteristica->viewArma();
 foreach ($caracteristica as $caracteristica){
@@ -32,12 +32,6 @@ foreach ($caracteristica as $caracteristica){
                             <input type="hidden"  id="id_objeto"  class="form-control" name="id_objeto" value="<?php echo $id_objeto ?>">
                         </div>
                     </div>
-                    
-            <?php
-                if(isset($_GET['id_partida']) && !empty($_GET['id_partida'])){
-                    echo '<input type="hidden"  id="id_partida"  class="form-control" name="id_partida" value="'.$_GET['id_partida'].'">';
-                }
-            ?>
                 </div>
 <?php } ?>     
                 <div class="col-md-12 cinput m-l-15">
@@ -47,5 +41,5 @@ foreach ($caracteristica as $caracteristica){
         </div>
     </form>
 </div> 
-<?php include "../../Public/layouts/footer.php";?> 
+<?php include "../Public/layouts/footer.php";?> 
 

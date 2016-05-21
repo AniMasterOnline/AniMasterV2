@@ -1,23 +1,19 @@
 <!-- User Menu -- Header content box -->
 <?php 
 $title='Crear Objeto';
-$migas='#Inicio|../../index.php#Mesa|../../settings/table/#Nueva Objeto';
-include "../../Public/layouts/head.php";
+$migas='#Inicio|../index.php#Mesa|../settings/table/#Nueva Objeto';
+include "../Public/layouts/head.php";
 ?>
 
-<?php
-$id_partida=$_GET['id_partida'];
-?>
 <!-- Body content box -->
 <div class="container" >
-    <form method="POST" name="myForm" action="../../System/Protocols/Objeto_Crear.php" enctype="multipart/form-data">
+    <form method="POST" name="myForm" action="../System/Protocols/Objeto_Crear2.php" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-12 cinput m-l-15 ">
                     <h2 class="form-signin-heading">Crear nuevo objeto</h2>
                 </div>
-                <input type="hidden" name="id_partida" id="id_partida" value="<?php echo $id_partida ?>">
-                <input type="hidden" name="public" id="public" value="false">
+                <input type="hidden" name="public" id="public" value="true">
                 <div class="col-md-6">
                     <div class="col-md-12 cinput ">
                         <label for="inputNombre" class="sr-only">Nombre</label>
@@ -57,7 +53,7 @@ $id_partida=$_GET['id_partida'];
                     <div class="col-md-12 cinput ">
                         <label for="inputTipo" class="sr-only">Tipo</label>
                         <?php
-                        include "../../System/Classes/Tipo.php";
+                        include "../System/Classes/Tipo.php";
                         $tipo = new Tipo();
                         $tipo=$tipo->view_all();
                         echo '<select type="text" class="selectpicker" data-style="btn-primary" data-width="100%" id="inputTipo" name="tipo" placeholder="Tipo *" required>';
@@ -84,5 +80,5 @@ $id_partida=$_GET['id_partida'];
         </div>
     </form>
 </div> 
-<?php include "../../Public/layouts/footer.php";?> 
+<?php include "../Public/layouts/footer.php";?> 
 
