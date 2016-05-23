@@ -55,8 +55,23 @@
                    $message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message);
                 } 
                 $color = $_POST['color'];
+                $message = str_replace(":animaster:", "<img src='../../Public/img/favicon/live.ico'>", $message);
+                $message = str_replace(":damage:", "<img src='../../Public/img/favicon/damage.ico'>", $message);
+                $message = str_replace(":bat:", "<img src='../../Public/img/favicon/bat.ico'>", $message);
+                $message = str_replace(":fireball:", "<img src='../../Public/img/favicon/fireball.ico'>", $message);
+                $message = str_replace(":heart:", "<img src='../../Public/img/favicon/heart.ico'>", $message);
+                $message = str_replace(":nyan:", "<img src='../../Public/img/favicon/nyan.ico'>", $message);
+                $message = str_replace(":skull:", "<img src='../../Public/img/favicon/skull.ico'>", $message);
+                $message = str_replace(":sword:", "<img src='../../Public/img/favicon/sword.ico'>", $message);
+                $message = str_replace(":wings:", "<img src='../../Public/img/favicon/wings.ico'>", $message);
+                $message = str_replace(":music:", "<img src='../../Public/img/favicon/music.ico'>", $message);
+                $message = str_replace(":cute:", "<img src='../../Public/img/favicon/npc.ico'>", $message);
+                $message = str_replace(":smile:", "<img src='../../Public/img/favicon/smile.ico'>", $message);
+                $message = str_replace(":d20:", "<img src='../../Public/img/favicon/d20.ico'>", $message);
+                $message = str_replace(":lol:", "<img src='../../Public/img/favicon/lol.ico'>", $message);
+                $message = str_replace(":LOL:", "<img src='../../Public/img/favicon/lol.ico'>", $message);
                 fwrite(fopen($file, 'a'), "<div class='chatbox pull-left'> <div class='chatnick'><code class='".$color."'><span class='nick'>". $nickname . 
-                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg'>" . $message = str_replace("\n", " ", $message). 
+                        "</span><span class='time' >".date('h:i:s')."</span></code></div><div class='chatmsg'>". $message = str_replace("\n", " ", $message). 
                         "</div></div><div class='clearfix'></div> \n"); 
             }
             break;

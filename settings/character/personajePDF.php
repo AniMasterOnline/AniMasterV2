@@ -1,4 +1,6 @@
 <?php
+session_start();
+$value=$_SESSION['user'];
 $id_personaje=$_GET['id'];
 require_once '../../Public/dompdf/autoload.inc.php';
 
@@ -9,6 +11,13 @@ $Personaje = new Personaje();
 
 $return = $Personaje->viewPersonaje($id_personaje);
 $array2 = $Partida->viewPartida($return['id_partida']);
+if($id_personaje==""){
+    header('Location: ../../index.php');
+}else{
+    if($value['id_usuario']!=$return['id_usuario']){
+        header('Location: ../../index.php');
+    }else{
+
 $array2->getNombre();
 require_once "../../System/Classes/Usuario.php";
 require_once "../../System/Classes/Categoria.php";
@@ -22,7 +31,7 @@ $arrayN = $nivel->viewNivel($return['nivel']);
 $gavi='<html><body>'
         . '<div class=header>'
         . '<center><h1 class=logo>Animaster online V2</h1></center></div>
-<div class=header1><b>'.$array2->getNombre()."</b> ".$return['nombre'].'</div>'
+            <table class=infor><tr><td width=50%>Partida: '.$array2->getNombre().'</td><td>Usuario: '.$return['nombre'].'</td></table>'
         . '<div><table class=header2>'
         . '<tr>'
         . '<td width=200 align=center>Categoria</td>'
@@ -83,7 +92,7 @@ $gavi='<html><body>'
         . '</tr>'
         . '</table></div>';
     $gavi  .= '<div class=hp>Habilidades Primarias</div>'
-        . '<table class=header2><tr>'
+        . '<table class=hp2><tr>'
         . '<td width=120 align=center>Habilidad</td>'
         . '<td width=70 align=center>Base</td>'
         . '<td width=70 align=center>Car</td>'
@@ -165,7 +174,7 @@ if (!empty($return)) {
         }
 }
 $gavi.='<div class=hs>Habilidades Secundaria</div>';
-$gavi.='<table class=header2><tr width=50%>
+$gavi.='<table class=hs2><tr width=50%>
 	<td width=200 align=center>Nombre</td>
 	<td width=70 align=center>Base</td>
 	<td width=70 align=center>Caract</td>
@@ -318,6 +327,8 @@ if($cantidad==""){
                  <td> ??? </td>
              </tr></table>';
  }
+}
+}
 use Dompdf\Dompdf;
 
 // instantiate and use the dompdf class

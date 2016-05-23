@@ -99,7 +99,7 @@ include "../../Public/layouts/head.php";
                     <span class="input-group-addon">
                         <input type="radio" name="sexo" value="female"> <i class="zmdi zmdi-female"></i> F
                     </span>
-                    <input class="form-control" type="text" id="edad" name="edad" placeholder="Edad" required>
+                    <input class="form-control" type="number" id="edad" name="edad" placeholder="Edad" required>
                 </div><!-- /input-group -->
             </div>
             <div class="clearfix m-b-5"></div>
@@ -118,7 +118,7 @@ include "../../Public/layouts/head.php";
             </div>
             <div class="clearfix m-b-5"></div>
             <div class="col-xs-12 m-b-5">
-                <input class="form-control" type="text" id="apariencia" name="apariencia" placeholder="Apariencia" required>
+                <input class="form-control" type="number" id="apariencia" name="apariencia" placeholder="Apariencia" required>
             </div>
             <?php
             include "../../System/Classes/Caracteristicas_P.php";

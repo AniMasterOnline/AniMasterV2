@@ -358,7 +358,7 @@ include "../../Public/layouts/head.php";
                                     $hs_incrlv = 0; 
                                 }
                                 $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
-
+                                $hs_value = $hs_value / (int)$arrayCat_HS['coste'];
                                 $hs_final = $hs_value + $hs_bono + $hs_catfin;
                                 $is0 = false;
                                 if($hs_value == 0){

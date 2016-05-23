@@ -230,7 +230,7 @@ include "../../Public/layouts/head.php";
                                     }else{
                                         //Si no en te
                                         echo "<tr>
-                                        <td class='text-capitalize text-success'>???</td>                                    
+                                        <td class='text-capitalize text-success'>".$datos['nickname']."</td>                                    
                                         <td class='text-capitalize text-info'> ??? </td>
                                         <td class='text-danger text-center'> ??? </td>
                                         <td class='text-center'>

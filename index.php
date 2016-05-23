@@ -9,7 +9,7 @@ include "Public/layouts/head.php";?>
 
 <style>
     body{
-        background-color: rgba(0,0,0,0.7);
+        background-color: rgba(0,0,0,0.6);
         position: absolute;
         top:0;
         bottom: 0;

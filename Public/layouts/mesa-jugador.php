@@ -364,6 +364,7 @@
                                             }
                                             $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
                                             
+                                            $hs_value = $hs_value / (int)$arrayCat_HS['coste'];
                                             $hs_final = $hs_value + $hs_bono + $hs_catfin; // Suma final
                                             
                                             $is0 = false;
@@ -437,7 +438,8 @@
                                                 $hs_incrlv = 0; 
                                             }
                                             $hs_catfin = $hs_incrlv * $return['nivel']; // incremento categoria * level
-
+                                            
+                                            $hs_value = $hs_value / (int)$arrayCat_HS['coste'];
                                             $hs_final = $hs_value + $hs_bono + $hs_catfin; // Suma final
 
                                             if($hs_value <= 0){ //si la base es 0 el valor final sera 0

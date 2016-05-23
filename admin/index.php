@@ -98,20 +98,20 @@ include "../Public/layouts/head.php";?>
                                 <i class="zmdi zmdi-info c-white"></i>
                             </a>
                         </li>
-                        <li class="dropdown">
+                        <!--<li class="dropdown">
                             <a href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                                 <i class="zmdi zmdi-more-vert c-white"></i>
                             </a>
 
-                            <ul class="dropdown-menu dropdown-menu-right">
+                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
                                     <a href="#">Nuevo</a>
                                 </li>
                                 <li>
                                     <a href="#">Eliminar</a>
                                 </li>
-                            </ul>
-                        </li>
+                            </ul> 
+                        </li>-->
                     </ul>
                 </div>
                 <div class="card-body card-padding table-responsive p-0">

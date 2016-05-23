@@ -117,7 +117,7 @@ foreach ($categoria as $categoria){
          echo '<input type="hidden" name="'.$id_HS.'" id="'.$id_HS.'" value="'.$id_HS.'">';
         echo '<div class="input-group">
       <span class="input-group-addon" id="basic-addon1">( '.$coste.' ) '.$name.'</span>';
-        echo '<input type="text" name="hs'.$id_HS.'" id="hs'.$id_HS.'" class="form-control" aria-describedby="basic-addon1"></div>';
+        echo '<input type="number" name="hs'.$id_HS.'" id="hs'.$id_HS.'" class="form-control" aria-describedby="basic-addon1"></div>';
     
 }
 ?>

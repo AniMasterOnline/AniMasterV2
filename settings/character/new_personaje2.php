@@ -114,7 +114,7 @@ $limite_le = $limite2 - $limite_hp;
     
     <div class="col-xs-3">
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px; min-width: 15px; width: auto;">
             <?php
                 require_once "../../System/Classes/Categoria_HP.php";
                 $cat_hp = new Categoria_HP();
@@ -122,14 +122,14 @@ $limite_le = $limite2 - $limite_hp;
                 $ha = $result['coste'];
                 echo "Ha - ".$ha;
             ?>
-                <input class="form-control" type="hidden" id="ha2" value="<?php echo $ha ?>">
+                <input class="form-control" type="hidden" id="ha2" value="<?php echo $ha ?>" >
             </span>
-            <input class="form-control" type="text" id="ha" name="ha" placeholder="Habilidad ataque" required>
+            <input class="form-control" type="number" id="ha" name="ha" placeholder="Habilidad ataque" required>
         </div>
     </div>
     <div class="col-xs-3">
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px; min-width: 15px; width: auto;">
             <?php
                 $cat_hp = new Categoria_HP();
                 $result=$cat_hp->viewHP2($id_categoria,2);
@@ -138,12 +138,12 @@ $limite_le = $limite2 - $limite_hp;
             ?>
                 <input class="form-control" type="hidden" id="hp2" value="<?php echo $hp ?>">
             </span>
-            <input class="form-control" type="text" id="hp" name="hp" placeholder="Habilidad parada" required>
+            <input class="form-control" type="number" id="hp" name="hp" placeholder="Habilidad parada" required>
         </div>
     </div>
     <div class="col-xs-3">
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px; min-width: 15px; width: auto;">
             <?php
                 $cat_hp = new Categoria_HP();
                 $result=$cat_hp->viewHP3($id_categoria,3);
@@ -152,12 +152,12 @@ $limite_le = $limite2 - $limite_hp;
             ?>
                 <input class="form-control" type="hidden" id="he2" value="<?php echo $he ?>">
             </span>
-            <input class="form-control" type="text" id="he" name="he" placeholder="Habilidad esquiva" required>
+            <input class="form-control" type="number" id="he" name="he" placeholder="Habilidad esquiva" required>
         </div>
     </div>
     <div class="col-xs-3">
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1" style="max-width:60px;">
+            <span class="input-group-addon" id="basic-addon1" style="max-width:60px; min-width: 15px; width: auto;">
             <?php
                 $cat_hp = new Categoria_HP();
                 $result=$cat_hp->viewHP4($id_categoria,4);
@@ -168,7 +168,7 @@ $limite_le = $limite2 - $limite_hp;
             ?>
                 <input class="form-control" type="hidden" id="la2" value="<?php echo $le ?>">
             </span>
-            <input class="form-control" type="text" id="la" name="la" placeholder="Llevar armadura" required>
+            <input class="form-control" type="number" id="la" name="la" placeholder="Llevar armadura" required>
         </div>
     </div>
     <div class=" clearfix m-b-5"></div>

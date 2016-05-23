@@ -1,6 +1,6 @@
 <!-- Header content box -->
 <?php 
-$title='Login';
+$title='Zona roleo';
 $migas='#Index|index.php#Zona roleo';
 include "Public/layouts/head.php";?>
 
